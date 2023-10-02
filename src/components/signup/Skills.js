@@ -327,6 +327,8 @@ export default function Skills({step,handleNext}) {
         </Stack>
         <Container sx={{marginBottom:'10px'}}>
         <Typography id="demo-multiple-chip-label">{role}</Typography>
+        <Typography sx={{fontSize:'11px'}}>(Click to select and deselect)</Typography>
+
         </Container>
         
       <FormControl sx={{ width:'100%'}}>
