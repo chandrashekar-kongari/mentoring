@@ -366,7 +366,7 @@ export default function Skills({step,handleNext}) {
       </FormControl>
       {
         mentee&&<Container style={{textAlign:'center'}}>
-                          <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline',textTransform:'none'}}>I am not sure skip to next step</Button>
+                          <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline',textTransform:'none'}}>I am not sure skip to next step.</Button>
 
           </Container>
       }

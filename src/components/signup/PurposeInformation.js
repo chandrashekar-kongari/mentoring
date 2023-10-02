@@ -57,7 +57,7 @@ const PurposeInformation = ({step,handleNext}) => {
             {menteeSelected && <AreaOfIntrestsForMentee/>}
       
             {menteeSelected && <Container >
-                          <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline',textTransform:'none'}}>I am not sure skip to next step</Button>
+                          <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline',textTransform:'none'}}>I am not sure skip to next step.</Button>
                 </Container>}
             </Container>
            
