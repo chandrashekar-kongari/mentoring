@@ -300,7 +300,7 @@ export default function Skills({step,handleNext}) {
   };
 
   const inputProps = {
-    placeholder: "Ex: Game Development",
+    placeholder: " Ex: Game Development",
     value,
     onChange,
   };
@@ -351,6 +351,7 @@ export default function Skills({step,handleNext}) {
           </Box>
           <Stack direction={'row'} sx={{justifyContent:'space-around',marginTop:'3px'}}>
               <Autosuggest
+              id='inputID'
           suggestions={suggestions}
           onSuggestionsFetchRequested={onSuggestionsFetchRequested}
           onSuggestionsClearRequested={onSuggestionsClearRequested}
@@ -365,7 +366,7 @@ export default function Skills({step,handleNext}) {
       </FormControl>
       {
         mentee&&<Container style={{textAlign:'center'}}>
-                          <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline'}}>I am not sure skip to next step</Button>
+                          <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline',textTransform:'none'}}>I am not sure skip to next step</Button>
 
           </Container>
       }

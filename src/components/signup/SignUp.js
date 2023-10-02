@@ -118,10 +118,6 @@ export default function SignUp() {
         if (response.status === 200) {
           const a=true
           dispatch(setAuth(a))
-          
-          
-
-
           navigate('/success');
   
         } else {

@@ -156,7 +156,7 @@ const Education = ({step}) => {
                      fullWidth/> */}
         {resumeUpload && <MuiFileInput  hideSizeText value={value}   placeholder='Please upload resume' sx={{}} onChange={handleFileChange} />
 }
-        <FormControlLabel name='mentor' onChange={handleLinkedinShareFlag} control={<Checkbox checked={linkedinShare} />} sx={{}}  label="Do you have LinkedIn?" />
+        <FormControlLabel name='mentor' onChange={handleLinkedinShareFlag} control={<Checkbox checked={linkedinShare} />} sx={{}}  label="Do you have a LinkedIn profile?" />
         {linkedinShare && <FormControl fullWidth variant="outlined" style={{paddingBottom:'1rem'}}>
                 <InputLabel >Linkedin profile link</InputLabel>
                 <OutlinedInput

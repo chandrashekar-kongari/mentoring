@@ -64,7 +64,7 @@ const WorkExperience = ({step,handleNext}) => {
                 
                 
                 
-                <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'2px',color:'black',textDecoration:'underline'}}>I will add later skip for now</Button>
+                <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'2px',color:'black',textDecoration:'underline',textTransform:'none'}}>I will add later skip for now</Button>
 
         
         </Container>:''}

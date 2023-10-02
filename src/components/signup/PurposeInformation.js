@@ -40,14 +40,14 @@ const PurposeInformation = ({step,handleNext}) => {
     <>{
         step==2?<Stack direction='column'sx={{}} >
            
-            <FormLabel sx={{fontSize:'14px',width:'100%'}}>
+            <Typography sx={{fontSize:'16px',width:'100%'}}>
 
             I would like to be a?
 
 
-            </FormLabel>
+            </Typography>
            
-            <Container sx={{marginTop:'10px',padding:0,width:'100%'}}>
+            <Container sx={{marginTop:'3px',padding:0,width:'100%'}}>
             <Stack sx={{flexDirection:'row',justifyContent:'space-between'}}>
                 <FormControlLabel name='mentor' onChange={onSelectMentor} control={<Checkbox checked={mentorSelected} />} label="Mentor" />
                 <FormControlLabel name='mentee' onChange={onSelectMentee} control={<Checkbox checked={menteeSelected} />} label="Mentee" />
@@ -57,7 +57,7 @@ const PurposeInformation = ({step,handleNext}) => {
             {menteeSelected && <AreaOfIntrestsForMentee/>}
       
             {menteeSelected && <Container >
-                          <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline'}}>I am not sure skip to next step</Button>
+                          <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline',textTransform:'none'}}>I am not sure skip to next step</Button>
                 </Container>}
             </Container>
            

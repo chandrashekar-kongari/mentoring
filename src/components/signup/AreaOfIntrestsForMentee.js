@@ -198,13 +198,14 @@ const Fullstack=[{
   }
 
   return (
-    <Container style={{padding:'0px',margin:'0px'}}>
+    <Box style={{padding:'0px',margin:'0px'}}>
         <Stack textAlign='start' >
         {/* <FormLabel style={{fontSize:'12px',color:'blue'}}>You can pick multiple</FormLabel> */}
         </Stack>
-        <Container sx={{marginBottom:'10px'}}>
+        <Box sx={{marginBottom:'10px'}}>
         <Typography id="demo-multiple-chip-label" sx={{fontSize:'14px'}}>I am intrested in a Mentorship in the following area(s):</Typography>
-        </Container>
+        <Typography sx={{fontSize:'11px'}}>(Click to select and deselect)</Typography>
+        </Box>
       <FormControl sx={{ }}>
       
         
@@ -229,6 +230,6 @@ const Fullstack=[{
           
   
       </FormControl>
-    </Container>
+    </Box>
   );
 }
