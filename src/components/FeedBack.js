@@ -46,7 +46,7 @@ const FeedBack = () => {
         'rating':1
     }
     try {
-        const response = await axios.post(endpoint+'feedback',data);
+        const response = await axios.post(endpoint+'/feedback',data);
   
         if (response.status === 200) {
             handleOpenAlert()
