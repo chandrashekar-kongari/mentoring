@@ -5,7 +5,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { setAdditionaInformation } from '../../features/UserSlice';
-const WorkExperience = ({step,handleNext}) => {
+const Bio = ({step,handleNext,handleBack}) => {
 
   const dispatch=useDispatch()
 
@@ -43,9 +43,14 @@ const WorkExperience = ({step,handleNext}) => {
     dispatch(setAdditionaInformation(value))
   }
   const [v,setV]=useState('')
+  const handleSubmit=(e)=>{
+    e.preventDefault(); 
+    handleNext()
+
+  }
   return (
     <>
-    {step==4?<Container style={{ }}>
+    {step==4?<Box style={{ }}>
 
 
         <Stack sx={{flexDirection:'column',display:'flex',width:'100%'}}>
@@ -58,19 +63,29 @@ const WorkExperience = ({step,handleNext}) => {
                     {/* <Box>
                        <Model exp={workExperience}/>
                     </Box> */}
-                    <textarea style={{marginTop:'5px',maxWidth:'320px'}} name="additionaInformation" value={v} onChange={handleChange} rows={4} cols={40}  />
-                    
+                  <form onSubmit={handleSubmit}>
+                  <textarea required style={{marginTop:'5px',maxWidth:'320px'}} name="additionaInformation" value={v} onChange={handleChange} rows={4} cols={40}  />
+                  <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'2px',color:'black',textDecoration:'underline',textTransform:'none'}}>I will add later skip for now.</Button>
+
+                  <Stack sx={{flexDirection:'row',justifyContent:'space-between'}}>
+                <Button onClick={handleBack} variant="text"  type="submit" sx={{float:'right',color:'black'}}>
+        Back
+      </Button>
+                <Button variant="text" color="primary" type="submit" sx={{float:'right'}}>
+        Next
+      </Button>
+                </Stack>
+        </form>                    
                 </Stack>
                 
                 
                 
-                <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'2px',color:'black',textDecoration:'underline',textTransform:'none'}}>I will add later skip for now.</Button>
 
         
-        </Container>:''}
+        </Box>:''}
     </>
     
   )
 }
 
-export default WorkExperience
+export default Bio

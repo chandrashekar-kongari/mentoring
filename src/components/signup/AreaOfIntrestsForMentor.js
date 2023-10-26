@@ -9,7 +9,7 @@ import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 import { Container, FormLabel, Stack, Typography } from '@mui/material';
 import { useSelector,useDispatch } from 'react-redux';
-import { addSkill, setMentee,setMentorIntrests,updateSkill } from '../../features/UserSlice';
+import { addSkill, setMentee,setMentorIntrests,updateSkill,saveNumberOfMentees } from '../../features/UserSlice';
 import {useState} from 'react'
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 16;
@@ -171,69 +171,85 @@ const Fullstack=[{
     // const i=[...intrests]
 
     dispatch(setMentorIntrests(intr))
-    // if (selected.includes(num)) {
-    //   // If the number is already in the array, remove it
-    //   if(num==0){
-    //     // dispatch(updateSkill([]))
-    //     dispatch(updateSkill(Ai))
-    //   }
-    //   setSelected(selected.filter((n) => n !== num));
-    // } else {
-    //   if(num==0){
-    //     // dispatch(updateSkill([]))
-    //     dispatch(updateSkill(Ai))
-    //     dispatch(setMentorIntrests('AI and Machine Learning'))
-    //   }
-     
-    //     if(num==1){
-    //       // dispatch(updateSkill([]))
-    //       dispatch(updateSkill(Fullstack))
-    //       dispatch(setMentorIntrests('Full Stack Development'))
-    //     }
-
-    //   // If the number is not in the array, add it
-    //   setSelected([...selected, num]);
-    // }
-    // Ai.map((ski)=>{
-    //   dispatch(addSkill(ski))
-    // })
-    
-
-
-
-    
+   
   }
+  const handleSelectNumberOfMentees=(title)=>{
+    const intr=numOfMentees.map((intr) =>
+    intr.title === title
+          ? { ...intr, selected: true }
+          : { ...intr, selected: false }
+      )
+
+      setNumberOfMentees(intr)
+
+    // const i=[...intrests]
+    if (title=='1 Mentee'){
+      dispatch(saveNumberOfMentees(1))
+    }
+    else if (title=='2 Mentees'){
+      dispatch(saveNumberOfMentees(2))
+    }
+    if (title=='3 Mentees'){
+      dispatch(saveNumberOfMentees(3))
+    }
+
+    
+   
+  }
+  const [numOfMentees,setNumberOfMentees]=useState([
+    {
+      title:'1 Mentee',
+      selected:false
+    },
+    {
+      title:'2 Mentees',
+      selected:false
+    },
+    {
+      title:'3 Mentees',
+      selected:false
+    }
+  ])
+
+  const handleNumberOfmentees=(val)=>{
+    setNumberOfMentees(val)
+
+  }
+
+  const numberofmentees=useSelector(state=>state.numberofmentees)
 
   return (
     <Box style={{padding:'0px',margin:'0px'}}>
-        <Stack textAlign='start' >
+        <Stack textAlign='center' >
         {/* <FormLabel style={{fontSize:'12px',color:'blue'}}>You can pick multiple</FormLabel> */}
+        <Typography id="demo-multiple-chip-label" sx={{fontSize:'14px'}}>I am intrested to mentor: </Typography>
+        <Stack flexDirection={'row'} justifyContent={'space-around'}>
+        {numOfMentees.map((intrest,index) => (
+            
+            
+            
+            <Chip sx={{margin:'1px',fontSize:'11px',marginBottom:'2px'}} label={intrest.title} color="primary" variant={numberofmentees==index+1?'solid':'outlined'} onClick={()=>handleSelectNumberOfMentees(intrest.title)} />
+          
+        ))}
+
+        </Stack>
         </Stack>
         <Box sx={{marginBottom:'10px'}}>
-        <Typography id="demo-multiple-chip-label" sx={{fontSize:'14px'}}>I am intrested to mentor in the   <Typography sx={{fontSize:'14px'}}>following area(s):</Typography> </Typography>
+        <Typography id="demo-multiple-chip-label" sx={{fontSize:'14px'}}>I am intrested to mentor in the following area(s): </Typography>
         <Typography sx={{fontSize:'11px'}}>(Click to select and deselect)</Typography>
         </Box>
         
       <FormControl sx={{ }}>
-      
-        
-        <Container>
+        <Box>
         
           {intrests.map((intrest,index) => (
-            // <Chip
-            //   key={intrest}
-            //   value={intrest}
-              
-            // >
-
-            //   {intrest}
-            // </Chip>
+            
             
             
               <Chip sx={{margin:'1px',fontSize:'11px',marginBottom:'2px'}} label={intrest.title} color="primary" variant={intrest.selected?'solid':'outlined'} onClick={()=>handleSelect(intrest.title)} />
             
           ))}
-          </Container>
+          </Box>
   
       </FormControl>
     </Box>

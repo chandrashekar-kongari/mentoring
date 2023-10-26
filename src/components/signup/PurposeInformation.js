@@ -10,7 +10,7 @@ import AreaOfIntrestsForMentors from './AreaOfIntrestsForMentor';
 import AreaOfIntrestsForMentee from './AreaOfIntrestsForMentee';
 import { useSelector,useDispatch } from 'react-redux';
 import { setMentee,setMentor } from '../../features/UserSlice';
-const PurposeInformation = ({step,handleNext}) => {
+const PurposeInformation = ({step,handleNext,handleSkip}) => {
    
     const dispatch=useDispatch()
     const onSelectMentor=()=>{
@@ -35,31 +35,42 @@ const PurposeInformation = ({step,handleNext}) => {
 
     const [mentorSelected,setMentorSelected]=useState(false)
     const [menteeSelected,setMenteeSeleceted]=useState(false)
+    const handleOptionsChange = (event) => {
+        setOptions({ ...options, [event.target.name]: event.target.checked });
+      };
+      const [options, setOptions] = useState({
+        option1: false,
+        option2: false,
+        option3: false,
+      });
+
 
   return (
     <>{
         step==2?<Stack direction='column'sx={{}} >
            
-            <Typography sx={{fontSize:'16px',width:'100%'}}>
+            
+           
+            <Box sx={{padding:0,width:'100%'}}>
+            <Typography id="demo-multiple-chip-label" sx={{fontSize:'14px',width:'100%'}}>
 
             I would like to be a?
 
 
             </Typography>
-           
-            <Container sx={{marginTop:'3px',padding:0,width:'100%'}}>
             <Stack sx={{flexDirection:'row',justifyContent:'space-between'}}>
-                <FormControlLabel name='mentor' onChange={onSelectMentor} control={<Checkbox checked={mentorSelected} />} label="Mentor" />
-                <FormControlLabel name='mentee' onChange={onSelectMentee} control={<Checkbox checked={menteeSelected} />} label="Mentee" />
+                <FormControlLabel required name='mentor' onChange={onSelectMentor} control={<Checkbox checked={mentorSelected} />} label="Mentor" />
+                <FormControlLabel required name='mentee' onChange={onSelectMentee} control={<Checkbox checked={menteeSelected} />} label="Mentee"  />
             </Stack>
+            
            
             {mentorSelected && <AreaOfIntrestsForMentors/>}
             {menteeSelected && <AreaOfIntrestsForMentee/>}
       
             {menteeSelected && <Container >
-                          <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline',textTransform:'none'}}>I am not sure skip to next step.</Button>
+                          <Button onClick={handleSkip} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline',textTransform:'none'}}>I am not sure skip to next step.</Button>
                 </Container>}
-            </Container>
+            </Box>
            
             
 

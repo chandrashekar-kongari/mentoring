@@ -14,7 +14,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Button from "@mui/material/Button";
 import axios from 'axios'
 import endpoint from '../API/api';
-import { setAuth } from '../features/UserSlice';
+import { saveUserObj, setAuth } from '../features/UserSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
 
@@ -33,21 +33,35 @@ const Login = () => {
     };
     const handleLogin=async()=>{
         const obj={
-            gmail:gmail,
-            password:password
+            'email':gmail,
+            'password':password
         }
 
         
      
         try {
-        const response = await axios.get('http://127.0.0.1:5000/signin', obj);
+        const response = await axios.post('http://127.0.0.1:5000/signin', obj);
       
             if (response.status === 200) {
               const a=true
               // dispatch(setAuth(a))
-              
+              const user=response.data
+              console.log('lo ',user)
+              if(user==null || Object.keys(user).length === 0){
+                setErrorMessage('Something went wrong')
+                handleShowAlert(true)
+              }
+              else{
+                dispatch(saveUserObj(response.data))
+                
+                dispatch(setAuth(true))
+                localStorage.setItem('auth', 'true');
+                localStorage.setItem('userid',response.data._id)
+                console.log('response from login ',response.data)
+                navigate('/homepage');
+              }
          
-            // navigate('/homepage');
+            
       
             } else {
               console.error('Failed to submit user data.');
@@ -99,10 +113,20 @@ const Login = () => {
 
          
     }
-
+    const [showAlert,setShowAlert]=React.useState(false)
+    const handleShowAlert=(val)=>{
+      // const val=!showAlert
+      setShowAlert(val)
+    }
+  
+    const [errorMessage,setErrorMessage]=React.useState("Error message")
 
   return (
     <Container sx={{height:'90vh'}} component="main" maxWidth="xs">
+      
+      <Stack sx={{flex:1,flexDirection:'row',justifyContent:'center'}}>
+        {showAlert && <Alert onClose={()=>{handleShowAlert(false)}} sx={{position:'absolute',top:'2%'}} severity="error">{errorMessage}</Alert>}
+        </Stack>
       
         <Stack sx={{height:'100%',justifyContent:'center',textAlign:'center'}}>
         <Typography>We are working on login</Typography>

@@ -16,24 +16,23 @@ import { useSelector,useDispatch } from 'react-redux';
 
 import axios from 'axios';
 import endpoint from '../API/api';
-import { saveUserObj, setAuth } from '../features/UserSlice';
 export default function HomePage() {
     const navigate=useNavigate()
 
     const dispatch=useDispatch()
-    const [userObj,setUserObj]=React.useState({})
+    // const [userObj,setUserObj]=React.useState({})
 
-    // const userObj=useSelector(state=>state.userObj)
+    const userObj=useSelector(state=>state.userObj)
 
 
     const [mentorDetails,setMentorDetails]=React.useState({})
     const [menteeList,setMenteesList]=React.useState([])
     const [detailsOf,setDetailsOf]=React.useState('')
 
-    
-    const getMentorDetails=async(signeduser)=>{
-      console.log('user obj ',signeduser)
-      const mentorid=signeduser.matchedWith
+
+    const getMentorDetails=async()=>{
+
+      const mentorid=userObj.matchedWith
       console.log(mentorid)
       const obj={
         'mentorid':mentorid
@@ -70,18 +69,14 @@ export default function HomePage() {
                 setMatched(false)
                 setLoadingmentorormentees(false)
             }
-
-      dispatch(setAuth(true))
-
-      setLoading(false)
       
         
       
     }
 
-    const getMenteesDetails=async(signeduser)=>{
+    const getMenteesDetails=async()=>{
 
-      const menteesids=signeduser.menteeslist
+      const menteesids=userObj.menteeslist
       // console.log(mentorid)
       // const obj={
       //   'mentorid':mentorid
@@ -123,144 +118,44 @@ export default function HomePage() {
       
     }
 
-    const getUserDetails=async()=>{
-
-      const userid=localStorage.getItem('userid')
-
-      // const mentorid=userObj.matchedWith
-      console.log(userid)
-      const obj={
-        'userid':userid
-      }
-      try {
-        const response = await axios.get(`${endpoint}/getuserdetails?userid=${userid}`);
-      
-            if (response.status === 200) {
-              const a=true
-              // dispatch(setAuth(a))
-              const user=response.data
-              console.log('user details ',user)
-              if(user==null){
-                localStorage.setItem('userid','')
-                localStorage.setItem('auth','')
-                navigate('/')
-              }
-              else{
-                setUserObj(response.data)
-                dispatch(saveUserObj(response.data))
-
-                console.log('i am here')
-                const mentee=response.data.mentee
-                const mentor=response.data.mentor
-                if(mentee=='true'){
-                  setDetailsOf("Mentor ")
-                  if(response.data.matched=='true'){
-                    getMentorDetails(response.data)
-
-                  }else{
-                    setDisplayMessage('We will update, once mentor matched')
-                    setMatched(false)
-                    setLoadingmentorormentees(false)
-                  }
-                }
-                else if(mentor=='true'){
-                  setDetailsOf('Mentee(s) ')
-                  const listlen=response.data.menteeslist.length
-                  
-                  if(listlen==0){
-                    setDisplayMessage('We will update, once matche made')
-                    setMatched(false)
-                    setLoadingmentorormentees(false)
-
-                  }else{
-                    getMenteesDetails(response.data)
-                  }
-
-          }
-                
-                
-                
-              }
-            } else {
-              console.error('Failed to submit user data.');
-              localStorage.setItem('userid','')
-                localStorage.setItem('auth','')
-                navigate('/')
-              }
-            } catch (error) {
-            console.error('Error:', error);
-            localStorage.setItem('userid','')
-                localStorage.setItem('auth','')
-                navigate('/')
-            }
-      setLoading(false)
-        
-      
-    }
-
-
-
 
 
     React.useEffect(()=>{
-
-
-      const auth=localStorage.getItem('auth')
-      console.log('auth ',auth)
-      if(auth!='true'){
+      setLoadingmentorormentees(true)
+      if(userObj==null){
         navigate('/')
-        return
-      }
-      const userid=localStorage.getItem('userid')
-      console.log('userid ',userid)
-      if(userid=='' || userid==null){
-        navigate('/')
-        return
-      }
-      console.log('userObj ',userObj)
-
-      if(Object.keys(userObj).length === 0){
-        getUserDetails()
       }
       else{
-        setLoadingmentorormentees(true)
-        if(userObj==null){
-          navigate('/')
-        }
-        else{
-          console.log('i am here')
-          const mentee=userObj.mentee
-          const mentor=userObj.mentor
-          if(mentee=='true'){
-            setDetailsOf("Mentor ")
-            if(userObj.matched=='true'){
-              getMentorDetails()
+        const mentee=userObj.mentee
+        const mentor=userObj.mentor
+        if(mentee=='true'){
+          setDetailsOf("Mentor ")
+          if(userObj.matched=='true'){
+            getMentorDetails()
 
-            }else{
-              setDisplayMessage('We will update, once mentor matched')
-              setMatched(false)
-              setLoadingmentorormentees(false)
-            }
-          }
-          else if(mentor=='true'){
-            setDetailsOf('Mentee(s) ')
-            const listlen=userObj.menteeslist.length
-            
-            if(listlen==0){
-              setDisplayMessage('We will update, once matche made')
-              setMatched(false)
-              setLoadingmentorormentees(false)
-
-            }else{
-              getMenteesDetails()
-            }
-
+          }else{
+            setDisplayMessage('We will update, once mentor matched')
+            setMatched(false)
+            setLoadingmentorormentees(false)
           }
         }
+        else if(mentor=='true'){
+          setDetailsOf('Mentee(s) ')
+          const listlen=userObj.menteeslist.length
+          
+          if(listlen==0){
+            setDisplayMessage('We will update, once matche made')
+            setMatched(false)
+            setLoadingmentorormentees(false)
 
-        console.log('user ',userObj)
-        setLoading(false)
+          }else{
+            getMenteesDetails()
+          }
+
+        }
       }
+
+      console.log('user ',userObj)
 
 
 
@@ -352,18 +247,8 @@ export default function HomePage() {
     const [matched,setMatched]=React.useState(false)
 
 
-    const [loading,setLoading]=React.useState(true)
-
-  return (<>
-  {loading?<Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      height="100vh"  // Set the desired height for the container
-    >
-      <CircularProgress />
-    </Box>:<>
   
+  return (<>
   
     {userObj!=null?<>
       <Box sx={{ flexGrow: 1}}>
@@ -385,11 +270,11 @@ export default function HomePage() {
         <Typography sx={{fontWeight:'bold',fontSize:'28px',paddingRight:'6px'}}>Your {detailsOf} Details </Typography>
 
       </Stack>
-      <Stack sx={{flex:1,textAlign:'center',flexDirection:'row', justifyContent:'center',paddingTop:'1px'}}>
+      <Stack sx={{flex:1,textAlign:'center',flexDirection:'row', justifyContent:'center',paddingTop:'1rem'}}>
 
          {loadingmentorormentees?<CircularProgress/> :
          <>
-         {matched ?<Container  sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',textAlign:'start'}}>
+         {matched ?<Container  sx={{display:'flex',flexWrap:'wrap',justifyContent:'center'}}>
           {detailsOf=='Mentor '?<><ProfileDisplay userDeatils={mentorDetails}/></>:
           <>{menteeList.map((me)=>{
             return <ProfileDisplay userDeatils={me}/>
@@ -401,6 +286,6 @@ export default function HomePage() {
       </Stack>
       
     </Box>
-      </>:''}</>}</>
+      </>:''}</>
   );
 }

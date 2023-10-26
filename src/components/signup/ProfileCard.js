@@ -9,7 +9,7 @@ import { Container, FormControl, InputLabel, OutlinedInput, Stack } from '@mui/m
 import { Link } from 'react-router-dom';
 import RequriedInformation from './RequriedInformation';
 import PurposeInformation from './PurposeInformation';
-import WorkExperience from './WorkExperience';
+import Bio from './Bio';
 import Education from './Education';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -34,6 +34,8 @@ export default function ProfileCard() {
   const experience=useSelector(state=>state.experience)
   const education=useSelector(state=>state.education)
   const resume=useSelector(state=>state.resume)
+
+  const skipResume=useSelector(state=>state.skipResume)
 
  
   
@@ -166,7 +168,7 @@ export default function ProfileCard() {
           <Typography sx={{ mt: 2, mb: 1 }}></Typography>
           <RequriedInformation step={activeStep+5}/>
           <PurposeInformation step={activeStep+1}/>
-          <WorkExperience step={activeStep+1}/>
+          <Bio step={activeStep+1}/>
           <Education step={activeStep+1}/>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Button

@@ -1,5 +1,7 @@
-import { Box, FormControl, InputLabel, OutlinedInput, Stack, Typography } from '@mui/material'
+import { Box, Checkbox, FormControl, FormControlLabel, InputLabel, OutlinedInput, Radio, RadioGroup, Stack, Typography } from '@mui/material'
 import React, { useState } from 'react'
+import { TextField, Button, TextareaAutosize } from '@mui/material';
+
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import { Link } from 'react-router-dom'
@@ -7,7 +9,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useSelector,useDispatch } from 'react-redux';
 import { saveFirstName, saveLastName, setRequiredDetails } from '../../features/UserSlice';
-const RequriedInformation = ({step}) => {
+const RequriedInformation = ({step,handleNext}) => {
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const handleMouseDownPassword = (event) => {
@@ -46,16 +48,40 @@ const RequriedInformation = ({step}) => {
         }
         
     }
+    const handleSubmit = (e) => {
+        e.preventDefault(); 
+        handleNext()
+        // You can add your form submission logic here
+      };
+
+      const handleOptionsChange = (event) => {
+        setOptions({ ...options, [event.target.name]: event.target.checked });
+      };
+      const [options, setOptions] = useState({
+        option1: false,
+        option2: false,
+        option3: false,
+      });
+      const [gender, setGender] = useState('')
+      const handleGenderChange = (event) => {
+        setGender(event.target.value);
+      };
+      const [isOptionsValid, setOptionsValid] = useState(true);
+    
 
     
 
   return (
     <>{
-        step==1?<Stack direction='column' >
+        step==1?
+        
+            <form onSubmit={handleSubmit}>
+                <Stack direction='column' >
         <FormControl variant="outlined" style={{paddingBottom:'1rem'}}>
                 <InputLabel >Email</InputLabel>
                 <OutlinedInput
                 name='gmail'
+                required
                 value={reqDetails.gmail}
                 onChange={handleChange}
                    
@@ -67,6 +93,7 @@ const RequriedInformation = ({step}) => {
                 <FormControl variant="outlined" style={{paddingBottom:'1rem'}}>
                 <InputLabel >First Name</InputLabel>
                 <OutlinedInput
+                required
                 name='firstname'
                 value={firstname}
                 onChange={handleNameChange}
@@ -80,6 +107,7 @@ const RequriedInformation = ({step}) => {
                 <FormControl variant="outlined" style={{paddingBottom:'1rem'}}>
                 <InputLabel >Last Name</InputLabel>
                 <OutlinedInput
+                required
                 name='lastname'
                 value={lastname}
                 onChange={handleNameChange}
@@ -93,6 +121,7 @@ const RequriedInformation = ({step}) => {
                 <FormControl variant="outlined" style={{width:'100%'}} >
                         <InputLabel >Password</InputLabel>
                         <OutlinedInput
+                        required
                         name='password'
                         value={reqDetails.password}
                         onChange={handleChange}
@@ -113,20 +142,70 @@ const RequriedInformation = ({step}) => {
                             label="Passcode"
                         />
                         </FormControl>
+                        
+                        
                 
             <Box sx={{flex:1,width:'100%',paddingTop:'1rem'}}>
         
             
                 </Box>
-                <Stack sx={{paddingTop:'1rem',textAlign:'start', display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
+                <Stack sx={{paddingBottom:'1rem',textAlign:'start', display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
                     <Link style={{textDecoration:'none'}} to='/login'>
                     <Typography sx={{fontSize:'12px'}}>Already a user ?</Typography>
                     </Link>
                     
                 </Stack>
                 
+                <Stack sx={{flexDirection:'row',justifyContent:'space-between'}}>
+                <Button disabled variant="text" color="primary" type="submit" sx={{float:'right'}}>
+        Back
+      </Button>
+                <Button variant="text" color="primary" type="submit" sx={{float:'right'}}>
+        Next
+      </Button>
+                </Stack>
+      </Stack>
+                </form>
+                
                
-        </Stack>:''
+   
+    //     <form onSubmit={handleSubmit}>
+    //   <Typography variant="h6">Title</Typography>
+    //   <FormControl variant="outlined" fullWidth>
+    //     <TextField
+    //       type="text"
+    //       required
+    //       label="Required Text Field"
+    //     />
+    //   </FormControl>
+    //   <FormControl variant="outlined" fullWidth>
+    //     <TextField
+    //       type="email"
+    //       required
+    //       label="Required Email Address"
+    //     />
+    //   </FormControl>
+    //   <FormControl variant="outlined" fullWidth>
+    //     <TextareaAutosize
+    //       required
+    //       minRows={3}
+    //       aria-label="minimum height"
+    //       placeholder="Required Textarea"
+    //     />
+    //   </FormControl>
+    //   <FormControl variant="outlined" fullWidth>
+    //     <TextField
+    //       type="email"
+    //       label="Email Address"
+    //       defaultValue="Validation error"
+    //     />
+    //   </FormControl>
+    //   <Button variant="contained" color="primary" type="submit" sx={{float:'right'}}>
+    //     Submit
+    //   </Button>
+    // </form>
+        
+        :''
     }
     </>
   )

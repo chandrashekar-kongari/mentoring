@@ -10,7 +10,19 @@ import { Container, Stack } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import Profile from '../components/profile/Profile';
 import arrow from './arrow2.gif'
+import ImageDisplay from '../components/ImageDisplay';
+import TextDisplay from '../components/TextDisplay';
 export default function HomePage() {
+  
+
+  React.useEffect(()=>{
+
+    const val=localStorage.getItem('auth')
+    if(val=='true'){
+        navigate('/homepage')
+    }
+
+  },)
     const navigate=useNavigate()
 
     const onClickLogin=()=>{
@@ -22,8 +34,8 @@ export default function HomePage() {
 
   }
   return (
-    <Box sx={{ flexGrow: 1}}>
-      <AppBar position="static" sx={{backgroundColor:'white',color:'#1976D2'}}>
+    <Box sx={{ }}>
+      <AppBar position="static" sx={{backgroundColor:'white',color:'#1976D2',flexGrow: 1}} elevation={5}>
         <Container>
             <Toolbar >
             {/* <IconButton
@@ -66,14 +78,12 @@ export default function HomePage() {
 
         </Container>
       </AppBar>
-      <Stack sx={{flex:1,textAlign:'center',justifyContent:'center',paddingTop:'1rem'}}>
+      {/* <Stack sx={{flex:1,textAlign:'center',justifyContent:'center',paddingTop:'1rem'}}>
       <Container>
       <Typography sx={{fontSize:'18px'}}>
         Please create an account and share your experience
       </Typography>
-      {/* <Typography sx={{fontSize:'18px'}}>
-       Help us to create better mentoring application
-      </Typography> */}
+
       <Typography  sx={{fontSize:'14px'}}>
        (We are working on validation of input fields, we will add soon)
       </Typography>
@@ -85,7 +95,10 @@ export default function HomePage() {
       
       </Container>
       
-      </Stack>
+      </Stack> */}
+      <ImageDisplay/>
+      {/* <TextDisplay/> */}
+      
     </Box>
   );
 }

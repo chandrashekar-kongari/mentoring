@@ -9,7 +9,7 @@ import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 import { Button, Container, FormLabel, Stack ,Typography} from '@mui/material';
 import { useSelector,useDispatch } from 'react-redux';
-import { addSkill, setMentee,setMentorshipIntrests,updateSkill } from '../../features/UserSlice';
+import { addSkill, setMentee,setMentorshipIntrests,updateSkill,saveNumberOfMentees } from '../../features/UserSlice';
 import {useState} from 'react'
 import { Link } from 'react-router-dom';
 const ITEM_HEIGHT = 48;
@@ -189,13 +189,10 @@ const Fullstack=[{
     // }
     // Ai.map((ski)=>{
     //   dispatch(addSkill(ski))
-    // })
-    
-
-
-
-    
+    // })    
   }
+
+  
 
   return (
     <Box style={{padding:'0px',margin:'0px'}}>
@@ -207,10 +204,7 @@ const Fullstack=[{
         <Typography sx={{fontSize:'11px'}}>(Click to select and deselect)</Typography>
         </Box>
       <FormControl sx={{ }}>
-      
-        
-        <Container>
-        
+        <Box>
           {intrests.map((intrest,index) => (
             // <Chip
             //   key={intrest}
@@ -225,7 +219,7 @@ const Fullstack=[{
               <Chip sx={{margin:'1px',fontSize:'11px',marginBottom:'2px'}} label={intrest.title} color="primary" variant={intrest.selected?'solid':'outlined'} onClick={()=>handleSelect(intrest.title)} />
             
           ))}
-          </Container>
+          </Box>
 
           
   

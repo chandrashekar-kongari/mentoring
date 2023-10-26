@@ -6,23 +6,20 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Container, Menu, MenuItem } from '@mui/material';
+import { Container, Menu, MenuItem, Stack } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useDispatch,useSelector } from 'react-redux';
+import LogoutIcon from '@mui/icons-material/Logout';
+import ClearIcon from '@mui/icons-material/Clear';
 
-import { setAuth } from '../features/UserSlice';
+import { saveUserObj, setAuth } from '../features/UserSlice';
 
-export default function Header() {
+export default function Header({setAuthUser}) {
   const dispatch=useDispatch()
     const navigate=useNavigate()
 
-    const onClickLogin=()=>{
-      
-        navigate('/login')
-
-    }
-
+   
     const [auththentication, setAuththentication] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -37,8 +34,21 @@ export default function Header() {
 
   const handleLogOut=()=>{
     const v=false
+    setAuthUser(false)
+    localStorage.setItem('auth','false')
+    localStorage.setItem('userid','')
+    dispatch(saveUserObj({}))
     dispatch(setAuth(v))
     navigate('/')
+    handleClose()
+  }
+  const handleProfile=()=>{
+    navigate('/profile')
+    handleClose()
+  }
+  const handleHome=()=>{
+    navigate('/homepage')
+    handleClose()
   }
 
   const handleMenu = (event) => {
@@ -48,11 +58,9 @@ export default function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-    const onClickSignUp=()=>{
-      navigate('/signup')
-    }
+  
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    
       <AppBar position="static" sx={{backgroundColor:'white',color:'#1976D2'}}>
         <Container>
             <Toolbar>
@@ -65,21 +73,20 @@ export default function Header() {
             >
                 {/* <MenuIcon /> */}
             </IconButton>
-            <Box sx={{flex:'1'}}>
+            <Box sx={{flex:1,width:'100px'}}>
+            <Box sx={{width:'15rem'}}>
             <img  alt="Logo" src="techpact-logo.png" style={{
-                            width: '13%', // Adjust the width as needed
-                            height: '13%',
+                            width: '50%', // Adjust the width as needed
+                            height: '50%',
                             justifyContent:'center',
                             display:'flex' // Adjust the height as needed
             }}/>
+            </Box>
 
             </Box>
-            {/* <Typography variant="h6" component="div" sx={{ flexGrow: 1}}>
+       
             
-               
-            </Typography> */}
-            {auththentication && (
-            <div>
+            
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -88,7 +95,8 @@ export default function Header() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                {/* <AccountCircle /> */}
+                <MenuIcon/>
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -104,16 +112,30 @@ export default function Header() {
                 }}
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
+                
               >
-                <MenuItem onClick={()=>{}}>Profile</MenuItem>
-                <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+                <Stack sx={{flex:1,flexDirection:'row',justifyContent:'right',paddingRight:'1rem'}}>
+                <IconButton sx={{padding:'0px',margin:'0px'}}>
+                <ClearIcon onClick={handleClose}/>
+                </IconButton>
+                </Stack>
+                <Box sx={{width:'250px'}}>
+                <MenuItem sx={{borderBottom:'1px solid #f2eeed'}} onClick={handleHome}>Home</MenuItem>
+
+                <MenuItem sx={{borderBottom:'1px solid #f2eeed'}} onClick={handleProfile}>Profile</MenuItem>
+                {/* <MenuItem sx={{borderBottom:'1px solid #f2eeed'}} onClick={()=>{}}>Mentor</MenuItem>
+                <MenuItem sx={{borderBottom:'1px solid #f2eeed'}} onClick={()=>{}}>Mentees</MenuItem> */}
+                <MenuItem sx={{borderBottom:'1px solid #f2eeed'}} onClick={()=>{}}>Contact us</MenuItem>
+                
+                <MenuItem onClick={handleLogOut}>Logout<LogoutIcon fontSize='small' sx={{paddingLeft:'3px'}}/></MenuItem>
+                </Box>
               </Menu>
-            </div>)}
+            
             
            
             </Toolbar>
         </Container>
       </AppBar>
-    </Box>
+
   );
 }

@@ -13,7 +13,7 @@ import { Button, Container, FormLabel, Stack, Typography } from '@mui/material';
 import { useSelector,useDispatch } from 'react-redux';
 import { setMentee,setMentorIntrests,updateSkill } from '../../features/UserSlice';
 import Autosuggest from 'react-autosuggest';
-import './skills.css'
+import './updateskills.css'
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 16;
 const MenuProps = {
@@ -25,15 +25,6 @@ const MenuProps = {
   },
 };
 
-const areaOfIntrests = [
-  'AI and Machine Learning',
-  'Full Stack Development',
-  'Network Admistration',
-  'Cybersecurity',
-  'Data Science',
-  'Data Analytics',
-  'Project Management'
-];
 
 const skills=[
   //lang
@@ -134,99 +125,26 @@ function getStyles(name, intrests, theme) {
   };
 }
 
-export default function Skills({step,handleNext,handleSkip}) {
+export default function UpdateSkills({val,setVal,handleUpdateSkills}) {
 
 
-  const [selected,setSelected]=React.useState([])
+  
   const dispatch=useDispatch()
-  const theme = useTheme();
+  
   const [intrests, setIntrests] = useState([
    
   ]);
-  const [role,setRole]=useState('learn')
+  const [role,setRole]=useState('Update Skills')
 
-  const val=useSelector(state=>state.skills)
+//   const val=useSelector(state=>state.skills)
   const mentee=useSelector(state=>state.mentee)
   const mentor=useSelector(state=>state.mentor)
-  // setIntrests(val)
+  
 
   React.useEffect(()=>{
     setIntrests(val)
 
-    // const val=[
-    //   {
-    //     title:'Software Development',
-    //     selected:false
-    //   },
-    //   {
-    //     title:'Testing',
-    //     selected:false
-    //   },
-    //   {
-    //     title:'Full Stack Development',
-    //     selected:false
-    //   },
-      
-    //   {
-    //     title:'Cybersecurity',
-    //     selected:false
-    //   },
-      
-    //   {
-    //     title:'Data Science and Analytics',
-    //     selected:false
-    //   },
-    //   {
-    //     title:'Cloud Computing',
-    //     selected:false
-    //   },
-    //   {
-    //     title:'IT Project Management',
-    //     selected:false
-    //   },
-    //   {
-    //     title:'IT Consultant',
-    //     selected:false
-    //   }
-    // ]
     
-    // const val2=[
-    //   {
-    //     title:'Software Development',
-    //     selected:false
-    //   },
-    //   {
-    //     title:'Python',
-    //     selected:false
-    //   },
-    //   {
-    //     title:'Full Stack Development',
-    //     selected:false
-    //   },
-      
-    //   {
-    //     title:'Cybersecurity',
-    //     selected:false
-    //   },
-      
-    //   {
-    //     title:'Data Science and Analytics',
-    //     selected:false
-    //   },
-    //   {
-    //     title:'Cloud Computing',
-    //     selected:false
-    //   },
-    //   {
-    //     title:'Database Develpment',
-    //     selected:false
-    //   },
-    //   {
-    //     title:'C# Programming',
-    //     selected:false
-    //   }
-    // ]
-   
     if(mentor){
       // setIntrests(val)
       setRole('Please tell us your professional area(s) of expertise: ')
@@ -250,26 +168,7 @@ export default function Skills({step,handleNext,handleSkip}) {
     ))
   };
   const handleSelect=(title)=>{
-    // if (selected.includes(num)) {
-    //   // If the number is already in the array, remove it
-    //   setSelected(selected.filter((n) => n !== num));
-    // } else {
-    //   // If the number is not in the array, add it
-    //   setSelected([...selected, num]);
-    // }
-
-    // const vals=[...intrests,{title:title,selected:}]
-    // vals=vals.filter
-    // setSelected((s)=>{s.title==title?{title,selected:!s.selected}:s});
-    // setIntrests((prevIntrest) =>
-    // prevIntrest.map((intr) =>
-    // intr.title === title
-    //       ? { ...intr, selected: !intr.selected }
-    //       : intr
-    //   )
-      
-
-    // );
+    
 
     const intr=intrests.map((intr) =>
     intr.title === title
@@ -279,9 +178,10 @@ export default function Skills({step,handleNext,handleSkip}) {
 
       setIntrests(intr)
 
-    // const i=[...intrests]
+    
 
     dispatch(updateSkill(intr))
+    setVal(intr)
 
     
   }
@@ -310,12 +210,13 @@ export default function Skills({step,handleNext,handleSkip}) {
 
   const handleAdd=()=>{
 
-    if (val!=''){
+    if (value!=''){
       const s=[...intrests,{
         title:value,
         selected:true
       }]
       setIntrests(s)
+      setVal(s)
       dispatch(updateSkill(s))
     }
 
@@ -325,10 +226,9 @@ export default function Skills({step,handleNext,handleSkip}) {
   return (
     
     <>
-    {step==3?<Box style={{padding:'0px',margin:'0px',width:'100%'}}>
+<Box style={{padding:'0px',margin:'0px',width:'100%'}}>
     
         <Stack textAlign='start' >
-        {/* <FormLabel style={{fontSize:'12px',color:'blue'}}>You can pick multiple</FormLabel> */}
         </Stack>
         <Box sx={{marginBottom:'10px'}}>
         <Typography id="demo-multiple-chip-label" fontSize={'14px'}>{role}</Typography>
@@ -342,21 +242,12 @@ export default function Skills({step,handleNext,handleSkip}) {
         <Box sx={{marginBottom:'4px'}}>
         
           {intrests.map((intrest,index) => (
-            // <Chip
-            //   key={intrest}
-            //   value={intrest}
-              
-            // >
-
-            //   {intrest}
-            // </Chip>
-            
-            
+          
               <Chip sx={{margin:'2px',fontSize:'11px'}} label={intrest.title} color="primary" variant={intrest.selected?'solid':'outlined'} onClick={()=>handleSelect(intrest.title)} />
             
           ))}
           </Box>
-          <Stack direction={'row'} sx={{justifyContent:'space-around',marginTop:'3px'}}>
+          <Stack direction={'row'} sx={{justifyContent:'center',marginTop:'3px'}}>
               <Autosuggest
               id='inputID'
           suggestions={suggestions}
@@ -365,20 +256,19 @@ export default function Skills({step,handleNext,handleSkip}) {
           getSuggestionValue={getSuggestionValue}
           renderSuggestion={renderSuggestion}
           inputProps={inputProps}
+          
+          
         />
           <Button onClick={handleAdd} variant='outlined'>Add</Button>
           </Stack>
+
+          <Button onClick={handleUpdateSkills} variant='contained' sx={{marginTop:'1rem'}}>Save</Button>
     
   
       </FormControl>
-      {
-        mentee&&<Container style={{textAlign:'center'}}>
-                          <Button onClick={handleSkip} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline',textTransform:'none'}}>I am not sure skip to next step.</Button>
-
-          </Container>
-      }
       
-    </Box>:''}
+      
+    </Box>
     </>
   );
 }

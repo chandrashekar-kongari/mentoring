@@ -1,14 +1,14 @@
-import { Box, Checkbox, Container, FormControl, FormControlLabel, InputLabel, MenuItem, OutlinedInput, Select, Typography } from '@mui/material'
+import { Box, Button, Checkbox, Container, FormControl, FormControlLabel, InputLabel, MenuItem, OutlinedInput, Select, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {addEducation,addResume, saveLinkedinProfile} from '../../features/UserSlice';
+import {addEducation,addResume, saveLinkedinProfile,saveSkipResume} from '../../features/UserSlice';
 import { MuiFileInput } from 'mui-file-input'
 import { styled } from 'styled-components'
 import './education.css'
 
 
 
-const Education = ({step}) => {
+const Education = ({step,handleNext,handleBack}) => {
   const MuiFileInputStyled = styled(MuiFileInput)`
   & input + span {
     color: red;
@@ -19,6 +19,7 @@ const Education = ({step}) => {
 
   const handleFileChange = (newValue) => {
     setValue(newValue)
+    console.log(value)
 
     console.log(newValue)
     dispatch(addResume(newValue))
@@ -54,12 +55,13 @@ const Education = ({step}) => {
       
     })
 
-    const [resumeUpload,setResumeUpload]=useState(false)
-    const [linkedinShare,setLinkedinShare]=useState(false)
+    const [resumeUpload,setResumeUpload]=useState(true)
+    const [linkedinShare,setLinkedinShare]=useState(true)
 
     const handleResumeUploadFlag=()=>{
       const v=resumeUpload
       setResumeUpload(!v)
+      dispatch(saveSkipResume(!v))
     }
     const handleLinkedinShareFlag=()=>{
       const v=linkedinShare
@@ -73,16 +75,25 @@ const Education = ({step}) => {
         setLinkedinProfile(value)
         dispatch(saveLinkedinProfile(value))
     }
-
+    const handleSubmit = (e) => {
+      e.preventDefault(); 
+      handleNext()
+      // You can add your form submission logic here
+    };
+    const goBack=()=>{
+      handleBack()
+    }
 
 
   return (
     <>
-    {step==5?<Container sx={{justifyContent:'center'}}>
+    {step==5?<form onSubmit={handleSubmit}><Box sx={{justifyContent:'center'}}>
         {role && <>
+        
           <FormControl sx={{ }} fullWidth style={{justifyContent:'center'}}>
         <InputLabel id="demo-simple-select-helper-label">University</InputLabel>
         <Select
+        required
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
           value={edu.university}
@@ -101,6 +112,7 @@ const Education = ({step}) => {
       <FormControl sx={{marginTop:'1rem' }} fullWidth style={{justifyContent:'center'}}>
         <InputLabel id="demo-simple-select-helper-label">Degree</InputLabel>
         <Select
+        required
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
           value={edu.degree}
@@ -119,6 +131,7 @@ const Education = ({step}) => {
       <FormControl sx={{marginTop:'1rem' }} fullWidth style={{justifyContent:'center'}}>
         <InputLabel id="demo-simple-select-helper-label">Field of study</InputLabel>
         <Select
+        required
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
           value={edu.fieldofstudy}
@@ -137,7 +150,7 @@ const Education = ({step}) => {
 
       <Box sx={{paddingTop:'3px'}}>
 
-      <FormControlLabel name='mentor' onChange={handleResumeUploadFlag} control={<Checkbox checked={resumeUpload} />} label="Do you have resume?" />
+      
 
        
      
@@ -154,12 +167,13 @@ const Education = ({step}) => {
                     // multiline={true}
                     
                      fullWidth/> */}
-        {resumeUpload && <MuiFileInput  hideSizeText value={value}   placeholder='Please upload resume' sx={{}} onChange={handleFileChange} />
-}
-        <FormControlLabel name='mentor' onChange={handleLinkedinShareFlag} control={<Checkbox checked={linkedinShare} />} sx={{}}  label="Do you have a LinkedIn profile?" />
-        {linkedinShare && <FormControl fullWidth variant="outlined" style={{paddingBottom:'1rem'}}>
+        <MuiFileInput  disabled={!resumeUpload} hideSizeText value={value}   placeholder='Please upload resume' sx={{marginTop:'1rem'}} onChange={handleFileChange} />
+        <FormControlLabel name='mentor' onChange={handleResumeUploadFlag} control={<Checkbox checked={!resumeUpload} />} label="I don't you have a resume?" />
+        <FormControl  fullWidth variant="outlined" style={{paddingBottom:'1rem'}}>
                 <InputLabel >Linkedin profile link</InputLabel>
                 <OutlinedInput
+                required
+                disabled={!linkedinShare}
                 name='firstname'
                 value={linkedinProfile}
                 onChange={handleLinkedinProfile}
@@ -169,12 +183,23 @@ const Education = ({step}) => {
                     label="Linkedin profile link"
                     // placeholder='please share linkedin profile url'
                 />
+
                 
-                </FormControl>}
+                </FormControl>
+                <FormControlLabel name='mentor' onChange={handleLinkedinShareFlag} control={<Checkbox checked={!linkedinShare} sx={{padding:'0px',margin:'0px'}}/>} sx={{padding:'0px'}}  label="I did have a LinkedIn profile?" />
+
       </Box>
+      <Stack sx={{flexDirection:'row',justifyContent:'space-between'}}>
+                <Button onClick={goBack} variant="text"  type="submit" sx={{float:'right',color:'black'}}>
+        Back
+      </Button>
+                <Button variant="text" color="primary" type="submit" sx={{float:'right'}}>
+        Submit
+      </Button>
+                </Stack>
         
 
-    </Container>:''}
+    </Box></form>:''}
     </>
   )
 }
