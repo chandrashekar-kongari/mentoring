@@ -42,7 +42,7 @@ function App() {
 
     <Box >
       {auth && <Header setAuthUser={setAuth}/>}
-      <FeedBack/>
+      {/* <FeedBack/> */}
       
       <Routes>
       <Route path="/" element={<HomePage />}/>
