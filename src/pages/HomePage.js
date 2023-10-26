@@ -96,8 +96,12 @@ export default function HomePage() {
       </Container>
       
       </Stack> */}
-      <ImageDisplay/>
+      {/* <ImageDisplay/> */}
       {/* <TextDisplay/> */}
+
+      <Stack sx={{justifyContent:'center',flex:1,flexDirection:'row',paddingTop:'1rem'}}>
+        <Typography sx={{fontWeight:'bold'}}>Home page</Typography>
+      </Stack>
       
     </Box>
   );
