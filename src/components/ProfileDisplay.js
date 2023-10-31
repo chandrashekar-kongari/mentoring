@@ -8,11 +8,18 @@ import Typography from '@mui/material/Typography';
 import DownloadIcon from '@mui/icons-material/Download';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { Box, Chip, IconButton, Tooltip } from '@mui/material';
+import { Box, Chip, IconButton, Stack, Tooltip } from '@mui/material';
+import Link from '@mui/material/Link';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { saveResId } from '../features/UserSlice';
 export default function ProfileDisplay({userDeatils}) {
 
   const [copy,setCopy]=React.useState('click to copy')
-
+  const navigate=useNavigate()
+  const dispatch=useDispatch()
   const handleCopy=()=>{
     navigator.clipboard.writeText(userDeatils.email)
     setCopy('copied')
@@ -21,8 +28,13 @@ export default function ProfileDisplay({userDeatils}) {
   const handleFocus=()=>{
     console.log('focus')
   }
+  const handleViewResume=(resid)=>{
+    dispatch(saveResId(resid))
+    navigate(`/viewresume`)
+  }
   return (
     <Card sx={{ width: 300,margin:'1rem' }}>
+      
       
       <CardContent>
         <Typography gutterBottom variant="h5" component="div" fontSize={'16px'} sx={{fontWeight:'bold'}}>
@@ -67,10 +79,13 @@ export default function ProfileDisplay({userDeatils}) {
 
       </CardContent>
       <CardActions sx={{justifyContent:'space-around'}} >
-        <Button size="small" sx={{textTransform:'capitalize'}}>Resume <DownloadIcon/></Button>
-        <Button size="small" sx={{textTransform:'capitalize'}}>LinkedIn <ArrowOutwardIcon/></Button>
+      {/* {userDeatils.resume!='' && <Link href={userDeatils.resume} size="small" sx={{textTransform:'capitalize'}}>View Resume <DocumentScannerIcon size='small'/></Button>} */}
+
+        {userDeatils.resume!='' && <Button onClick={()=>handleViewResume(userDeatils.resume)} size="small" sx={{textTransform:'capitalize'}}>View Resume <DocumentScannerIcon size='small'/></Button>}
+        {userDeatils.linkedinProfile!='' && <Link href={userDeatils.linkedinProfile} target="_blank" sx={{textDecoration:'none'}}><Button sx={{textTransform:'capitalize'}}>View LinkedIn <LinkedInIcon size='small'/></Button></Link>}
         
       </CardActions>
+
     </Card>
   );
 }

@@ -61,7 +61,7 @@ export default function Header({setAuthUser}) {
   
   return (
     
-      <AppBar position="static" sx={{backgroundColor:'white',color:'#1976D2'}}>
+      <AppBar position='relative' sx={{backgroundColor:'white',color:'#1976D2'}}>
         <Container>
             <Toolbar>
             <IconButton

@@ -8,8 +8,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
-
-import { Button, Container, FormLabel, Stack, Typography } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { Button, Container, FormLabel, IconButton, Stack, Typography } from '@mui/material';
 import { useSelector,useDispatch } from 'react-redux';
 import { setMentee,setMentorIntrests,updateSkill } from '../../features/UserSlice';
 import Autosuggest from 'react-autosuggest';
@@ -125,7 +125,7 @@ function getStyles(name, intrests, theme) {
   };
 }
 
-export default function UpdateSkills({val,setVal,handleUpdateSkills}) {
+export default function UpdateSkills({val,setVal,handleUpdateSkills,handleClose}) {
 
 
   
@@ -227,14 +227,18 @@ export default function UpdateSkills({val,setVal,handleUpdateSkills}) {
     
     <>
 <Box style={{padding:'0px',margin:'0px',width:'100%'}}>
+<Stack sx={{flex:1,flexDirection:'column',textAlign:'center',paddingBottom:'1rem',marginTop:'0px'}}>
+            <Typography sx={{fontWeight:'bold',padding:'0px',margin:'0px'}}>Update Skills</Typography>
+            <Typography sx={{fontSize:'11px'}}>(Click to select and deselect)</Typography>
+            </Stack>
+            
+   
+            
+            <IconButton onClick={handleClose} sx={{top:'0px', right:'0px',position:'absolute'}}><CloseIcon sx={{fontSize:'16px'}}/></IconButton>
     
         <Stack textAlign='start' >
         </Stack>
-        <Box sx={{marginBottom:'10px'}}>
-        <Typography id="demo-multiple-chip-label" fontSize={'14px'}>{role}</Typography>
-        <Typography sx={{fontSize:'11px'}}>(Click to select and deselect)</Typography>
-
-        </Box>
+        
         
       <FormControl sx={{ width:'100%'}}>
       

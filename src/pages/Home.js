@@ -17,6 +17,8 @@ import { useSelector,useDispatch } from 'react-redux';
 import axios from 'axios';
 import endpoint from '../API/api';
 import { saveUserObj, setAuth } from '../features/UserSlice';
+import Loading from '../components/Loading';
+import AlertComponent from '../components/AlertComponent';
 export default function HomePage() {
     const navigate=useNavigate()
 
@@ -203,6 +205,7 @@ export default function HomePage() {
 
 
     React.useEffect(()=>{
+      setLoading(true)
 
 
       const auth=localStorage.getItem('auth')
@@ -258,8 +261,7 @@ export default function HomePage() {
           }
         }
 
-        console.log('user ',userObj)
-        setLoading(false)
+       
       }
 
 
@@ -355,14 +357,9 @@ export default function HomePage() {
     const [loading,setLoading]=React.useState(true)
 
   return (<>
-  {loading?<Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      height="100vh"  // Set the desired height for the container
-    >
-      <CircularProgress />
-    </Box>:<>
+  
+    <Loading loading={loading}/>
+    
   
   
     {userObj!=null?<>
@@ -401,6 +398,6 @@ export default function HomePage() {
       </Stack>
       
     </Box>
-      </>:''}</>}</>
+      </>:''}</>
   );
 }

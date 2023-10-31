@@ -9,10 +9,14 @@ import FolderIcon from '@mui/icons-material/Folder';
 import Modal from '@mui/material/Modal';
 import PurposeInformation from '../components/signup/PurposeInformation';
 import AreaOfIntrestsForMentors from '../components/signup/AreaOfIntrestsForMentor';
-import UpdateSkills from '../components/signup/UpdateSkills';
-import { saveUserObj, updateSkill } from '../features/UserSlice';
+import UpdateSkills from '../components/updateprofile/UpdateSkills';
+import { saveUserObj, setAuth, updateSkill } from '../features/UserSlice';
 import endpoint from '../API/api';
 import axios from 'axios';
+import UpdateEducation from '../components/updateprofile/UpdateEducation';
+import UpdateNameAndBio from '../components/updateprofile/UpdateNameAndBio';
+import UpdateLinkedIn from '../components/updateprofile/UpdateLinkedIn';
+import UpdateResume from '../components/updateprofile/UpdateResume';
 
 const style = {
   position: 'absolute',
@@ -87,7 +91,7 @@ const Profile = () => {
   const obj=useSelector(state=>state.userObj)
   const [userObj,setUserObj]=useState(null)
   const [mentee,setMentee]=useState('flase')
-
+  const [loading,setLoading]=useState(false)
   const getUserDetails=async()=>{
 
     const userid=localStorage.getItem('userid')
@@ -113,6 +117,11 @@ const Profile = () => {
             else{
               setUserObj(response.data)
               dispatch(saveUserObj(response.data))
+              addOrReplaceObject(response.data.skills);
+              if(response.data.mentee=='true'){
+                setMentee('true')
+              }
+              console.log('user details in profile ',response.data)
 
             }
           } else {
@@ -133,18 +142,17 @@ const Profile = () => {
   }
 
 
+
   useEffect(()=>{
-    setUserObj(obj)
-    
-    if(obj==null){
+    const a=localStorage.getItem('auth')
+    if(a!='true'){
+      dispatch(setAuth(false))
       navigate('/')
       return
+
     }
-    addOrReplaceObject(obj.skills);
-    if(obj.mentee=='true'){
-      setMentee('true')
-    }
-    console.log('user details in profile ',obj)
+    getUserDetails()
+    
   },[])
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -212,6 +220,15 @@ const Profile = () => {
   const [updating,setUpdating]=useState(false)
   const [alertType,setAlertType]=useState('success')
 
+  const[section,setSection]=useState('')
+
+  const handleUpdate=(sec)=>{
+    const v=sec
+    setSection(v)
+    handleOpen()
+
+  }
+
   return (
     <>
     
@@ -222,9 +239,16 @@ const Profile = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          {section=='personal' && <UpdateNameAndBio handleClose={handleClose}/>}
+          {section=='education' && <UpdateEducation handleClose={handleClose}/>}
+          {section=='intrests' && <UpdateResume handleClose={handleClose}/>}
+          {section=='skills' && <UpdateSkills handleClose={handleClose} val={allSkills} setVal={setAllSkills} handleUpdateSkills={handleUpdateSkills}/>}
+          {section=='linkedin' && <UpdateLinkedIn handleClose={handleClose}/>}
+          {section=='resume' && <UpdateResume handleClose={handleClose}/>}
           
           
-          <UpdateSkills val={allSkills} setVal={setAllSkills} handleUpdateSkills={handleUpdateSkills}/>
+
+          
         </Box>
       </Modal>
     {userObj!=null?<>
@@ -234,7 +258,7 @@ const Profile = () => {
         {showAlert && <Alert onClose={()=>{handleShowAlert(false)}} sx={{position:'absolute',top:'2%'}} severity={alertType}>{alertMessage}</Alert>}
         </Stack>
       
-    <Container>
+    <Box>
     
     <Stack sx={{flexDirection:'row',flex:1,justifyContent:'center'}}>
       <Avatar sx={{ bgcolor: '#014abf' , width: 100, height: 100,fontSize:'34px'}}>{userObj.firstname[0]} {userObj.lastname[0]}</Avatar>
@@ -246,18 +270,38 @@ const Profile = () => {
     </Stack>
   
     
-    <Stack sx={{flexDirection:'row',flex:1,justifyContent:'center'}}>
+    {/* <Stack sx={{flexDirection:'row',flex:1,justifyContent:'center'}}>
+
       <Typography sx={{fontSize:'28px',fontWeight:'bold'}}>{userObj.firstname} {userObj.lastname}</Typography>
-      <IconButton ><EditIcon sx={{ justifyContent:'end',fontSize:'18px',float:'right'}}/></IconButton>
+      <IconButton onClick={()=>handleUpdate('personal')}><EditIcon sx={{ justifyContent:'end',fontSize:'18px',float:'right'}}/></IconButton>
+    </Stack> */}
+    <Container maxWidth="xs">
+    <Stack
+      sx={{height:'100%',justifyContent:'center',textAlign:'center',display:'flex',position: 'relative',}}
+    >
+      <Typography sx={{ fontSize: '28px', fontWeight: 'bold' }}>
+        {userObj.firstname} {userObj.lastname}
+      </Typography>
+      <IconButton
+        onClick={() => handleUpdate('personal')}
+        sx={{
+          position: 'absolute',
+          top: '-10px',
+          right: '-10px',
+        }}
+      >
+        <EditIcon sx={{ fontSize: '18px' }} />
+      </IconButton>
     </Stack>
+    </Container>
     
     
     <Stack  sx={{flexDirection:'row',flex:1,justifyContent:'center',textAlign:'center',marginBottom:'5px'}}>
       <Typography sx={{maxWidth:'700px'}} color="text.secondary"> {userObj.additionalInformation}</Typography>
     </Stack>
-    </Container>
+    </Box>
     {mentee=='true'?<Stack sx={{flexDirection:'row',flex:1,justifyContent:'center'}}>
-      <Card sx={{width:620,padding:'1rem',border:'1px solid #ebe9e6',margin:'4px'}} elevation={0}>
+      {/* <Card sx={{width:620,padding:'1rem',border:'1px solid #ebe9e6',margin:'4px'}} elevation={0}>
       <Stack sx={{flexDirection:'row',flex:'1',justifyContent:'space-between'}}>
       <Stack sx={{flexDirection:'row',flex:1}}>
         <Box>
@@ -265,7 +309,7 @@ const Profile = () => {
         </Box>
         <Box sx={{}}> <Typography sx={{fontSize:'16px',paddingLeft:'2px'}}>{userObj.education.university}</Typography></Box>
         </Stack>
-        <IconButton sx={{padding:'0px',margin:'0px'}}><EditIcon sx={{ justifyContent:'end',fontSize:'18px'}}/></IconButton>
+        <IconButton onClick={()=>handleUpdate('education')} sx={{padding:'0px',margin:'0px'}}><EditIcon sx={{ justifyContent:'end',fontSize:'18px'}}/></IconButton>
         </Stack>
         
         <Stack sx={{flexDirection:'row',flex:1}}>
@@ -283,15 +327,57 @@ const Profile = () => {
         
         
 
-      </Card>
+      </Card> */}
+      <Card sx={{ width: 620, padding: '1rem', border: '1px solid #ebe9e6', margin: '4px',position:'relative' }} elevation={0}>
+      <Stack sx={{ flexDirection: 'row', flex: '1', justifyContent: 'space-between' }}>
+        <Stack sx={{ flexDirection: 'row', flex: 1 }}>
+          <Box>
+            <Typography sx={{ fontSize: '16px', fontWeight: 'bold' }}>University :</Typography>
+          </Box>
+          <Box sx={{}}>
+            <Typography sx={{ fontSize: '16px', paddingLeft: '2px' }}>{userObj.education.university}</Typography>
+          </Box>
+        </Stack>
+        <IconButton
+          onClick={() => handleUpdate('education')}
+          sx={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            padding: '0px',
+            margin: '0px',
+          }}
+        >
+          <EditIcon sx={{ fontSize: '18px' }} />
+        </IconButton>
+      </Stack>
+
+      <Stack sx={{ flexDirection: 'row', flex: 1 }}>
+        <Box>
+          <Typography sx={{ fontSize: '16px', fontWeight: 'bold' }}>Field of study :</Typography>
+        </Box>
+        <Box sx={{}}>
+          <Typography sx={{ fontSize: '16px', paddingLeft: '2px' }}>{userObj.education.fieldofstudy}</Typography>
+        </Box>
+      </Stack>
+
+      <Stack sx={{ flexDirection: 'row', flex: 1 }}>
+        <Box>
+          <Typography sx={{ fontSize: '16px', fontWeight: 'bold' }}>Degree :</Typography>
+        </Box>
+        <Box sx={{}}>
+          <Typography sx={{ fontSize: '16px', paddingLeft: '2px' }}>{userObj.education.degree}</Typography>
+        </Box>
+      </Stack>
+    </Card>
 
     </Stack>:''}
-    
+     
     <Container sx={{display:'flex',flexWrap:'wrap',justifyContent:'center'}}>
     <Card sx={{ width: 300,padding:'1rem',border:'1px solid #ebe9e6',margin:'3px'  }} elevation={'0'}>
     <Stack sx={{flexDirection:'row',flex:'1',justifyContent:'space-between'}}>
     <Typography sx={{fontSize:'18px',fontWeight:'bold'}}>Intrests:</Typography>
-    <IconButton sx={{padding:'0px',margin:'0px'}}><EditIcon sx={{ justifyContent:'end',fontSize:'18px'}}/></IconButton>
+    <IconButton onClick={()=>handleUpdate('intrests')} sx={{padding:'0px',margin:'0px'}}><EditIcon sx={{ justifyContent:'end',fontSize:'18px'}}/></IconButton>
     </Stack>
     {mentee=='true'?<>
     {userObj.mentorshipIntrests.map((intrest)=>{
@@ -308,7 +394,7 @@ const Profile = () => {
     <Card sx={{ width: 300,padding:'1rem' ,border:'1px solid #ebe9e6',margin:'3px' }} elevation={'0'}>
     <Stack sx={{flexDirection:'row',flex:'1',justifyContent:'space-between'}}>
     <Typography sx={{fontSize:'18px',fontWeight:'bold'}}>Skills:</Typography>
-    <IconButton onClick={handleOpen} sx={{padding:'0px',margin:'0px'}}><EditIcon sx={{ justifyContent:'end',fontSize:'18px'}}/></IconButton>
+    <IconButton onClick={()=>handleUpdate('skills')} sx={{padding:'0px',margin:'0px'}}><EditIcon sx={{ justifyContent:'end',fontSize:'18px'}}/></IconButton>
     </Stack>
     {userObj.skills.map((intrest)=>{
       return <Chip label={intrest.title} sx={{margin:'5px'}}></Chip>
@@ -324,7 +410,7 @@ const Profile = () => {
     <Card sx={{ width: 300,padding:'1rem',border:'1px solid #ebe9e6',margin:'3px'  }} elevation={'0'}>
     <Stack sx={{flexDirection:'row',flex:'1',justifyContent:'space-between'}}>
     <Typography sx={{fontSize:'18px',fontWeight:'bold'}}><FolderIcon/></Typography>
-    <IconButton sx={{padding:'0px',margin:'0px'}}><EditIcon sx={{ justifyContent:'end',fontSize:'18px'}}/></IconButton>
+    <IconButton onClick={()=>handleUpdate('resume')} sx={{padding:'0px',margin:'0px'}}><EditIcon sx={{ justifyContent:'end',fontSize:'18px'}}/></IconButton>
     </Stack>
     {userObj.resume==''?<Typography>No resume uploaded</Typography>:<><Typography>View resume</Typography></>}
 
@@ -332,7 +418,7 @@ const Profile = () => {
     <Card sx={{ width: 300,padding:'1rem' ,border:'1px solid #ebe9e6',margin:'3px' }} elevation={'0'}>
     <Stack sx={{flexDirection:'row',flex:'1',justifyContent:'space-between'}}>
     <Typography sx={{fontSize:'18px',fontWeight:'bold'}}><LinkedInIcon/></Typography>
-    <IconButton sx={{padding:'0px',margin:'0px'}}><EditIcon  sx={{ justifyContent:'end',fontSize:'18px'}}/></IconButton>
+    <IconButton onClick={()=>handleUpdate('linkedin')} sx={{padding:'0px',margin:'0px'}}><EditIcon  sx={{ justifyContent:'end',fontSize:'18px'}}/></IconButton>
     </Stack>
     {userObj.linkedinProfile==''?<Typography>No LinkedIn profile added</Typography>:<><Typography>{userObj.linkedinProfile}</Typography></>}
 

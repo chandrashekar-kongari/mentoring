@@ -129,7 +129,8 @@ const initialState={
     linkedinProfile:'',
     numberofmentees:'',
     skipResume:'',
-    userObj:null
+    userObj:null,
+    resid:''
 
 }
 
@@ -141,6 +142,10 @@ export const userSlice=createSlice({
         const val=action.payload
         state.numberofmentees=val
 
+      },
+      saveResId:(state,action)=>{
+        const val=action.payload
+        state.resid=val
       },
       saveUserObj:(state,action)=>{
         const val=action.payload
@@ -223,5 +228,5 @@ export const userSlice=createSlice({
     }
 })
 
-export const {saveUserObj,saveUser,saveSkipResume,saveNumberOfMentees,saveLinkedinProfile,saveFirstName,saveLastName,setAdditionaInformation,updateSkill,addSkill,addEducation,addResume,setAuth,setRequiredDetails,setMentee,setMentor,setMenteeIntrests,setMentorIntrests,setMentorshipIntrests,addExperience} =userSlice.actions
+export const {saveResId,saveUserObj,saveUser,saveSkipResume,saveNumberOfMentees,saveLinkedinProfile,saveFirstName,saveLastName,setAdditionaInformation,updateSkill,addSkill,addEducation,addResume,setAuth,setRequiredDetails,setMentee,setMentor,setMenteeIntrests,setMentorIntrests,setMentorshipIntrests,addExperience} =userSlice.actions
 export default userSlice.reducer

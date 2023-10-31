@@ -17,6 +17,7 @@ import endpoint from '../API/api';
 import { saveUserObj, setAuth } from '../features/UserSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
+import Loading from './Loading';
 
 const Login = () => {
     const navigate=useNavigate()
@@ -33,6 +34,7 @@ const Login = () => {
     };
     const handleLogin=async(e)=>{
         e.preventDefault()
+        setLoading(true)
 
         const obj={
             'email':gmail,
@@ -60,6 +62,7 @@ const Login = () => {
                 localStorage.setItem('auth', 'true');
                 localStorage.setItem('userid',response.data._id)
                 console.log('response from login ',response.data)
+                setLoading(false)
                 navigate('/homepage');
               }
          
@@ -122,9 +125,12 @@ const Login = () => {
     }
   
     const [errorMessage,setErrorMessage]=React.useState("Error message")
+    const [loading,setLoading]=useState(false)
 
   return (
+    <><Loading loading={loading}/>
     <Container sx={{height:'90vh'}} component="main" maxWidth="xs">
+
       
       <Stack sx={{flex:1,flexDirection:'row',justifyContent:'center'}}>
         {showAlert && <Alert onClose={()=>{handleShowAlert(false)}} sx={{position:'absolute',top:'2%'}} severity="error">{errorMessage}</Alert>}
@@ -193,7 +199,7 @@ const Login = () => {
                             <Link style={{textDecoration:'none'}} to='/signup'>
                             <Typography sx={{fontSize:'12px'}}>Are you new user ?</Typography>
                             </Link>
-                            <Link style={{textDecoration:'none'}} to='/signup'>
+                            <Link style={{textDecoration:'none'}} to='/forgotpassword'>
                             <Typography sx={{fontSize:'12px',color:'black'}}>Forgot password ?</Typography>
                             </Link>
                         </Stack>
@@ -217,7 +223,7 @@ const Login = () => {
 
             </Box>
         </Stack>
-    </Container>
+    </Container></>
   )
 }
 
