@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux'
 import { Outlet, useParams } from 'react-router-dom';
 import './pdfviewer.css'
 import { useNavigate } from 'react-router-dom';
+import { Typography } from '@mui/material';
 const PdfViewer = () => {
     const navigate=useNavigate()
     const [resume,setResume]=useState('')
@@ -61,7 +62,8 @@ const PdfViewer = () => {
   return (
     <>
     {loading?<><Loading loading={loading}/></>:<div className={'resdiv'}  >
-        <iframe title='resume' src={resume} width='99.5%' height='99%' />
+        {/* <iframe title='resume' src={resume} width='99.5%' height='99%' /> */}
+        <Typography>yes</Typography>
         
 
     </div>}
