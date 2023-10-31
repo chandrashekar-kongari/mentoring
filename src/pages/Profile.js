@@ -10,7 +10,7 @@ import Modal from '@mui/material/Modal';
 import PurposeInformation from '../components/signup/PurposeInformation';
 import AreaOfIntrestsForMentors from '../components/signup/AreaOfIntrestsForMentor';
 import UpdateSkills from '../components/updateprofile/UpdateSkills';
-import { saveUserObj, setAuth, updateSkill } from '../features/UserSlice';
+import { saveResId, saveUserObj, setAuth, updateSkill } from '../features/UserSlice';
 import endpoint from '../API/api';
 import axios from 'axios';
 import UpdateEducation from '../components/updateprofile/UpdateEducation';
@@ -229,7 +229,10 @@ const Profile = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [linkedIn,setLinkedIn]=useState('')
-
+  const handleViewResume=(resid)=>{
+    dispatch(saveResId(resid))
+    navigate(`/viewresume`)
+  }
 
 
   const handleUpdatePersonalInfo=async()=>{
@@ -407,7 +410,7 @@ const Profile = () => {
     const obj={
       'id':userObj._id,
       'intrests':its,
-      'mentee':mentee
+      'mentee':userObj.mentee
     }
     try {
       const response = await axios.post(`${endpoint}/updatesintrests`,obj);
@@ -520,6 +523,8 @@ const Profile = () => {
   const [updating,setUpdating]=useState(false)
   const [alertType,setAlertType]=useState('success')
 
+  const [resume,setResume]=useState('')
+
   const[section,setSection]=useState('')
 
   const handleUpdate=(sec)=>{
@@ -529,6 +534,67 @@ const Profile = () => {
   }
 
   const [k,setK]=useState(false)
+  const handleFileChange = (newValue) => {
+    setResume(newValue)
+  
+    
+  }
+
+  const handleUpdateResume=async()=>{
+    const formDataWithFiles = new FormData();
+    formDataWithFiles.append('resume',resume)
+    formDataWithFiles.append('userid',userObj._id)
+    try {
+      const response = await axios.post(endpoint+'/updateresume', formDataWithFiles,{headers: {
+        'Content-Type': `multipart/form-data; boundary=${formDataWithFiles._boundary}`,
+
+    }});
+
+    if (response.status === 200) {
+      const a=true
+      // dispatch(setAuth(a))
+      const user=response.data
+      console.log('details ',user)
+      if(user==null){
+        setAlertType('error')
+        setAlertMessage('Error while updating')
+        handleShowAlert(true)
+
+        setUpdating(false)
+        handleClose()
+      }
+      else{
+        setUserObj(response.data.user)
+        dispatch(saveUserObj(response.data.user))
+
+        addOrReplaceObject(response.data.user.skills)
+        setAlertType(response.data.type)
+        setAlertMessage(response.data.message)
+        setUpdating(false)
+        handleShowAlert(true)
+        handleClose()
+        
+      }
+    } else {
+      console.error('Failed to submit user data.');
+      setAlertType('error')
+        setAlertMessage('Error while updating')
+
+        setUpdating(false)
+        handleShowAlert(true)
+      }
+
+
+  } catch (error) {
+    console.error('Error:', error);
+    setAlertType('error')
+        setAlertMessage('Error while updating')
+
+        setUpdating(false)
+        handleShowAlert(true)
+    }
+
+  }
 
   
   return (
@@ -548,7 +614,7 @@ const Profile = () => {
           {section=='intrests' && <UpdateIntrests handleClose={handleClose} intrests={intrests} setIntrests={setIntrests} handleSave={handleUpdateIntrests}/>}
           {section=='skills' && <UpdateSkills handleClose={handleClose} val={allSkills} setVal={setAllSkills} handleUpdateSkills={handleUpdateSkills}/>}
           {section=='linkedin' && <UpdateLinkedIn linkedIn={linkedIn} setLinkedIn={setLinkedIn} handleClose={handleClose} handleSave={handleUpdateLinkedInProfile}/>}
-          {section=='resume' && <UpdateResume handleClose={handleClose}/>}
+          {section=='resume' && <UpdateResume resume={resume} handleFileChange={handleFileChange} setResume={setResume} handleSave={handleUpdateResume} handleClose={handleClose}/>}
           
           
 
@@ -601,7 +667,7 @@ const Profile = () => {
       <Typography sx={{maxWidth:'700px'}} color="text.secondary"> {userObj.additionalInformation}</Typography>
     </Stack>
     </Box>
-    {mentee=='true'?<Stack sx={{flexDirection:'row',flex:1,justifyContent:'center'}}>
+    {userObj.mentee=='true'?<Stack sx={{flexDirection:'row',flex:1,justifyContent:'center'}}>
       
       <Card sx={{ width: 620, padding: '1rem', border: '1px solid #ebe9e6', margin: '4px',position:'relative' }} elevation={0}>
       <Stack sx={{ flexDirection: 'row', flex: '1', justifyContent: 'space-between' }}>
@@ -660,7 +726,7 @@ const Profile = () => {
             
           }}><EditIcon sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton>
     </Stack>
-    {mentee=='true'?<>
+    {userObj.mentee=='true'?<>
     {userObj.mentorshipIntrests.map((intrest)=>{
       return <Chip label={intrest.title} sx={{margin:'5px'}}></Chip>
     })}</>:<>
@@ -699,7 +765,7 @@ const Profile = () => {
     <Stack sx={{ flexDirection: 'row' }}>
     <Typography sx={{fontSize:'18px',fontWeight:'bold'}}><FolderIcon/></Typography>
 
-    {userObj.resume==''?<Typography>No resume uploaded</Typography>:<><Typography>View resume</Typography></>}
+    {userObj.resume==''?<Typography>No resume uploaded</Typography>:<><Button onClick={()=>handleViewResume(userObj.resume)} size="small" sx={{textTransform:'capitalize'}}>View Resume </Button></>}
 
     </Stack>
 

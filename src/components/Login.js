@@ -1,5 +1,5 @@
 import { Alert, Box, Container, Stack, Typography } from '@mui/material'
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -18,6 +18,9 @@ import { saveUserObj, setAuth } from '../features/UserSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
 import Loading from './Loading';
+import AlertComponent from './AlertComponent';
+import showToast from './ShowToast';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
     const navigate=useNavigate()
@@ -27,6 +30,10 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
+    const [message,setMessage]=useState('')
+    const [type,setType]=useState('')
+
+
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
     const handleMouseDownPassword = (event) => {
@@ -35,12 +42,13 @@ const Login = () => {
     const handleLogin=async(e)=>{
         e.preventDefault()
         setLoading(true)
+   
 
         const obj={
             'email':gmail,
             'password':password
         }
-
+        
         
      
         try {
@@ -49,19 +57,23 @@ const Login = () => {
             if (response.status === 200) {
               const a=true
               // dispatch(setAuth(a))
-              const user=response.data
+              const user=response.data.user
               console.log('lo ',user)
               if(user==null || Object.keys(user).length === 0){
-                setErrorMessage('Something went wrong')
+                setMessage(response.data.message)
+                setType(response.data.type)
                 handleShowAlert(true)
+                callToast(response.data.message,response.data.type)
+                setLoading(false)
+                
               }
               else{
-                dispatch(saveUserObj(response.data))
+                dispatch(saveUserObj(response.data.user))
                 
                 dispatch(setAuth(true))
                 localStorage.setItem('auth', 'true');
-                localStorage.setItem('userid',response.data._id)
-                console.log('response from login ',response.data)
+                localStorage.setItem('userid',response.data.user._id)
+                console.log('response from login ',response.data.user)
                 setLoading(false)
                 navigate('/homepage');
               }
@@ -70,12 +82,20 @@ const Login = () => {
       
             } else {
               console.error('Failed to submit user data.');
+              setMessage('Something went wrong')
+              setType('error')
+              handleShowAlert(true)
+              setLoading(false)
               }
             } catch (error) {
             console.error('Error:', error);
+            setMessage('Something went wrong')
+            setType('error')
+            handleShowAlert(true)
+            setLoading(false)
             }
       
-        
+            handleShowAlert(false)
       }
 
     const handleChange = (event) => {
@@ -126,15 +146,80 @@ const Login = () => {
   
     const [errorMessage,setErrorMessage]=React.useState("Error message")
     const [loading,setLoading]=useState(false)
+    const callToast=(m,t)=>{
+      if(t=='success'){
+        toast.success(m, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }else if(t=='info'){
+        toast.info(m, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }else if(t=='error'){
+        toast.error(m, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }else if(t=='warning'){
+        toast.warn(m, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }else{
+        toast(m, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+      }
+    }
+    useEffect(()=>{
+      
+    },[])
+    
 
   return (
-    <><Loading loading={loading}/>
+    <><ToastContainer/>
+    
+    <Loading loading={loading}/>
     <Container sx={{height:'90vh'}} component="main" maxWidth="xs">
 
       
       <Stack sx={{flex:1,flexDirection:'row',justifyContent:'center'}}>
-        {showAlert && <Alert onClose={()=>{handleShowAlert(false)}} sx={{position:'absolute',top:'2%'}} severity="error">{errorMessage}</Alert>}
+        {/* {showAlert && <AlertComponent type={type} message={message}/>} */}
         </Stack>
+        
       
         <Stack sx={{height:'100%',justifyContent:'center',textAlign:'center'}}>
         

@@ -2,16 +2,10 @@ import { Box, Button, FormControl, IconButton, InputLabel, OutlinedInput, Stack,
 import React, { useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { MuiFileInput } from 'mui-file-input';
-const UpdateResume = ({handleClose}) => {
-  const [value, setValue] = useState(null)
+const UpdateResume = ({handleClose,resume,handleFileChange,handleSave}) => {
+  
 
-  const handleFileChange = (newValue) => {
-    setValue(newValue)
-    console.log(value)
-
-    console.log(newValue)
-    
-  }
+  
   return (
     <form>
          <Box sx={{justifyContent:'center'}}>
@@ -21,12 +15,12 @@ const UpdateResume = ({handleClose}) => {
    
             
             <IconButton onClick={handleClose} sx={{top:'0px', right:'0px',position:'absolute'}}><CloseIcon sx={{fontSize:'16px'}}/></IconButton>
-            <MuiFileInput  hideSizeText value={value}   placeholder='Please upload resume' sx={{}} onChange={handleFileChange} />
+            <MuiFileInput  hideSizeText value={resume}   placeholder='Please upload resume' sx={{}} onChange={handleFileChange} />
 
         <FormControl  fullWidth variant="outlined" style={{}}>
                 
 
-<Button onClick={()=>{}} variant='contained' sx={{marginTop:'1rem'}}>Save</Button>
+<Button onClick={handleSave} variant='contained' sx={{marginTop:'1rem'}}>Save</Button>
 
                 </FormControl>
         </Box>

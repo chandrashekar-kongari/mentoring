@@ -43,46 +43,48 @@ export default function ProfileDisplay({userDeatils}) {
         <Typography variant="body2" sx={{fontSize:'14px'}} color="text.secondary">
           {userDeatils.email} 
           
-<Tooltip title={copy} placement="right-start" arrow>
+{/* <Tooltip title={copy} placement="right-start" arrow>
 <IconButton onClick={handleCopy} onFocus={handleFocus}>
   <ContentCopyIcon size="small" sx={{fontSize:'16px'}} color="text.secondary"/>
 </IconButton>
-        </Tooltip>
+        </Tooltip> */}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {userDeatils.additionalInformation}
         </Typography>
-        <Typography sx={{fontSize:'12px',paddingTop:'2px'}}>
+        <Typography sx={{fontSize:'12px',paddingTop:'2px',fontWeight:'bold'}}>
             Interests
         </Typography>
         <Box >
           {userDeatils.mentee=='true'?<>
           {userDeatils.mentorshipIntrests.map((int)=>{
-            return <Chip label={int.title}  size="small" sx={{margin:'3px',fontSize:'10px',color:'white',backgroundColor:'black'}}/>
+            return <Chip label={int.title} variant='outlined'  size="small" sx={{margin:'3px',fontSize:'10px'}}/>
           })}</>:<>
           {userDeatils.mentorIntrests.map((int)=>{
-            return <Chip label={int.title}  size="small" sx={{margin:'3px',fontSize:'10px',color:'white',backgroundColor:'black'}}/>
+            return <Chip label={int.title} variant='outlined' size="small" sx={{margin:'3px',fontSize:'10px'}}/>
           })}
           </>}
             
             
         </Box>
-        <Typography sx={{fontSize:'12px',paddingTop:'2px'}}>
+        <Typography sx={{fontSize:'12px',paddingTop:'2px',fontWeight:'bold'}}>
             Skills
         </Typography>
         <Box sx={{padding:'0px',margin:'0px'}}>
         {userDeatils.skills.map((sk)=>{
-            return <Chip label={sk.title} size="small" sx={{margin:'3px',fontSize:'10px',color:'white',backgroundColor:'black'}}/>
+            return <Chip label={sk.title} variant='outlined' size="small" sx={{margin:'3px',fontSize:'10px'}}/>
           })}
         </Box>
 
 
       </CardContent>
       <CardActions sx={{justifyContent:'space-around'}} >
+      
+
       {/* {userDeatils.resume!='' && <Link href={userDeatils.resume} size="small" sx={{textTransform:'capitalize'}}>View Resume <DocumentScannerIcon size='small'/></Button>} */}
 
-        {userDeatils.resume!='' && <Button onClick={()=>handleViewResume(userDeatils.resume)} size="small" sx={{textTransform:'capitalize'}}>View Resume <DocumentScannerIcon size='small'/></Button>}
-        {userDeatils.linkedinProfile!='' && <Link href={userDeatils.linkedinProfile} target="_blank" sx={{textDecoration:'none'}}><Button sx={{textTransform:'capitalize'}}>View LinkedIn <LinkedInIcon size='small'/></Button></Link>}
+        {userDeatils.resume!='' && <Button onClick={()=>handleViewResume(userDeatils.resume)} size="small" sx={{textTransform:'capitalize'}}>View Resume </Button>}
+        {userDeatils.linkedinProfile!='' && <Link href={userDeatils.linkedinProfile} target="_blank" sx={{textDecoration:'none'}}><Button sx={{textTransform:'capitalize'}}>View LinkedIn </Button></Link>}
         
       </CardActions>
 

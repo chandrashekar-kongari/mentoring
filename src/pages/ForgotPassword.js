@@ -19,6 +19,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
 import AlertComponent from '../components/AlertComponent';
 import Loading from '../components/Loading';
+import { ToastContainer, toast } from 'react-toastify';
 
 const ForgotPassword = () => {
     const navigate=useNavigate()
@@ -52,6 +53,7 @@ const ForgotPassword = () => {
             setAlertMessage(m)
             setType('error')
             setShowAlert(true)
+            callToast(m,'error')
             
             setLoading(false)
             
@@ -76,10 +78,12 @@ const ForgotPassword = () => {
                     const message=response.data.message
                     setAlertMessage(message)
                     handleShowAlert(true)
+                    callToast(message,'error')
                     setLoading(false)
                   }else if(type=='success'){
                     setType(type)
                     const message=response.data.message
+                    callToast(message,type)
                     setUserid(response.data.userid)
                     setOtpFromServer(response.data.otp)
                     setAlertMessage(message)
@@ -94,6 +98,7 @@ const ForgotPassword = () => {
                     setType('error')
                     
                     setAlertMessage('Something went wrong')
+                    callToast('Something went wrong','error')
                     handleShowAlert(true)
                   }
              
@@ -103,6 +108,7 @@ const ForgotPassword = () => {
 
                     
                   setAlertMessage('Something went wrong')
+                  callToast('Something went wrong','error')
                 handleShowAlert(true)
                   }
                 } catch (error) {
@@ -110,6 +116,7 @@ const ForgotPassword = () => {
                 setType('error')
                     
                 setAlertMessage('Something went wrong')
+                callToast('Something went wrong','error')
                 handleShowAlert(true)
                 }
         
@@ -148,7 +155,9 @@ const ForgotPassword = () => {
               if(user==null || Object.keys(user).length === 0){
                 setType('error')
                 setAlertMessage('Something went wrong')
+                
                 handleShowAlert(true)
+                callToast('Something went wrong','error')
               }
               else{
                 dispatch(saveUserObj(response.data))
@@ -164,9 +173,11 @@ const ForgotPassword = () => {
       
             } else {
               console.error('Failed to submit user data.');
+              callToast('Something went wrong','error')
               }
             } catch (error) {
             console.error('Error:', error);
+            callToast('Something went wrong','error')
             }
       
         
@@ -177,6 +188,8 @@ const ForgotPassword = () => {
             setAlertMessage('Password not matching')
             setType('error')
             handleShowAlert(true)
+            callToast('Password not matching','error')
+            setLoading(false)
             return
         }
         const obj={
@@ -193,10 +206,13 @@ const ForgotPassword = () => {
                     setType(t)
                     setAlertMessage(response.data.message)
                     handleShowAlert(true)
+                    callToast(response.data.message,t)
+
                   }else{
                     setType(t)
                     setAlertMessage(response.data.message)
                     handleShowAlert(true)
+                    callToast(response.data.message,t)
                     setLoading(false)
                     setSuccess(true)
                   }
@@ -238,6 +254,7 @@ const ForgotPassword = () => {
       handleShowAlert(false)
       setLoading(false)
       setSuccess(false)
+      // callToast('ok','yse')
     },[])
     
     const [showAlert,setShowAlert]=React.useState(false)
@@ -277,9 +294,71 @@ const ForgotPassword = () => {
     }
     const [success,setSuccess]=useState(false)
 
+    
+
+    const callToast=(m,t)=>{
+      if(t=='success'){
+        toast.success(m, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }else if(t=='info'){
+        toast.info(m, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }else if(t=='error'){
+        toast.error(m, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }else if(t=='warning'){
+        toast.warn(m, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }else{
+        toast(m, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+      }
+    }
+
   return (
     <>
-    
+    <Loading loading={loading}></Loading>
+    <ToastContainer/>
     <Container sx={{height:'90vh'}} component="main" maxWidth="xs">
       
         
@@ -287,7 +366,7 @@ const ForgotPassword = () => {
     
        
       <Stack sx={{flex:1,flexDirection:'row',justifyContent:'center'}}>
-        {showAlert && <AlertComponent type={type} message={alertMessage} />}
+        {/* {showAlert && <AlertComponent type={type} message={alertMessage} />} */}
         </Stack>
       
         <Stack sx={{height:'100%',justifyContent:'center',textAlign:'center'}}>

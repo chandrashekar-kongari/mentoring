@@ -64,7 +64,7 @@ const AlertComponent = ({type,message}) => {
     },[type,message])
   return (
     <Box>
-<ToastContainer />
+        <ToastContainer />
     
     </Box>
   )
