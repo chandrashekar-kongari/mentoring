@@ -84,6 +84,7 @@ const Login = () => {
               console.error('Failed to submit user data.');
               setMessage('Something went wrong')
               setType('error')
+              callToast('Something went wrong','error')
               handleShowAlert(true)
               setLoading(false)
               }
@@ -92,6 +93,7 @@ const Login = () => {
             setMessage('Something went wrong')
             setType('error')
             handleShowAlert(true)
+            callToast('Something went wrong','error')
             setLoading(false)
             }
       
