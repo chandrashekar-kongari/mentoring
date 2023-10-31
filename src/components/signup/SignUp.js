@@ -19,6 +19,7 @@ import axios from 'axios';
 import Skills from './Skills';
 import endpoint from '../../API/api';
 import CircularProgress from '@mui/material/CircularProgress';
+import Loading from '../Loading';
 const steps = ['', '', '','',''];
 
 export default function SignUp() {
@@ -196,12 +197,14 @@ export default function SignUp() {
             if(user==null || user=={}){
               handleShowAlert(false)
               setActiveStep((prevActiveStep) => prevActiveStep + 1);
+              setLoading(false)
               return false
             }
             else{
               handleShowAlert(false)
               setErrorMessage('Email Id already present, please login')
               handleShowAlert(true)
+              setLoading(false)
               return false
               
             }
@@ -209,6 +212,7 @@ export default function SignUp() {
             handleShowAlert(false)
               setErrorMessage('Email Id error')
               handleShowAlert(true)
+              setLoading(false)
               return false
             }
           } catch (error) {
@@ -216,6 +220,7 @@ export default function SignUp() {
               handleShowAlert(false)
               setErrorMessage('Email Id error')
               handleShowAlert(true)
+              setLoading(false)
               return false
           }
           return false
@@ -229,6 +234,7 @@ export default function SignUp() {
       newSkipped.delete(activeStep);
     }
     if(activeStep==0){
+      setLoading(true)
       const flag=checkMailIdPresent()
       if(flag){
         return
@@ -356,8 +362,12 @@ export default function SignUp() {
 
   const [errorMessage,setErrorMessage]=React.useState("Error message")
 
+  const [loading,setLoading]=React.useState(false)
+
   return (
+    <><Loading loading={loading}/>
     <Container maxWidth="xs" sx={{height:'100vh'}} component="main">
+      
         <Stack sx={{flex:1,flexDirection:'row',justifyContent:'center'}}>
         {showAlert && <Alert onClose={()=>{handleShowAlert(false)}} sx={{position:'absolute',top:'2%'}} severity="error">{errorMessage}</Alert>}
         </Stack>
@@ -438,6 +448,7 @@ export default function SignUp() {
             </Box>
         </Stack>
     </Container>
+    </>
     
   );
 }
