@@ -62,7 +62,7 @@ const PdfViewer = () => {
   return (
     <>
     {loading?<><Loading loading={loading}/></>:<div className={'resdiv'}  >
-        {/* <iframe title='resume' src={resume} width='99.5%' height='99%' /> */}
+        <iframe title='resume' src={resume} width='99.5%' height='99%' />
         <Typography>yes</Typography>
         
 
