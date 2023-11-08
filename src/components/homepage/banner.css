@@ -1,0 +1,42 @@
+
+  img {
+    max-width: '10%';
+    height: 4rem;
+    padding: 0 15px;
+    object-fit: cover;
+    margin-left: 2rem;
+    
+  }
+  
+  img:last-of-type {
+    padding-left: 0;
+  }
+  
+  .inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 5rem;
+  }
+  
+  .wrapper {
+    position: absolute;
+    display: flex;
+  }
+  
+  section {
+    display: flex;
+    animation: swipe var(--speed) linear infinite backwards;
+    
+  }
+  
+  @keyframes swipe {
+    0% {
+      transform: translate(0);
+    }
+  
+    100% {
+      transform: translate(-100%);
+    }
+  }
+  

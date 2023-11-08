@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="402px"
+   height="776px"
+   viewBox="0 0 402 776"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="orange-blur.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.0451031"
+     inkscape:cx="200.93711"
+     inkscape:cy="388"
+     inkscape:window-width="1920"
+     inkscape:window-height="1046"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+  <title
+     id="title1">shape-blue</title>
+  <desc
+     id="desc1">Created with Sketch.</desc>
+  <defs
+     id="defs1">
+    <filter
+       x="-0.76127809"
+       y="-0.20627313"
+       width="2.5225562"
+       height="1.4125463"
+       filterUnits="objectBoundingBox"
+       id="filter-1">
+      <feGaussianBlur
+         stdDeviation="50"
+         in="SourceGraphic"
+         id="feGaussianBlur1" />
+    </filter>
+  </defs>
+  <g
+     id="Page-1"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd"
+     style="fill:#014abf;fill-opacity:1">
+    <g
+       id="shape-blue"
+       transform="translate(122.000000, 99.000000)"
+       fill="#F4B941"
+       fill-rule="nonzero"
+       style="fill:#014abf;fill-opacity:1">
+      <path
+         d="M157.7213,285.049 C162.1142,181.062 54.5523,51.9913 0.2222,0.454049 L39.3565,582.207 C76.9811,526.482 153.3284,389.035 157.7213,285.049 Z"
+         id="Path"
+         filter="url(#filter-1)"
+         style="fill:#014abf;fill-opacity:1" />
+    </g>
+  </g>
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>shape-blue</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

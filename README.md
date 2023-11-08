@@ -15,3 +15,6 @@ npm install --save @fortawesome/free-solid-svg-icons
 npm install axios --save
 npm install @mui/icons-material
 npm install react-material-ui-carousel
+
+npm i framer-motion
+npm i @motionone/utils
