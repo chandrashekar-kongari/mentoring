@@ -8,7 +8,10 @@ const UniversitiesDisplay = () => {
 
         <Stack sx={{flexDirection:'row',justifyContent:'center',display:'flex',flexWrap:'wrap'}}>
             <Box>
-            <Typography variant='h4' sx={{fontWeight:'bold',color:'#7e7f80',paddingTop:'1rem',paddingBottom:'1rem'}}>Partner with  </Typography>
+
+            <Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
+    Parter with
+          </Typography>
 
             </Box>
             <Box sx={{justifyContent:'space-between'}}>

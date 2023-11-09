@@ -15,7 +15,7 @@ const TopBanner = () => {
 
             <Chip  icon={<PlayArrowIcon/>} label={"Create account, Next program start's from Jan 1st 2024"}/>
             <Typography sx={{fontSize:'50px',fontWeight:900}}>
-            Access an elite network of world-class experts
+            Unlocking your full potential with 1:1 MENTORSHIP
         </Typography>
 
         <Typography sx={{fontSize:'18px',paddingBottom:'1rem',fontWeight:'bold',paddingTop:'5px'}}>

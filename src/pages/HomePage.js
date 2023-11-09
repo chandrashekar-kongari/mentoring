@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { faBullseye, faUser ,faWandMagicSparkles} from '@fortawesome/free-solid-svg-icons';
 
-import { Avatar, Card, CardActions, CardContent, CardMedia, Chip, Container, Divider, Fab, Paper, Stack } from '@mui/material';
+import { Avatar, Card, CardActions, CardContent, CardMedia, Chip, Container, Divider, Fab, Paper, Rating, Stack } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -28,6 +28,7 @@ import {AnimatePresence, motion} from 'framer-motion'
 import ScrollingCards from '../components/homepage/scrollingcards/ScrollingCards';
 import Carousel from 'react-material-ui-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ImageTransition from '../components/homepage/ImageTransition';
 
 export default function HomePage() {
   const hue = (h) => `hsl(${h}, 100%, 50%)`;
@@ -128,6 +129,79 @@ export default function HomePage() {
       <svg style={{position:'absolute',zIndex:-1}} width="90%" height="770" viewBox="0 0 1440 770" fill="none" xmlns="http://www.w3.org/2000/svg"><rect opacity="0.8" x="951" y="70" width="480" height="480" fill="url(#radial1)"></rect><rect opacity="0.8" x="32" y="14" width="586" height="586" fill="url(#radial2)"></rect><defs> <radialGradient id="radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1191 310) rotate(90) scale(240)"><stop stop-color="#c9cbf5"></stop><stop offset="1" stop-color="#e6e7fa" stop-opacity="0"></stop></radialGradient><radialGradient id="radial2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(325 307) rotate(90) scale(293)"><stop stop-color="#c9cbf5"></stop><stop offset="1" stop-color="#c9cbf5" stop-opacity="0"></stop></radialGradient></defs></svg>
       <TopBanner/>
 
+      <ImageTransition/>
+
+      <Stack sx={{justifyContent:'space-between',flexDirection:'row',display:'flex',flexWrap:'wrap'}}>
+      <Card style={{position:'relative',top:'-280px',maxWidth:'300px'}} elevation={0} >
+      <CardContent sx={{textAlign:'center'}}>
+        <Box sx={{ display: 'flex', justifyContent: 'center',paddingBottom:'12px' }}>
+        <Avatar src="rating4.jpeg" sx={{width: 80, height: 80}}></Avatar>
+       
+        </Box>
+
+  <Rating name="read-only" value={5} readOnly />
+  <Typography variant="body2" color="text.secondary"
+        sx={{
+          color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px',
+          textAlign:'center',
+          
+        }}>"Beyond my expectations, I have gotten best advice"</Typography>
+
+</CardContent>
+    </Card>
+    <Card style={{position:'relative',top:'-280px',maxWidth:'300px'}} elevation={0} >
+      <CardContent sx={{textAlign:'center'}}>
+        <Box sx={{ display: 'flex', justifyContent: 'center',paddingBottom:'12px' }}>
+        <Avatar src="rating1.jpg" sx={{width: 80, height: 80}}></Avatar>
+       
+        </Box>
+
+  <Rating name="read-only" value={5} readOnly />
+  <Typography variant="body2" color="text.secondary"
+        sx={{
+          color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px',
+          textAlign:'center',
+          
+        }}>"Andrii is the best mentor I have ever met."</Typography>
+
+</CardContent>
+    </Card>
+    <Card style={{position:'relative',top:'-280px',maxWidth:'300px'}} elevation={0} >
+      <CardContent sx={{textAlign:'center'}}>
+        <Box sx={{ display: 'flex', justifyContent: 'center',paddingBottom:'12px' }}>
+        <Avatar src="rating3.jpeg" sx={{width: 80, height: 80}}></Avatar>
+       
+        </Box>
+
+  <Rating name="read-only" value={5} readOnly />
+  <Typography variant="body2" color="text.secondary"
+        sx={{
+          color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px',
+          textAlign:'center',
+          
+        }}>"Greg is literally helping me achieve my dreams"</Typography>
+
+</CardContent>
+    </Card>
+    <Card style={{position:'relative',top:'-280px',maxWidth:'300px'}} elevation={0} >
+      <CardContent sx={{textAlign:'center'}}>
+        <Box sx={{ display: 'flex', justifyContent: 'center',paddingBottom:'12px' }}>
+        <Avatar src="rating2.jpg" sx={{width: 80, height: 80}}></Avatar>
+       
+        </Box>
+
+  <Rating name="read-only" value={5} readOnly />
+  <Typography variant="body2" color="text.secondary"
+        sx={{
+          color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px',
+          textAlign:'center',
+          
+        }}>"Than you, I got my first internship"</Typography>
+
+</CardContent>
+    </Card>
+      </Stack>
+
       
 
       
@@ -136,7 +210,7 @@ export default function HomePage() {
       
 
 
-      <Container sx={{
+      {/* <Container sx={{
 backgroundColor:'#f7f7f7',height:'400px',width:'100%'}}>
   <Box className='domainsBox'>
   <Chip 
@@ -344,9 +418,9 @@ label="Project Management" component={motion.div} animate={{
     </Stack>
   
 
-      </Container>
+      </Container> */}
 
-      <Container maxWidth='xl' sx={{marginTop:'2rem', paddingTop:'2rem',paddingBottom:'2rem',background:backgroundGradient,color:'white'}}>
+      <Container maxWidth='xl' sx={{position:'relative',top:'-200px',marginTop:'2rem', paddingTop:'2rem',paddingBottom:'2rem',background:backgroundGradient,color:'white'}}>
         <Stack sx={{flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
           <Box>
           <Stack sx={{textAlign:'center'}}>
@@ -381,7 +455,7 @@ label="Project Management" component={motion.div} animate={{
         </Stack>
       </Container>
 
-      <Container sx={{paddingTop:'50px'}}>
+      <Container sx={{paddingTop:'50px',position:'relative',top:'-100px'}}>
       <Stack sx={{flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
         <Box sx={{maxWidth:'550px'}}>
           <Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem'}}>
@@ -411,7 +485,7 @@ label="Project Management" component={motion.div} animate={{
 
 
 <UniversitiesDisplay/>
-<Box>
+<Box sx={{paddingTop:'100px'}}>
       {/* <ScrollingCards/> */}
       </Box>
       
@@ -421,7 +495,10 @@ label="Project Management" component={motion.div} animate={{
       
       <Box sx={{marginTop:'50px'}}>
       {/* <Divider/> */}
-      <Typography sx={{textAlign:'center',fontSize:'50px',fontWeight:900}}>Top Title</Typography>
+
+      <Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
+    Top title
+          </Typography>
       <Stack sx={{paddingTop:'50px',flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
       <Card 
           
@@ -520,7 +597,7 @@ color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px', padding: '
       
       {/* <Steps/> */}
       <CompanyIconsDisplay/>
-      </Box>
+      </Box >
       {/* <Box>
       <Container maxWidth='md' sx={{textAlign:'center',paddingTop:'2rem',paddingBottom:'3rem',}}>
 
@@ -561,10 +638,12 @@ Your online mentor can elevate your career or be a shoulder to lean on. Get a pe
       
 
 
-      <Container sx={{padding:'2rem',paddingTop:'0px'}}>
-        <Typography sx={{textAlign:'center',fontSize:'34px',fontWeight:'bold',paddingBottom:'2rem'}}>Diversity Is The Opportunity</Typography>
+      <Container sx={{padding:'2rem',paddingTop:'100px'}}>
+      <Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
+    Title
+          </Typography>
         <Stack flexDirection={'row'} sx={{justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
-          <Card sx={{maxWidth:'350px',textAlign:'center'}} elevation={0}> 
+          <Card sx={{maxWidth:'350px',textAlign:'left'}} elevation={0}> 
           <CardMedia
         sx={{ height: 140 }}
         image="diversity4.jpg"
@@ -583,7 +662,7 @@ Your online mentor can elevate your career or be a shoulder to lean on. Get a pe
         </Typography>
       </CardContent>
           </Card>
-          <Card sx={{maxWidth:'350px',textAlign:'center'}} elevation={0}> 
+          <Card sx={{maxWidth:'350px',textAlign:'left'}} elevation={0}> 
           <CardMedia
         sx={{ height: 140, }}
         image="diversity6.jpg"
@@ -591,7 +670,7 @@ Your online mentor can elevate your career or be a shoulder to lean on. Get a pe
         
       />
           <CardContent>
-        <Typography gutterBottom variant="h5" component="div" sx={{fontWeight:'bold',textAlign:'center'}}>
+        <Typography gutterBottom variant="h5" component="div" sx={{fontWeight:'bold',textAlign:'left'}}>
           Title
         </Typography>
         <Typography variant="body2" color="text.secondary"
@@ -603,7 +682,7 @@ Your online mentor can elevate your career or be a shoulder to lean on. Get a pe
         </Typography>
       </CardContent>
           </Card>
-          <Card sx={{maxWidth:'350px',textAlign:'center'}} elevation={0}> 
+          <Card sx={{maxWidth:'350px',textAlign:'left'}} elevation={0}> 
           <CardMedia
         sx={{ height: 140 }}
         image="diversity5.jpg"
@@ -659,7 +738,7 @@ Your online mentor can elevate your career or be a shoulder to lean on. Get a pe
       <Container>
 
         
-        <Container  style={{}}>
+        <Container  style={{paddingTop:'100px'}}>
         <Card sx={{padding:'2rem',backgroundImage:"url('diversity5v3.png')",borderRadius:'2rem'}}>
         
           <CardContent>
@@ -684,7 +763,7 @@ Your online mentor can elevate your career or be a shoulder to lean on. Get a pe
       </Container>
 
 
-      <Container  sx={{marginTop:'2rem',marginBottom:'2rem',borderRadius:'2rem', paddingTop:'6rem',paddingBottom:'6rem',backgroundColor:'#f7f7f7'}}>
+      <Container  sx={{marginTop:'2rem',marginBottom:'2rem',borderRadius:'2rem', paddingTop:'6rem',paddingBottom:'6rem',backgroundColor:'#f7f7f7',marginTop:'100px'}}>
       <Carousel
             
             

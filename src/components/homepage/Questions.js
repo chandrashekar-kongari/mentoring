@@ -29,9 +29,10 @@ export default function Questions() {
         }
     ])
   return (
-    <Container maxWidth='md'>
-
-        <Typography variant='h4' sx={{fontWeight:'bold',paddingBottom:'1rem',textAlign:'center',color:'#7e7f80'}}>Still have questions?</Typography>
+    <Container maxWidth='md' sx={{paddingTop:'100px'}}>
+<Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
+    Still have questions?
+          </Typography>
 
         {ques.map((que)=>{
             return <Accordion elevation={1} sx={{paddingTop:'1rem',paddingBottom:'1rem'}} >

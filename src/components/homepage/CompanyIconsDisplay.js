@@ -15,10 +15,11 @@ const CompanyIconsDisplay = () => {
         image
       }));
   return (
-    <Container sx={{paddingTop:'3rem',marginBottom:'2rem'}}>
+    <Container sx={{paddingTop:'100px',marginBottom:'2rem'}}>
         <Stack flexDirection={'column'} sx={{textAlign:'center'}}>
-        
-        <Typography variant='h4' sx={{fontWeight:'bold',color:'#7e7f80',paddingTop:'1rem',paddingBottom:'1rem'}}>Learn From Experts </Typography>
+        <Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
+    Learn from experts
+          </Typography>
         <Banner images={images} speed={50000} />
         </Stack>
     </Container>
