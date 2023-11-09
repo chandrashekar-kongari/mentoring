@@ -135,14 +135,14 @@ export default function HomePage() {
       <Card style={{position:'relative',top:'-280px',maxWidth:'300px'}} elevation={0} >
       <CardContent sx={{textAlign:'center'}}>
         <Box sx={{ display: 'flex', justifyContent: 'center',paddingBottom:'12px' }}>
-        <Avatar src="rating4.jpeg" sx={{width: 80, height: 80}}></Avatar>
+        <Avatar src="rating4.jpeg" sx={{width: 50, height: 50}}></Avatar>
        
         </Box>
 
-  <Rating name="read-only" value={5} readOnly />
+  <Rating name="read-only" size='small' value={5} readOnly />
   <Typography variant="body2" color="text.secondary"
         sx={{
-          color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px',
+          color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '16px',
           textAlign:'center',
           
         }}>"Beyond my expectations, I have gotten best advice"</Typography>
@@ -152,14 +152,14 @@ export default function HomePage() {
     <Card style={{position:'relative',top:'-280px',maxWidth:'300px'}} elevation={0} >
       <CardContent sx={{textAlign:'center'}}>
         <Box sx={{ display: 'flex', justifyContent: 'center',paddingBottom:'12px' }}>
-        <Avatar src="rating1.jpg" sx={{width: 80, height: 80}}></Avatar>
+        <Avatar src="rating1.jpg" sx={{width: 50, height: 50}}></Avatar>
        
         </Box>
 
-  <Rating name="read-only" value={5} readOnly />
+  <Rating name="read-only" size='small'  value={5} readOnly />
   <Typography variant="body2" color="text.secondary"
         sx={{
-          color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px',
+          color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '16px',
           textAlign:'center',
           
         }}>"Andrii is the best mentor I have ever met."</Typography>
@@ -169,14 +169,14 @@ export default function HomePage() {
     <Card style={{position:'relative',top:'-280px',maxWidth:'300px'}} elevation={0} >
       <CardContent sx={{textAlign:'center'}}>
         <Box sx={{ display: 'flex', justifyContent: 'center',paddingBottom:'12px' }}>
-        <Avatar src="rating3.jpeg" sx={{width: 80, height: 80}}></Avatar>
+        <Avatar src="rating3.jpeg" sx={{width: 50, height: 50}}></Avatar>
        
         </Box>
 
-  <Rating name="read-only" value={5} readOnly />
+  <Rating name="read-only" size='small'  value={5} readOnly />
   <Typography variant="body2" color="text.secondary"
         sx={{
-          color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px',
+          color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '16px',
           textAlign:'center',
           
         }}>"Greg is literally helping me achieve my dreams"</Typography>
@@ -186,14 +186,14 @@ export default function HomePage() {
     <Card style={{position:'relative',top:'-280px',maxWidth:'300px'}} elevation={0} >
       <CardContent sx={{textAlign:'center'}}>
         <Box sx={{ display: 'flex', justifyContent: 'center',paddingBottom:'12px' }}>
-        <Avatar src="rating2.jpg" sx={{width: 80, height: 80}}></Avatar>
+        <Avatar src="rating2.jpg" sx={{width: 50, height: 50}}></Avatar>
        
         </Box>
 
-  <Rating name="read-only" value={5} readOnly />
+  <Rating name="read-only" size='small'  value={5} readOnly />
   <Typography variant="body2" color="text.secondary"
         sx={{
-          color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px',
+          color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '16px',
           textAlign:'center',
           
         }}>"Than you, I got my first internship"</Typography>

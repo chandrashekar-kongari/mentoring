@@ -135,7 +135,8 @@ sx={{ width: 200, height: 200 }}
       height="50vh" // Set a height to center vertically within the viewport
     >
       {/* <AdbIcon style={{fontSize:'270px'}}/> */}
-      <FontAwesomeIcon style={{fontSize:'270px'}} icon={faDiamond} />
+      {/* <FontAwesomeIcon style={{fontSize:'270px'}} icon={faDiamond} /> */}
+      <img src='/techpact-logo.png' style={{width:'300px',height:'auto',backgroundColor:'white'}}/>
     </Box>
 
     <Box position='relative'
@@ -147,7 +148,7 @@ sx={{ width: 200, height: 200 }}
      >
 
 <Typography variant="body2" color="text.secondary" sx={{textAlign:'center',color:'black', fontWeight:'400',lineHeight:'30px', fontSize: '20px', padding: '1rem' }}>
-          Project_name will connects you with best mentor in any domain of your intrest:
+          TechPACT will connects you with best mentor in any domain of your intrest:
         </Typography>
         <Container maxWidth='md' sx={{justifyContent:'center',textAlign:'center'}}>
           <Chip sx={{margin:'5px'}} label='Software Development'/>
