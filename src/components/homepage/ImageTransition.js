@@ -65,9 +65,9 @@ const ImageTransition = () => {
 
     <Container sx={{}}>
 
-    <MainHeadTypography>
+    <Typography variant='h5' sx={{textAlign:'center'}}>
     Where Ambition Meets Wisdom
-    </MainHeadTypography>
+    </Typography>
     </Container>
    
     <motion.div

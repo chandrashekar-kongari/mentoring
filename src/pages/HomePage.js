@@ -144,13 +144,13 @@ export default function HomePage() {
           </Typography>
           <Typography variant='subtitle1' sx={{
             // fontSize:'32px',fontWeight:'400',lineHeight:'44px'
-            color:'#6b665f',fontWeight:'400',
+          fontWeight:'400',
             }}>
             Lorem elit. Placeat qui non tempore adipisci quis tempore adipisci quis, necessitatibus accusamus atque aliquam impedit. Veniam reprehenderit aut illum. Facilis molestias pariatur voluptas vel, veritatis reprehenderit!
           </Typography>
           <Typography variant='subtitle1'  sx={{
             // fontSize:'32px',fontWeight:'400',lineHeight:'44px'
-            color:'#6b665f',fontWeight:'400', 
+       fontWeight:'400', 
             paddingTop:'1rem'
             }}>
             Lorem elit. Placeat qui non tempore adipisci quis tempore Placeat qui non tempore adipisci quis tempore adipisci quis, necessitatibus accusamus atque aliquam impedit. Veniam reprehenderit aut illum. Facilis molestias pariatur voluptas vel, veritatis reprehenderit!
@@ -207,15 +207,15 @@ export default function HomePage() {
  
 
       <CardContent>
-        <MainHeadTypography   sx={{ color:'#191919',
+        <Typography variant='h5'   sx={{ 
 
           textAlign:'left',
-          padding: '1rem',
+          paddingLeft: '1rem',
           fontWeight: '600', }}>
           Sub head
-        </MainHeadTypography>
-        <Typography variant="subtitle1" color="text.secondary" sx={{textAlign:'left',
-color:'#6b665f',fontWeight:'400', padding: '1rem' }}>
+        </Typography>
+        <Typography variant="subtitle1"  sx={{textAlign:'left',
+fontWeight:'400', padding: '1rem' }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quod cupiditate ullam unde pariatur consequuntur harum! Quam itaque commodi tempore error excepturi saepe, pariatur fuga explicabo sit perspiciatis, quas nihil!
         </Typography>
       </CardContent>
@@ -252,14 +252,14 @@ color:'#6b665f',fontWeight:'400', padding: '1rem' }}>
  
 
       <CardContent>
-        <MainHeadTypography  sx={{ 
-          color:'#191919',
+        <Typography variant='h5'  sx={{ 
+          
 
-          padding: '1rem',
+          paddingLeft: '1rem',
           fontWeight: '600', textAlign:'left',}}>
           Sub head
-        </MainHeadTypography>
-        <Typography variant="subtitle1" color="text.secondary" sx={{textAlign:'left', color:'#6b665f',fontWeight:'400',  padding: '1rem' }}>
+        </Typography>
+        <Typography variant="subtitle1"  sx={{textAlign:'left', fontWeight:'400',  padding: '1rem' }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quod cupiditate ullam unde pariatur consequuntur harum! Quam itaque commodi tempore error excepturi saepe, pariatur fuga explicabo sit perspiciatis, quas nihil!
         </Typography>
       </CardContent>
@@ -281,11 +281,13 @@ color:'#6b665f',fontWeight:'400', padding: '1rem' }}>
 <Container  style={{paddingTop:'100px'}}>
 <Card sx={{padding:'2rem',backgroundImage:"url('diversity5v3.png')",borderRadius:'2rem'}}>
 
-  <CardContent>
+  <CardContent >
+    <Stack spacing={2}>
     <Typography  variant='h4' sx={{fontWeight:'bold'}}>Join The Program.</Typography>
     <Typography variant='h4' sx={{fontWeight:'bold'}}>Where people help people grow.</Typography>
 
     <Typography variant='subtitle1' sx={{}}>Get unstuck with mentorship</Typography>
+    </Stack>
     
   </CardContent>
   <CardActions>
@@ -333,7 +335,7 @@ Create an account
 
                         </Stack>
 
-                      <Typography variant="body2" color="text.secondary"
+                      <Typography variant="h4" 
         sx={{
           color:'black',fontWeight:'bold', 
           textAlign:'center',maxWidth:'md'
