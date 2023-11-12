@@ -173,17 +173,17 @@ export default function HomePage() {
       </Box >
 
       <CustomBox>
-      <Box sx={{marginTop:'50px'}}>
+      <Container sx={{marginTop:'50px'}}>
       {/* <Divider/> */}
 
-      <MainHeadTypography sx={{paddingLeft:'2rem',fontWeight:'bold',textAlign:'left'}}>
+      <Typography variant='h4' sx={{fontWeight:'bold',textAlign:'left'}}>
     Main Head goes here
-          </MainHeadTypography>
+          </Typography>
       <Stack sx={{paddingTop:'50px',flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
       <Card 
           
           
-          elevation={5} sx={{ maxWidth: '550px', textAlign: 'center',  borderRadius: '1rem',margin:'1rem' }}>
+          elevation={5} sx={{ maxWidth: '550px', textAlign: 'center',  borderRadius: '1rem',}}>
           <Box
         sx={{
           height: 300,
@@ -223,7 +223,7 @@ fontWeight:'400', padding: '1rem' }}>
           <Card 
           
           
-          elevation={5} sx={{ maxWidth: '550px', textAlign: 'center', borderRadius: '1rem',margin:'1rem' }}>
+          elevation={5} sx={{ maxWidth: '550px', textAlign: 'center', borderRadius: '1rem' }}>
           <Box
         sx={{
           height: 300,
@@ -269,7 +269,7 @@ fontWeight:'400', padding: '1rem' }}>
     
       </Stack>
           
-      </Box>
+      </Container>
       </CustomBox>
      
 

@@ -5,15 +5,15 @@ import { CustomBox, MainHeadTypography } from '../newhomepage/PageComponents'
 const UniversitiesDisplay = () => {
   return (
    <CustomBox>
-     <Container maxWidth='md' sx={{position:'relative',top:'0rem',backgroundColor:'white',padding:'2rem',borderRadius:'2rem',borderBottom:'solid 2px #7e7f80'}} >
+     <Container maxWidth='md' sx={{position:'relative',top:'0rem',backgroundColor:'white',paddingBottom:'1rem',borderRadius:'2rem',borderBottom:'solid 2px #7e7f80'}} >
         
 
         <Stack sx={{flexDirection:'row',justifyContent:'center',display:'flex',flexWrap:'wrap'}}>
             <Box>
 
-            <MainHeadTypography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'2',paddingBottom:'1rem',textAlign:'center'}}>
+            <Typography variant='h4' sx={{paddingBottom:'1rem',textAlign:{xs:'left',md:'center'}}}>
             Participating Universities
-          </MainHeadTypography>
+          </Typography>
 
             </Box>
             <Box sx={{justifyContent:'space-between'}}>

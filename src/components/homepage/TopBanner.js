@@ -43,14 +43,14 @@ const TopBanner = () => {
         </Stack>
         <CustomBox>
         <Container maxWidth='lg' sx={{justifyContent:'center',textAlign:'center'}}>
-        <MainHeadTypography sx={{fontSize:'35px',fontWeight:900,fontFamily:"'Inter', serif"}}>
+        <Typography variant='h4' sx={{fontWeight:900,textAlign:{xs:'left',md:'center'}}}>
             TechPACT Mentoring Program
-        </MainHeadTypography>
+        </Typography>
         <Box sx={{paddingTop:'5px'}}>
-        <CustomTypography>
+        <Typography variant='subtitle1' sx={{textAlign:{xs:'left',md:'center'}}}>
         
          1000+ mentees and mentors joined the program.      
-        </CustomTypography>
+        </Typography>
         </Box>
        
         <img style={{maxWidth:'90%',height:'auto',paddingTop:'1rem'}} src='./peoples2.png'/>
