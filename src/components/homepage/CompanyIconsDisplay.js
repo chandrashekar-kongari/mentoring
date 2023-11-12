@@ -17,8 +17,8 @@ const CompanyIconsDisplay = () => {
   return (
     <Container sx={{paddingTop:'100px',marginBottom:'2rem'}}>
         <Stack flexDirection={'column'} sx={{textAlign:'center'}}>
-        <Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
-    Learn from experts
+        <Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'2rem',textAlign:'center'}}>
+    Get guidance from experts
           </Typography>
         <Banner images={images} speed={50000} />
         </Stack>

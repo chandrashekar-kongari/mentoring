@@ -29,6 +29,7 @@ import ScrollingCards from '../components/homepage/scrollingcards/ScrollingCards
 import Carousel from 'react-material-ui-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ImageTransition from '../components/homepage/ImageTransition';
+import StepsAnimation from '../components/homepage/StepsAnimation';
 
 export default function HomePage() {
   const hue = (h) => `hsl(${h}, 100%, 50%)`;
@@ -131,8 +132,14 @@ export default function HomePage() {
 
       <ImageTransition/>
 
+      <Container sx={{position:'relative',top:'-230px',}}>
+        <Typography  sx={{
+          color:'black',fontWeight:'400',lineHeight:'28px', fontSize: '16px',
+          textAlign:'center',
+          
+        }}> Loved by 1000+ students</Typography>
       <Stack sx={{justifyContent:'space-between',flexDirection:'row',display:'flex',flexWrap:'wrap'}}>
-      <Card style={{position:'relative',top:'-280px',maxWidth:'300px'}} elevation={0} >
+      <Card style={{maxWidth:'300px'}} elevation={0} >
       <CardContent sx={{textAlign:'center'}}>
         <Box sx={{ display: 'flex', justifyContent: 'center',paddingBottom:'12px' }}>
         <Avatar src="rating4.jpeg" sx={{width: 50, height: 50}}></Avatar>
@@ -149,7 +156,7 @@ export default function HomePage() {
 
 </CardContent>
     </Card>
-    <Card style={{position:'relative',top:'-280px',maxWidth:'300px'}} elevation={0} >
+    <Card style={{maxWidth:'300px'}} elevation={0} >
       <CardContent sx={{textAlign:'center'}}>
         <Box sx={{ display: 'flex', justifyContent: 'center',paddingBottom:'12px' }}>
         <Avatar src="rating1.jpg" sx={{width: 50, height: 50}}></Avatar>
@@ -166,7 +173,7 @@ export default function HomePage() {
 
 </CardContent>
     </Card>
-    <Card style={{position:'relative',top:'-280px',maxWidth:'300px'}} elevation={0} >
+    <Card style={{maxWidth:'300px'}} elevation={0} >
       <CardContent sx={{textAlign:'center'}}>
         <Box sx={{ display: 'flex', justifyContent: 'center',paddingBottom:'12px' }}>
         <Avatar src="rating3.jpeg" sx={{width: 50, height: 50}}></Avatar>
@@ -183,7 +190,7 @@ export default function HomePage() {
 
 </CardContent>
     </Card>
-    <Card style={{position:'relative',top:'-280px',maxWidth:'300px'}} elevation={0} >
+    {/* <Card style={{maxWidth:'300px'}} elevation={0} >
       <CardContent sx={{textAlign:'center'}}>
         <Box sx={{ display: 'flex', justifyContent: 'center',paddingBottom:'12px' }}>
         <Avatar src="rating2.jpg" sx={{width: 50, height: 50}}></Avatar>
@@ -199,9 +206,10 @@ export default function HomePage() {
         }}>"Than you, I got my first internship"</Typography>
 
 </CardContent>
-    </Card>
+    </Card> */}
       </Stack>
 
+      </Container>
       
 
       
@@ -419,8 +427,13 @@ label="Project Management" component={motion.div} animate={{
   
 
       </Container> */}
-
-      <Container maxWidth='xl' sx={{position:'relative',top:'-200px',marginTop:'2rem', paddingTop:'2rem',paddingBottom:'2rem',background:backgroundGradient,color:'white'}}>
+      <Box sx={{position:'relative',top:'-250px',}}>
+      <CompanyIconsDisplay/>
+      {/* <StepsAnimation/> */}
+      </Box>
+      <Container maxWidth='xl' sx={{position:'relative',top:'-100px',marginTop:'2rem', paddingTop:'2rem',paddingBottom:'2rem',background:backgroundGradient,color:'white'}}>
+        <Typography sx={{textAlign:'center',paddingBottom:'2rem',fontSize:'30px'}}>Achieve your goals in goals in 3 steps</Typography>
+      
         <Stack sx={{flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
           <Box>
           <Stack sx={{textAlign:'center'}}>
@@ -496,8 +509,8 @@ label="Project Management" component={motion.div} animate={{
       <Box sx={{marginTop:'50px'}}>
       {/* <Divider/> */}
 
-      <Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
-    Top title
+      <Typography sx={{paddingLeft:'2rem',fontSize:'48px',fontWeight:'bold',lineHeight:'56px',textAlign:'left'}}>
+    Main Head goes here
           </Typography>
       <Stack sx={{paddingTop:'50px',flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
       <Card 
@@ -529,11 +542,12 @@ label="Project Management" component={motion.div} animate={{
       <CardContent>
         <Typography   sx={{ color:'#191919',
           lineHeight:'48px',
-
+          textAlign:'left',
+          padding: '1rem',
           fontWeight: '600', fontSize: '40px'}}>
-          Title
+          Sub head
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{
+        <Typography variant="body2" color="text.secondary" sx={{textAlign:'left',
 color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px', padding: '1rem' }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quod cupiditate ullam unde pariatur consequuntur harum! Quam itaque commodi tempore error excepturi saepe, pariatur fuga explicabo sit perspiciatis, quas nihil!
         </Typography>
@@ -574,11 +588,11 @@ color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px', padding: '
         <Typography  sx={{ 
           color:'#191919',
           lineHeight:'48px',
-
-          fontWeight: '600', fontSize: '40px' }}>
-          Title
+          padding: '1rem',
+          fontWeight: '600', fontSize: '40px' ,textAlign:'left',}}>
+          Sub head
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px', padding: '1rem' }}>
+        <Typography variant="body2" color="text.secondary" sx={{textAlign:'left', color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px', padding: '1rem' }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quod cupiditate ullam unde pariatur consequuntur harum! Quam itaque commodi tempore error excepturi saepe, pariatur fuga explicabo sit perspiciatis, quas nihil!
         </Typography>
       </CardContent>
@@ -596,7 +610,7 @@ color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px', padding: '
 
       
       {/* <Steps/> */}
-      <CompanyIconsDisplay/>
+      
       </Box >
       {/* <Box>
       <Container maxWidth='md' sx={{textAlign:'center',paddingTop:'2rem',paddingBottom:'3rem',}}>
@@ -638,7 +652,7 @@ Your online mentor can elevate your career or be a shoulder to lean on. Get a pe
       
 
 
-      <Container sx={{padding:'2rem',paddingTop:'100px'}}>
+      {/* <Container sx={{padding:'2rem',paddingTop:'100px'}}>
       <Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
     Title
           </Typography>
@@ -701,7 +715,7 @@ Your online mentor can elevate your career or be a shoulder to lean on. Get a pe
       </CardContent>
           </Card>
         </Stack>
-      </Container>
+      </Container> */}
 
 {/* 
       <Container>
@@ -742,7 +756,7 @@ Your online mentor can elevate your career or be a shoulder to lean on. Get a pe
         <Card sx={{padding:'2rem',backgroundImage:"url('diversity5v3.png')",borderRadius:'2rem'}}>
         
           <CardContent>
-            <Typography  variant='h3' sx={{fontWeight:'bold'}}>Join the community.</Typography>
+            <Typography  variant='h3' sx={{fontWeight:'bold'}}>Join The Program.</Typography>
             <Typography variant='h3' sx={{fontWeight:'bold'}}>Where people help people grow.</Typography>
 
             <Typography sx={{}}>Get unstuck with mentorship</Typography>

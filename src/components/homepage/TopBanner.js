@@ -3,35 +3,34 @@ import React from 'react'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import {AnimatePresence, motion} from 'framer-motion'
+import { CustomActionButton, CustomTypography } from '../newhomepage/PageComponents';
 const TopBanner = () => {
   return (
     <Box sx={{paddingTop:'12rem',paddingBottom:'10rem',backgroundRepeat: 'no-repeat',zIndex:'0'}}>
 
         <Stack sx={{justifyContent:'center'}}>
             <Container maxWidth='md'  sx={{ justifyContent:'center',textAlign:'center'}}>
-            {/* <Typography sx={{fontSize:'14px',paddingBottom:'1rem'}}>
-            No need to struggle alone anymore.
-            </Typography> */}
-
-            <Chip  icon={<PlayArrowIcon/>} label={"Create account, Next program start's from Jan 1st 2024"}/>
-            <Typography sx={{fontSize:'50px',fontWeight:900}}>
-            Unlocking your full potential with 1:1 MENTORSHIP
+            
+            <Typography sx={{color:'#1976d2', fontSize:'50px',fontWeight:900, fontFamily:"'Inter', serif"}}>
+            <span style={{fontSize:'56px'}}>GROW TOGETHER</span> 
         </Typography>
-
-        <Typography sx={{fontSize:'18px',paddingBottom:'1rem',fontWeight:'bold',paddingTop:'5px'}}>
-        Take help from mentor to achieve your goals.        
+        <Typography sx={{fontSize:'50px',fontWeight:900,fontFamily:"'Inter', serif"}}>
+            through 1:1 mentorship
         </Typography>
-
-        <Fab component={motion.div}
-          whileHover={{
-            scale: 1.1,
-            transition: { duration: 0.1 }
-          }}
-          whileTap={{ scale: 0.9 }} variant="extended" size='large' color="primary" sx={{marginTop:'1rem',fontWeight:'bold',zIndex:'1',textTransform:'none'}}>
+       
+      
+        <Box sx={{paddingTop:'1rem'}}>
+        <CustomTypography>
         
-        Create an account
-        <ChevronRightIcon sx={{ ml: 1 }} />
-        </Fab>
+        Achieve your goals as a mentee or mentor.      
+        </CustomTypography>
+        </Box>
+
+        <Box sx={{paddingTop:'1rem'}}>
+        <CustomActionButton>
+          Sign up now
+        </CustomActionButton>
+        </Box>
         
 
 
@@ -39,6 +38,25 @@ const TopBanner = () => {
             </Container>
        
         </Stack>
+
+        <Stack sx={{ textAlign:'center', margin:'1rem',marginTop:'10rem', marginRight:'0px',backgroundColor:'#414756',borderRadius:'2rem',  display:'flex', flexWrap:'wrap'}}>
+       
+      
+
+        </Stack>
+        <Container maxWidth='lg' sx={{justifyContent:'center',textAlign:'center'}}>
+        <Typography sx={{paddingTop:'3rem',paddingLeft:'1rem',fontSize:'35px',fontWeight:900,fontFamily:"'Inter', serif"}}>
+            TechPACT Mentoring Program
+        </Typography>
+        <Box sx={{paddingTop:'5px'}}>
+        <CustomTypography>
+        
+         1000+ mentees and mentors joined the program.      
+        </CustomTypography>
+        </Box>
+       
+        <img style={{maxWidth:'90%',height:'auto',paddingTop:'1rem'}} src='./peoples2.png'/>
+        </Container>
 
 
     </Box>

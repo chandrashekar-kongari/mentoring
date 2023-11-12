@@ -10,7 +10,7 @@ const UniversitiesDisplay = () => {
             <Box>
 
             <Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
-    Parter with
+    University Partners
           </Typography>
 
             </Box>

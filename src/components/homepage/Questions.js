@@ -30,8 +30,8 @@ export default function Questions() {
     ])
   return (
     <Container maxWidth='md' sx={{paddingTop:'100px'}}>
-<Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
-    Still have questions?
+<Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'left'}}>
+    Have any questions?
           </Typography>
 
         {ques.map((que)=>{
