@@ -4,7 +4,7 @@ import {AnimatePresence, motion} from 'framer-motion'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 export const MainHeadTypography = ({children}) => {
   return (
-    <Typography sx={{fontFamily:'Inter',fontSize:'35px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center',}}>
+    <Typography variant='h3' sx={{fontFamily:'Inter',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center',}}>
         {children}
     </Typography>
   )
@@ -42,7 +42,7 @@ export const CustomActionButton = ({children}) => {
 
 export const CustomTypography = ({children,style}) => {
     return (
-      <Typography sx={[{fontFamily:'Inter',fontSize:'16px',lineHeight:'22px',fontWeight:'400'},style]}>
+      <Typography  sx={[{fontFamily:'Inter',fontSize:'16px',lineHeight:'22px',fontWeight:'400'},style]}>
           {children}
       </Typography>
     )

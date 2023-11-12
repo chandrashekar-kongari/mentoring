@@ -3,7 +3,7 @@ import React from 'react'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import {AnimatePresence, motion} from 'framer-motion'
-import { CustomActionButton, CustomBox, CustomTypography } from '../newhomepage/PageComponents';
+import { CustomActionButton, CustomBox, CustomTypography, MainHeadTypography } from '../newhomepage/PageComponents';
 const TopBanner = () => {
   return (
     <Box sx={{paddingTop:'12rem',paddingBottom:'6rem',backgroundRepeat: 'no-repeat',zIndex:'0'}}>
@@ -43,9 +43,9 @@ const TopBanner = () => {
         </Stack>
         <CustomBox>
         <Container maxWidth='lg' sx={{justifyContent:'center',textAlign:'center'}}>
-        <Typography sx={{fontSize:'35px',fontWeight:900,fontFamily:"'Inter', serif"}}>
+        <MainHeadTypography sx={{fontSize:'35px',fontWeight:900,fontFamily:"'Inter', serif"}}>
             TechPACT Mentoring Program
-        </Typography>
+        </MainHeadTypography>
         <Box sx={{paddingTop:'5px'}}>
         <CustomTypography>
         

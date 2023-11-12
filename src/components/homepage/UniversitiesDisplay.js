@@ -12,7 +12,7 @@ const UniversitiesDisplay = () => {
             <Box>
 
             <MainHeadTypography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
-    University Partners
+            Participating Universities
           </MainHeadTypography>
 
             </Box>
