@@ -1,6 +1,7 @@
 import { Box, Container, Stack, Typography } from '@mui/material';
 import React from 'react'
 import { Banner } from './Banner';
+import { CustomBox, MainHeadTypography } from '../newhomepage/PageComponents';
 
 const CompanyIconsDisplay = () => {
     const images = [
@@ -15,14 +16,16 @@ const CompanyIconsDisplay = () => {
         image
       }));
   return (
-    <Container sx={{paddingTop:'100px',marginBottom:'2rem'}}>
+    <CustomBox>
+      <Container sx={{}}>
         <Stack flexDirection={'column'} sx={{textAlign:'center'}}>
-        <Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'2rem',textAlign:'center'}}>
+        <MainHeadTypography >
     Get guidance from experts
-          </Typography>
+          </MainHeadTypography>
         <Banner images={images} speed={50000} />
         </Stack>
     </Container>
+    </CustomBox>
   )
 }
 

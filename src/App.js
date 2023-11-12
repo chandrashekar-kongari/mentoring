@@ -21,6 +21,31 @@ import Error404Page from './pages/Error404Page';
 import ForgotPassword from './pages/ForgotPassword';
 import Loading from './components/Loading';
 import PdfViewer from './components/PdfViewer';
+import {
+  createTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+} from '@mui/material/styles';
+
+let theme = createTheme({
+  typography: {
+    // In Chinese and Japanese the characters are usually larger,
+    // so a smaller fontsize may be appropriate.
+    fontSize: 12,
+    fontFamily:'Inter',
+    
+  },
+});
+theme.typography.h3 = {
+  fontSize: '1.2rem',
+  '@media (min-width:600px)': {
+    fontSize: '1.5rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '2.4rem',
+  },
+};
+
 function App() {
   const [auth,setAuth]=useState(false)
   const a=useSelector(state=>state.isAuthenticated)
@@ -40,7 +65,7 @@ function App() {
 
   },[a])
   
-  return (<>
+  return (<ThemeProvider theme={theme}>
 
       
       
@@ -75,7 +100,7 @@ function App() {
     </Routes>
   </Box>
 
-  </>
+  </ThemeProvider>
   );
 }
 

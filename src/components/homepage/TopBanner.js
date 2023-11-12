@@ -3,10 +3,10 @@ import React from 'react'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import {AnimatePresence, motion} from 'framer-motion'
-import { CustomActionButton, CustomTypography } from '../newhomepage/PageComponents';
+import { CustomActionButton, CustomBox, CustomTypography } from '../newhomepage/PageComponents';
 const TopBanner = () => {
   return (
-    <Box sx={{paddingTop:'12rem',paddingBottom:'10rem',backgroundRepeat: 'no-repeat',zIndex:'0'}}>
+    <Box sx={{paddingTop:'12rem',paddingBottom:'6rem',backgroundRepeat: 'no-repeat',zIndex:'0'}}>
 
         <Stack sx={{justifyContent:'center'}}>
             <Container maxWidth='md'  sx={{ justifyContent:'center',textAlign:'center'}}>
@@ -32,9 +32,6 @@ const TopBanner = () => {
         </CustomActionButton>
         </Box>
         
-
-
-
             </Container>
        
         </Stack>
@@ -44,8 +41,9 @@ const TopBanner = () => {
       
 
         </Stack>
+        <CustomBox>
         <Container maxWidth='lg' sx={{justifyContent:'center',textAlign:'center'}}>
-        <Typography sx={{paddingTop:'3rem',paddingLeft:'1rem',fontSize:'35px',fontWeight:900,fontFamily:"'Inter', serif"}}>
+        <Typography sx={{fontSize:'35px',fontWeight:900,fontFamily:"'Inter', serif"}}>
             TechPACT Mentoring Program
         </Typography>
         <Box sx={{paddingTop:'5px'}}>
@@ -58,6 +56,7 @@ const TopBanner = () => {
         <img style={{maxWidth:'90%',height:'auto',paddingTop:'1rem'}} src='./peoples2.png'/>
         </Container>
 
+        </CustomBox>
 
     </Box>
   )

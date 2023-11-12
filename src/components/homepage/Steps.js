@@ -1,9 +1,11 @@
 import { Box, Chip, Container, Stack, Typography } from '@mui/material'
 import React from 'react'
+import { CustomBox } from '../newhomepage/PageComponents'
 
 const Steps = () => {
   return (
-    <Container maxWidth='lg' sx={{color:'black',borderRadius:'2rem'}}>
+    <CustomBox>
+        <Container maxWidth='lg' sx={{color:'black',borderRadius:'2rem'}}>
               <svg style={{position:'absolute'}} width="90%" height="770" viewBox="0 0 1440 770" fill="none" xmlns="http://www.w3.org/2000/svg"><rect opacity="0.8" x="951" y="70" width="480" height="480" fill="url(#radial1)"></rect><rect opacity="0.8" x="32" y="14" width="586" height="586" fill="url(#radial2)"></rect><defs> <radialGradient id="radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1191 310) rotate(90) scale(240)"><stop stop-color="#c9cbf5"></stop><stop offset="1" stop-color="#e6e7fa" stop-opacity="0"></stop></radialGradient><radialGradient id="radial2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(325 307) rotate(90) scale(293)"><stop stop-color="#c9cbf5"></stop><stop offset="1" stop-color="#c9cbf5" stop-opacity="0"></stop></radialGradient></defs></svg>
 
         <Typography sx={{fontSize:'30px',fontWeight:'bold',paddingBottom:'1rem',textAlign:'center',color:'black',}}>How it works?</Typography>
@@ -51,6 +53,7 @@ const Steps = () => {
             </Stack>
             </Stack>
     </Container>
+    </CustomBox>
   )
 }
 

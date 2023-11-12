@@ -7,6 +7,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Box, Container, Stack } from '@mui/material';
 import { Banner } from './Banner';
 import MyComponent from './MyComponent';
+import { CustomBox, MainHeadTypography } from '../newhomepage/PageComponents';
 
 export default function Questions() {
     
@@ -29,10 +30,11 @@ export default function Questions() {
         }
     ])
   return (
-    <Container maxWidth='md' sx={{paddingTop:'100px'}}>
-<Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'left'}}>
+    <CustomBox>
+      <Container maxWidth='md' >
+<MainHeadTypography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'left'}}>
     Have any questions?
-          </Typography>
+          </MainHeadTypography>
 
         {ques.map((que)=>{
             return <Accordion elevation={1} sx={{paddingTop:'1rem',paddingBottom:'1rem'}} >
@@ -63,5 +65,6 @@ export default function Questions() {
       
       
     </Container>
+    </CustomBox>
   );
 }

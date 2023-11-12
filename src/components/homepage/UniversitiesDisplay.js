@@ -1,17 +1,19 @@
 import { Box, Card, Container, Stack, Typography } from '@mui/material'
 import React from 'react'
+import { CustomBox, MainHeadTypography } from '../newhomepage/PageComponents'
 
 const UniversitiesDisplay = () => {
   return (
-    <Container maxWidth='md' sx={{position:'relative',top:'0rem',backgroundColor:'white',padding:'2rem',borderRadius:'2rem',borderBottom:'solid 2px #7e7f80'}} >
+   <CustomBox>
+     <Container maxWidth='md' sx={{position:'relative',top:'0rem',backgroundColor:'white',padding:'2rem',borderRadius:'2rem',borderBottom:'solid 2px #7e7f80'}} >
         
 
         <Stack sx={{flexDirection:'row',justifyContent:'center',display:'flex',flexWrap:'wrap'}}>
             <Box>
 
-            <Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
+            <MainHeadTypography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
     University Partners
-          </Typography>
+          </MainHeadTypography>
 
             </Box>
             <Box sx={{justifyContent:'space-between'}}>
@@ -28,6 +30,7 @@ const UniversitiesDisplay = () => {
 
 
     </Container>
+   </CustomBox>
   )
 }
 

@@ -19,7 +19,7 @@ export const SubHeadTypography = ({children}) => {
   }
   export const CustomBox = ({children}) => {
     return (
-      <Box sx={{paddingTop:'3rem'}}>
+      <Box sx={{paddingTop:'8rem'}}>
           {children}
       </Box>
     )
@@ -40,11 +40,14 @@ export const CustomActionButton = ({children}) => {
     )
 }
 
-export const CustomTypography = ({children}) => {
+export const CustomTypography = ({children,style}) => {
     return (
-      <Typography sx={{fontFamily:'Inter',fontSize:'16px',lineHeight:'22px',fontWeight:'400'}}>
+      <Typography sx={[{fontFamily:'Inter',fontSize:'16px',lineHeight:'22px',fontWeight:'400'},style]}>
           {children}
       </Typography>
     )
 }
+
+
+
 
