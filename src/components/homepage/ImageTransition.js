@@ -90,26 +90,40 @@ const ImageTransition = () => {
   overlap="circular"
   anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
   badgeContent={
+    <>
+    <Box sx={{display: { xs: 'flex', md: 'none' },}}>
+      <img src='./text-by-mentee-nobg.png' style={{width:'60px',height:'auto'}}/>
+    </Box>
+    <Box sx={{display: { xs: 'none', md: 'flex' },}}>
     <img src='./text-by-mentee-nobg.png' style={{width:'120px',height:'auto'}}/>
+  </Box>
+    </>
   }
 >
            <Avatar
 alt="Remy Sharp"
 src="mentee2-nobg.png"
-sx={{ width: 200, height: 200 }}
+sx={{ width: {xs:100,md:200}, height:{xs:100,md:200} }}
 />
 </Badge>
 <Badge
   overlap="circular"
   anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
   badgeContent={
+    <>
+    <Box sx={{display: { xs: 'flex', md: 'none' },}}>
+    <img src='./text-by-mentor.png' style={{width:'60px',height:'auto'}}/>
+    </Box>
+    <Box sx={{display: { xs: 'none', md: 'flex' },}}>
     <img src='./text-by-mentor.png' style={{width:'120px',height:'auto'}}/>
+  </Box></>
+    
   }
 >
 <Avatar
           alt="Remy Sharp"
           src="mentor2-nobg.png"
-          sx={{ width: 200, height: 200 }}
+          sx={{ width: {xs:100,md:200}, height: {xs:100,md:200} }}
           />
 </Badge>
 
@@ -134,7 +148,14 @@ sx={{ width: 200, height: 200 }}
     >
       {/* <AdbIcon style={{fontSize:'270px'}}/> */}
       {/* <FontAwesomeIcon style={{fontSize:'270px'}} icon={faDiamond} /> */}
-      <img src='/techpact-logo.png' style={{width:'270px',height:'auto',backgroundColor:'white'}}/>
+      <Box sx={{display: { xs: 'flex', md: 'none' },}}>
+      <img src='/techpact-logo.png' style={{ width:'170px',height:'auto',backgroundColor:'white'}}/>
+
+      </Box>
+      <Box sx={{display: { xs: 'none', md: 'flex' },}}>
+      <img src='/techpact-logo.png' style={{display: { xs: 'none', md: 'flex' },width:'270px',height:'auto',backgroundColor:'white'}}/>
+
+      </Box>
     </Box>
 
     <Box position='relative'

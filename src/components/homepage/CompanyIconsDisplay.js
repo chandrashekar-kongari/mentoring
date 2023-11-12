@@ -16,7 +16,8 @@ const CompanyIconsDisplay = () => {
         image
       }));
   return (
-    <CustomBox>
+    <Box sx={{backgroundColor:'#f7f7f7'}}>
+      <CustomBox>
       <Container sx={{}}>
         <Stack flexDirection={'column'} sx={{textAlign:'center'}}>
         <MainHeadTypography >
@@ -26,6 +27,7 @@ const CompanyIconsDisplay = () => {
         </Stack>
     </Container>
     </CustomBox>
+    </Box>
   )
 }
 

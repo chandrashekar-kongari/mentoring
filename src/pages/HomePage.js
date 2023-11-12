@@ -96,7 +96,7 @@ export default function HomePage() {
       </Box>
       <CustomBox>
       <Container maxWidth='xl' sx={{marginTop:'2rem', paddingTop:'2rem',paddingBottom:'2rem',background:backgroundGradient,color:'white'}}>
-        <Typography variant='h5' sx={{textAlign:'center',paddingBottom:'2rem',}}>Achieve your goals in goals in 3 steps</Typography>
+        <Typography variant='h5' sx={{textAlign:'center',paddingBottom:'2rem',}}>Achieve your goals in 3 steps</Typography>
       
         <Stack sx={{flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
           <Box>
@@ -134,7 +134,7 @@ export default function HomePage() {
       </Container>
       </CustomBox>
 
-      <CustomBox>
+      {/* <CustomBox>
 
       <Container sx={{}}>
       <Stack sx={{flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
@@ -161,7 +161,7 @@ export default function HomePage() {
         </Box>
       </Stack>
       </Container>
-      </CustomBox>
+      </CustomBox> */}
 
 
 

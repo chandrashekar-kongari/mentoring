@@ -6,7 +6,7 @@ import {AnimatePresence, motion} from 'framer-motion'
 import { CustomActionButton, CustomBox, CustomTypography, MainHeadTypography } from '../newhomepage/PageComponents';
 const TopBanner = () => {
   return (
-    <Box sx={{paddingTop:'12rem',paddingBottom:'6rem',backgroundRepeat: 'no-repeat',zIndex:'0'}}>
+    <Box sx={{paddingTop:'12rem',paddingBottom:'3rem',backgroundRepeat: 'no-repeat',zIndex:'0'}}>
 
         <Stack sx={{justifyContent:'center'}}>
             <Container maxWidth='md'  sx={{ justifyContent:'center',textAlign:'center'}}>
@@ -41,8 +41,8 @@ const TopBanner = () => {
       
 
         </Stack>
-        <CustomBox>
-        <Container maxWidth='lg' sx={{justifyContent:'center',textAlign:'center'}}>
+        <Box sx={{paddingTop:'3rem',paddingBottom:'3rem',backgroundColor:'#f7f7f7'}}>
+        <Container maxWidth='lg' sx={{justifyContent:{xs:'left',md:'center'},textAlign:'center'}}>
         <Typography variant='h4' sx={{fontWeight:900,textAlign:{xs:'left',md:'center'}}}>
             TechPACT Mentoring Program
         </Typography>
@@ -56,7 +56,7 @@ const TopBanner = () => {
         <img style={{maxWidth:'90%',height:'auto',paddingTop:'1rem'}} src='./peoples2.png'/>
         </Container>
 
-        </CustomBox>
+        </Box>
 
     </Box>
   )
