@@ -145,7 +145,7 @@ sx={{ width: 200, height: 200 }}
       alignItems="center"
      >
 
-<Typography variant="body2" color="text.secondary" sx={{textAlign:'center',color:'black', fontWeight:'400',lineHeight:'30px', fontSize: '20px', padding: '1rem' }}>
+<Typography variant="body2" color="text.secondary" sx={{textAlign:'center',color:'black', fontWeight:'400',fontSize: '20px', padding: '1rem' }}>
           TechPACT will connects you with best mentor in any domain of your intrest:
         </Typography>
         <Container maxWidth='md' sx={{justifyContent:'center',textAlign:'center'}}>

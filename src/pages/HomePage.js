@@ -96,37 +96,37 @@ export default function HomePage() {
       </Box>
       <CustomBox>
       <Container maxWidth='xl' sx={{marginTop:'2rem', paddingTop:'2rem',paddingBottom:'2rem',background:backgroundGradient,color:'white'}}>
-        <Typography sx={{textAlign:'center',paddingBottom:'2rem',fontSize:'30px'}}>Achieve your goals in goals in 3 steps</Typography>
+        <Typography variant='h5' sx={{textAlign:'center',paddingBottom:'2rem',}}>Achieve your goals in goals in 3 steps</Typography>
       
         <Stack sx={{flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
           <Box>
           <Stack sx={{textAlign:'center'}}>
           
-          <FontAwesomeIcon icon={faUser} style={{fontSize:'30px'}}/>
-          <Typography sx={{fontSize:'24px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem'}}>
+          <FontAwesomeIcon icon={faUser} style={{}}/>
+          <Typography variant='h5' sx={{fontWeight:'bold',paddingBottom:'1rem'}}>
           Create Account
           </Typography>
-          <Typography sx={{fontWeight:'400',lineHeight:'28px', fontSize: '20px'}}> wqyfad wqhdg hqwdj qwdaugqh wqdh</Typography>
+          <Typography variant='h6' sx={{fontWeight:'400',}}> wqyfad wqhdg hqwdj qwdaugqh wqdh</Typography>
           </Stack>
           
           </Box>
           <Box>
           <Stack sx={{textAlign:'center'}}>
-          <FontAwesomeIcon icon={faWandMagicSparkles}  style={{fontSize:'30px'}}/>
-          <Typography sx={{fontSize:'24px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem'}}>
+          <FontAwesomeIcon icon={faWandMagicSparkles}  style={{}}/>
+          <Typography variant='h5' sx={{fontWeight:'bold',paddingBottom:'1rem'}}>
             Get A Mentor
           </Typography>
-          <Typography sx={{fontWeight:'400',lineHeight:'28px', fontSize: '20px'}}> wqyfad wqhdg hqwdj qwdaugqh wqdh</Typography>
+          <Typography variant='subtitle1' sx={{fontWeight:'400',}}> wqyfad wqhdg hqwdj qwdaugqh wqdh</Typography>
           </Stack>
           
           </Box>
           <Box>
           <Stack sx={{textAlign:'center'}}>
-          <FontAwesomeIcon icon={faBullseye}  style={{fontSize:'30px'}}/>
-          <Typography sx={{fontSize:'24px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem'}}>
+          <FontAwesomeIcon icon={faBullseye}  style={{}}/>
+          <Typography variant='h5'  sx={{fontWeight:'bold',paddingBottom:'1rem'}}>
             Reach Your Goal
           </Typography>
-          <Typography sx={{fontWeight:'400',lineHeight:'28px', fontSize: '20px'}}> wqyfad wqhdg hqwdj qwdaugqh wqdh</Typography>
+          <Typography  variant='subtitle1'  sx={{fontWeight:'400', }}> wqyfad wqhdg hqwdj qwdaugqh wqdh</Typography>
           </Stack>
           
           </Box>
@@ -138,19 +138,19 @@ export default function HomePage() {
 
       <Container sx={{}}>
       <Stack sx={{flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
-        <Box sx={{maxWidth:'550px'}}>
-          <Typography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem'}}>
+        <Box  sx={{maxWidth:'550px'}}>
+          <Typography variant='h5' sx={{fontWeight:'bold',paddingBottom:'1rem'}}>
             Lorem ipsum dolor sit
           </Typography>
-          <Typography sx={{
+          <Typography variant='subtitle1' sx={{
             // fontSize:'32px',fontWeight:'400',lineHeight:'44px'
-            color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px',
+            color:'#6b665f',fontWeight:'400',
             }}>
             Lorem elit. Placeat qui non tempore adipisci quis tempore adipisci quis, necessitatibus accusamus atque aliquam impedit. Veniam reprehenderit aut illum. Facilis molestias pariatur voluptas vel, veritatis reprehenderit!
           </Typography>
-          <Typography sx={{
+          <Typography variant='subtitle1'  sx={{
             // fontSize:'32px',fontWeight:'400',lineHeight:'44px'
-            color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px',
+            color:'#6b665f',fontWeight:'400', 
             paddingTop:'1rem'
             }}>
             Lorem elit. Placeat qui non tempore adipisci quis tempore Placeat qui non tempore adipisci quis tempore adipisci quis, necessitatibus accusamus atque aliquam impedit. Veniam reprehenderit aut illum. Facilis molestias pariatur voluptas vel, veritatis reprehenderit!
@@ -176,7 +176,7 @@ export default function HomePage() {
       <Box sx={{marginTop:'50px'}}>
       {/* <Divider/> */}
 
-      <MainHeadTypography sx={{paddingLeft:'2rem',fontSize:'48px',fontWeight:'bold',lineHeight:'56px',textAlign:'left'}}>
+      <MainHeadTypography sx={{paddingLeft:'2rem',fontWeight:'bold',textAlign:'left'}}>
     Main Head goes here
           </MainHeadTypography>
       <Stack sx={{paddingTop:'50px',flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
@@ -208,14 +208,14 @@ export default function HomePage() {
 
       <CardContent>
         <MainHeadTypography   sx={{ color:'#191919',
-          lineHeight:'48px',
+
           textAlign:'left',
           padding: '1rem',
-          fontWeight: '600', fontSize: '40px'}}>
+          fontWeight: '600', }}>
           Sub head
         </MainHeadTypography>
-        <Typography variant="body2" color="text.secondary" sx={{textAlign:'left',
-color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px', padding: '1rem' }}>
+        <Typography variant="subtitle1" color="text.secondary" sx={{textAlign:'left',
+color:'#6b665f',fontWeight:'400', padding: '1rem' }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quod cupiditate ullam unde pariatur consequuntur harum! Quam itaque commodi tempore error excepturi saepe, pariatur fuga explicabo sit perspiciatis, quas nihil!
         </Typography>
       </CardContent>
@@ -254,12 +254,12 @@ color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px', padding: '
       <CardContent>
         <MainHeadTypography  sx={{ 
           color:'#191919',
-          lineHeight:'48px',
+
           padding: '1rem',
-          fontWeight: '600', fontSize: '40px' ,textAlign:'left',}}>
+          fontWeight: '600', textAlign:'left',}}>
           Sub head
         </MainHeadTypography>
-        <Typography variant="body2" color="text.secondary" sx={{textAlign:'left', color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px', padding: '1rem' }}>
+        <Typography variant="subtitle1" color="text.secondary" sx={{textAlign:'left', color:'#6b665f',fontWeight:'400',  padding: '1rem' }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quod cupiditate ullam unde pariatur consequuntur harum! Quam itaque commodi tempore error excepturi saepe, pariatur fuga explicabo sit perspiciatis, quas nihil!
         </Typography>
       </CardContent>
@@ -282,10 +282,10 @@ color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px', padding: '
 <Card sx={{padding:'2rem',backgroundImage:"url('diversity5v3.png')",borderRadius:'2rem'}}>
 
   <CardContent>
-    <Typography  variant='h3' sx={{fontWeight:'bold'}}>Join The Program.</Typography>
-    <Typography variant='h3' sx={{fontWeight:'bold'}}>Where people help people grow.</Typography>
+    <Typography  variant='h4' sx={{fontWeight:'bold'}}>Join The Program.</Typography>
+    <Typography variant='h4' sx={{fontWeight:'bold'}}>Where people help people grow.</Typography>
 
-    <Typography sx={{}}>Get unstuck with mentorship</Typography>
+    <Typography variant='subtitle1' sx={{}}>Get unstuck with mentorship</Typography>
     
   </CardContent>
   <CardActions>
@@ -335,7 +335,7 @@ Create an account
 
                       <Typography variant="body2" color="text.secondary"
         sx={{
-          color:'black',fontWeight:'bold',lineHeight:'28px', fontSize: '25px',
+          color:'black',fontWeight:'bold', 
           textAlign:'center',maxWidth:'md'
         }}>
           <FormatQuoteIcon  style={{transform:'rotate(180deg)'}}/>
@@ -345,7 +345,7 @@ Create an account
 
         <Typography variant="body2" color="text.secondary"
         sx={{
-          color:'#6b665f',fontWeight:'400',lineHeight:'28px', fontSize: '20px',
+          color:'#6b665f',fontWeight:'400',
           textAlign:'center',maxWidth:'md',
           paddingTop:'1rem',
           paddingBottom:'2rem'

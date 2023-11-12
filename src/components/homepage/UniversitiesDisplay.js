@@ -11,7 +11,7 @@ const UniversitiesDisplay = () => {
         <Stack sx={{flexDirection:'row',justifyContent:'center',display:'flex',flexWrap:'wrap'}}>
             <Box>
 
-            <MainHeadTypography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center'}}>
+            <MainHeadTypography sx={{fontSize:'48px',fontWeight:'bold',lineHeight:'2',paddingBottom:'1rem',textAlign:'center'}}>
             Participating Universities
           </MainHeadTypography>
 

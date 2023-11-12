@@ -36,16 +36,48 @@ let theme = createTheme({
     
   },
 });
-theme.typography.h3 = {
+theme.typography.h4 = {
   fontSize: '1.2rem',
+  fontFamily:'Inter',
   '@media (min-width:600px)': {
     fontSize: '1.5rem',
+  },
+  
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '1.6rem',
   },
   [theme.breakpoints.up('md')]: {
     fontSize: '2.4rem',
   },
 };
-
+theme.typography.h5 = {
+  fontSize: '1.2rem',
+  fontFamily:'Inter',
+  '@media (min-width:600px)': {
+    fontSize: '1.5rem',
+  },
+  
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '1.4rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '2.2rem',
+  },
+};
+theme.typography.subtitle1 = {
+  fontSize: '1.2rem',
+  fontFamily:'Inter',
+  '@media (min-width:600px)': {
+    fontSize: '1.5rem',
+  },
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '1rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '16px',
+    lineHeight:'23px'
+  }
+};
 function App() {
   const [auth,setAuth]=useState(false)
   const a=useSelector(state=>state.isAuthenticated)
