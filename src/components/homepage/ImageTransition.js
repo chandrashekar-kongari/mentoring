@@ -63,7 +63,7 @@ const ImageTransition = () => {
   return (
     <>
 
-    <Container sx={{}}>
+    <Container sx={{paddingTop:'2rem'}}>
 
     <Typography variant='h5' sx={{textAlign:{xs:'left',md:'center'}}}>
     Where Ambition Meets Wisdom

@@ -6,7 +6,7 @@ import {AnimatePresence, motion} from 'framer-motion'
 import { CustomActionButton, CustomBox, CustomTypography, MainHeadTypography } from '../newhomepage/PageComponents';
 const TopBanner = () => {
   return (
-    <Box sx={{paddingTop:'12rem',paddingBottom:'3rem',backgroundRepeat: 'no-repeat',zIndex:'0'}}>
+    <Box sx={{paddingTop:'12rem',backgroundRepeat: 'no-repeat',zIndex:'0'}}>
 
         <Stack sx={{justifyContent:'center'}}>
             <Container maxWidth='md'  sx={{ justifyContent:'center',textAlign:'center'}}>
