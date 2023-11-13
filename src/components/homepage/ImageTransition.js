@@ -103,7 +103,7 @@ const ImageTransition = () => {
            <Avatar
 alt="Remy Sharp"
 src="mentee2-nobg.png"
-sx={{ width: {xs:100,md:200}, height:{xs:100,md:200} }}
+sx={{ width: {xs:100,md:200}, height:{xs:100,md:200},backgroundColor:'#E9F7F6' }}
 />
 </Badge>
 <Badge
@@ -123,7 +123,7 @@ sx={{ width: {xs:100,md:200}, height:{xs:100,md:200} }}
 <Avatar
           alt="Remy Sharp"
           src="mentor2-nobg.png"
-          sx={{ width: {xs:100,md:200}, height: {xs:100,md:200} }}
+          sx={{ width: {xs:100,md:200}, height: {xs:100,md:200},backgroundColor:'#fdf6f0' }}
           />
 </Badge>
 

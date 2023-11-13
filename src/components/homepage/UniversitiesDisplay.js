@@ -5,7 +5,7 @@ import { CustomBox, MainHeadTypography } from '../newhomepage/PageComponents'
 const UniversitiesDisplay = () => {
   return (
    <CustomBox>
-     <Container maxWidth='md' sx={{position:'relative',top:'0rem',backgroundColor:'white',paddingBottom:'1rem',borderRadius:'2rem',borderBottom:'solid 2px #7e7f80'}} >
+     <Container maxWidth='lg' sx={{position:'relative',top:'0rem',backgroundColor:'white',paddingBottom:'1rem',borderBottom:'solid 2px #7e7f80'}} >
         
 
         <Stack sx={{flexDirection:'row',justifyContent:'center',display:'flex',flexWrap:'wrap'}}>
@@ -18,10 +18,10 @@ const UniversitiesDisplay = () => {
             </Box>
             <Box sx={{justifyContent:'space-between'}}>
 
-                <img src='shu.png'/>
-                <img src='boston.png'/>
-                <img src='fordham.png'/>
-                <img src='howard.svg'/>
+                <img src='sacred-heart-university-logo.png' style={{width:'auto',height:'80px'}}/>
+                <img src='boston-university-logo.png' style={{width:'auto',height:'80px'}}/>
+                <img src='fordham-university-logo.png' style={{width:'auto',height:'100px'}}/>
+                <img src='howard-university-logo.png' style={{width:'auto',height:'80px'}}/>
                 
             </Box>
 

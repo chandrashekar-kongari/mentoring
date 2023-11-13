@@ -15,8 +15,8 @@ const ThreeCardsLayout = () => {
       <Card sx={{ maxWidth:'550px',borderRadius:'2rem',backgroundColor:'#F0EFFF',paddingTop:'2rem',paddingLeft:'1rem',paddingBottom:'2rem',margin:'1rem'}} elevation={0}>
           <CardContent >
             <Stack spacing={3}>
-            <Typography variant='h5'>
-              Create Account
+            <Typography variant='h6'>
+              Create an account
             </Typography>
             <Typography variant='subtitle1'>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, doloremque similique? Eum dolorum, ducimus aperiam, provident earum, dolor at ab 
@@ -32,8 +32,8 @@ const ThreeCardsLayout = () => {
       <Card sx={{ maxWidth:'550px',borderRadius:'2rem',backgroundColor:'#E9F7F6',paddingTop:'2rem',paddingLeft:'1rem',paddingBottom:'2rem',margin:'1rem'}} elevation={0}>
           <CardContent >
             <Stack spacing={3}>
-            <Typography variant='h5'>
-              Top Head
+            <Typography variant='h6'>
+              Partispate in Mentorship
             </Typography>
             <Typography variant='subtitle1'>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, doloremque similique? Eum dolorum, ducimus aperiam, provident earum, dolor at ab 
@@ -49,7 +49,7 @@ const ThreeCardsLayout = () => {
       <Card sx={{ maxWidth:'550px',borderRadius:'2rem',backgroundColor:'#fdf6f0',paddingTop:'2rem',paddingLeft:'1rem',paddingBottom:'2rem',margin:'1rem'}} elevation={0}>
           <CardContent >
             <Stack spacing={3}>
-            <Typography variant='h5'>
+            <Typography variant='h6'>
               Top Head
             </Typography>
             <Typography variant='subtitle1'>

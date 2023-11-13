@@ -50,9 +50,15 @@ Sign Up Now
         </Stack>
         <Box sx={{paddingTop:'3rem',paddingBottom:'3rem',backgroundColor:'#f7f7f7'}}>
         <Container maxWidth='lg' sx={{justifyContent:{xs:'left',md:'center'},textAlign:'center'}}>
-        <Typography variant='h4' sx={{fontWeight:900,textAlign:{xs:'left',md:'center'}}}>
+        <Container maxWidth='sm'>
+        <Typography variant='h5' sx={{fontWeight:900,textAlign:{xs:'left',md:'center'}}}>
             TechPACT Mentoring Program
         </Typography>
+        <Stack sx={{flexDirection:'row',justifyContent:'right'}}>
+
+        <img src='./poweredby.png' style={{width:'35%',height:'auto'}}/>
+        </Stack>
+        </Container>
         <Box sx={{paddingTop:'5px'}}>
         <Typography variant='subtitle1' sx={{textAlign:{xs:'left',md:'center'}}}>
         

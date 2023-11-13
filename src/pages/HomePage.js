@@ -32,6 +32,7 @@ import ImageTransition from '../components/homepage/ImageTransition';
 import StepsAnimation from '../components/homepage/StepsAnimation';
 import { CustomBox, MainHeadTypography } from '../components/newhomepage/PageComponents';
 import ThreeCardsLayout from '../components/homepage/ThreeCardsLayout';
+import Footer from '../components/homepage/Footer';
 
 
 export default function HomePage() {
@@ -187,7 +188,7 @@ export default function HomePage() {
       <Container sx={{marginTop:'50px'}}>
       {/* <Divider/> */}
 
-      <Typography variant='h4' sx={{fontWeight:'bold',textAlign:'left'}}>
+      <Typography variant='h4' sx={{fontWeight:'bold',textAlign:'center'}}>
     Main Head goes here
           </Typography>
       <Stack sx={{paddingTop:'50px',flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
@@ -383,7 +384,7 @@ Create an account
       </Box>
       
       
-      
+      <Footer/>
     </Box>
   );
 }

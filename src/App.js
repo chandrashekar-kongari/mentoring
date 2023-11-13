@@ -69,6 +69,22 @@ theme.typography.h5 = {
     fontSize: '2.2rem',
   },
 };
+theme.typography.h6 = {
+  fontSize: '1.2rem',
+  fontFamily:'Inter',
+  
+  '@media (min-width:600px)': {
+    fontSize: '1.3rem',
+  },
+  
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '1.2rem',
+    
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.8rem',
+  },
+};
 theme.typography.subtitle1 = {
   fontSize: '1.2rem',
   fontFamily:'Inter',
