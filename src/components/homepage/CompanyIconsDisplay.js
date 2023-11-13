@@ -16,8 +16,8 @@ const CompanyIconsDisplay = () => {
         image
       }));
   return (
-    <Box sx={{backgroundColor:'#f7f7f7'}}>
-      <CustomBox>
+    <Box sx={{backgroundColor:'#f7f7f7',paddingTop:'2rem',paddingBottom:'2rem'}}>
+      
       <Container sx={{}}>
         <Stack flexDirection={'column'} sx={{textAlign:'center'}}>
         <MainHeadTypography >
@@ -26,7 +26,7 @@ const CompanyIconsDisplay = () => {
         <Banner images={images} speed={50000} />
         </Stack>
     </Container>
-    </CustomBox>
+
     </Box>
   )
 }

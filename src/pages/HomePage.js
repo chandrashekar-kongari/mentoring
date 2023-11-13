@@ -190,9 +190,10 @@ export default function HomePage() {
       <Card 
           
           
-          elevation={5} sx={{ maxWidth: '550px', textAlign: 'center',  borderRadius: '1rem',}}>
+          elevation={5} sx={{ maxWidth: '500px', textAlign: 'center',  borderRadius: '1rem',margin:'1rem'}}>
           <Box
         sx={{
+
           height: 300,
           backgroundImage:"url('diversity6.jpg')",
           // borderRadius: '1rem', // Add a rounded border
@@ -230,7 +231,7 @@ fontWeight:'400', padding: '1rem' }}>
           <Card 
           
           
-          elevation={5} sx={{ maxWidth: '550px', textAlign: 'center', borderRadius: '1rem' }}>
+          elevation={5} sx={{ maxWidth: '500px', textAlign: 'center', borderRadius: '1rem',margin:'1rem' }}>
           <Box
         sx={{
           height: 300,
@@ -286,7 +287,7 @@ fontWeight:'400', padding: '1rem' }}>
 
         
 <Container  style={{paddingTop:'100px'}}>
-<Card sx={{padding:'2rem',backgroundImage:"url('diversity5v3.png')",borderRadius:'2rem'}}>
+<Card sx={{padding:'1rem',paddingLeft:'2rem',backgroundImage:"url('diversity5v3.png')",borderRadius:'2rem'}}>
 
   <CardContent >
     <Stack spacing={2}>
@@ -314,7 +315,7 @@ Create an account
 
 
       <CustomBox>
-      <Container  sx={{height:{xs:'60vh',md:'90vh'},marginTop:'2rem',marginBottom:'2rem',borderRadius:'2rem', paddingTop:'6rem',paddingBottom:'6rem',backgroundColor:'#f7f7f7',marginTop:'100px'}}>
+      <Container  sx={{height:{xs:'80vh',md:'90vh'},marginTop:'2rem',marginBottom:'2rem',borderRadius:'2rem', paddingTop:'6rem',paddingBottom:'6rem',backgroundColor:'#f7f7f7',marginTop:'100px'}}>
       <Carousel
             
             
