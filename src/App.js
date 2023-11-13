@@ -26,6 +26,7 @@ import {
   responsiveFontSizes,
   ThemeProvider,
 } from '@mui/material/styles';
+import SideMenu from './components/homepage/SideMenu';
 
 let theme = createTheme({
   typography: {
@@ -114,6 +115,7 @@ function App() {
       
       <Routes>
       <Route path="/" element={<HomePage />}/>
+      <Route path="/sidemenu" element={<SideMenu />}/>
       <Route path="/homepage" element={
        
         <Home />

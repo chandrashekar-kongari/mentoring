@@ -35,6 +35,10 @@ import ThreeCardsLayout from '../components/homepage/ThreeCardsLayout';
 
 
 export default function HomePage() {
+  
+  const onClickSignUp=()=>{
+    navigate('/signup')
+  }
   const hue = (h) => `hsl(${h}, 100%, 50%)`;
   const backgroundGradient = `linear-gradient(306deg, ${hue(205)}, ${hue(245)})`;
 
@@ -299,7 +303,7 @@ fontWeight:'400', padding: '1rem' }}>
     
   </CardContent>
   <CardActions>
-  <Fab variant="extended" color='primary' size='large' sx={{ marginTop:'1rem',fontWeight:'bold',zIndex:'1',textTransform:'none'}}>
+  <Fab onClick={onClickSignUp} variant="extended" color='primary' size='large' sx={{ marginTop:'1rem',fontWeight:'bold',zIndex:'1',textTransform:'none'}}>
 
 Create an account
 <ChevronRightIcon sx={{ ml: 1 }} />

@@ -4,7 +4,12 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import {AnimatePresence, motion} from 'framer-motion'
 import { CustomActionButton, CustomBox, CustomTypography, MainHeadTypography } from '../newhomepage/PageComponents';
+import { useNavigate } from 'react-router-dom';
 const TopBanner = () => {
+  const navigate=useNavigate()
+  const onClickSignUp=()=>{
+    navigate('/signup')
+  }
   return (
     <Box sx={{paddingTop:'12rem',backgroundRepeat: 'no-repeat',zIndex:'0'}}>
 
@@ -27,9 +32,11 @@ const TopBanner = () => {
         </Box>
 
         <Box sx={{paddingTop:'1rem'}}>
-        <CustomActionButton>
-          Sign up now
-        </CustomActionButton>
+        <Fab onClick={onClickSignUp} variant="extended" color='primary' size='large' sx={{ marginTop:'1rem',fontWeight:'bold',zIndex:'1',textTransform:'none'}}>
+
+Sign Up Now
+<ChevronRightIcon sx={{ ml: 1 }} />
+</Fab>
         </Box>
         
             </Container>

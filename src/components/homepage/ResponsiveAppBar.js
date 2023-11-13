@@ -13,8 +13,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
+import { Divider, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import SideMenu from './SideMenu';
 
-const pages = ['About Us', 'Log In', 'Sign Up'];
+const pages = [ 'Log In', 'Sign Up'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -43,7 +45,7 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+ 
   return (
     <>
     <AppBar elevation={0} position="static" sx={{backgroundColor:'white' ,color:'inherit' ,position:'fixed',zIndex:'2'}}>
@@ -80,16 +82,17 @@ function ResponsiveAppBar() {
           </Typography> */}
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' },justifyContent:'right' }}>
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleOpenNavMenu}
+              onClick={()=>toggleDrawer('right', true)}
               color="inherit"
             >
               <MenuIcon />
-            </IconButton>
+            </IconButton> */}
+            <SideMenu/>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -158,6 +161,8 @@ function ResponsiveAppBar() {
             </Menu>
           </Box> */}
         </Toolbar>
+
+        
       </Container>
     </AppBar>
     </>
