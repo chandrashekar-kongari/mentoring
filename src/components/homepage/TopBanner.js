@@ -50,7 +50,7 @@ Sign Up Now
         </Stack>
         <Box sx={{paddingTop:'3rem',paddingBottom:'3rem',backgroundColor:'#f7f7f7'}}>
         <Container maxWidth='lg' sx={{justifyContent:{xs:'left',md:'center'},textAlign:'center'}}>
-        <Container maxWidth='sm'>
+        <Container maxWidth='sm' sx={{}}>
         <Typography variant='h5' sx={{fontWeight:900,textAlign:{xs:'left',md:'center'}}}>
             TechPACT Mentoring Program
         </Typography>
