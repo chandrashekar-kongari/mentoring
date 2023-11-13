@@ -31,6 +31,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ImageTransition from '../components/homepage/ImageTransition';
 import StepsAnimation from '../components/homepage/StepsAnimation';
 import { CustomBox, MainHeadTypography } from '../components/newhomepage/PageComponents';
+import ThreeCardsLayout from '../components/homepage/ThreeCardsLayout';
 
 
 export default function HomePage() {
@@ -80,21 +81,27 @@ export default function HomePage() {
      
       <svg style={{position:'absolute',zIndex:-1}} width="90%" height="770" viewBox="0 0 1440 770" fill="none" xmlns="http://www.w3.org/2000/svg"><rect opacity="0.8" x="951" y="70" width="480" height="480" fill="url(#radial1)"></rect><rect opacity="0.8" x="32" y="14" width="586" height="586" fill="url(#radial2)"></rect><defs> <radialGradient id="radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1191 310) rotate(90) scale(240)"><stop stop-color="#c9cbf5"></stop><stop offset="1" stop-color="#e6e7fa" stop-opacity="0"></stop></radialGradient><radialGradient id="radial2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(325 307) rotate(90) scale(293)"><stop stop-color="#c9cbf5"></stop><stop offset="1" stop-color="#c9cbf5" stop-opacity="0"></stop></radialGradient></defs></svg>
       <TopBanner/>
+    
+
+
+
 
       <ImageTransition/>
-
       
-      <Box sx={{position:'relative',top:'-200px'}}>
-
+     
+      
+      <Box sx={{position:'relative',top:'-150px'}}>
+      <ThreeCardsLayout/>
       <Box sx={{zIndex:'0',}}>
       
 
 
       <Box sx={{}}>
+  
       <CompanyIconsDisplay/>
      
       </Box>
-      <CustomBox>
+      {/* <CustomBox>
       <Container maxWidth='xl' sx={{marginTop:'2rem', paddingTop:'2rem',paddingBottom:'2rem',background:backgroundGradient,color:'white'}}>
         <Typography variant='h5' sx={{textAlign:'center',paddingBottom:'2rem',}}>Achieve your goals in 3 steps</Typography>
       
@@ -132,7 +139,7 @@ export default function HomePage() {
           </Box>
         </Stack>
       </Container>
-      </CustomBox>
+      </CustomBox> */}
 
       {/* <CustomBox>
 
@@ -307,7 +314,7 @@ Create an account
 
 
       <CustomBox>
-      <Container  sx={{marginTop:'2rem',marginBottom:'2rem',borderRadius:'2rem', paddingTop:'6rem',paddingBottom:'6rem',backgroundColor:'#f7f7f7',marginTop:'100px'}}>
+      <Container  sx={{height:{xs:'60vh',md:'90vh'},marginTop:'2rem',marginBottom:'2rem',borderRadius:'2rem', paddingTop:'6rem',paddingBottom:'6rem',backgroundColor:'#f7f7f7',marginTop:'100px'}}>
       <Carousel
             
             

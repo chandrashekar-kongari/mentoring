@@ -31,7 +31,7 @@ export default function Questions() {
     ])
   return (
     <CustomBox>
-      <Container maxWidth='md' >
+      <Container maxWidth='md'  >
 <MainHeadTypography sx={{fontSize:'48px',fontWeight:'bold',paddingBottom:'1rem',textAlign:'left'}}>
     Have any questions?
           </MainHeadTypography>
