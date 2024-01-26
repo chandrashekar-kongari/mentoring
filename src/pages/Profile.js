@@ -7,6 +7,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EditIcon from '@mui/icons-material/Edit';
 import FolderIcon from '@mui/icons-material/Folder';
 import Modal from '@mui/material/Modal';
+import AddIcon from '@mui/icons-material/Add';
 import PurposeInformation from '../components/signup/PurposeInformation';
 import AreaOfIntrestsForMentors from '../components/signup/AreaOfIntrestsForMentor';
 import UpdateSkills from '../components/updateprofile/UpdateSkills';
@@ -20,6 +21,10 @@ import UpdateResume from '../components/updateprofile/UpdateResume';
 import UpdateIntrests from '../components/updateprofile/UpdateIntrests';
 import AlertComponent from '../components/AlertComponent';
 import Loading from '../components/Loading';
+import UpdateGender from '../components/updateprofile/UpdateGender';
+import UpdateFirstGenStudent from '../components/updateprofile/UpdateFirstGenStudent';
+import UpdateRacial from '../components/updateprofile/UpdateRacial';
+import UpdateHobbies from '../components/updateprofile/UpdateHobbies';
 
 const style = {
   position: 'absolute',
@@ -27,6 +32,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 300,
+
   bgcolor: 'background.paper',
   // border: '2px solid #000',
   borderRadius:'6px',
@@ -69,6 +75,29 @@ const Profile = () => {
     title:'C# Programming',
     selected:false
   }])
+
+  const [allHobbies,setAllHobbies]=useState([{
+    title:'Being outdoors',
+    selected:false
+  },
+  {
+    title:'Collecting items',
+    selected:false
+  },
+  {
+    title:'Creating content',
+    selected:false
+  },
+  
+  {
+    title:'Gardening',
+    selected:false
+  },
+  
+  {
+    title:'Learning new languages',
+    selected:false
+  }])
   const addOrReplaceObject = (newObjects) => {
     const newData = [...allSkills]; // Create a new array to ensure immutability
     // const index = newData.findIndex(item => item.title === newObject.title);
@@ -87,6 +116,26 @@ const Profile = () => {
 
     setAllSkills(newData); // Update the state with the new data
   };
+
+  const addOrReplaceHobbies = (newObjects) => {
+    const newData = [...allHobbies]; // Create a new array to ensure immutability
+    // const index = newData.findIndex(item => item.title === newObject.title);
+
+    newObjects.forEach(newObject => {
+      const index = newData.findIndex(item => item.title === newObject.title);
+
+      if (index !== -1) {
+        newData[index] = newObject; // Replace the existing object
+      } else {
+        newData.push(newObject); // Add the new object
+      }
+    });
+
+    console.log('upd ',newData)
+
+    setAllHobbies(newData); // Update the state with the new data
+  };
+
   const [intrests,setIntrests]=useState([{
     title:'Leadership',
     selected:false
@@ -113,11 +162,19 @@ const Profile = () => {
     'fieldofstudy':'',
     'degree':''
   })
+  const [gender,setGender]=useState('')
+  const [racial,setRacial]=useState([])
+  const [firstGenStudent,setFirstGenStudent]=useState('')
   const handleChangeEdu=(event)=>{
     const {name,value}=event.target
     setEdu({...edu,[name]:value})
-    
-}
+  }
+
+
+  const handleChangeRacial=(event)=>{
+    const {name,value}=event.target
+    setEdu({...edu,[name]:value})
+  }
   const [personalInfo,setPersonalInfo]=useState({})
   const addOrReplaceIntrests = (newObjects) => {
     const newData = [...intrests]; // Create a new array to ensure immutability
@@ -171,6 +228,7 @@ const Profile = () => {
               setUserObj(response.data)
               dispatch(saveUserObj(response.data))
               addOrReplaceObject(response.data.skills);
+              addOrReplaceHobbies(response.data.hobbies);
 
               const per={
                 'firstname':response.data.firstname,
@@ -190,6 +248,8 @@ const Profile = () => {
                 addOrReplaceIntrests(response.data.mentorIntrests)
               }
               setLinkedIn(response.data.linkedinProfile)
+              setGender(response.data.gender)
+              setFirstGenStudent(response.data.firstGenStudent)
 
               console.log('user details in profile ',response.data)
 
@@ -238,6 +298,14 @@ const Profile = () => {
   const handleUpdatePersonalInfo=async()=>{
     setUpdating(true)
     handleClose()
+    if(personalInfo.firstname=='' || personalInfo.lastname=='' || personalInfo.additionalInformation==''){
+      setAlertType('error')
+              setAlertMessage('Error while updating')
+
+              setUpdating(false)
+              handleShowAlert(true)
+              return
+    }
     const obj={
       'id':userObj._id,
       'firstname':personalInfo.firstname,
@@ -403,6 +471,159 @@ const Profile = () => {
           }
 
   }
+  const handleUpdateGender=async()=>{
+    setUpdating(true)
+    handleClose()
+    const obj={
+      'id':userObj._id,
+      'gender':gender
+    }
+    try {
+      const response = await axios.post(`${endpoint}/updategender`,obj);
+    
+          if (response.status === 200) {
+            const a=true
+            // dispatch(setAuth(a))
+            const user=response.data
+            console.log('details ',user)
+            if(user==null){
+              setAlertType('error')
+              setAlertMessage('Error while updating')
+              handleShowAlert(true)
+
+              setUpdating(false)
+            }
+            else{
+              setUserObj(response.data.user)
+              dispatch(saveUserObj(response.data.user))
+
+              setLinkedIn(response.data.user.linkedinProfile)
+              setAlertType(response.data.type)
+              setAlertMessage(response.data.message)
+              setUpdating(false)
+              handleShowAlert(true)
+              
+            }
+          } else {
+            console.error('Failed to submit user data.');
+            setAlertType('error')
+              setAlertMessage('Error while updating')
+
+              setUpdating(false)
+              handleShowAlert(true)
+            }
+          } catch (error) {
+          console.error('Error:', error);
+          setAlertType('error')
+              setAlertMessage('Error while updating')
+
+              setUpdating(false)
+              handleShowAlert(true)
+          }
+
+  }
+  const handleUpdateFirstGenStudent=async()=>{
+    setUpdating(true)
+    handleClose()
+    const obj={
+      'id':userObj._id,
+      'firstGenStudent':firstGenStudent
+    }
+    try {
+      const response = await axios.post(`${endpoint}/updatefirstgenstudent`,obj);
+    
+          if (response.status === 200) {
+            const a=true
+            // dispatch(setAuth(a))
+            const user=response.data
+            console.log('details ',user)
+            if(user==null){
+              setAlertType('error')
+              setAlertMessage('Error while updating')
+              handleShowAlert(true)
+
+              setUpdating(false)
+            }
+            else{
+              setUserObj(response.data.user)
+              dispatch(saveUserObj(response.data.user))
+
+              setLinkedIn(response.data.user.linkedinProfile)
+              setAlertType(response.data.type)
+              setAlertMessage(response.data.message)
+              setUpdating(false)
+              handleShowAlert(true)
+              
+            }
+          } else {
+            console.error('Failed to submit user data.');
+            setAlertType('error')
+              setAlertMessage('Error while updating')
+
+              setUpdating(false)
+              handleShowAlert(true)
+            }
+          } catch (error) {
+          console.error('Error:', error);
+          setAlertType('error')
+              setAlertMessage('Error while updating')
+
+              setUpdating(false)
+              handleShowAlert(true)
+          }
+
+  }
+  const handleUpdateRacial=async()=>{
+    setUpdating(true)
+    handleClose()
+    const obj={
+      'id':userObj._id,
+      'racial':racial
+    }
+    try {
+      const response = await axios.post(`${endpoint}/updateracial`,obj);
+    
+          if (response.status === 200) {
+            const a=true
+            // dispatch(setAuth(a))
+            const user=response.data
+            console.log('details ',user)
+            if(user==null){
+              setAlertType('error')
+              setAlertMessage('Error while updating')
+              handleShowAlert(true)
+
+              setUpdating(false)
+            }
+            else{
+              setUserObj(response.data.user)
+              dispatch(saveUserObj(response.data.user))
+
+              setLinkedIn(response.data.user.linkedinProfile)
+              setAlertType(response.data.type)
+              setAlertMessage(response.data.message)
+              setUpdating(false)
+              handleShowAlert(true)
+              
+            }
+          } else {
+            console.error('Failed to submit user data.');
+            setAlertType('error')
+              setAlertMessage('Error while updating')
+
+              setUpdating(false)
+              handleShowAlert(true)
+            }
+          } catch (error) {
+          console.error('Error:', error);
+          setAlertType('error')
+              setAlertMessage('Error while updating')
+
+              setUpdating(false)
+              handleShowAlert(true)
+          }
+
+  }
   const handleUpdateIntrests=async()=>{
     setUpdating(true)
     handleClose()
@@ -489,6 +710,61 @@ const Profile = () => {
               dispatch(saveUserObj(response.data.user))
 
               addOrReplaceObject(response.data.user.skills)
+              addOrReplaceHobbies(response.data.user.hobbies)
+              setAlertType(response.data.type)
+              setAlertMessage(response.data.message)
+              setUpdating(false)
+              handleShowAlert(true)
+              
+            }
+          } else {
+            console.error('Failed to submit user data.');
+            setAlertType('error')
+              setAlertMessage('Error while updating')
+
+              setUpdating(false)
+              handleShowAlert(true)
+            }
+          } catch (error) {
+          console.error('Error:', error);
+          setAlertType('error')
+              setAlertMessage('Error while updating')
+
+              setUpdating(false)
+              handleShowAlert(true)
+          }
+  }
+
+  const handleUpdateHobbies=async()=>{
+    setUpdating(true)
+    handleClose()
+    const s=allHobbies.filter(item => item.selected);
+    const obj={
+      'id':userObj._id,
+      'hobbies':s
+    }
+    try {
+      const response = await axios.post(`${endpoint}/updatehobbies`,obj);
+    
+          if (response.status === 200) {
+            const a=true
+            // dispatch(setAuth(a))
+            const user=response.data
+            console.log('details ',user)
+            if(user==null){
+              setAlertType('error')
+              setAlertMessage('Error while updating')
+              handleShowAlert(true)
+
+              setUpdating(false)
+            }
+            else{
+              setUserObj(response.data.user)
+              dispatch(saveUserObj(response.data.user))
+
+              addOrReplaceObject(response.data.user.skills)
+              addOrReplaceHobbies(response.data.user.hobbies)
+
               setAlertType(response.data.type)
               setAlertMessage(response.data.message)
               setUpdating(false)
@@ -568,6 +844,8 @@ const Profile = () => {
         dispatch(saveUserObj(response.data.user))
 
         addOrReplaceObject(response.data.user.skills)
+        addOrReplaceHobbies(response.data.user.hobbies)
+
         setAlertType(response.data.type)
         setAlertMessage(response.data.message)
         setUpdating(false)
@@ -610,12 +888,17 @@ const Profile = () => {
       >
         <Box sx={style}>
           {section=='personal' && <UpdateNameAndBio handleClose={handleClose} personalInfo={personalInfo} setPersonalInfo={setPersonalInfo} handleSave={handleUpdatePersonalInfo}/>}
-          {section=='education' && <UpdateEducation handleClose={handleClose} edu={edu} handleChande={handleChangeEdu} setEdu={setEdu} handleSave={handleUpdateEducationalInfo}/>}
+          {section=='education' && <UpdateEducation handleClose={handleClose} edu={edu} setEdu={setEdu} handleSave={handleUpdateEducationalInfo}/>}
           {section=='intrests' && <UpdateIntrests handleClose={handleClose} intrests={intrests} setIntrests={setIntrests} handleSave={handleUpdateIntrests}/>}
           {section=='skills' && <UpdateSkills handleClose={handleClose} val={allSkills} setVal={setAllSkills} handleUpdateSkills={handleUpdateSkills}/>}
           {section=='linkedin' && <UpdateLinkedIn linkedIn={linkedIn} setLinkedIn={setLinkedIn} handleClose={handleClose} handleSave={handleUpdateLinkedInProfile}/>}
           {section=='resume' && <UpdateResume resume={resume} handleFileChange={handleFileChange} setResume={setResume} handleSave={handleUpdateResume} handleClose={handleClose}/>}
-          
+          {section=='hobbies' && <UpdateHobbies handleClose={handleClose} val={allHobbies} setVal={setAllHobbies} handleUpdateSkills={handleUpdateHobbies}/>}
+
+          {section=='gender' && <UpdateGender handleClose={handleClose} genderState={userObj.gender} gender={gender}  setGender={setGender} handleSave={handleUpdateGender}/>}
+          {section=='firstGenStudent' && <UpdateFirstGenStudent handleClose={handleClose} firstGenStudentState={userObj.firstGenStudent} firstGenStudent={firstGenStudent}  handleChange={setFirstGenStudent} setFirstGenStudent={setFirstGenStudent} handleSave={handleUpdateFirstGenStudent}/>}
+          {section=='racial' && <UpdateRacial handleClose={handleClose} racialLocalState={racial} racial={userObj.racial} handleChange={setRacial} setRacial={setRacial} handleSave={handleUpdateRacial}/>}
+
           
 
           
@@ -795,6 +1078,84 @@ const Profile = () => {
       
 
     </Box>
+    <Container maxWidth='md' sx={{marginTop:'3rem'}}>
+    <Typography  sx={{fontSize:'30px',fontWeight:'bold'}}>
+    More about me…
+
+    </Typography>
+    <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
+      <Stack spacing={2}>
+      <Typography sx={{fontSize:'14px',fontWeight:'bold'}}>
+      Hobbies
+      </Typography>
+      {(userObj.hobbies && userObj.hobbies.length>0) ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> 
+      <Stack sx={{flexDirection:'row',display:'flex',flexWrap:'wrap'}}>
+        {userObj.hobbies.map((hobby)=>{
+          return(
+            <Chip label={hobby.title} sx={{fontSize:'14px',marginRight:'1rem',marginBottom:'1rem'}}></Chip>
+          )
+      
+        })}
+        <IconButton onClick={()=>handleUpdate('hobbies')} sx={{
+          marginRight:'1rem',marginBottom:'1rem'
+            }}>
+              <EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton>
+      </Stack>  
+      
+      
+              </Stack>:<Chip onClick={()=>handleUpdate('hobbies')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}        </Stack>
+
+    </Container>
+
+    <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
+      <Stack spacing={2}>
+      <Typography sx={{fontSize:'14px',fontWeight:'bold'}}>
+      Racial/Ethnic Identities
+      </Typography>
+      {(userObj.racial && userObj.racial.length>0) ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> 
+      <Stack sx={{flexDirection:'row',display:'flex',flexWrap:'wrap'}}>
+        {userObj.racial.map((race)=>{
+          return(
+            <Chip label={race} sx={{fontSize:'14px',marginRight:'1rem',marginBottom:'1rem'}}></Chip>
+          )
+      
+        })}
+        <IconButton onClick={()=>handleUpdate('racial')} sx={{
+          marginRight:'1rem',marginBottom:'1rem'
+            }}>
+              <EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton>
+      </Stack>  
+      
+      
+              </Stack>:<Chip onClick={()=>handleUpdate('racial')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}  
+
+            </Stack>
+
+    </Container>
+    <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
+      <Stack spacing={2}>
+      <Typography sx={{fontSize:'14px',fontWeight:'bold'}}>
+      Gender Identity
+      </Typography>
+
+      {(userObj.gender && userObj.gender!='') ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> <Typography  sx={{fontSize:'14px',marginRight:'3px'}}>{userObj.gender }</Typography> <IconButton onClick={()=>handleUpdate('gender')} sx={{
+            }}><EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton></Stack>:<Chip onClick={()=>handleUpdate('gender')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}
+      
+  
+      </Stack>
+
+    </Container>
+    <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
+      <Stack spacing={2}>
+      <Typography sx={{fontSize:'14px',fontWeight:'bold'}}>
+      First-Gen Student/Grad
+      </Typography>
+      {(userObj.firstGenStudent && userObj.firstGenStudent!='') ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> <Typography  sx={{fontSize:'14px',marginRight:'3px'}}>{userObj.firstGenStudent }</Typography> <IconButton onClick={()=>handleUpdate('firstGenStudent')} sx={{
+            }}><EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton></Stack>:<Chip onClick={()=>handleUpdate('firstGenStudent')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}      </Stack>
+
+    </Container>
+    </Container>
+    
   </Box>:<Loading loading={updating}/>}</>:<></>}
     </>
   )

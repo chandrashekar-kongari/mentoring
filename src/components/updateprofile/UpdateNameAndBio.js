@@ -24,8 +24,14 @@ const UpdateNameAndBio = ({handleClose,personalInfo,setPersonalInfo,handleSave})
         }
         
     }
+    const handleSubmit = (e) => {
+        e.preventDefault(); 
+        handleSave()
+        // You can add your form submission logic here
+      };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
         <Box sx={{justifyContent:'center'}}>
         <Stack sx={{flex:1,flexDirection:'row',justifyContent:'center',paddingBottom:'1rem',marginTop:'0px'}}>
             <Typography sx={{fontWeight:'bold',padding:'0px',margin:'0px'}}>Update Personal Information</Typography>
@@ -65,7 +71,7 @@ const UpdateNameAndBio = ({handleClose,personalInfo,setPersonalInfo,handleSave})
                 <textarea placeholder='Bio' required style={{maxWidth:'320px'}} name="additionalInformation" value={personalInfo.additionalInformation} onChange={handleChange} rows={4} cols={40}  />
                 </Stack>
                 <FormControl fullWidth>        
-                    <Button onClick={handleSave} variant='contained' sx={{marginTop:'1rem'}}>Save</Button>
+                    <Button type='submit' variant='contained' sx={{marginTop:'1rem'}}>Save</Button>
                 </FormControl>
                 </Box>
     </form>

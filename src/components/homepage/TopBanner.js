@@ -17,7 +17,7 @@ const TopBanner = () => {
             <Container maxWidth='md'  sx={{ justifyContent:'center',textAlign:'center'}}>
             
             <Typography sx={{color:'#1976d2', fontSize:'50px',fontWeight:900, fontFamily:"'Inter', serif"}}>
-            <span style={{fontSize:'56px'}}>GROW TOGETHER</span> 
+            <span style={{fontSize:'56px'}}>GROW</span> <span style={{fontSize:'56px',paddingLeft:'10px'}}>TOGETHER</span>
         </Typography>
         <Typography sx={{fontSize:'50px',fontWeight:900,fontFamily:"'Inter', serif"}}>
             through 1:1 mentorship

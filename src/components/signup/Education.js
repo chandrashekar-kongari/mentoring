@@ -168,7 +168,7 @@ const Education = ({step,handleNext,handleBack}) => {
                     
                      fullWidth/> */}
         <MuiFileInput  disabled={!resumeUpload} hideSizeText value={value}   placeholder='Please upload resume' sx={{marginTop:'1rem'}} onChange={handleFileChange} />
-        <FormControlLabel name='mentor' onChange={handleResumeUploadFlag} control={<Checkbox checked={!resumeUpload} />} label="I don't you have a resume?" />
+        <FormControlLabel name='mentor' onChange={handleResumeUploadFlag} control={<Checkbox checked={!resumeUpload} />} label="I will add later" />
         <FormControl  fullWidth variant="outlined" style={{paddingBottom:'1rem'}}>
                 <InputLabel >Linkedin profile link</InputLabel>
                 <OutlinedInput
@@ -186,7 +186,7 @@ const Education = ({step,handleNext,handleBack}) => {
 
                 
                 </FormControl>
-                <FormControlLabel name='mentor' onChange={handleLinkedinShareFlag} control={<Checkbox checked={!linkedinShare} sx={{padding:'0px',margin:'0px'}}/>} sx={{padding:'0px'}}  label="I did have a LinkedIn profile?" />
+                <FormControlLabel name='mentor' onChange={handleLinkedinShareFlag} control={<Checkbox checked={!linkedinShare} sx={{padding:'0px',margin:'0px'}}/>} sx={{padding:'0px'}}  label="I will add later" />
 
       </Box>
       <Stack sx={{flexDirection:'row',justifyContent:'space-between'}}>

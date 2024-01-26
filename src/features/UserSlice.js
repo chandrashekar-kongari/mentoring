@@ -46,11 +46,11 @@ const initialState={
         selected:false
       },
       {
-        title:'Career guidance',
+        title:'Career Guidance',
         selected:false
       },
       {
-        title:'Thought parter',
+        title:'Thought Parter',
         selected:false
       },
       {
@@ -66,11 +66,11 @@ const initialState={
         selected:false
       },
       {
-        title:'Career guidance',
+        title:'Career Guidance',
         selected:false
       },
       {
-        title:'Thought parter',
+        title:'Thought Parter',
         selected:false
       },
       {
@@ -130,7 +130,9 @@ const initialState={
     numberofmentees:'',
     skipResume:'',
     userObj:null,
-    resid:''
+    resid:'',
+    hobbies:[],
+    lifeCycle:[]
 
 }
 
@@ -190,6 +192,10 @@ export const userSlice=createSlice({
             const val=action.payload
             state.skills=val
         },
+        updateHobby:(state,action)=>{
+          const val=action.payload
+          state.hobbies=val
+      },
         addEducation:(state,action)=>{
             const val=action.payload
             state.education=val
@@ -222,11 +228,15 @@ export const userSlice=createSlice({
         setAdditionaInformation:(state,action)=>{
           const val=action.payload
           state.additionInformation=val
+        },
+        saveLifeCycle:(state,action)=>{
+          const val=action.payload
+          state.lifeCycle=val
         }
         
         
     }
 })
 
-export const {saveResId,saveUserObj,saveUser,saveSkipResume,saveNumberOfMentees,saveLinkedinProfile,saveFirstName,saveLastName,setAdditionaInformation,updateSkill,addSkill,addEducation,addResume,setAuth,setRequiredDetails,setMentee,setMentor,setMenteeIntrests,setMentorIntrests,setMentorshipIntrests,addExperience} =userSlice.actions
+export const {saveLifeCycle,updateHobby,saveResId,saveUserObj,saveUser,saveSkipResume,saveNumberOfMentees,saveLinkedinProfile,saveFirstName,saveLastName,setAdditionaInformation,updateSkill,addSkill,addEducation,addResume,setAuth,setRequiredDetails,setMentee,setMentor,setMenteeIntrests,setMentorIntrests,setMentorshipIntrests,addExperience} =userSlice.actions
 export default userSlice.reducer

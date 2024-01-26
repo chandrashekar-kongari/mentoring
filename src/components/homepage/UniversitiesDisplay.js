@@ -18,7 +18,7 @@ const UniversitiesDisplay = () => {
             </Box>
             <Box sx={{justifyContent:'space-between'}}>
 
-                <img src='sacred-heart-university-logo.png' style={{width:'auto',height:'80px'}}/>
+                <img src='sacred-heart-university-logo.png' style={{width:'auto',height:'100px'}}/>
                 <img src='boston-university-logo.png' style={{width:'auto',height:'80px'}}/>
                 <img src='fordham-university-logo.png' style={{width:'auto',height:'100px'}}/>
                 <img src='howard-university-logo.png' style={{width:'auto',height:'80px'}}/>

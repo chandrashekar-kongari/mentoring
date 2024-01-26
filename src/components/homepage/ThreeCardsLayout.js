@@ -33,7 +33,7 @@ const ThreeCardsLayout = () => {
           <CardContent >
             <Stack spacing={3}>
             <Typography variant='h6'>
-              Partispate in Mentorship
+            Participate in Mentorship
             </Typography>
             <Typography variant='subtitle1'>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, doloremque similique? Eum dolorum, ducimus aperiam, provident earum, dolor at ab 

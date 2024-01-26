@@ -1,0 +1,35 @@
+.ongoing-outer-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color:#FBEDD9;
+    position: relative;
+  }
+  
+  .ongoing-inner-circle,
+  .ongoing-second-inner-circle,
+  .ongoing-third-inner-circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the circle exactly */
+  }
+  
+  .ongoing-inner-circle {
+    background-color: #FBEDD9;
+  }
+  
+  .ongoing-second-inner-circle {
+    background-color: white;
+    width: 15px; /* Adjust the size as needed */
+    height: 15px; /* Adjust the size as needed */
+  }
+  
+  .ongoing-third-inner-circle {
+    background-color:#917042; /* Add color for the third inner circle */
+    width: 8px; /* Adjust the size as needed */
+    height: 8px; /* Adjust the size as needed */
+  }
