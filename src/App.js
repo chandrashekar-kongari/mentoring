@@ -4,18 +4,18 @@ import Box from '@mui/material/Box';
 
 
 import {  Routes, Route } from "react-router-dom";
-import Login from './components/Login';
-import HomePage from './pages/HomePage';
+import Login from './pages/login/Login';
+import HomePage from './pages/homepage/HomePage';
 import Header from './pages/Header';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import SignUp from './components/signup/SignUp';
-import Home from './pages/Home';
+import SignUp from './pages/signup/SignUp';
+import Home from './pages/authenticated_home/Home';
 import Admin from './pages/Admin';
-import SuccessPage from './components/signup/SuccessPage';
+
 import FeedBack from './components/FeedBack';
-import Profile from './pages/Profile';
-import Protected from './pages/Protected';
+import Profile from './pages/profile/Profile';
+
 import { Typography } from '@mui/material';
 import Error404Page from './pages/Error404Page';
 import ForgotPassword from './pages/ForgotPassword';
@@ -26,7 +26,15 @@ import {
   responsiveFontSizes,
   ThemeProvider,
 } from '@mui/material/styles';
-import SideMenu from './components/homepage/SideMenu';
+import SideMenu from './pages/homepage/components/SideMenu';
+import { PrivateRoutes } from './pages/PrivateRoutes';
+
+import endpoint from './API/api';
+import axios from 'axios';
+import ContactUs from './pages/ContactUs';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import HelpCenter from './pages/HelpCenter';
+import SuccessPage from './pages/signup/components/signup/SuccessPage';
 
 let theme = createTheme({
   typography: {
@@ -104,54 +112,70 @@ function App() {
   const [auth,setAuth]=useState(false)
   const a=useSelector(state=>state.isAuthenticated)
   const au=localStorage.getItem('auth')
+
+  const autheticated=async()=>{
+
+    try {
+      const token=localStorage.getItem('token')
+        const axiosConfig = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          
+          },
+        };
+      const response = await axios.get(`${endpoint}/isautheticated`,axiosConfig);
+    
+          if (response.status === 200) {
+    
+            setAuth(true)
+          }
+          else{
+            setAuth(false)
+          }
+        }
+          catch(error){
+            setAuth(false)
+          }
+
+    
+  }
   
   useEffect(()=>{
 
     
-    if(au=='true'){
-      setAuth(true)
-    }
-    else{
-      setAuth(false)
-    }
-
+    autheticated()
     
 
-  },[a])
+  },[auth])
   
   return (<ThemeProvider theme={theme}>
 
       
-      
-
-
     <Box >
-      {auth && <Header setAuthUser={setAuth}/>}
-      {/* <FeedBack/> */}
+      {/* {auth && <Header />} */}
       
       <Routes>
+      <Route element={<PrivateRoutes/>}>
+             
+           
+            <Route path="/homepage" element={<Home />    }/>
+            <Route path="/profile" element={<Profile/>}/>
+            <Route path='/viewresume' element={<PdfViewer  />}/> 
+      </Route>
+
       <Route path="/" element={<HomePage />}/>
       <Route path="/sidemenu" element={<SideMenu />}/>
-      <Route path="/homepage" element={
-       
-        <Home />
-    
       
-      }/>
-      {/* <Route path="/admin" element={
-        <Protected>
-          <Admin />
-        </Protected>
-      }/> */}
       <Route path="/login" element={<Login />}/>
       <Route path="/forgotpassword" element={<ForgotPassword />}/>
       <Route path="/signup" element={<SignUp />}/>
-      <Route path="/success" element={<SuccessPage/>}/>
+      <Route path="/success-page" element={<SuccessPage/>}/>
       <Route path="/loading" element={<Loading/>}/>
-      <Route path="/profile" element={<Profile/>}/>
-      
-      <Route path='/viewresume' element={<PdfViewer  />}/> 
 
+      <Route path="/contactus" element={<ContactUs/>}/>
+      <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
+      <Route path="/help-center" element={<HelpCenter/>}/>
+    
     </Routes>
   </Box>
 

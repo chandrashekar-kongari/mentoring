@@ -34,26 +34,15 @@ export default function ImageDisplay() {
     }
 ]
   return (
-    // <Card sx={{paddingTop:'',flex:1,height:'300px',width:'400px' }} elevation={0} >height of carasol 200px</Card>
     <Card sx={{paddingTop:'',flex:1, }} elevation={0} >
       <Carousel
-        navButtonsProps={{          // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
+        navButtonsProps={{          
           style: {
-              // backgroundColor: 'none',
-              // borderRadius: 0,
+
               opacity:0.5
           }
       }} 
-    //   navButtonsWrapperProps={{   // Move the buttons to the bottom. Unsetting top here to override default style.
-    //     style: {
-    //         bottom: '0',
-    //         top: 'unset',
-    //         backgroundColor:'red'
-    //     }
-    // }} 
-        // NextIcon={<KeyboardTabOutlinedIcon/>}
-        // PrevIcon={<NavigateNextOutlinedIcon/>}
-       indicators={true} navButtonsAlwaysVisible={true} animation='slide' duration='800'>
+          indicators={true} navButtonsAlwaysVisible={true} animation='slide' duration='800'>
             {
                 items.map( (item, i) => <CardMedia
                 key={i}

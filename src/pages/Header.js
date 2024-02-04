@@ -15,7 +15,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 import { saveUserObj, setAuth } from '../features/UserSlice';
 
-export default function Header({setAuthUser}) {
+export default function Header({}) {
   const dispatch=useDispatch()
     const navigate=useNavigate()
 
@@ -27,16 +27,19 @@ export default function Header({setAuthUser}) {
     // setAuth(event.target.checked);
   };
   const a=useSelector(state=>state.isAuthenticated)
-  React.useEffect(()=>{
-    setAuththentication(a)
+  const autheticated=()=>{
 
-  },[a])
+  }
+  React.useEffect(()=>{
+    // setAuththentication(a)
+
+  },[])
 
   const handleLogOut=()=>{
     const v=false
-    setAuthUser(false)
-    localStorage.setItem('auth','false')
-    localStorage.setItem('userid','')
+    
+    localStorage.setItem('token','')
+
     dispatch(saveUserObj({}))
     dispatch(setAuth(v))
     navigate('/')
@@ -98,6 +101,9 @@ export default function Header({setAuthUser}) {
                 {/* <AccountCircle /> */}
                 <MenuIcon/>
               </IconButton>
+
+
+              
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
