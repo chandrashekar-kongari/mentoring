@@ -43,7 +43,7 @@ const ThreeCardsLayout = () => {
             </Typography>
             <Typography variant='subtitle1'>
             A complete profile helps us understand you and match you to a mentor that meets your needs.​            </Typography>
-            <img src='./communicate_image2.png' style={{maxWidth: '550px',height:'auto'}}/>
+            <img src='./step4.png' style={{maxWidth: '550px',height:'auto'}}/>
             </Stack>
           </CardContent>
         </Card>

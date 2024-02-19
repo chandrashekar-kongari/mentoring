@@ -39,13 +39,13 @@ const GridWithCards = () => {
     
     { row: 2, col: 2,imgurl: 'person1.jpeg',name:'Olamide'},
     { row: 4, col: 2 ,imgurl: 'profile3.jpg',name:'Ibrahim'},
-    { row: 1, col: 4,imgurl: 'mentor2.jpeg',name:'Isabelle' },
+    { row: 1, col: 4,imgurl: 'mentor2.jpg',name:'Isabelle' },
     { row: 3, col: 4 ,imgurl: 'people1.jpg',name:'Olivia'},
     
-    { row: 2, col: 6 ,imgurl: 'mentee2.jpeg',name:'Uduak'},
+    { row: 2, col: 6 ,imgurl: 'mentee2.jpg',name:'Uduak'},
     { row: 4, col: 6 ,imgurl: 'people6.png',name:'Isabelle'},
     {row:1, col:8 ,imgurl: 'rating2.jpg',name:'Idara'},
-    {row:3, col:8 ,imgurl: 'mentor2.jpeg',name:'Idara'},
+    {row:3, col:8 ,imgurl: 'mentor2.jpg',name:'Idara'},
 
     { row: 2, col: 10 ,imgurl: 'profile5.jpg',name:'Wilson'},
     { row: 4, col: 10 ,imgurl: 'rating1.jpg',name:'Uduak'},
