@@ -47,8 +47,8 @@ export default function Footer() {
              <Box sx={{justifyContent:'space-between',display:'flex',flexWrap:'wrap'}}>
             <Link style={{ textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="https://www.techpact.org/"><Button>© TechPACT, org</Button></Link>
 
-            <Link style={{textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="/terms-of-use"><Button>Terms of Use</Button></Link>
-              <Link style={{textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="/privacy-policy"><Button>Privacy Policy</Button></Link>
+            {/* <Link style={{textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="/terms-of-use"><Button>Terms of Use</Button></Link>
+              <Link style={{textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="/privacy-policy"><Button>Privacy Policy</Button></Link> */}
             </Box>
             <Stack sx={{flexDirection:'row',justifyContent:'right'}}>
             {rightBtns.map((btn)=>{

@@ -189,7 +189,7 @@ const TopBanner = () => {
       </Fab>
       </Box>
       <Box sx={{paddingTop:'2rem',textAlign:'center',}}>
-      <img src='poweredbyshu.svg' style={{margin:0,padding:0,justifyContent:'left', width:'200px',height:'auto',}}/>
+      <img src='poweredbyshu.png' style={{margin:0,padding:0,justifyContent:'left', width:'200px',height:'auto',}}/>
       </Box>
       </Stack>
   </Box>

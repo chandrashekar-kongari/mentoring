@@ -32,7 +32,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 const GridWithCards = () => {
   // Define the positions where the cards will be displayed
-  const profileimages=['rating2.jpg','mentor2.jpeg','people1.jpg','person1.jpeg',
+  const profileimages=['rating2.jpg','mentor2.jpg','people1.jpg','person1.jpg',
   'profile3.jpg',]
 
   const cardPositions = [

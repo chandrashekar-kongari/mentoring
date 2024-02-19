@@ -50,9 +50,12 @@ let theme = createTheme({
     
   },
   spacing: 3,
-  
+  palette: {
+    
+  },
 });
 theme.spacing(10)
+
 theme.typography.h4 = {
   fontSize: '1.2rem',
   fontFamily:'Inter',
