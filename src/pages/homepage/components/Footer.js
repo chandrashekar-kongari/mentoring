@@ -5,6 +5,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link } from 'react-router-dom';
+import techPactHomeURL from '../../../API/TechPactHomeURL';
 export default function Footer() {
     const leftBtns=[
       {name:'© TechPACT, org'},{name:'Terms of Use'},{name:'Privacy Policy'}]
@@ -45,7 +46,7 @@ export default function Footer() {
 
             </Stack> */}
             <Box sx={{justifyContent:'space-between',display:'flex',flexWrap:'wrap'}}>
-            <Link style={{ textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="https://www.techpact.org/"><Button>© TechPACT, org</Button></Link>
+            <Link style={{ textDecoration:'none',color:'black',textTransform:'capitalize'}}  to={techPactHomeURL}><Button>© TechPACT, org</Button></Link>
 
             {/* <Link style={{textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="/terms-of-use"><Button>Terms of Use</Button></Link>
               <Link style={{textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="/privacy-policy"><Button>Privacy Policy</Button></Link> */}

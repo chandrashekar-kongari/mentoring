@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import { Divider, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import SideMenu from './SideMenu';
 import TechPactLogo from './techpact-logo-2.png';
+import techPactHomeURL from '../../../API/TechPactHomeURL';
 
 const pages = [ 'Log In', 'Sign Up'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -59,7 +60,7 @@ function ResponsiveAppBar() {
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           
           <Box sx={{width:'15rem'}}>
-            <a href='https://www.techpact.org'>
+            <a href={techPactHomeURL}>
             <img  alt="Logo" src={TechPactLogo} style={{
                             width: '50%', // Adjust the width as needed
                             height: '50%',

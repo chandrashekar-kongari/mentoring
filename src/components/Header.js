@@ -21,6 +21,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import endpoint from '../API/api';
+import techPactHomeURL from '../API/TechPactHomeURL';
 
 const pages = [ 'Home', 'Profile','Lifecycle', 'Contact Us','Privacy Policy','Log out'];
 const desktopPages = [ 'Home', 'Contact Us'];
@@ -33,6 +34,8 @@ function Header() {
   // const u=useSelector(state=>state.userObj)
   const [email,setEmail]=React.useState('')
   const [loading,setLoading]=React.useState(true)
+
+  const techPacturl=techPactHomeURL
 
  
   React.useEffect(()=>{
@@ -98,7 +101,7 @@ function Header() {
          
           
           <Box sx={{width:'15rem'}}>
-          <a href='https://www.techpact.org'>
+          <a href={techPacturl}>
             <img   alt="Logo" src="techpact-logo-2.png" style={{
                             width: '50%', 
                             height: '50%',
