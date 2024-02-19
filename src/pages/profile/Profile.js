@@ -8,7 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import FolderIcon from '@mui/icons-material/Folder';
 import Modal from '@mui/material/Modal';
 import AddIcon from '@mui/icons-material/Add';
-
+import { ToastContainer, toast } from 'react-toastify';
 import UpdateSkills from './components/updateprofile/UpdateSkills';
 import { saveResId, saveUserObj, setAuth, updateSkill } from '../../features/UserSlice';
 import endpoint from '../../API/api';
@@ -26,6 +26,11 @@ import UpdateRacial from './components/updateprofile/UpdateRacial';
 import UpdateHobbies from './components/updateprofile/UpdateHobbies';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import UpdateSexualOrientation from './components/updateprofile/UpdateSexualOrientation';
+import UpdateMigrant from './components/updateprofile/UpdateMigrant';
+import UpdateAbility from './components/updateprofile/UpdateAbility';
+import UpdateDiversity from './components/updateprofile/UpdateDiversity';
+import UpdateSixplus from './components/updateprofile/UpdateSixtyplus';
 // import Header from '../Header';
 
 const style = {
@@ -39,7 +44,7 @@ const style = {
   // border: '2px solid #000',
   borderRadius:'6px',
   boxShadow: 24,
-  p: 3,
+  p: 8,
 };
 const Profile = () => {
 
@@ -114,7 +119,7 @@ const Profile = () => {
       }
     });
 
-    console.log('upd ',newData)
+
 
     setAllSkills(newData); // Update the state with the new data
   };
@@ -133,7 +138,7 @@ const Profile = () => {
       }
     });
 
-    console.log('upd ',newData)
+   
 
     setAllHobbies(newData); // Update the state with the new data
   };
@@ -166,7 +171,13 @@ const Profile = () => {
   })
   const [gender,setGender]=useState('')
   const [racial,setRacial]=useState([])
+  const [sexualOrientation,setSexualOrientation]=useState([])
   const [firstGenStudent,setFirstGenStudent]=useState('')
+  const [sixtyplus,setSixtyplus]=useState('')
+  const [ability,setAbility]=useState('')
+  const [migrant,setMigrant ]=useState('')
+  const [diversity,setDiversity]=useState('')
+
   const handleChangeEdu=(event)=>{
     const {name,value}=event.target
     setEdu({...edu,[name]:value})
@@ -192,7 +203,7 @@ const Profile = () => {
       }
     });
 
-    console.log('upd ',newData)
+    
 
     setIntrests(newData); // Update the state with the new data
   };
@@ -227,7 +238,7 @@ const Profile = () => {
             const a=true
             // dispatch(setAuth(a))
             const user=response.data
-            console.log('user details ',user)
+        
             if(user==null){
               localStorage.setItem('userid','')
               localStorage.setItem('auth','')
@@ -259,8 +270,13 @@ const Profile = () => {
               setLinkedIn(response.data.linkedinProfile)
               setGender(response.data.gender)
               setFirstGenStudent(response.data.firstGenStudent)
+              setSixtyplus(response.data.sixtyplus)
+              setAbility(response.data.ability)
+              setDiversity(response.data.diversity)
+              setMigrant(response.data.migrant)
+              // setSexualOrientation(response.data.sexualOrientation)
 
-              console.log('user details in profile ',response.data)
+      
 
             }
           } else {
@@ -335,7 +351,7 @@ const Profile = () => {
             const a=true
             // dispatch(setAuth(a))
             const user=response.data
-            console.log('details ',user)
+    
             if(user==null){
               setAlertType('error')
               setAlertMessage('Error while updating')
@@ -400,7 +416,7 @@ const Profile = () => {
             const a=true
             // dispatch(setAuth(a))
             const user=response.data
-            console.log('details ',user)
+          
             if(user==null){
               setAlertType('error')
               setAlertMessage('Error while updating')
@@ -444,12 +460,22 @@ const Profile = () => {
 
   }
 
-  const handleUpdateLinkedInProfile=async()=>{
+
+  const handleUpdateValues=async(type,value)=>{
     setUpdating(true)
     handleClose()
     const obj={
       'id':userObj._id,
-      'linkedinProfile':linkedIn
+      'type':type,
+      'value':value
+    }
+    if(value=='' || value.length==0){
+
+      // l
+    callToast('Oops! It seems you forgot to enter a value.','error')
+      setUpdating(false)
+      // handleShowAlert(true)
+      return
     }
     const token=localStorage.getItem('token')
         const axiosConfig = {
@@ -458,227 +484,56 @@ const Profile = () => {
           
           },
         };
-    try {
-      const response = await axios.post(`${endpoint}/updatelinkedinprofile`,obj,axiosConfig);
-    
-          if (response.status === 200) {
-            const a=true
-            // dispatch(setAuth(a))
-            const user=response.data
-            console.log('details ',user)
-            if(user==null){
-              setAlertType('error')
-              setAlertMessage('Error while updating')
-              handleShowAlert(true)
 
-              setUpdating(false)
-            }
-            else{
-              setUserObj(response.data.user)
-              dispatch(saveUserObj(response.data.user))
-
-              setLinkedIn(response.data.user.linkedinProfile)
-              setAlertType(response.data.type)
-              setAlertMessage(response.data.message)
-              setUpdating(false)
-              handleShowAlert(true)
-              
-            }
-          } else {
-            console.error('Failed to submit user data.');
-            setAlertType('error')
-              setAlertMessage('Error while updating')
-
-              setUpdating(false)
-              handleShowAlert(true)
-            }
-          } catch (error) {
-          console.error('Error:', error);
-          setAlertType('error')
-              setAlertMessage('Error while updating')
-
-              setUpdating(false)
-              handleShowAlert(true)
-          }
-
-  }
-
-  const handleUpdateGender=async()=>{
-    setUpdating(true)
-    handleClose()
-    const obj={
-      'id':userObj._id,
-      'gender':gender
-    }
-    const token=localStorage.getItem('token')
-        const axiosConfig = {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        try {
+          const response = await axios.post(`${endpoint}/updateprofilevalues`,obj,axiosConfig);
+        
+              if (response.status === 200) {
+                const a=true
+                // dispatch(setAuth(a))
+                const user=response.data
           
-          },
-        };
-    try {
-      const response = await axios.post(`${endpoint}/updategender`,obj,axiosConfig);
+                if(user==null){
+                  setAlertType('error')
+                  setAlertMessage('Error while updating')
+                  handleShowAlert(true)
     
-          if (response.status === 200) {
-            const a=true
-            // dispatch(setAuth(a))
-            const user=response.data
-            console.log('details ',user)
-            if(user==null){
+                  setUpdating(false)
+                }
+                else{
+                  setUserObj(response.data.user)
+                  dispatch(saveUserObj(response.data.user))
+    
+                  setLinkedIn(response.data.user.linkedinProfile)
+                  setAlertType(response.data.type)
+                  setAlertMessage(response.data.message)
+                  setUpdating(false)
+                  handleShowAlert(true)
+                  
+                }
+              } else {
+                console.error('Failed to submit user data.');
+                setAlertType('error')
+                  setAlertMessage('Error while updating')
+    
+                  setUpdating(false)
+                  handleShowAlert(true)
+                }
+              } catch (error) {
+              console.error('Error:', error);
               setAlertType('error')
-              setAlertMessage('Error while updating')
-              handleShowAlert(true)
-
-              setUpdating(false)
-            }
-            else{
-              setUserObj(response.data.user)
-              dispatch(saveUserObj(response.data.user))
-
-              setLinkedIn(response.data.user.linkedinProfile)
-              setAlertType(response.data.type)
-              setAlertMessage(response.data.message)
-              setUpdating(false)
-              handleShowAlert(true)
-              
-            }
-          } else {
-            console.error('Failed to submit user data.');
-            setAlertType('error')
-              setAlertMessage('Error while updating')
-
-              setUpdating(false)
-              handleShowAlert(true)
-            }
-          } catch (error) {
-          console.error('Error:', error);
-          setAlertType('error')
-              setAlertMessage('Error while updating')
-
-              setUpdating(false)
-              handleShowAlert(true)
-          }
-
+                  setAlertMessage('Error while updating')
+    
+                  setUpdating(false)
+                  handleShowAlert(true)
+              }
   }
 
-  const handleUpdateFirstGenStudent=async()=>{
-    setUpdating(true)
-    handleClose()
-    const obj={
-      'id':userObj._id,
-      'firstGenStudent':firstGenStudent
-    }
-    const token=localStorage.getItem('token')
-        const axiosConfig = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          
-          },
-        };
-    try {
-      const response = await axios.post(`${endpoint}/updatefirstgenstudent`,obj,axiosConfig);
-    
-          if (response.status === 200) {
-            const a=true
-            // dispatch(setAuth(a))
-            const user=response.data
-            console.log('details ',user)
-            if(user==null){
-              setAlertType('error')
-              setAlertMessage('Error while updating')
-              handleShowAlert(true)
+  
 
-              setUpdating(false)
-            }
-            else{
-              setUserObj(response.data.user)
-              dispatch(saveUserObj(response.data.user))
+  
 
-              setLinkedIn(response.data.user.linkedinProfile)
-              setAlertType(response.data.type)
-              setAlertMessage(response.data.message)
-              setUpdating(false)
-              handleShowAlert(true)
-              
-            }
-          } else {
-            console.error('Failed to submit user data.');
-            setAlertType('error')
-              setAlertMessage('Error while updating')
-
-              setUpdating(false)
-              handleShowAlert(true)
-            }
-          } catch (error) {
-          console.error('Error:', error);
-          setAlertType('error')
-              setAlertMessage('Error while updating')
-
-              setUpdating(false)
-              handleShowAlert(true)
-          }
-
-  }
-
-  const handleUpdateRacial=async()=>{
-    setUpdating(true)
-    handleClose()
-    const obj={
-      'id':userObj._id,
-      'racial':racial
-    }
-    const token=localStorage.getItem('token')
-        const axiosConfig = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          
-          },
-        };
-    try {
-      const response = await axios.post(`${endpoint}/updateracial`,obj,axiosConfig);
-    
-          if (response.status === 200) {
-            const a=true
-            // dispatch(setAuth(a))
-            const user=response.data
-            console.log('details ',user)
-            if(user==null){
-              setAlertType('error')
-              setAlertMessage('Error while updating')
-              handleShowAlert(true)
-
-              setUpdating(false)
-            }
-            else{
-              setUserObj(response.data.user)
-              dispatch(saveUserObj(response.data.user))
-
-              setLinkedIn(response.data.user.linkedinProfile)
-              setAlertType(response.data.type)
-              setAlertMessage(response.data.message)
-              setUpdating(false)
-              handleShowAlert(true)
-              
-            }
-          } else {
-            console.error('Failed to submit user data.');
-            setAlertType('error')
-              setAlertMessage('Error while updating')
-
-              setUpdating(false)
-              handleShowAlert(true)
-            }
-          } catch (error) {
-          console.error('Error:', error);
-          setAlertType('error')
-              setAlertMessage('Error while updating')
-
-              setUpdating(false)
-              handleShowAlert(true)
-          }
-
-  }
+  
 
   const handleUpdateIntrests=async()=>{
     setUpdating(true)
@@ -703,7 +558,7 @@ const Profile = () => {
             const a=true
             // dispatch(setAuth(a))
             const user=response.data
-            console.log('details ',user)
+  
             if(user==null){
               setAlertType('error')
               setAlertMessage('Error while updating')
@@ -767,7 +622,7 @@ const Profile = () => {
             const a=true
             // dispatch(setAuth(a))
             const user=response.data
-            console.log('details ',user)
+        
             if(user==null){
               setAlertType('error')
               setAlertMessage('Error while updating')
@@ -827,12 +682,12 @@ const Profile = () => {
             const a=true
             // dispatch(setAuth(a))
             const user=response.data
-            console.log('details ',user)
+     
             if(user==null){
-              setAlertType('error')
-              setAlertMessage('Error while updating')
-              handleShowAlert(true)
-
+              // setAlertType('error')
+              // setAlertMessage('Error while updating')
+              // handleShowAlert(true)
+              callToast('Error while updating','error')
               setUpdating(false)
             }
             else{
@@ -842,27 +697,29 @@ const Profile = () => {
               addOrReplaceObject(response.data.user.skills)
               addOrReplaceHobbies(response.data.user.hobbies)
 
-              setAlertType(response.data.type)
-              setAlertMessage(response.data.message)
+              // setAlertType(response.data.type)
+              // setAlertMessage(response.data.message)
+              callToast(response.data.message,response.data.type)
               setUpdating(false)
-              handleShowAlert(true)
+              // handleShowAlert(true)
               
             }
           } else {
-            console.error('Failed to submit user data.');
-            setAlertType('error')
-              setAlertMessage('Error while updating')
-
+            // console.error('Failed to submit user data.');
+            // setAlertType('error')
+            //   setAlertMessage('Error while updating')
+            callToast('Error while updating','error')
               setUpdating(false)
-              handleShowAlert(true)
+              // handleShowAlert(true)
             }
           } catch (error) {
-          console.error('Error:', error);
-          setAlertType('error')
-              setAlertMessage('Error while updating')
+          // console.error('Error:', error);
+          // setAlertType('error')
+          //     setAlertMessage('Error while updating')
+          callToast('Error while updating','error')
 
               setUpdating(false)
-              handleShowAlert(true)
+              // handleShowAlert(true)
           }
   }
 
@@ -892,27 +749,88 @@ const Profile = () => {
   
     
   }
-
+  const callToast=(m,t)=>{
+    if(t=='success'){
+      toast.success(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else if(t=='info'){
+      toast.info(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else if(t=='error'){
+      toast.error(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else if(t=='warning'){
+      toast.warn(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else{
+      toast(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+    }
+  }
   const handleUpdateResume=async()=>{
     const formDataWithFiles = new FormData();
     formDataWithFiles.append('resume',resume)
     formDataWithFiles.append('userid',userObj._id)
-    try {
-      const response = await axios.post(endpoint+'/updateresume', formDataWithFiles,{headers: {
+    const token=localStorage.getItem('token')
+    const axiosConfig = {
+      headers: {
+        Authorization: `Bearer ${token}`,
         'Content-Type': `multipart/form-data; boundary=${formDataWithFiles._boundary}`,
-
-    }});
+      },
+    };
+    try {
+      const response = await axios.post(endpoint+'/updateresume', formDataWithFiles,axiosConfig);
 
     if (response.status === 200) {
       const a=true
       // dispatch(setAuth(a))
       const user=response.data
-      console.log('details ',user)
+  
       if(user==null){
-        setAlertType('error')
-        setAlertMessage('Error while updating')
-        handleShowAlert(true)
-
+        // setAlertType('error')
+        // setAlertMessage('Error while updating')
+        // handleShowAlert(true)
+        callToast('Error while updating','error')
         setUpdating(false)
         handleClose()
       }
@@ -923,40 +841,49 @@ const Profile = () => {
         addOrReplaceObject(response.data.user.skills)
         addOrReplaceHobbies(response.data.user.hobbies)
 
-        setAlertType(response.data.type)
-        setAlertMessage(response.data.message)
+        // setAlertType(response.data.type)
+        // setAlertMessage(response.data.message)
+        callToast(response.data.message,response.data.type)
         setUpdating(false)
-        handleShowAlert(true)
+        // handleShowAlert(true)
         handleClose()
         
       }
     } else {
-      console.error('Failed to submit user data.');
-      setAlertType('error')
-        setAlertMessage('Error while updating')
+      // console.error('Failed to submit user data.');
+      // setAlertType('error')
+      // setAlertMessage('Error while updating')
+      //handleShowAlert(true)
+      callToast('Error while updating','error')
+
 
         setUpdating(false)
-        handleShowAlert(true)
+
       }
 
 
   } catch (error) {
-    console.error('Error:', error);
-    setAlertType('error')
-        setAlertMessage('Error while updating')
+    // console.error('Error:', error);
+    // setAlertType('error')
+    //     setAlertMessage('Error while updating')
+    //handleShowAlert(true)
+    callToast('Error while updating','error')
+
 
         setUpdating(false)
-        handleShowAlert(true)
+        
     }
 
   }
+
+ 
 
   
   return (
     <>
 
     <Loading loading={loading} />
-    
+    <ToastContainer/>
       <Modal
         open={open}
         onClose={handleClose}
@@ -968,15 +895,19 @@ const Profile = () => {
           {section=='education' && <UpdateEducation handleClose={handleClose} edu={edu} setEdu={setEdu} handleSave={handleUpdateEducationalInfo}/>}
           {section=='intrests' && <UpdateIntrests handleClose={handleClose} intrests={intrests} setIntrests={setIntrests} handleSave={handleUpdateIntrests}/>}
           {section=='skills' && <UpdateSkills handleClose={handleClose} val={allSkills} setVal={setAllSkills} handleUpdateSkills={handleUpdateSkills}/>}
-          {section=='linkedin' && <UpdateLinkedIn linkedIn={linkedIn} setLinkedIn={setLinkedIn} handleClose={handleClose} handleSave={handleUpdateLinkedInProfile}/>}
+          {section=='linkedin' && <UpdateLinkedIn linkedIn={linkedIn} setLinkedIn={setLinkedIn} handleClose={handleClose} handleSave={()=>handleUpdateValues('linkedinProfile',linkedIn)}/>}
           {section=='resume' && <UpdateResume resume={resume} handleFileChange={handleFileChange} setResume={setResume} handleSave={handleUpdateResume} handleClose={handleClose}/>}
           {section=='hobbies' && <UpdateHobbies handleClose={handleClose} val={allHobbies} setVal={setAllHobbies} handleUpdateSkills={handleUpdateHobbies}/>}
 
-          {section=='gender' && <UpdateGender handleClose={handleClose} genderState={userObj.gender} gender={gender}  setGender={setGender} handleSave={handleUpdateGender}/>}
-          {section=='firstGenStudent' && <UpdateFirstGenStudent handleClose={handleClose} firstGenStudentState={userObj.firstGenStudent} firstGenStudent={firstGenStudent}  handleChange={setFirstGenStudent} setFirstGenStudent={setFirstGenStudent} handleSave={handleUpdateFirstGenStudent}/>}
-          {section=='racial' && <UpdateRacial handleClose={handleClose} racialLocalState={racial} racial={userObj.racial} handleChange={setRacial} setRacial={setRacial} handleSave={handleUpdateRacial}/>}
+          {section=='gender' && <UpdateGender handleClose={handleClose} genderState={userObj.gender} gender={gender}  setGender={setGender} handleSave={()=>handleUpdateValues('gender',gender)}/>}
+          {section=='firstGenStudent' && <UpdateFirstGenStudent handleClose={handleClose} firstGenStudentState={userObj.firstGenStudent} firstGenStudent={firstGenStudent}  handleChange={setFirstGenStudent} setFirstGenStudent={setFirstGenStudent} handleSave={()=>handleUpdateValues('firstGenStudent',firstGenStudent)}/>}
+          {section=='migrant' && <UpdateMigrant handleClose={handleClose} migrantState={userObj.migrant} migrant={migrant} setMigrant={setMigrant} handleSave={()=>handleUpdateValues('migrant',migrant)} />}
+          {section == 'ability' && <UpdateAbility handleClose={handleClose} abilityState={userObj.ability} ability={ability} setAbility={setAbility} handleSave={()=>handleUpdateValues('ability',ability)}/>}
+          {section == 'diversity' && <UpdateDiversity handleClose={handleClose} diversityState={userObj.diversity} diversity={diversity} setDiversity={setDiversity} handleSave={()=>handleUpdateValues('diversity',diversity)} /> }
+          {section== 'sixtyplus' && <UpdateSixplus handleClose={handleClose} sixtyplusState={userObj.sixtyplus}  sixtyplus={sixtyplus} setSixtyplus={setSixtyplus}  handleSave={()=>handleUpdateValues('sixtyplus',sixtyplus)} />    }
+          {section=='sexualOrientation' && <UpdateSexualOrientation handleClose={handleClose} sexualOrientationLocalState={sexualOrientation} sexualOrientation={ userObj.sexualOrientation} handleChange={setSexualOrientation} setSexualOrientation={setSexualOrientation} handleSave={()=>handleUpdateValues('sexualOrientation',sexualOrientation)}/>}
+          {section=='racial' && <UpdateRacial handleClose={handleClose} racialLocalState={racial} racial={userObj.racial} handleChange={setRacial} setRacial={setRacial} handleSave={()=>handleUpdateValues('racial',racial)}/>}
 
-          
 
           
         </Box>
@@ -1080,7 +1011,7 @@ const Profile = () => {
     <Box sx={{display:'flex',flexWrap:'wrap',justifyContent:'center'}}>
     <Card sx={{ width:'410px', padding:'1rem',border:'1px solid #ebe9e6',margin:'3px',position:'relative'  }} elevation={'0'}>
     <Stack sx={{flexDirection:'row',flex:'1',justifyContent:'space-between'}}>
-    <Typography sx={{fontSize:'18px',fontWeight:'bold'}}>Intrests:</Typography>
+    <Typography sx={{fontSize:'18px',fontWeight:'bold'}}>Interests:</Typography>
     <IconButton onClick={()=>handleUpdate('intrests')} sx={{
             position: 'absolute',
             top: 0,
@@ -1162,29 +1093,21 @@ const Profile = () => {
     More about me…
 
     </Typography>
+
     <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
       <Stack spacing={2}>
       <Typography sx={{fontSize:'14px',fontWeight:'bold'}}>
-      Hobbies
+      Gender Identity
       </Typography>
-      {(userObj.hobbies && userObj.hobbies.length>0) ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> 
-      <Stack sx={{flexDirection:'row',display:'flex',flexWrap:'wrap'}}>
-        {userObj.hobbies.map((hobby)=>{
-          return(
-            <Chip label={hobby.title} sx={{fontSize:'14px',marginRight:'1rem',marginBottom:'1rem'}}></Chip>
-          )
+
+      {(userObj.gender && userObj.gender!='') ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> <Typography  sx={{fontSize:'14px',marginRight:'3px'}}>{userObj.gender }</Typography> <IconButton onClick={()=>handleUpdate('gender')} sx={{
+            }}><EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton></Stack>:<Chip onClick={()=>handleUpdate('gender')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}
       
-        })}
-        <IconButton onClick={()=>handleUpdate('hobbies')} sx={{
-          marginRight:'1rem',marginBottom:'1rem'
-            }}>
-              <EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton>
-      </Stack>  
-      
-      
-              </Stack>:<Chip onClick={()=>handleUpdate('hobbies')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}        </Stack>
+  
+      </Stack>
 
     </Container>
+
 
     <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
       <Stack spacing={2}>
@@ -1211,17 +1134,61 @@ const Profile = () => {
             </Stack>
 
     </Container>
+
     <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
       <Stack spacing={2}>
       <Typography sx={{fontSize:'14px',fontWeight:'bold'}}>
-      Gender Identity
+      Sexual Orientation
       </Typography>
-
-      {(userObj.gender && userObj.gender!='') ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> <Typography  sx={{fontSize:'14px',marginRight:'3px'}}>{userObj.gender }</Typography> <IconButton onClick={()=>handleUpdate('gender')} sx={{
-            }}><EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton></Stack>:<Chip onClick={()=>handleUpdate('gender')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}
+      {(userObj.sexualOrientation && userObj.sexualOrientation.length>0) ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> 
+      <Stack sx={{flexDirection:'row',display:'flex',flexWrap:'wrap'}}>
+        {userObj.sexualOrientation.map((race)=>{
+          return(
+            <Chip label={race} sx={{fontSize:'14px',marginRight:'1rem',marginBottom:'1rem'}}></Chip>
+          )
       
-  
-      </Stack>
+        })}
+        <IconButton onClick={()=>handleUpdate('sexualOrientation')} sx={{
+          marginRight:'1rem',marginBottom:'1rem'
+            }}>
+              <EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton>
+      </Stack>  
+      
+      
+              </Stack>:<Chip onClick={()=>handleUpdate('sexualOrientation')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}  
+
+            </Stack>
+
+    </Container>
+    <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
+      <Stack spacing={2}>
+      <Typography sx={{fontSize:'14px',fontWeight:'bold'}}>
+      60+
+      </Typography>
+      {(userObj.sixtyplus && userObj.sixtyplus!='') ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> <Typography  sx={{fontSize:'14px',marginRight:'3px'}}>{userObj.sixtyplus }</Typography> <IconButton onClick={()=>handleUpdate('sixtyplus')} sx={{
+            }}><EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton></Stack>:<Chip onClick={()=>handleUpdate('sixtyplus')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}      </Stack>
+
+    </Container>
+    <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
+      <Stack spacing={2}>
+      <Typography sx={{fontSize:'14px',fontWeight:'bold'}}>
+      Ability 
+      </Typography>
+      {(userObj.ability && userObj.ability!='') ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> <Typography  sx={{fontSize:'14px',marginRight:'3px'}}>{userObj.ability }</Typography> <IconButton onClick={()=>handleUpdate('ability')} sx={{
+            }}><EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton></Stack>:<Chip onClick={()=>handleUpdate('ability')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}      </Stack>
+
+    </Container>
+    <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
+      <Stack spacing={2}>
+      <Typography sx={{fontSize:'14px',fontWeight:'bold'}}>
+      Migrant 
+      </Typography>
+      {(userObj.migrant && userObj.migrant!='') ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> <Typography  sx={{fontSize:'14px',marginRight:'3px'}}>{userObj.migrant }</Typography> <IconButton onClick={()=>handleUpdate('migrant')} sx={{
+            }}><EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton></Stack>:<Chip onClick={()=>handleUpdate('migrant')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}      </Stack>
+
+    
+   
+    
 
     </Container>
     <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
@@ -1233,7 +1200,43 @@ const Profile = () => {
             }}><EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton></Stack>:<Chip onClick={()=>handleUpdate('firstGenStudent')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}      </Stack>
 
     </Container>
+    <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
+      <Stack spacing={2}>
+      <Typography sx={{fontSize:'14px',fontWeight:'bold'}}>
+      Diversity 
+      </Typography>
+      {(userObj.diversity && userObj.diversity!='') ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> <Typography  sx={{fontSize:'14px',marginRight:'3px'}}>{userObj.diversity }</Typography> <IconButton onClick={()=>handleUpdate('diversity')} sx={{
+            }}><EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton></Stack>:<Chip onClick={()=>handleUpdate('diversity')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}      </Stack>
+
     </Container>
+
+    {/* <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
+      <Stack spacing={2}>
+      <Typography sx={{fontSize:'14px',fontWeight:'bold'}}>
+      Passions and Hobbies
+      </Typography>
+      {(userObj.hobbies && userObj.hobbies.length>0) ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> 
+      <Stack sx={{flexDirection:'row',display:'flex',flexWrap:'wrap'}}>
+        {userObj.hobbies.map((hobby)=>{
+          return(
+            <Chip label={hobby.title} sx={{fontSize:'14px',marginRight:'1rem',marginBottom:'1rem'}}></Chip>
+          )
+      
+        })}
+        <IconButton onClick={()=>handleUpdate('hobbies')} sx={{
+          marginRight:'1rem',marginBottom:'1rem'
+            }}>
+              <EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton>
+      </Stack>  
+      
+      
+              </Stack>:<Chip onClick={()=>handleUpdate('hobbies')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}        </Stack>
+
+    </Container> */}
+
+
+    </Container>
+
     
   </Box>
   <Footer/>

@@ -25,7 +25,7 @@ const style = {
   // border: '2px solid #000',
   borderRadius:'6px',
   boxShadow: 24,
-  p: 3,
+  p: 8,
 
 };
 const Month2LifeCycleComponent = () => {
@@ -45,7 +45,7 @@ const Month2LifeCycleComponent = () => {
     setResources(foundMonth2Data.resources)
     
     const dateObj = dayjs(foundMonth2Data.date)
-    console.log('date ',dateObj)
+    // console.log('date ',dateObj)
     setDate(dateObj)
     
 
@@ -141,8 +141,8 @@ const Month2LifeCycleComponent = () => {
       
       handleSaveLifeCycle()
 
-      console.log(lifeCycle)
-      console.log(agenda)
+      // console.log(lifeCycle)
+      // console.log(agenda)
 
 
     };
@@ -153,6 +153,8 @@ const Month2LifeCycleComponent = () => {
       const value = dayjs(newval).startOf('day').toDate();
       setUpdating(true)
       handleClose()
+
+
       
       const obj={
         'id':user_id,
@@ -175,7 +177,7 @@ const Month2LifeCycleComponent = () => {
               const a=true
               // dispatch(setAuth(a))
               const user=response.data
-              console.log('details ',user)
+      
               if(user==null){
                 callToast('Error while updating','error')
   
@@ -227,6 +229,8 @@ const Month2LifeCycleComponent = () => {
       // dispatch(saveLifeCycle(lifeCycle))
       setUpdating(true)
       handleClose()
+
+     
       
       const obj={
         'id':user_id,
@@ -248,7 +252,7 @@ const Month2LifeCycleComponent = () => {
               const a=true
               // dispatch(setAuth(a))
               const user=response.data
-              console.log('details ',user)
+
               if(user==null){
                 callToast('Error while updating','error')
   

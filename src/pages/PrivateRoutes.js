@@ -41,7 +41,7 @@ export const PrivateRoutes = () => {
 
 return (
     <>
-    {loading?<Loading loading={loading}/>:auth ? <Outlet/> : <Navigate to='/'/>}
+    {loading?<Loading loading={loading}/>:(auth ? <Outlet/> : <Navigate to='/'/>)}
     </>
   )
 }

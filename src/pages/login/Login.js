@@ -58,7 +58,7 @@ const Login = () => {
               const a=true
               // dispatch(setAuth(a))
               const user=response.data.user
-              console.log('lo ',user)
+       
               if(user==null || Object.keys(user).length === 0){
                 setMessage(response.data.message)
                 setType(response.data.type)
@@ -74,9 +74,10 @@ const Login = () => {
                 // localStorage.setItem('auth', 'true');
                 localStorage.setItem('token', response.data.token);
                 // localStorage.setItem('userid',response.data.user._id)
-                // console.log('response from login ',response.data.user)
-                setLoading(false)
+          
+                
                 navigate('/homepage');
+                setLoading(false)
               }
          
             
@@ -122,7 +123,7 @@ const Login = () => {
             }
             const res= await axios.post(endpoint+'auth',p);
               if(res.status === 200){
-                console.log(res)
+          
                 const s=res.data
                 
                 if(s.status){
@@ -229,8 +230,8 @@ const Login = () => {
            
             <Box sx={{boxShadow: 3,
                     borderRadius: 2,
-                    px: 4,
-                    py: 3,
+                    px: 10,
+                    py: 8,
                     }} >
                         <Box display="flex"
                             justifyContent="center"
@@ -243,7 +244,7 @@ const Login = () => {
                 <form onSubmit={handleLogin}>
                 <Stack direction='column' >
                   <FormControl variant="outlined">
-                        <InputLabel >Gmail</InputLabel>
+                        <InputLabel >Email</InputLabel>
                         <OutlinedInput
                         name='gmail'
                         value={gmail}
@@ -253,6 +254,7 @@ const Login = () => {
                             
                             label="Gmail"
                             required
+                            autoFocus
                         />
                         </FormControl>
                     <Box sx={{flex:1,width:'100%',paddingTop:'1rem'}}>
@@ -285,10 +287,10 @@ const Login = () => {
                         
                         <Stack sx={{paddingTop:'1rem',textAlign:'start', display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
                             <Link style={{textDecoration:'none'}} to='/signup'>
-                            <Typography sx={{fontSize:'12px'}}>Are you new user ?</Typography>
+                            <Typography sx={{fontSize:'12px'}}>Are you new user?</Typography>
                             </Link>
                             <Link style={{textDecoration:'none'}} to='/forgotpassword'>
-                            <Typography sx={{fontSize:'12px',color:'black'}}>Forgot password ?</Typography>
+                            <Typography sx={{fontSize:'12px',color:'black'}}>Forgot password?</Typography>
                             </Link>
                         </Stack>
                         <Button
@@ -302,7 +304,7 @@ const Login = () => {
                             },}}
                             
                         >
-                            Login <FontAwesomeIcon style={{paddingLeft:'1rem'}} icon={faArrowRight} />
+                            Login 
                         </Button>
                        
                 </Stack>

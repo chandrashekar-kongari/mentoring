@@ -19,9 +19,7 @@ const Education = ({step,handleNext,handleBack}) => {
 
   const handleFileChange = (newValue) => {
     setValue(newValue)
-    console.log(value)
 
-    console.log(newValue)
     dispatch(addResume(newValue))
   }
 
@@ -55,7 +53,7 @@ const Education = ({step,handleNext,handleBack}) => {
       
     })
 
-    const [resumeUpload,setResumeUpload]=useState(true)
+    const [resumeUpload,setResumeUpload]=useState(false)
     const [linkedinShare,setLinkedinShare]=useState(true)
 
     const handleResumeUploadFlag=()=>{
@@ -93,6 +91,7 @@ const Education = ({step,handleNext,handleBack}) => {
           <FormControl sx={{ }} fullWidth style={{justifyContent:'center'}}>
         <InputLabel id="demo-simple-select-helper-label">University</InputLabel>
         <Select
+   
         required
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
@@ -103,8 +102,8 @@ const Education = ({step,handleNext,handleBack}) => {
           sx={{textAlign:'left'}}
         >
           <MenuItem value={'Sacred Heart University'}>Sacred Heart University</MenuItem>
-          <MenuItem value={'Fordham University'}>Fordham University</MenuItem>
-          <MenuItem value={'Howard University'}>Howard University</MenuItem>
+          {/* <MenuItem value={'Fordham University'}>Fordham University</MenuItem>
+          <MenuItem value={'Howard University'}>Howard University</MenuItem> */}
           <MenuItem value={'Boston University'}>Boston University</MenuItem>
         </Select>
        
@@ -122,8 +121,11 @@ const Education = ({step,handleNext,handleBack}) => {
           sx={{textAlign:'left'}}
         >
 
-          <MenuItem value={"Masters"}>Masters</MenuItem>
-          <MenuItem value={'Bachelors'}>Bachelors</MenuItem>
+          <MenuItem value={"Associate​"}>Associate​</MenuItem>
+          <MenuItem value={"Bachelor​"}>Bachelor​</MenuItem>
+          <MenuItem value={"Master​"}>Master​</MenuItem>
+          <MenuItem value={"Doctorate"}>Doctorate</MenuItem>
+          
          
         </Select>
        
@@ -143,6 +145,11 @@ const Education = ({step,handleNext,handleBack}) => {
 
           <MenuItem value={'Computer Science'}>Computer Science</MenuItem>
           <MenuItem value={'Engineering'}>Engineering</MenuItem>
+          <MenuItem value={'Information Technology​'}>Information Technology​</MenuItem>
+          <MenuItem value={'Data Science​'}>Data Science​</MenuItem>
+          <MenuItem value={'Cyber Security​'}>Cyber Security​</MenuItem>
+          <MenuItem value={'Other'}>Other</MenuItem>
+ 
 
         </Select>
        
@@ -168,9 +175,9 @@ const Education = ({step,handleNext,handleBack}) => {
                     
                      fullWidth/> */}
         <MuiFileInput  disabled={!resumeUpload} hideSizeText value={value}   placeholder='Please upload resume' sx={{marginTop:'1rem'}} onChange={handleFileChange} />
-        <FormControlLabel name='mentor' onChange={handleResumeUploadFlag} control={<Checkbox checked={!resumeUpload} />} label="I will add later" />
-        <FormControl  fullWidth variant="outlined" style={{paddingBottom:'1rem'}}>
-                <InputLabel >Linkedin profile link</InputLabel>
+        <FormControlLabel  name='mentor' onChange={handleResumeUploadFlag} control={<Checkbox size='small' checked={resumeUpload} />} label={<Typography variant="body2" >Add later</Typography>} />
+        <FormControl  fullWidth variant="outlined" style={{marginTop:8}}>
+                <InputLabel >LinkedIn Profile URL</InputLabel>
                 <OutlinedInput
                 required
                 disabled={!linkedinShare}
@@ -186,7 +193,8 @@ const Education = ({step,handleNext,handleBack}) => {
 
                 
                 </FormControl>
-                <FormControlLabel name='mentor' onChange={handleLinkedinShareFlag} control={<Checkbox checked={!linkedinShare} sx={{padding:'0px',margin:'0px'}}/>} sx={{padding:'0px'}}  label="I will add later" />
+                
+                <FormControlLabel  name='mentor' onChange={handleLinkedinShareFlag} control={<Checkbox size='small' checked={!linkedinShare} sx={{}}/>} sx={{fontSize:'10px'}}  label={<Typography variant="body2">Add later</Typography>} />
 
       </Box>
       <Stack sx={{flexDirection:'row',justifyContent:'space-between'}}>

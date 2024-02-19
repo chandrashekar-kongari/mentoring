@@ -26,7 +26,7 @@ export default function ProfileDisplay({userDeatils}) {
     
   }
   const handleFocus=()=>{
-    console.log('focus')
+    // console.log('focus')
   }
   const handleViewResume=(resid)=>{
     dispatch(saveResId(resid))

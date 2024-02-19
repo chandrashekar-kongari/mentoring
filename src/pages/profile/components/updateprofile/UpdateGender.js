@@ -30,9 +30,9 @@ const UpdateGender = ({genderState,handleClose,gender,setGender,handleSave}) => 
                 onChange={handleChange}
                 sx={{textAlign:'left'}}
                 >
-            <MenuItem value={'Female'}>Female</MenuItem>
-            <MenuItem value={'Gender non-binary'}>Gender non-binary</MenuItem>
-            <MenuItem value={'Male'}>Male</MenuItem>
+            <MenuItem value={'Man'}>Man</MenuItem>
+            <MenuItem value={'Non-binary'}>Non-binary</MenuItem>
+            <MenuItem value={'Woman'}>Woman</MenuItem>
             <MenuItem value={'Prefer not to specify'}>Prefer not to specify</MenuItem>
             </Select>
        

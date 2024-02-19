@@ -36,6 +36,8 @@ import endpoint from '../../../API/api';
 import { saveUserObj } from '../../../features/UserSlice';
 import Month4LifeCycleComponent from './lifecyclecomponents/Month4LifeCycleComponent';
 
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
 
@@ -177,9 +179,68 @@ export default function LifeCycle() {
 
   const user=useSelector(state=>state.userObj)
   const dispatch=useDispatch()
+  const callToast=(m,t)=>{
+    if(t=='success'){
+      toast.success(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else if(t=='info'){
+      toast.info(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else if(t=='error'){
+      toast.error(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else if(t=='warning'){
+      toast.warn(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else{
+      toast(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+    }
+  }
+
   React.useEffect(()=>{
    setActiveStep(parseInt(user.activeLifeCycleStep,10))
-    // console.log('user',user)
+
 
   },[])
   const steps2 = [
@@ -244,57 +305,66 @@ export default function LifeCycle() {
   ];
   const [activeStep, setActiveStep] = React.useState(0);
   const [activeStep2, setActiveStep2] = React.useState(4);
+  
+  const checkAgendaFilledOrNot=()=>{
+
+  }
 
   const handleLifeCycleAtiveStep=async(val)=>{
     var active=activeStep
     if(val=='next'){
+  
+      if(activeStep==2 || activeStep==3 || activeStep==4 ){
+        if(user.lifeCycle[activeStep-1].agenda == ''){
+         
+
+          callToast('Please fill agenda','error')
+          return
+
+        }
+      }
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
       active=active+1
+      checkAgendaFilledOrNot()
     }
     else{
       setActiveStep((prevActiveStep) => prevActiveStep - 1);
       active=active-1
     }
+    const token=localStorage.getItem('token')
+    const axiosConfig = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      
+      },
+    };
     
     try {
       const obj={
         'id':localStorage.getItem('userid'),
-        'activeLifeCycleStep':active,
+        'activeLifeCycleStep':activeStep,
   
       }
-      const response = await axios.post(`${endpoint}/updateactivelifecyclestep`,obj);
+      const response = await axios.post(`${endpoint}/updateactivelifecyclestep`,obj,axiosConfig);
     
           if (response.status === 200) {
             const a=true
             // dispatch(setAuth(a))
             const user=response.data
-            console.log('details ',user)
+         
             if(user==null){
             
             }
             else{
               
-              dispatch(saveUserObj(response.data.user))
-           
-             
-             
-
-
-       
-              
+              dispatch(saveUserObj(response.data.user)) 
             }
           } else {
             console.error('Failed to submit user data.');
-            
-     
-
-          
             }
           } catch (error) {
           console.error('Error:', error);
           
-
-     
      
           }
   }

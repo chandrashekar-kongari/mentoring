@@ -25,7 +25,7 @@ const style = {
   // border: '2px solid #000',
   borderRadius:'6px',
   boxShadow: 24,
-  p: 3,
+  p: 8,
 
 };
 const Month3LifeCycleComponent = () => {
@@ -45,7 +45,7 @@ const Month3LifeCycleComponent = () => {
     setResources(foundMonth3Data.resources)
     
     const dateObj = dayjs(foundMonth3Data.date)
-    console.log('date ',dateObj)
+  
     setDate(dateObj)
     
 
@@ -138,17 +138,11 @@ const Month3LifeCycleComponent = () => {
     }
 
     const updateMonth2Data = () => {
-      
-     
-  
-
        
-        
     
       handleSaveLifeCycle()
 
-      console.log(lifeCycle)
-      console.log(agenda)
+    
 
 
     };
@@ -180,7 +174,7 @@ const Month3LifeCycleComponent = () => {
               const a=true
               // dispatch(setAuth(a))
               const user=response.data
-              console.log('details ',user)
+      
               if(user==null){
                 callToast('Error while updating','error')
   
@@ -253,7 +247,7 @@ const Month3LifeCycleComponent = () => {
               const a=true
               // dispatch(setAuth(a))
               const user=response.data
-              console.log('details ',user)
+        
               if(user==null){
                 callToast('Error while updating','error')
   
@@ -314,9 +308,7 @@ const Month3LifeCycleComponent = () => {
       }
 
       handleSaveLifeCycle()
-       
-
-   
+      
     }
 
     const [alertType,setAlertType]=useState()

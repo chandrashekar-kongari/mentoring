@@ -1,7 +1,7 @@
 import { Box, Container, Stack, Typography } from '@mui/material';
 import React from 'react'
 import { Banner } from './Banner';
-import { CustomBox, MainHeadTypography } from '../../../components/page/PageComponents';
+import { CustomBox, CustomPaddingBox, MainHeadTypography } from '../../../components/page/PageComponents';
 
 const CompanyIconsDisplay = () => {
     const images = [
@@ -16,18 +16,24 @@ const CompanyIconsDisplay = () => {
         image
       }));
   return (
-    <Box sx={{backgroundColor:'#f7f7f7',paddingTop:'2rem',paddingBottom:'2rem'}}>
+    <CustomPaddingBox>
+    <Box sx={{backgroundColor:'#FCFCFC'}}>
+      <CustomPaddingBox>
       
       <Container sx={{}}>
         <Stack flexDirection={'column'} sx={{textAlign:'center'}}>
-        <MainHeadTypography >
-    Get guidance from experts
+        <MainHeadTypography>
+        Our Mentors Have Experience
           </MainHeadTypography>
         <Banner images={images} speed={50000} />
         </Stack>
     </Container>
-
+    </CustomPaddingBox>
     </Box>
+    <Box sx={{backgroundImage:"url('top.svg')",height:'40px'}}>
+
+      </Box>
+    </CustomPaddingBox>
   )
 }
 

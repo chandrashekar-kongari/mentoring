@@ -2,7 +2,7 @@ import './banner.css'
 
 const Banner = ({ images, speed = 5000 }) => {
     return (
-      <div className="inner">
+      <div className="inner" style={{paddingTop:20}}>
         <div className="wrapper" >
           <section style={{ "--speed": `${speed}ms` }}>
             {images.map(({ id, image }) => (

@@ -1,7 +1,7 @@
 import { Box, Checkbox, FormControl, FormControlLabel, InputLabel, OutlinedInput, Radio, RadioGroup, Stack, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { TextField, Button, TextareaAutosize } from '@mui/material';
-
+import PasswordStrengthBar from 'react-password-strength-bar';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import { Link } from 'react-router-dom'
@@ -9,7 +9,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useSelector,useDispatch } from 'react-redux';
 import { saveFirstName, saveLastName, setRequiredDetails } from '../../../../features/UserSlice';
-const RequriedInformation = ({step,handleNext}) => {
+const RequriedInformation = ({step,handleNext,setPasswordStrength}) => {
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const handleMouseDownPassword = (event) => {
@@ -17,7 +17,7 @@ const RequriedInformation = ({step,handleNext}) => {
     };
 
     const vals=useSelector(state=>state.requiredDetails)
-    console.log(vals)
+   
 
     const dispatch=useDispatch()
     const [reqDetails,setReqDetails]=useState({
@@ -28,7 +28,7 @@ const RequriedInformation = ({step,handleNext}) => {
 
     const handleChange=(event)=>{
         const {name,value}=event.target
-        console.log('i am here',name,value)
+   
         setReqDetails({...reqDetails,[name]:value})
         dispatch(setRequiredDetails({...reqDetails,[name]:value}))
     }
@@ -50,6 +50,7 @@ const RequriedInformation = ({step,handleNext}) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault(); 
+      
         handleNext()
         // You can add your form submission logic here
       };
@@ -69,8 +70,10 @@ const RequriedInformation = ({step,handleNext}) => {
       const [isOptionsValid, setOptionsValid] = useState(true);
     
 
-    
-
+    // const [passwordStrength,setPasswordStrength]=useState(0)
+      const onChangeScore=(score, feedback)=>{
+        setPasswordStrength(score)
+      }
   return (
     <>{
         step==1?
@@ -80,6 +83,7 @@ const RequriedInformation = ({step,handleNext}) => {
         <FormControl variant="outlined" style={{paddingBottom:'1rem'}}>
                 <InputLabel >Email</InputLabel>
                 <OutlinedInput
+                autoFocus
                 name='gmail'
                 required
                 value={reqDetails.gmail}
@@ -141,6 +145,7 @@ const RequriedInformation = ({step,handleNext}) => {
                             }
                             label="Passcode"
                         />
+                        <PasswordStrengthBar onChangeScore={onChangeScore} password={reqDetails.password} />
                         </FormControl>
                         
                         
@@ -151,7 +156,7 @@ const RequriedInformation = ({step,handleNext}) => {
                 </Box>
                 <Stack sx={{paddingBottom:'1rem',textAlign:'start', display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
                     <Link style={{textDecoration:'none'}} to='/login'>
-                    <Typography sx={{fontSize:'12px'}}>Already a user ?</Typography>
+                    <Typography sx={{fontSize:'12px'}}>Already a user?</Typography>
                     </Link>
                     
                 </Stack>

@@ -27,14 +27,14 @@ const Bio = ({step,handleNext,handleBack}) => {
   const [val,setVal]=useState('')
   useEffect(()=>{
     if(mentee){
-      setVal('Would you like tell us anything more about yourself or your areas of interest?')
+      setVal('Please share any other details that may help us create a strong match.')
 
     }
     else{
-      setVal('Would you like to add anything about your professional or personal life?')
+      setVal('Please share any other details that may help us create a strong match.')
     }
     setExperiences(exps)
-    console.log(exps)
+  
   },[mentee])
 
   const handleChange=(event)=>{
@@ -64,8 +64,8 @@ const Bio = ({step,handleNext,handleBack}) => {
                        <Model exp={workExperience}/>
                     </Box> */}
                   <form onSubmit={handleSubmit}>
-                  <textarea required style={{marginTop:'5px',maxWidth:'320px'}} name="additionaInformation" value={v} onChange={handleChange} rows={4} cols={30}  />
-                  <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'2px',color:'black',textDecoration:'underline',textTransform:'none'}}>I will add later skip for now.</Button>
+                  <textarea autoFocus required style={{marginTop:'5px',maxWidth:'320px'}} name="additionaInformation" value={v} onChange={handleChange} rows={4} cols={30}  />
+                  <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'2px',color:'black',textDecoration:'underline',textTransform:'none'}}>I will add later, skip for now.</Button>
 
                   <Stack sx={{flexDirection:'row',justifyContent:'space-between'}}>
                 <Button onClick={handleBack} variant="text"  type="submit" sx={{float:'right',color:'black'}}>

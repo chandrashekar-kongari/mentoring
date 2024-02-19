@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Container, FormControl, FormControlLabel, FormLabel, InputLabel, OutlinedInput, Stack, Typography } from '@mui/material'
+import { Box, Button, Checkbox, Chip, Container, FormControl, FormControlLabel, FormLabel, InputLabel, OutlinedInput, Stack, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
@@ -54,13 +54,15 @@ const PurposeInformation = ({step,handleNext,handleSkip}) => {
             <Box sx={{padding:0,width:'100%'}}>
             <Typography id="demo-multiple-chip-label" sx={{fontSize:'14px',width:'100%'}}>
 
-            I would like to be a?
+            I would like to be a:
 
 
             </Typography>
-            <Stack sx={{flexDirection:'row',justifyContent:'space-between'}}>
-                <FormControlLabel required name='mentor' onChange={onSelectMentor} control={<Checkbox checked={mentorSelected} />} label="Mentor" />
-                <FormControlLabel required name='mentee' onChange={onSelectMentee} control={<Checkbox checked={menteeSelected} />} label="Mentee"  />
+            <Stack sx={{flexDirection:'row',justifyContent:'space-evenly'}}>
+            <Chip name='mentor' onClick={onSelectMentor} sx={{margin:'1px',fontSize:'11px',marginBottom:'2px'}} label="Mentor" color="primary" variant={mentorSelected?'solid':'outlined'}  />
+            <Chip name='mentee' onClick={onSelectMentee} sx={{margin:'1px',fontSize:'11px',marginBottom:'2px'}} label="Mentee" color="primary" variant={menteeSelected?'solid':'outlined'}  />
+                {/* <FormControlLabel required name='mentor'  control={<Checkbox checked={mentorSelected} />} label="Mentor" />
+                <FormControlLabel required name='mentee' onChange={onSelectMentee} control={<Checkbox checked={menteeSelected} />} label="Mentee"  /> */}
             </Stack>
             
            
@@ -68,7 +70,7 @@ const PurposeInformation = ({step,handleNext,handleSkip}) => {
             {menteeSelected && <AreaOfIntrestsForMentee/>}
       
             {menteeSelected && <Container >
-                          <Button onClick={handleSkip} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline',textTransform:'none'}}>I am not sure skip to next step.</Button>
+                          <Button onClick={handleSkip} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline',textTransform:'none'}}>I will add later, skip for now.</Button>
                 </Container>}
             </Box>
            

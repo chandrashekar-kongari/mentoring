@@ -155,7 +155,7 @@ export default function UpdateHobbies({val,setVal,handleUpdateSkills,handleClose
 
   const onChange = (event, { newValue, method }) => {
     setValue(newValue);
-    console.log('i am here')
+
   };
 
   const onSuggestionsFetchRequested = ({ value }) => {
@@ -192,7 +192,7 @@ export default function UpdateHobbies({val,setVal,handleUpdateSkills,handleClose
     <>
 <Box style={{padding:'0px',margin:'0px',width:'100%'}}>
 <Stack sx={{flex:1,flexDirection:'column',textAlign:'center',paddingBottom:'1rem',marginTop:'0px'}}>
-            <Typography sx={{fontWeight:'bold',padding:'0px',margin:'0px'}}>Update Hobbies</Typography>
+            <Typography sx={{fontWeight:'bold',padding:'0px',margin:'0px'}}>Update Passions and Hobbies</Typography>
             <Typography sx={{fontSize:'11px'}}>(Click to select and deselect)</Typography>
             </Stack>
             
@@ -209,11 +209,11 @@ export default function UpdateHobbies({val,setVal,handleUpdateSkills,handleClose
         
         <Box sx={{marginBottom:'4px'}}>
         
-          {hobbies.map((hobby,index) => (
+          {/* {hobbies.map((hobby,index) => (
           
               <Chip sx={{margin:'2px',fontSize:'11px'}} label={hobby.title} color="primary" variant={hobby.selected?'solid':'outlined'} onClick={()=>handleSelect(hobby.title)} />
             
-          ))}
+          ))} */}
           </Box>
           <Stack direction={'row'} sx={{justifyContent:'center',marginTop:'3px'}}>
               <Autosuggest

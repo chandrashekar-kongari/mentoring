@@ -20,7 +20,7 @@ const TestWorkExperience = ({step}) => {
   const exps=useSelector(state=>state.experience)
   useEffect(()=>{
     setExperiences(exps)
-    console.log(exps)
+
   },[exps])
   return (
     <>

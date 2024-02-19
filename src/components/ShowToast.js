@@ -57,7 +57,7 @@ const showToast = (message,type) => {
             theme: "light",
             });
     }
-    console.log('here')
+    // console.log('here')
   };
 
 export default showToast

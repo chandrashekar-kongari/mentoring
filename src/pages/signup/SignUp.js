@@ -105,7 +105,7 @@ export default function SignUp() {
         //   }
         // }
 
-    console.log('form with files',formDataWithFiles)
+  
  
       try {
         const response = await axios.post(endpoint+'/users', formDataWithFiles,{headers: {
@@ -153,10 +153,10 @@ export default function SignUp() {
           if (response.status === 200) {
             
             const user=response.data
-            console.log('details ',user)
+  
             if(user==null || user=={}){
-              handleShowAlert(false)
-              setActiveStep((prevActiveStep) => prevActiveStep + 1);
+              checkPasswordStrongOrNot()
+              
               setLoading(false)
               return false
             }
@@ -186,6 +186,19 @@ export default function SignUp() {
           return false
 
   }
+  const [passwordStrength,setPasswordStrength]=React.useState(0)
+  const checkPasswordStrongOrNot=()=>{
+    if(passwordStrength<4){
+   
+
+      setErrorMessage('Please give strong password')
+      handleShowAlert(true)
+      setLoading(false)
+      return
+    }
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+
+  }
 
   const handleNext = () => {
     let newSkipped = skipped;
@@ -195,14 +208,9 @@ export default function SignUp() {
     }
     if(activeStep==0){
       setLoading(true)
-      const flag=checkMailIdPresent()
-      if(flag){
-        return
-      }
-      else{
-        handleShowAlert(false)
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-      }
+      checkMailIdPresent()
+      // checkPasswordStrongOrNot()
+      return
     }
 
     if(activeStep==1){
@@ -215,15 +223,15 @@ export default function SignUp() {
       else if(mentee!=''){
         const val=mentorshipIntrests.length
         if(val<=0){
-          console.log(mentee)
+         
           handleShowAlert(false)
-          setErrorMessage('Please select your intrests')
+          setErrorMessage('Please select to proceed')
           handleShowAlert(true)
           return
         }
       }
       else if(mentor!=''){
-        console.log(numofmentees)
+      
         if(numofmentees==''){
           handleShowAlert(false)
           setErrorMessage('Please select number of mentees')
@@ -233,9 +241,9 @@ export default function SignUp() {
         else{
           const val=mentorIntrests.length
           if(val<=0){
-            console.log(mentee)
+      
             handleShowAlert(false)
-            setErrorMessage('Please select your intrests')
+            setErrorMessage('Please select to proceed')
             handleShowAlert(true)
             return
           }
@@ -244,7 +252,7 @@ export default function SignUp() {
     }
     if(activeStep==2){
       const val=skills.length
-      console.log('sak',skills)
+
       if(val==0){
         handleShowAlert(false)
         setErrorMessage('Please select to proceed')
@@ -253,8 +261,8 @@ export default function SignUp() {
       }
     }
     if(activeStep==4){
-      console.log(resume ,'and', skipResume)
-      if(skipResume){
+
+      if(!skipResume){
         if(resume==null){
           handleShowAlert(false)
           setErrorMessage('Please select to resume')
@@ -268,15 +276,20 @@ export default function SignUp() {
       //   handleShowAlert(true)
       //   return
       // }
-    }
-    if(activeStep==4){
       handleSignUp()
+      return
     }
-    else{
+    // if(activeStep==4){
+    //   handleSignUp()
+    // }
+    // else{
+    //   handleShowAlert(false)
+    //   setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    // }
+    if(activeStep!=4){
       handleShowAlert(false)
-      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
-
     
 
     
@@ -326,19 +339,20 @@ export default function SignUp() {
 
   return (
     <><Loading loading={loading}/>
-    <Container maxWidth="xs" sx={{height:'100vh'}} component="main">
+    <Container maxWidth="xs" sx={{height:'100vh',}} component="main">
       
-        <Stack sx={{flex:1,flexDirection:'row',justifyContent:'center'}}>
+        <Stack sx={{flex:1,flexDirection:'row',justifyContent:'center',}}>
         {showAlert && <Alert onClose={()=>{handleShowAlert(false)}} sx={{position:'absolute',top:'2%'}} severity="error">{errorMessage}</Alert>}
         </Stack>
       
-        <Stack sx={{height:'100%',justifyContent:'center',textAlign:'center',display:'flex'}}>
+        <Stack sx={{height:'100%',justifyContent:'center',textAlign:'center',display:'flex',}}>
         
            
             <Box sx={{boxShadow: 3,
                     borderRadius: 2,
-                    px: 4,
-                    py: 3,
+                    
+                    px: 10,
+                    py: 6,
                     }} >
                         <Box display="flex"
                             justifyContent="center"
@@ -370,16 +384,16 @@ export default function SignUp() {
                               })}
                             </Stepper>
                             {activeStep === steps.length ? '' : (
-                              <React.Fragment>
+                              <Box sx={{paddingTop:5,}}>
                                 {/* <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography> */}
                                 
                                 <Typography sx={{ mt: 2, mb: 1 }}></Typography>
-                                <RequriedInformation step={activeStep+1} handleNext={handleNext}/>
+                                <RequriedInformation setPasswordStrength={setPasswordStrength} step={activeStep+1} handleNext={handleNext}/>
                                 <PurposeInformation step={activeStep+1} handleNext={handleNext} handleSkip={handleSkip}/>
                                 <Skills step={activeStep+1} handleNext={handleNext} handleSkip={handleSkip}/>
                                 <Bio step={activeStep+1} handleNext={handleNext} handleSkip={handleSkip} handleBack={handleBack}/>
                                 <Education step={activeStep+1} handleNext={handleNext} handleBack={handleBack}/>
-                                {activeStep!=0 && activeStep !=3 && activeStep !=4?<Box sx={{ display: 'flex', flexDirection: 'row', pt: 1 }}>
+                                {activeStep!=0 && activeStep !=3 && activeStep !=4?<Box sx={{ display: 'flex', flexDirection: 'row', pt: 4, }}>
                                   <Button
                                     color="inherit"
                                     disabled={activeStep === 0}
@@ -395,11 +409,11 @@ export default function SignUp() {
                                     </Button>
                                   )}
                       
-                                  <Button onClick={handleNext}>
+                                  <Button  onClick={handleNext}>
                                     {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                                   </Button>
                                 </Box>:''}
-                              </React.Fragment>
+                              </Box>
                             )}
                           </Box>
 

@@ -8,7 +8,7 @@ const Admin = () => {
     const [mentees,setMentees]=useState([])
     const getMentees=async()=>{
         const response = await axios.get('http://127.0.0.1:5000/allmentees');
-        console.log('mentees',response.data)
+    
     }
 
     useEffect(()=>{

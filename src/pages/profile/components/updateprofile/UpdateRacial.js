@@ -12,8 +12,7 @@ const UpdateRacial = ({handleClose,racial,setRacial,handleSave,racialLocalState}
     
     const handleChange=(event)=>{
         const {name,value}=event.target
-        console.log('val ',value)
-        console.log('name ',name)
+
         if(racialLocalState.includes(value)){
             const newArray = racialLocalState.filter(item => item !== value);
             setRacial(newArray)
@@ -45,11 +44,11 @@ const UpdateRacial = ({handleClose,racial,setRacial,handleSave,racialLocalState}
             <IconButton onClick={handleClose} sx={{top:'0px', right:'0px',position:'absolute'}}><CloseIcon sx={{fontSize:'16px'}}/></IconButton>
             <Typography sx={{fontWeight:'bold'}}>Racial/Ethnic Identities: </Typography>
             <FormGroup>
-            <FormControlLabel control={<Checkbox onChange={handleChange} checked={racialLocalState.includes('Black/African-American')}/>} value={"Black/African-American"} label="Black/African-American" />
-            <FormControlLabel  control={<Checkbox onChange={handleChange} checked={racialLocalState.includes('Hispanic/Latinx')}/>} value={"Hispanic/Latinx"} label="Hispanic/Latin" />
-            <FormControlLabel control={<Checkbox onChange={handleChange} checked={racialLocalState.includes('Native American')}/>} value={"Native American"} label="Native American" />
-            <FormControlLabel control={<Checkbox  onChange={handleChange} checked={racialLocalState.includes('Asian')}/>} value={"Asian"} label="Asian" />
-            <FormControlLabel  control={<Checkbox onChange={handleChange} checked={racialLocalState.includes('Caucasian/White')}/>} value={"Caucasian/White"} label="Caucasian/White" />
+            <FormControlLabel control={<Checkbox onChange={handleChange} checked={racialLocalState.includes('American Indian or Alaskan Native​')}/>} value={"American Indian or Alaskan Native​"} label="American Indian or Alaskan Native​" />
+            <FormControlLabel  control={<Checkbox onChange={handleChange} checked={racialLocalState.includes('Asian / Pacific Islander​')}/>} value={"Asian / Pacific Islander​"} label="Asian / Pacific Islander​" />
+            <FormControlLabel control={<Checkbox onChange={handleChange} checked={racialLocalState.includes('Black or African American​')}/>} value={"Black or African American​"} label="Black or African American​" />
+            <FormControlLabel control={<Checkbox  onChange={handleChange} checked={racialLocalState.includes('Hispanic')}/>} value={"Hispanic"} label="Hispanic" />
+            <FormControlLabel  control={<Checkbox onChange={handleChange} checked={racialLocalState.includes('White / Caucasian​')}/>} value={"White / Caucasian​"} label="White / Caucasian​" />
             <FormControlLabel control={<Checkbox onChange={handleChange} checked={racialLocalState.includes('Prefer not to specify')}/>} value={"Prefer not to specify"} label="Prefer not to specify" />
             </FormGroup>
       

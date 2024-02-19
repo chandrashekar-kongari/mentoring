@@ -151,7 +151,7 @@ const ForgotPassword = () => {
               const a=true
               // dispatch(setAuth(a))
               const user=response.data
-              console.log('lo ',user)
+       
               if(user==null || Object.keys(user).length === 0){
                 setType('error')
                 setAlertMessage('Something went wrong')
@@ -165,7 +165,7 @@ const ForgotPassword = () => {
                 dispatch(setAuth(true))
                 localStorage.setItem('auth', 'true');
                 localStorage.setItem('userid',response.data._id)
-                console.log('response from login ',response.data)
+          
                 
               }
          

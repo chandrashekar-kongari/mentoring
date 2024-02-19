@@ -1,36 +1,61 @@
-import { Box, Card, Container, Stack, Typography } from '@mui/material'
+import { Box, Card, CardContent, Container, Stack, Typography } from '@mui/material'
 import React from 'react'
-import { CustomBox, MainHeadTypography } from '../../../components/page/PageComponents'
+import { CustomBox, CustomPaddingBox, MainHeadTypography } from '../../../components/page/PageComponents'
 
 const UniversitiesDisplay = () => {
   return (
-   <CustomBox>
-     <Container maxWidth='lg' sx={{position:'relative',top:'0rem',backgroundColor:'white',paddingBottom:'1rem',borderBottom:'solid 2px #7e7f80'}} >
+    <Box sx={{ backgroundRepeat:'no-repeat', backgroundImage:`url('unibackgroungimg2-removebg.png')`,backgroundColor:'#616161'}}>
+      <Box sx={{backgroundImage:"url('top2.svg')",height:'40px'}}>
+   </Box>
+      <Box sx={{}}>
+      
+   <CustomPaddingBox>
+     <Container maxWidth='lg' sx={{position:'relative',top:'0rem', }} >
         
 
-        <Stack sx={{flexDirection:'row',justifyContent:'center',display:'flex',flexWrap:'wrap'}}>
-            <Box>
+        <Stack sx={{justifyContent:'center',display:'flex',flexWrap:'wrap'}}>
+            <Box sx={{paddingBottom:'1rem'}}>
 
-            <Typography variant='h4' sx={{paddingBottom:'1rem',textAlign:{xs:'left',md:'center'}}}>
-            Participating Universities
-          </Typography>
+            {/* <MainHeadTypography>
+            We Serve Future Technologists
+          </MainHeadTypography> */}
+          <Typography variant='h5'  sx={{color:'white',fontWeight:'bold',lineHeight:'56px',paddingBottom:'1rem',textAlign:'center',}}>We Serve Future Technologists</Typography>
 
             </Box>
-            <Box sx={{justifyContent:'space-between'}}>
 
-                <img src='sacred-heart-university-logo.png' style={{width:'auto',height:'100px'}}/>
-                <img src='boston-university-logo.png' style={{width:'auto',height:'80px'}}/>
-                <img src='fordham-university-logo.png' style={{width:'auto',height:'100px'}}/>
-                <img src='howard-university-logo.png' style={{width:'auto',height:'80px'}}/>
+
+            <Stack spacing={3} sx={{alignItems: 'center',flexDirection:'row',display:'flex',flexWrap:'wrap', justifyContent:'space-evenly'}}>
+            <Card elevation={4} sx={{backgroundColor:'#FCFCFC',margin:'1rem', alignItems: 'center',height:'100px', width: '300px', display: 'flex', justifyContent: 'center' }}>
+            <CardContent>
+              <img src='sacred-heart-university-logo2.png' style={{ width: 'auto', height: '50px', padding: '1rem' }} />
+            </CardContent>
+          </Card>
+
+          <Card elevation={4} sx={{backgroundColor:'#FCFCFC',margin:'1rem', alignItems: 'center',height:'100px', width: '300px', display: 'flex', justifyContent: 'center' }}>
+            <CardContent>
+            <img src='boston-university-logo.png' style={{width:'auto',height:'60px'}}/>
+            </CardContent>
+          </Card>
+         
+
+             
                 
-            </Box>
+                
+            </Stack>
+            
+            
 
         </Stack>
+        
 
 
 
     </Container>
-   </CustomBox>
+   </CustomPaddingBox>
+   </Box>
+  
+   
+   </Box>
   )
 }
 

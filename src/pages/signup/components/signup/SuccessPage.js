@@ -97,7 +97,8 @@ const SuccessPage = () => {
     <>
     <Container maxWidth="xs" sx={{height:'100vh'}} component="main">
         <Stack sx={{height:'100%',justifyContent:'center',textAlign:'center',display:'flex'}}>
-            <Box sx={{boxShadow: 3,
+            <Box sx={{
+              // boxShadow: 3,
                     borderRadius: 2,
                     px: 4,
                     py: 3,
@@ -122,7 +123,7 @@ const SuccessPage = () => {
                         
                             
             <Typography sx={{fontWeight:'bold',fontSize:'18px'}}>
-                Your account created successfully
+                Your account created successfully.
             </Typography>
 
             <Fab onClick={handleGoHome} variant="extended" sx={{marginTop:'2rem',backgroundColor:'white',textTransform:'capitalize',fontSize:'16px'}}>

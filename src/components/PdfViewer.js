@@ -35,7 +35,7 @@ const PdfViewer = () => {
                     const res=response.data.resume
                     if(res!=null){
                         setResume(`data:application/pdf;base64,${res}`);
-                        console.log(res)
+                        // console.log(res)
                         setLoading(false)
                         document.title = 'Custom PDF Title';
                     }
@@ -55,11 +55,11 @@ const PdfViewer = () => {
     useEffect(()=>{
         
 
-        console.log('res' ,resid)
+        // console.log('res' ,resid)
         getResume()
         const handleResize = () => {
             setViewportWidth(window.innerWidth);
-            console.log('w ',window.innerWidth)
+            // console.log('w ',window.innerWidth)
           };
       
           // Add an event listener for window resize

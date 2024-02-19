@@ -10,7 +10,7 @@ const UpdateLinkedIn = ({handleClose,linkedIn,setLinkedIn,handleSave}) => {
 
     }
   return (
-    <form>
+    <form onSubmit={handleSave}>
          <Box sx={{justifyContent:'center'}}>
         <Stack sx={{flex:1,flexDirection:'row',justifyContent:'center',paddingBottom:'1rem',marginTop:'0px'}}>
             <Typography sx={{fontWeight:'bold',padding:'0px',margin:'0px'}}>Update Linkedin profile</Typography>
@@ -32,7 +32,7 @@ const UpdateLinkedIn = ({handleClose,linkedIn,setLinkedIn,handleSave}) => {
                     // placeholder='please share linkedin profile url'
                 />
 
-<Button onClick={handleSave} variant='contained' sx={{marginTop:'1rem'}}>Save</Button>
+<Button type='submit' variant='contained' sx={{marginTop:'1rem'}}>Save</Button>
 
                 </FormControl>
         </Box>

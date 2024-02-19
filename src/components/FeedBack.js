@@ -51,7 +51,7 @@ const FeedBack = () => {
         if (response.status === 200) {
             handleOpenAlert()
             handleClose()
-            console.log(response.data)
+            // console.log(response.data)
             setFeedback('')
   
         } else {

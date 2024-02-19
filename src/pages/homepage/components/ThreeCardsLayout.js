@@ -1,13 +1,16 @@
 import React from 'react';
 import { Grid, Card, CardContent, Typography, Stack, Box } from '@mui/material';
-
+import LazyLoad from 'react-lazy-load';
 const ThreeCardsLayout = () => {
   return (
-    <Box sx={{marginTop:'3rem'}}>
+   
+    <Box sx={{marginTop:'3rem',backgroundRepeat:'no-repeat', }}>
           <svg style={{position:'absolute',zIndex:-1,width:'80vw'}} width="1120" height="1033" viewBox="0 0 1120 1033" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g transform="scale(-1, 1) translate(-1120, 0)">
         <path d="M675.361 22.5597C530.361 -16.4405 313.061 19.0599 235.861 257.06C139.361 554.56 310.361 697.56 319.361 868.56C328.361 1039.56 205.861 1036.61 157.361 990.56C99.9078 936.013 112.361 857.06 181.861 821.56C251.361 786.06 315.944 823.465 515.361 945.06C556.361 970.06 776.861 1052.56 844.861 1006.06" stroke="#D0D2D2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 16"></path>
     </g></svg>
+   
+
         
         <Grid container spacing={3} justifyContent={'center'}>
       {/* 1st Card */}
@@ -16,12 +19,15 @@ const ThreeCardsLayout = () => {
           <CardContent >
             <Stack spacing={3}>
             <Typography variant='h6'>
-              Create an account
+            Ready … sign up
             </Typography>
             <Typography variant='subtitle1'>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, doloremque similique? Eum dolorum, ducimus aperiam, provident earum, dolor at ab 
+            Take your career into your own hands in 5 easy steps that require under 2 minutes of your time.​
             </Typography>
+            
             <img src='./login_image_nobg2.png' style={{maxWidth: '550px',height:'auto'}}/>
+          
+            
             </Stack>
           </CardContent>
         </Card>
@@ -33,11 +39,10 @@ const ThreeCardsLayout = () => {
           <CardContent >
             <Stack spacing={3}>
             <Typography variant='h6'>
-            Participate in Mentorship
+            Set … complete your profile​
             </Typography>
             <Typography variant='subtitle1'>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, doloremque similique? Eum dolorum, ducimus aperiam, provident earum, dolor at ab 
-            </Typography>
+            A complete profile helps us understand you and match you to a mentor that meets your needs.​            </Typography>
             <img src='./communicate_image2.png' style={{maxWidth: '550px',height:'auto'}}/>
             </Stack>
           </CardContent>
@@ -50,11 +55,10 @@ const ThreeCardsLayout = () => {
           <CardContent >
             <Stack spacing={3}>
             <Typography variant='h6'>
-              Top Head
+            Go … let the mentoring begin!​
             </Typography>
             <Typography variant='subtitle1'>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, doloremque similique? Eum dolorum, ducimus aperiam, provident earum, dolor at ab 
-            </Typography>
+            You will meet monthly across a 4-month period.  We will guide you through the process each step of the way.​            </Typography>
             <img src='./interview-nobg3.png' style={{maxWidth: '550px',height:'auto',borderRadius:'1rem'}}/>
             </Stack>
           </CardContent>
@@ -62,6 +66,7 @@ const ThreeCardsLayout = () => {
       </Grid>
     </Grid>
     </Box>
+
   );
 };
 

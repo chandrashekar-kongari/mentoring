@@ -16,7 +16,7 @@ const UpdateIntrests = ({handleClose,intrests,setIntrests,handleSave}) => {
   return (
     <form>
         <Stack sx={{flex:1,flexDirection:'column',textAlign:'center',paddingBottom:'1rem',marginTop:'0px'}}>
-            <Typography sx={{fontWeight:'bold',padding:'0px',margin:'0px'}}>Update Intrests</Typography>
+            <Typography sx={{fontWeight:'bold',padding:'0px',margin:'0px'}}>Update Interests</Typography>
             <Typography sx={{fontSize:'11px'}}>(Click to select and deselect)</Typography>
             </Stack>
             

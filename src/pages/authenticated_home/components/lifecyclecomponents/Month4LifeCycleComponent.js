@@ -25,7 +25,7 @@ const style = {
   // border: '2px solid #000',
   borderRadius:'6px',
   boxShadow: 24,
-  p: 3,
+  p: 8,
 
 };
 const Month4LifeCycleComponent = () => {
@@ -45,7 +45,7 @@ const Month4LifeCycleComponent = () => {
     setResources(foundMonth4Data.resources)
     
     const dateObj = dayjs(foundMonth4Data.date)
-    console.log('date ',dateObj)
+
     setDate(dateObj)
     
 
@@ -147,8 +147,7 @@ const Month4LifeCycleComponent = () => {
     
       handleSaveLifeCycle()
 
-      console.log(lifeCycle)
-      console.log(agenda)
+
 
 
     };
@@ -180,7 +179,7 @@ const Month4LifeCycleComponent = () => {
               const a=true
               // dispatch(setAuth(a))
               const user=response.data
-              console.log('details ',user)
+             
               if(user==null){
                 callToast('Error while updating','error')
   
@@ -253,7 +252,7 @@ const Month4LifeCycleComponent = () => {
               const a=true
               // dispatch(setAuth(a))
               const user=response.data
-              console.log('details ',user)
+            
               if(user==null){
                 callToast('Error while updating','error')
   

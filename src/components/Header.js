@@ -19,8 +19,10 @@ import { Divider, Drawer, List, ListItem, ListItemButton, ListItemText, Stack } 
 import SideMenu from './SideMenu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+import endpoint from '../API/api';
 
-const pages = [ 'Home', 'Profile','Contact Us','Privacy Policy','Help Center','Log out'];
+const pages = [ 'Home', 'Profile','Lifecycle', 'Contact Us','Privacy Policy','Log out'];
 const desktopPages = [ 'Home', 'Contact Us'];
 
 
@@ -28,7 +30,14 @@ function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const email=useSelector(state=>state.userObj.email)
+  // const u=useSelector(state=>state.userObj)
+  const [email,setEmail]=React.useState('')
+  const [loading,setLoading]=React.useState(true)
+
+ 
+  React.useEffect(()=>{
+
+  },[])
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -67,26 +76,36 @@ function Header() {
   else if(page=='Help Center'){
     navigate('/help-center')
   }
+  else if(page=='Lifecycle'){
+    navigate('/lifecycle')
+  }
   }
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleLogoClick=()=>{
+    navigate('https://www.techpact.org/')
+  }
  
   return (
     <>
+
     <AppBar elevation={2} position="static" sx={{backgroundColor:'white' ,color:'inherit' ,zIndex:'2'}}>
       <Container maxWidth="lg">
         <Toolbar disableGutters>
          
           
           <Box sx={{width:'15rem'}}>
-            <img  alt="Logo" src="techpact-logo.png" style={{
+          <a href='https://www.techpact.org'>
+            <img   alt="Logo" src="techpact-logo-2.png" style={{
                             width: '50%', 
                             height: '50%',
                             justifyContent:'center',
                             display:'flex' 
             }}/>
+            </a>
             </Box>
 
 
@@ -154,12 +173,11 @@ function Header() {
                 </IconButton>
                 </Stack>
                 <Box sx={{width:'250px'}}>
-                    <Typography sx={{fontSize:'14px',paddingLeft:'1rem',paddingRight:'1rem',paddingTop:'1rem',paddingBottom:'4px'}}>Signed in as</Typography>
-                    <Typography sx={{fontSize:'14px',paddingLeft:'1rem',paddingBottom:'1rem',paddingRight:'5px',textOverflow: 'ellipsis',maxWidth: '25ch',overflow:'hidden',whiteSpace:'hidden',fontWeight:'bold'}}>{email}</Typography>
+                    {/* <Typography sx={{fontSize:'14px',paddingLeft:'1rem',paddingRight:'1rem',paddingTop:'1rem',paddingBottom:'4px'}}>Signed in as</Typography>
+                    <Typography sx={{fontSize:'14px',paddingLeft:'1rem',paddingBottom:'1rem',paddingRight:'5px',textOverflow: 'ellipsis',maxWidth: '25ch',overflow:'hidden',whiteSpace:'hidden',fontWeight:'bold'}}>{email}</Typography> */}
                 <Stack spacing={1} sx={{borderTop:'1px solid #f2eeed'}}>
                 <MenuItem sx={{}} onClick={()=>handleNavClick('Profile')}>Profile</MenuItem>
-
-                <MenuItem sx={{}} onClick={()=>handleNavClick('Help Center')}>Help Center</MenuItem>
+                {/* <MenuItem sx={{}} onClick={()=>handleNavClick('Lifecycle')}>Lifecycle</MenuItem> */}
 
                 <MenuItem sx={{}} onClick={()=>handleNavClick('Contact Us')}>Contact Us</MenuItem>
 

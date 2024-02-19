@@ -191,7 +191,7 @@ export default function UpdateSkills({val,setVal,handleUpdateSkills,handleClose}
 
   const onChange = (event, { newValue, method }) => {
     setValue(newValue);
-    console.log('i am here')
+
   };
 
   const onSuggestionsFetchRequested = ({ value }) => {

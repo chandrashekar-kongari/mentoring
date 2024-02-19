@@ -15,6 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
 import { Divider, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import SideMenu from './SideMenu';
+import TechPactLogo from './techpact-logo-2.png';
 
 const pages = [ 'Log In', 'Sign Up'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -45,21 +46,27 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleLogoClick=()=>{
+    navigate('https://www.techpact.org/')
+  }
  
   return (
     <>
-    <AppBar elevation={0} position="static" sx={{backgroundColor:'white' ,color:'inherit' ,position:'fixed',zIndex:'2'}}>
+    <AppBar elevation={0} position="static" sx={{backgroundColor:'#FCFCFC' ,color:'inherit' ,position:'fixed',zIndex:'2'}}>
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           
           <Box sx={{width:'15rem'}}>
-            <img  alt="Logo" src="techpact-logo.png" style={{
+            <a href='https://www.techpact.org'>
+            <img  alt="Logo" src={TechPactLogo} style={{
                             width: '50%', // Adjust the width as needed
                             height: '50%',
                             justifyContent:'center',
                             display:'flex' // Adjust the height as needed
             }}/>
+            </a>
             </Box>
 
           
@@ -119,16 +126,23 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
           
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },justifyContent:'right' }}>
-            {pages.map((page) => (
+          <Box  sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },justifyContent:'right' }}>
+            
               <Button
-                key={page}
-                onClick={()=>handleNavClick(page)}
-                sx={{ my: 2, color: 'inherit', display: 'block' }}
+          
+                onClick={()=>handleNavClick('Log In')}
+                sx={{ my: 2, color: 'inherit', display: 'block',marginRight:'1rem' }}
               >
-                {page}
+                Log In
               </Button>
-            ))}
+              <Button
+                variant='contained'
+                onClick={()=>handleNavClick('Sign Up')}
+                sx={{ my: 2, display: 'block' }}
+              >
+                Sign Up
+              </Button>
+           
           </Box>
 
           {/* <Box sx={{ flexGrow: 0 }}>

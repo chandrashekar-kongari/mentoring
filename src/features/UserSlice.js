@@ -46,15 +46,11 @@ const initialState={
         selected:false
       },
       {
-        title:'Career Guidance',
+        title:'Career Planning',
         selected:false
       },
       {
-        title:'Thought Parter',
-        selected:false
-      },
-      {
-        title:'Transition',
+        title:'Thought Partner',
         selected:false
       },
       {
@@ -66,15 +62,11 @@ const initialState={
         selected:false
       },
       {
-        title:'Career Guidance',
+        title:'Career Planning',
         selected:false
       },
       {
-        title:'Thought Parter',
-        selected:false
-      },
-      {
-        title:'Transition',
+        title:'Thought Partner',
         selected:false
       },
       {
@@ -113,11 +105,11 @@ const initialState={
         selected:false
       },
       {
-        title:'Database Develpment',
+        title:'Database Development',
         selected:false
       },
       {
-        title:'C# Programming',
+        title:"Strategy",
         selected:false
       }
     ],
@@ -128,7 +120,7 @@ const initialState={
     lastname:'',
     linkedinProfile:'',
     numberofmentees:'',
-    skipResume:'',
+    skipResume:false,
     userObj:null,
     resid:'',
     hobbies:[],

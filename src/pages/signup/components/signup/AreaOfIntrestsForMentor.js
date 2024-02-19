@@ -219,11 +219,11 @@ const Fullstack=[{
   const numberofmentees=useSelector(state=>state.numberofmentees)
 
   return (
-    <Box style={{padding:'0px',margin:'0px'}}>
+    <Box sx={{padding:'0px',margin:'0px',paddingTop:'1rem'}}>
         <Stack textAlign='center' >
         {/* <FormLabel style={{fontSize:'12px',color:'blue'}}>You can pick multiple</FormLabel> */}
-        <Typography id="demo-multiple-chip-label" sx={{fontSize:'14px'}}>I am intrested to mentor: </Typography>
-        <Stack flexDirection={'row'} justifyContent={'space-around'}>
+        <Typography id="demo-multiple-chip-label" sx={{fontSize:'14px'}}>I have capacity to mentor: </Typography>
+        <Stack flexDirection={'row'} justifyContent={'space-around'} >
         {numOfMentees.map((intrest,index) => (
             
             
@@ -234,9 +234,9 @@ const Fullstack=[{
 
         </Stack>
         </Stack>
-        <Box sx={{marginBottom:'10px'}}>
-        <Typography id="demo-multiple-chip-label" sx={{fontSize:'14px'}}>I am intrested to mentor in the following area(s): </Typography>
-        <Typography sx={{fontSize:'11px'}}>(Click to select and deselect)</Typography>
+        <Box sx={{marginBottom:'10px',paddingTop:'1rem'}}>
+        <Typography id="demo-multiple-chip-label" sx={{fontSize:'14px'}}>I have experience in: </Typography>
+        {/* <Typography sx={{fontSize:'11px'}}>(Click to select and deselect)</Typography> */}
         </Box>
         
       <FormControl sx={{ }}>

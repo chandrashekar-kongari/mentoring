@@ -8,8 +8,8 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { faBullseye, faUser ,faWandMagicSparkles} from '@fortawesome/free-solid-svg-icons';
-
-import { Avatar, Card, CardActions, CardContent, CardMedia, Chip, Container, Divider, Fab, Paper, Rating, Stack } from '@mui/material';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { Avatar, Card, CardActions, CardContent, CardMedia, Chip, Container, Divider, Fab, List, ListItem, ListItemAvatar, ListItemText, Paper, Rating, Stack } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -30,7 +30,7 @@ import Carousel from 'react-material-ui-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ImageTransition from './components/ImageTransition';
 import StepsAnimation from './components/StepsAnimation';
-import { CustomBox, MainHeadTypography } from '../../components/page/PageComponents';
+import { CustomBox, CustomPaddingBox, MainHeadTypography } from '../../components/page/PageComponents';
 import ThreeCardsLayout from './components/ThreeCardsLayout';
 import Footer from './components/Footer';
 
@@ -60,7 +60,6 @@ export default function HomePage() {
       profile:'chandrashekar.jpg'
     }
   ])
-
   React.useEffect(()=>{
 
     // const val=localStorage.getItem('auth')
@@ -68,7 +67,10 @@ export default function HomePage() {
     //     navigate('/homepage')
     // }
 
+    
   },)
+
+  
     const navigate=useNavigate()
 
     const onClickLogin=()=>{
@@ -79,112 +81,44 @@ export default function HomePage() {
       navigate('/signup')
 
   }
+
+  
   return (
     <Box sx={{ }}>
 
       <ResponsiveAppBar/>
-     
+
       <svg style={{position:'absolute',zIndex:-1}} width="90%" height="770" viewBox="0 0 1440 770" fill="none" xmlns="http://www.w3.org/2000/svg"><rect opacity="0.8" x="951" y="70" width="480" height="480" fill="url(#radial1)"></rect><rect opacity="0.8" x="32" y="14" width="586" height="586" fill="url(#radial2)"></rect><defs> <radialGradient id="radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1191 310) rotate(90) scale(240)"><stop stop-color="#c9cbf5"></stop><stop offset="1" stop-color="#e6e7fa" stop-opacity="0"></stop></radialGradient><radialGradient id="radial2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(325 307) rotate(90) scale(293)"><stop stop-color="#c9cbf5"></stop><stop offset="1" stop-color="#c9cbf5" stop-opacity="0"></stop></radialGradient></defs></svg>
       <TopBanner/>
 
+
       <ImageTransition/>
+    
   
-      <Box sx={{position:'relative',top:'-150px'}}>
+      <Box sx={{position:'relative',top:{ xs: '-300px', md: '-80px' }}}>
       <ThreeCardsLayout/>
       <Box sx={{zIndex:'0',}}>
       
 
 
-      <Box sx={{}}>
   
       <CompanyIconsDisplay/>
+      
      
-      </Box>
-      {/* <CustomBox>
-      <Container maxWidth='xl' sx={{marginTop:'2rem', paddingTop:'2rem',paddingBottom:'2rem',background:backgroundGradient,color:'white'}}>
-        <Typography variant='h5' sx={{textAlign:'center',paddingBottom:'2rem',}}>Achieve your goals in 3 steps</Typography>
-      
-        <Stack sx={{flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
-          <Box>
-          <Stack sx={{textAlign:'center'}}>
-          
-          <FontAwesomeIcon icon={faUser} style={{}}/>
-          <Typography variant='h5' sx={{fontWeight:'bold',paddingBottom:'1rem'}}>
-          Create Account
-          </Typography>
-          <Typography variant='h6' sx={{fontWeight:'400',}}> wqyfad wqhdg hqwdj qwdaugqh wqdh</Typography>
-          </Stack>
-          
-          </Box>
-          <Box>
-          <Stack sx={{textAlign:'center'}}>
-          <FontAwesomeIcon icon={faWandMagicSparkles}  style={{}}/>
-          <Typography variant='h5' sx={{fontWeight:'bold',paddingBottom:'1rem'}}>
-            Get A Mentor
-          </Typography>
-          <Typography variant='subtitle1' sx={{fontWeight:'400',}}> wqyfad wqhdg hqwdj qwdaugqh wqdh</Typography>
-          </Stack>
-          
-          </Box>
-          <Box>
-          <Stack sx={{textAlign:'center'}}>
-          <FontAwesomeIcon icon={faBullseye}  style={{}}/>
-          <Typography variant='h5'  sx={{fontWeight:'bold',paddingBottom:'1rem'}}>
-            Reach Your Goal
-          </Typography>
-          <Typography  variant='subtitle1'  sx={{fontWeight:'400', }}> wqyfad wqhdg hqwdj qwdaugqh wqdh</Typography>
-          </Stack>
-          
-          </Box>
-        </Stack>
-      </Container>
-      </CustomBox> */}
 
-      {/* <CustomBox>
-
-      <Container sx={{}}>
-      <Stack sx={{flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
-        <Box  sx={{maxWidth:'550px'}}>
-          <Typography variant='h5' sx={{fontWeight:'bold',paddingBottom:'1rem'}}>
-            Lorem ipsum dolor sit
-          </Typography>
-          <Typography variant='subtitle1' sx={{
-            // fontSize:'32px',fontWeight:'400',lineHeight:'44px'
-          fontWeight:'400',
-            }}>
-            Lorem elit. Placeat qui non tempore adipisci quis tempore adipisci quis, necessitatibus accusamus atque aliquam impedit. Veniam reprehenderit aut illum. Facilis molestias pariatur voluptas vel, veritatis reprehenderit!
-          </Typography>
-          <Typography variant='subtitle1'  sx={{
-            // fontSize:'32px',fontWeight:'400',lineHeight:'44px'
-       fontWeight:'400', 
-            paddingTop:'1rem'
-            }}>
-            Lorem elit. Placeat qui non tempore adipisci quis tempore Placeat qui non tempore adipisci quis tempore adipisci quis, necessitatibus accusamus atque aliquam impedit. Veniam reprehenderit aut illum. Facilis molestias pariatur voluptas vel, veritatis reprehenderit!
-          </Typography>
-        </Box>
-        <Box >
-          <img className='imgBox' style={{maxWidth:'500px',height:'auto'}} src='mentor-network-image.webp'/>
-        </Box>
-      </Stack>
-      </Container>
-      </CustomBox> */}
-
-
-
-
-<UniversitiesDisplay/>
-
-      
-      
+     <UniversitiesDisplay/>
       </Box >
+      
 
-      <CustomBox>
-      <Container sx={{marginTop:'50px'}}>
-      {/* <Divider/> */}
+      <CustomPaddingBox>
+       <Box sx={{ backgroundColor:'#F9F6F9',paddingTop:'2rem',paddingBottom:'4rem',}}>
+      <Container sx={{marginTop:'2rem',}}>
+
 
       <Typography variant='h4' sx={{fontWeight:'bold',textAlign:'center'}}>
-    Main Head goes here
+      Why mentoring?​
           </Typography>
+      {/* <Typography sx={{fontWeight:'normal', justifyContent:'center' ,textAlign:'center'}}>No single answer exists to how to best navigate a career. You do not have to travel alone.  Having someone beside you can have a profound difference.​</Typography> */}
       <Stack sx={{paddingTop:'50px',flexDirection:'row',justifyContent:'space-around',display:'flex',flexWrap:'wrap'}}>
       <Card 
           
@@ -219,12 +153,35 @@ export default function HomePage() {
           textAlign:'left',
           paddingLeft: '1rem',
           fontWeight: '600', }}>
-          Sub head
+          From the mentee’s chair​
         </Typography>
         <Typography variant="subtitle1"  sx={{textAlign:'left',
-fontWeight:'400', padding: '1rem' }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quod cupiditate ullam unde pariatur consequuntur harum! Quam itaque commodi tempore error excepturi saepe, pariatur fuga explicabo sit perspiciatis, quas nihil!
-        </Typography>
+fontWeight:'400', padding: '1rem',paddingBottom:'2px' }}>
+Career choices are tough. A neutral opinion from someone on the outside may be the key to unlocking the answer. Our mentoring program empowers you to shape a mentoring relationship that is right for you today and grows with you tomorrow.​        </Typography>
+<List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <ListItem sx={{paddingTop:0,paddingBottom:0}}>
+      <KeyboardArrowRightIcon/>
+        <ListItemText  >Learn from experienced technologists​​</ListItemText>
+        
+      </ListItem>
+      <ListItem sx={{paddingTop:0,paddingBottom:0}}>
+      <KeyboardArrowRightIcon/>
+        <ListItemText>Accelerate personal development​​</ListItemText>
+      </ListItem>
+      <ListItem sx={{paddingTop:0,paddingBottom:0}}>
+      <KeyboardArrowRightIcon/>
+        <ListItemText>Build a 1x1 relationship​​</ListItemText>
+      </ListItem>
+      <ListItem sx={{paddingTop:0,paddingBottom:0}}>
+      <KeyboardArrowRightIcon/>
+        <ListItemText>Expand your network​​</ListItemText>
+      </ListItem>
+      <ListItem sx={{paddingTop:0,paddingBottom:0}}>
+      <KeyboardArrowRightIcon/>
+        <ListItemText> Shape the discussion to suit your needs​​</ListItemText>
+      </ListItem>
+      
+    </List>
       </CardContent>
     </Card>
           <Card 
@@ -264,11 +221,35 @@ fontWeight:'400', padding: '1rem' }}>
 
           paddingLeft: '1rem',
           fontWeight: '600', textAlign:'left',}}>
-          Sub head
+          From the mentor’s chair​
         </Typography>
-        <Typography variant="subtitle1"  sx={{textAlign:'left', fontWeight:'400',  padding: '1rem' }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quod cupiditate ullam unde pariatur consequuntur harum! Quam itaque commodi tempore error excepturi saepe, pariatur fuga explicabo sit perspiciatis, quas nihil!
-        </Typography>
+        <Typography variant="subtitle1"  sx={{textAlign:'left', fontWeight:'400',  padding: '1rem',paddingBottom:'2px' }}>
+        You have valuable insights and unique perspectives earned from years of experience as a technologist.  Be the spark that ignites a career. Be the key that opens doors. Share your story to show someone they are not alone.​        </Typography>
+    
+        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <ListItem sx={{paddingTop:0,paddingBottom:0}}>
+      <KeyboardArrowRightIcon/>
+        <ListItemText  >Create space for others to thrive​</ListItemText>
+        
+      </ListItem>
+      <ListItem sx={{paddingTop:0,paddingBottom:0}}>
+      <KeyboardArrowRightIcon/>
+        <ListItemText>Be a multiplier​</ListItemText>
+      </ListItem>
+      <ListItem sx={{paddingTop:0,paddingBottom:0}}>
+      <KeyboardArrowRightIcon/>
+        <ListItemText>Shape future technologists​​</ListItemText>
+      </ListItem>
+      <ListItem sx={{paddingTop:0,paddingBottom:0}}>
+      <KeyboardArrowRightIcon/>
+        <ListItemText>Gain fresh perspectives​​</ListItemText>
+      </ListItem>
+      <ListItem sx={{paddingTop:0,paddingBottom:0}}>
+      <KeyboardArrowRightIcon/>
+        <ListItemText>Expand your networ​k​</ListItemText>
+      </ListItem>
+      
+    </List>
       </CardContent>
     </Card>
 
@@ -277,7 +258,8 @@ fontWeight:'400', padding: '1rem' }}>
       </Stack>
           
       </Container>
-      </CustomBox>
+      </Box> 
+      </CustomPaddingBox>
      
 
 
@@ -285,15 +267,15 @@ fontWeight:'400', padding: '1rem' }}>
       <Container>
 
         
-<Container  style={{paddingTop:'100px'}}>
-<Card sx={{padding:'1rem',paddingLeft:'2rem',backgroundImage:"url('diversity5v3.png')",borderRadius:'2rem'}}>
+<Container  style={{}}>
+<Card sx={{padding:'2rem',paddingLeft:'2rem',backgroundImage:"url('diversity5v3.png')",borderRadius:'2rem'}}>
 
   <CardContent >
     <Stack spacing={2}>
     <Typography  variant='h4' sx={{fontWeight:'bold'}}>Join The Program.</Typography>
     <Typography variant='h4' sx={{fontWeight:'bold'}}>Where people help people grow.</Typography>
 
-    <Typography variant='subtitle1' sx={{}}>Get unstuck with mentorship</Typography>
+    {/* <Typography variant='subtitle1' sx={{}}>Get unstuck with mentorship</Typography> */}
     </Stack>
     
   </CardContent>
@@ -313,7 +295,7 @@ Create an account
       </CustomBox>
 
 
-      <CustomBox>
+      {/* <CustomBox>
       <Container  sx={{height:{xs:'80vh',md:'90vh'},marginTop:'2rem',marginBottom:'2rem',borderRadius:'2rem', paddingTop:'6rem',paddingBottom:'6rem',backgroundColor:'#f7f7f7',marginTop:'100px'}}>
       <Carousel
             
@@ -369,7 +351,7 @@ Create an account
                 }
             </Carousel>
       </Container>
-      </CustomBox>
+      </CustomBox> */}
       
 
       

@@ -43,9 +43,9 @@ export default function HomePage() {
     }
     
     const getMentorDetails=async(signeduser)=>{
-      console.log('user obj ',signeduser)
+ 
       const mentorid=signeduser.matchedWith
-      console.log(mentorid)
+    
       const obj={
         'mentorid':mentorid
       }
@@ -56,7 +56,7 @@ export default function HomePage() {
               const a=true
               // dispatch(setAuth(a))
               const user=response.data.mentor
-              console.log('mentor details ',user)
+      
               if(user==null){
                 setDisplayMessage('We will update, once mentor matched')
                 setMatched(false)
@@ -93,7 +93,7 @@ export default function HomePage() {
     const getMenteesDetails=async(signeduser)=>{
 
       const menteesids=signeduser.menteeslist
-      // console.log(mentorid)
+
       // const obj={
       //   'mentorid':mentorid
       // }
@@ -104,7 +104,7 @@ export default function HomePage() {
               const a=true
               // dispatch(setAuth(a))
               const user=response.data
-              console.log('mentees details ',user)
+   
               if(user==null){
                 setDisplayMessage('We will update, once matched')
                 setMatched(false)
@@ -158,7 +158,7 @@ export default function HomePage() {
               const a=true
               // dispatch(setAuth(a))
               const user=response.data
-              console.log('user details ',user)
+         
               if(user==null){
                 localStorage.setItem('token','')
                 navigate('/')
@@ -190,18 +190,17 @@ export default function HomePage() {
                   tot=tot+1
                 });
                 setCompletedFields(tot-uncom)
-                setTotalFields(tot-4)
-                const percentageCompleted = ((tot-uncom) / (tot-4)) * 100;
-                setProfilePercentage(((tot-uncom) / (tot-4)) * 100)
+                setTotalFields(tot-5)
+                const percentageCompleted = ((tot-uncom) / (tot-5)) * 100;
+                setProfilePercentage(((tot-uncom) / (tot-5)) * 100)
 
-                console.log('com',tot,uncom)
-
-                console.log('percentageCompleted ',percentageCompleted)
+         
 
 
 
 
-                console.log('i am here')
+
+            
                 const mentee=response.data.mentee
                 const mentor=response.data.mentor
                 if(mentee=='true'){
@@ -286,7 +285,7 @@ export default function HomePage() {
           navigate('/')
         }
         else{
-          console.log('i am here')
+        
           const mentee=userObj.mentee
           const mentor=userObj.mentor
           if(mentee=='true'){
@@ -440,8 +439,8 @@ export default function HomePage() {
       {/* <Header/> */}
       <Stack sx={{flex:1,textAlign:'center',paddingTop:'2rem',padding:'2rem'}}>
         <Stack sx={{flex:'1',justifyContent:'center'}}>
-        <Typography sx={{fontWeight:'bold',fontSize:'28px',color:'#014abf',paddingRight:'6px'}}>Welcome </Typography>
-        <Typography sx={{fontWeight:'bold',fontSize:'28px',color:'#014abf',textTransform:'uppercase'}}> {userObj.firstname} {userObj.lastname}</Typography>
+        {/* <Typography sx={{fontWeight:'bold',fontSize:'28px',color:'#014abf',paddingRight:'6px'}}>Welcome </Typography>
+        <Typography sx={{fontWeight:'bold',fontSize:'28px',color:'#014abf',textTransform:'uppercase'}}> {userObj.firstname} {userObj.lastname}</Typography> */}
         </Stack>
         <Stack sx={{flex:'1',flexDirection:'row',justifyContent:'center'}}>
         {/* <Typography sx={{fontSize:'14px',color:'#8d8e8f',paddingRight:'6px'}}>Our platform is specifically targeted at students to smoothen the process of getting job </Typography> */}
@@ -498,18 +497,21 @@ export default function HomePage() {
       <Box marginRight={{ xs: 2, md: 2 }} marginBottom={{ xs: 2, md: 0 }}>
         <Stack spacing={2}>
         <Typography variant='h6' sx={{fontSize:'24px'}}>
-        Lorem ipsum dolor
+        Welcome {userObj.firstname} {userObj.lastname}
         </Typography>
         <Typography variant='subtitle1' sx={{fontSize:'16px'}}>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, doloremque similique? Eum dolorum, ducimus aperiam, provident earum, dolor at ab
-        </Typography>
+        An accurate and complete profile improves our ability to serve you.        </Typography>
         <Box sx={{display:'flex',flexDirection:'row',paddingTop:'1rem'}}>
-          <BorderLinearProgress variant="determinate"  value={profilePercentage} sx={{flex:2}} />
-         <Typography variant='caption' sx={{textDecoration:'underline',paddingLeft:'8px'}}>{completedFields}/{totalFields} Completed</Typography>
+          <BorderLinearProgress color="secondary" variant="determinate" value={profilePercentage} sx={{flex:2,backgroundColor:'white'}} />
+
          </Box>
          
         </Stack>
-        <Button onClick={handleProfilepage} sx={{marginTop:'2rem',backgroundColor:'#006D75', textTransform:'capitalize',fontSize:'16px',paddingLeft:'1rem',paddingRight:'1rem',paddingTop:'10px',paddingBottom:'10px'}} variant="contained" >Update Profile</Button>
+        <Button onClick={handleProfilepage} sx={{marginTop:'2rem',backgroundColor:'#006D75', textTransform:'capitalize',fontSize:'16px',paddingLeft:'1rem',paddingRight:'1rem',paddingTop:'10px',paddingBottom:'10px',
+      ':hover': {
+        bgcolor: '#006D75', // theme.palette.primary.main
+        color: 'white',
+      },}} variant="contained" >Complete Profile</Button>
       </Box>
       <img
         src='./profileprogress.svg'
@@ -521,6 +523,8 @@ export default function HomePage() {
         </Card>
         </Stack>}
         <Box sx={{}}>
+
+          
       <LifeCycle/>
       </Box>
       

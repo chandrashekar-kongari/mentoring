@@ -35,6 +35,10 @@ import ContactUs from './pages/ContactUs';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import HelpCenter from './pages/HelpCenter';
 import SuccessPage from './pages/signup/components/signup/SuccessPage';
+import HompePage2 from './pages/homepage/HompePage2';
+import LifeCycle from './pages/authenticated_home/components/LifeCycle';
+import LifeCyclePage from './pages/authenticated_home/LifeCyclePage';
+import TermsOfUse from './pages/TermsOfUse';
 
 let theme = createTheme({
   typography: {
@@ -43,8 +47,12 @@ let theme = createTheme({
     fontSize: 12,
     fontFamily:'Inter',
     
+    
   },
+  spacing: 3,
+  
 });
+theme.spacing(10)
 theme.typography.h4 = {
   fontSize: '1.2rem',
   fontFamily:'Inter',
@@ -61,6 +69,8 @@ theme.typography.h4 = {
     fontSize: '2.4rem',
   },
 };
+
+
 theme.typography.h5 = {
   fontSize: '1.2rem',
   fontFamily:'Inter',
@@ -70,7 +80,7 @@ theme.typography.h5 = {
   },
   
   [theme.breakpoints.up('xs')]: {
-    fontSize: '1.4rem',
+    fontSize: '1.2rem',
     
   },
   [theme.breakpoints.up('md')]: {
@@ -92,6 +102,36 @@ theme.typography.h6 = {
   [theme.breakpoints.up('md')]: {
     fontSize: '1.8rem',
   },
+};
+theme.typography.h7 = {
+  fontSize: '1.2rem',
+  fontFamily:'Inter',
+  
+  '@media (min-width:600px)': {
+    fontSize: '1.5rem',
+  },
+  [theme.breakpoints.up('xs')]: {
+    fontSize:'16px',lineHeight:'22px',fontWeight:'600',
+    textAlign:{xs:'left',md:'center'}
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize:'20px',lineHeight:'22px',fontWeight:'600'
+  }
+};
+theme.typography.h8 = {
+  fontSize: '1.2rem',
+  fontFamily:'Inter',
+  
+  '@media (min-width:600px)': {
+    fontSize: '1.5rem',
+  },
+  [theme.breakpoints.up('xs')]: {
+    fontSize:'15px',lineHeight:'22px',fontWeight:'400',
+    textAlign:{xs:'left',md:'center'}
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize:'18px',lineHeight:'22px',fontWeight:'400'
+  }
 };
 theme.typography.subtitle1 = {
   fontSize: '1.2rem',
@@ -161,9 +201,11 @@ function App() {
             <Route path="/homepage" element={<Home />    }/>
             <Route path="/profile" element={<Profile/>}/>
             <Route path='/viewresume' element={<PdfViewer  />}/> 
+            <Route path='/lifecycle' element={<LifeCyclePage/>} />
       </Route>
 
       <Route path="/" element={<HomePage />}/>
+      <Route path="/h2" element={<HompePage2 />}/>
       <Route path="/sidemenu" element={<SideMenu />}/>
       
       <Route path="/login" element={<Login />}/>
@@ -174,6 +216,7 @@ function App() {
 
       <Route path="/contactus" element={<ContactUs/>}/>
       <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
+      <Route path="/terms-of-use" element={<TermsOfUse/>}/>
       <Route path="/help-center" element={<HelpCenter/>}/>
     
     </Routes>

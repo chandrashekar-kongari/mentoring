@@ -231,11 +231,11 @@ export default function Skills({step,handleNext,handleSkip}) {
    
     if(mentor){
       // setIntrests(val)
-      setRole('Please tell us your professional area(s) of expertise: ')
+      setRole('My technology expertise is: ')
     }
     if(mentee){
       // setIntrests(val2)
-      setRole('Please tell us your area(s) of interest: ')
+      setRole('My area(s) of interest: ')
     }
   },[mentee,mentor])
 
@@ -293,7 +293,7 @@ export default function Skills({step,handleNext,handleSkip}) {
 
   const onChange = (event, { newValue, method }) => {
     setValue(newValue);
-    console.log('i am here')
+
   };
 
   const onSuggestionsFetchRequested = ({ value }) => {
@@ -375,7 +375,7 @@ export default function Skills({step,handleNext,handleSkip}) {
       </FormControl>
       {
         mentee&&<Container style={{textAlign:'center'}}>
-                          <Button onClick={handleSkip} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline',textTransform:'none'}}>I am not sure skip to next step.</Button>
+                          <Button onClick={handleSkip} sx={{fontSize:'10px',marginTop:'10px',color:'black',textDecoration:'underline',textTransform:'none'}}>I will add later, skip for now.</Button>
 
           </Container>
       }

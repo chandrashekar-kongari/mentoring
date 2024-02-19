@@ -59,7 +59,6 @@ export default function AreaOfIntrestsForMentee() {
     ];
     setIntrests(val)
 
-    console.log('i am here')
   },[])
 
   const [allSkills,setAllSkills]=useState([])
@@ -200,8 +199,8 @@ const Fullstack=[{
         {/* <FormLabel style={{fontSize:'12px',color:'blue'}}>You can pick multiple</FormLabel> */}
         </Stack>
         <Box sx={{marginBottom:'10px'}}>
-        <Typography id="demo-multiple-chip-label" sx={{fontSize:'14px'}}>I am intrested in a Mentorship in the following area(s):</Typography>
-        <Typography sx={{fontSize:'11px'}}>(Click to select and deselect)</Typography>
+        <Typography id="demo-multiple-chip-label" sx={{fontSize:'14px'}}>I’d like guidance on:</Typography>
+        {/* <Typography sx={{fontSize:'11px'}}>(Click to select and deselect)</Typography> */}
         </Box>
       <FormControl sx={{ }}>
         <Box>

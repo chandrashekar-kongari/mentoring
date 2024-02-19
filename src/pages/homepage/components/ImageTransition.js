@@ -6,6 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiamond } from '@fortawesome/free-solid-svg-icons';
 import { MainHeadTypography } from '../../../components/page/PageComponents';
 const ImageTransition = () => {
+
+
+  const techdomain=['Software Development','Full-Stack Development','Data Science And Analytics',
+  'AI and ML','Project Management','Cloud Computing','Game Design','Cybersecurity','..and Much More'
+]
   
   const slideIn = (direction, type, delay, duration) => ({
     hidden: {
@@ -65,9 +70,9 @@ const ImageTransition = () => {
 
     <Container sx={{paddingTop:'2rem'}}>
 
-    <Typography variant='h5' sx={{textAlign:{xs:'left',md:'center'}}}>
+    <MainHeadTypography >
     Where Ambition Meets Wisdom
-    </Typography>
+    </MainHeadTypography>
     </Container>
    
     <motion.div
@@ -149,11 +154,11 @@ sx={{ width: {xs:100,md:200}, height:{xs:100,md:200},backgroundColor:'#E9F7F6' }
       {/* <AdbIcon style={{fontSize:'270px'}}/> */}
       {/* <FontAwesomeIcon style={{fontSize:'270px'}} icon={faDiamond} /> */}
       <Box sx={{display: { xs: 'flex', md: 'none' },}}>
-      <img src='/techpact-logo.png' style={{ width:'170px',height:'auto',backgroundColor:'white'}}/>
+      <img src='techpact-logo-2.png' style={{ width:'170px',height:'auto',backgroundColor:'white'}}/>
 
       </Box>
       <Box sx={{display: { xs: 'none', md: 'flex' },}}>
-      <img src='/techpact-logo.png' style={{display: { xs: 'none', md: 'flex' },width:'270px',height:'auto',backgroundColor:'white'}}/>
+      <img src='techpact-logo-2.png' style={{display: { xs: 'none', md: 'flex' },width:'270px',height:'auto',backgroundColor:'white'}}/>
 
       </Box>
     </Box>
@@ -166,20 +171,17 @@ sx={{ width: {xs:100,md:200}, height:{xs:100,md:200},backgroundColor:'#E9F7F6' }
       alignItems="center"
      >
 
-<Typography variant="subtitle1" sx={{textAlign:'center',color:'black',padding:'1rem' }}>
+<Typography  sx={{textAlign:'center',color:'black',padding:'1rem',fontSize:'22px',fontWeight:'600' }}>
           TechPACT will connects you with best mentor in any domain of your intrest:
         </Typography>
         <Container maxWidth='md' sx={{justifyContent:'center',textAlign:'center'}}>
-          <Chip sx={{margin:'5px'}} label='Software Development'/>
-          <Chip sx={{margin:'5px'}} label='Full-Stack Development'/>
-          <Chip sx={{margin:'5px'}} label='Data Science and Analytics'/>
-          <Chip sx={{margin:'5px'}} label='AI and ML'/>
-          <Chip sx={{margin:'5px'}} label='Project Management'/>
-          <Chip sx={{margin:'5px'}} label='Cloud Computing'/>
-          <Chip sx={{margin:'5px'}} label='Game Design'/>
-          <Chip sx={{margin:'5px'}} label='Augmented Reality'/>
-          <Chip sx={{margin:'5px'}} label='Virtual Reality'/>
-          <Chip sx={{margin:'5px'}} label='Software Testing'/>
+          {techdomain.map((tech)=>{
+            return(
+              <Chip key={(tech)} size='medium' sx={{margin:'5px',fontSize:'14px',backgroundColor:'#E9EEF1',paddingTop:'20px',paddingBottom:'20px'}} label={tech}/>
+
+            )
+          })}
+          
         </Container>
 
     </Box>
