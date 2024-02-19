@@ -37,7 +37,7 @@ const GridWithCards = () => {
 
   const cardPositions = [
     
-    { row: 2, col: 2,imgurl: 'person1.jpeg',name:'Olamide'},
+    { row: 2, col: 2,imgurl: 'person1.jpg',name:'Olamide'},
     { row: 4, col: 2 ,imgurl: 'profile3.jpg',name:'Ibrahim'},
     { row: 1, col: 4,imgurl: 'mentor2.jpg',name:'Isabelle' },
     { row: 3, col: 4 ,imgurl: 'people1.jpg',name:'Olivia'},
