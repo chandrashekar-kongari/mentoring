@@ -25,10 +25,7 @@ import techPactHomeURL from '../API/TechPactHomeURL';
 
 const pages = [ 'Home', 'Profile','Lifecycle', 'Contact Us','Privacy Policy','Log out'];
 const desktopPages = [ 'Home', 'Contact Us'];
-const [techPACTHomeURL,setTechPACTHomeUrl]=React.useState('')
- React.useEffect(()=>{
-  setTechPACTHomeUrl(techPactHomeURL)
- },[])
+
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -40,10 +37,7 @@ function Header() {
 
 
 
- 
-  React.useEffect(()=>{
 
-  },[])
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -104,7 +98,7 @@ function Header() {
          
           
           <Box sx={{width:'15rem'}}>
-          <a href={techPACTHomeURL}>
+          <a href={'https://www.techpact.org/'}>
             <img   alt="Logo" src="techpact-logo-2.png" style={{
                             width: '50%', 
                             height: '50%',

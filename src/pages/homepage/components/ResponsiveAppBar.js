@@ -51,10 +51,7 @@ function ResponsiveAppBar() {
   const handleLogoClick=()=>{
     navigate('https://www.techpact.org/')
   }
- const [techPACTHomeURL,setTechPACTHomeUrl]=React.useState('')
- React.useEffect(()=>{
-  setTechPACTHomeUrl(techPactHomeURL)
- },[])
+ 
   return (
     <>
     <AppBar elevation={0} position="static" sx={{backgroundColor:'#FCFCFC' ,color:'inherit' ,position:'fixed',zIndex:'2'}}>
@@ -63,7 +60,7 @@ function ResponsiveAppBar() {
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           
           <Box sx={{width:'15rem'}}>
-            <a href={techPACTHomeURL}>
+            <a href={'https://www.techpact.org/'}>
             <img  alt="Logo" src={TechPactLogo} style={{
                             width: '50%', // Adjust the width as needed
                             height: '50%',
