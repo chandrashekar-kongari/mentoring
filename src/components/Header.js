@@ -25,7 +25,10 @@ import techPactHomeURL from '../API/TechPactHomeURL';
 
 const pages = [ 'Home', 'Profile','Lifecycle', 'Contact Us','Privacy Policy','Log out'];
 const desktopPages = [ 'Home', 'Contact Us'];
-
+const [techPACTHomeURL,setTechPACTHomeUrl]=React.useState('')
+ React.useEffect(()=>{
+  setTechPACTHomeUrl(techPactHomeURL)
+ },[])
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -35,7 +38,7 @@ function Header() {
   const [email,setEmail]=React.useState('')
   const [loading,setLoading]=React.useState(true)
 
-  const techPacturl=techPactHomeURL
+
 
  
   React.useEffect(()=>{
@@ -101,7 +104,7 @@ function Header() {
          
           
           <Box sx={{width:'15rem'}}>
-          <a href={techPacturl}>
+          <a href={techPACTHomeURL}>
             <img   alt="Logo" src="techpact-logo-2.png" style={{
                             width: '50%', 
                             height: '50%',

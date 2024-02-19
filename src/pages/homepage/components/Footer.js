@@ -13,7 +13,10 @@ export default function Footer() {
     const rightBtns=[<LinkedInIcon/>]
 
     
-
+    const [techPACTHomeURL,setTechPACTHomeUrl]=React.useState('')
+    React.useEffect(()=>{
+     setTechPACTHomeUrl(techPactHomeURL)
+    },[])
   return (
     <Box sx={{backgroundColor:'#f7f7f7',paddingTop:'2rem',paddingBottom:'2rem'}}>
         <Container maxWidth='md'>
@@ -46,7 +49,7 @@ export default function Footer() {
 
             </Stack> */}
             <Box sx={{justifyContent:'space-between',display:'flex',flexWrap:'wrap'}}>
-            <Link style={{ textDecoration:'none',color:'black',textTransform:'capitalize'}}  to={techPactHomeURL}><Button>© TechPACT, org</Button></Link>
+            <Link style={{ textDecoration:'none',color:'black',textTransform:'capitalize'}}  to={techPACTHomeURL}><Button>© TechPACT, org</Button></Link>
 
             {/* <Link style={{textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="/terms-of-use"><Button>Terms of Use</Button></Link>
               <Link style={{textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="/privacy-policy"><Button>Privacy Policy</Button></Link> */}
