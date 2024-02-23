@@ -126,15 +126,13 @@ const TopBanner = () => {
  
       <Stack sx={{paddingTop:'5rem'}}>
       <Typography sx={{textAlign:'left',fontSize:'60px', fontWeight:'400',wordSpacing:'2px'}}>
-    GROW TOGETHER
+      Where people help people grow
       </Typography>
-      <Typography sx={{textAlign:'left', fontSize:'60px'}}>
-      through 1:1 mentorship
-      </Typography>
+      
       <Box sx={{paddingTop:'1rem'}}>
       <Typography sx={{textAlign:'left',}}>
   
-      Achieve your goals as a mentee or mentor.      
+      Become a mentor or mentee today      
       </Typography>
       </Box>
       <Box sx={{paddingTop:'1rem',textAlign:'left'}}>
@@ -170,15 +168,13 @@ const TopBanner = () => {
  
       <Stack sx={{textAlign:'center',}}>
       <Typography sx={{textAlign:'center',fontSize:'60px', fontWeight:'400'}}>
-    GROW TOGETHER
+      Where people help people grow
       </Typography>
-      <Typography sx={{textAlign:'center', fontSize:'60px'}}>
-      through 1:1 mentorship
-      </Typography>
+     
       <Box sx={{paddingTop:'1rem'}}>
       <Typography sx={{textAlign:'center',}}>
   
-      Achieve your goals as a mentee or mentor.      
+      Become a mentor or mentee today    
       </Typography>
       </Box>
       <Box sx={{paddingTop:'1rem',textAlign:'center'}}>
@@ -213,8 +209,8 @@ const TopBanner = () => {
         <Typography variant='h5'>
         Take The First Step
         </Typography>
-        <Typography sx={{paddingBottom:'1rem'}}>
-        Be Among the First 50 Participants.
+        <Typography sx={{paddingBottom:'1rem',textTransform:'uppercase'}}>
+        Be Among the First 50 Participants
         </Typography>
         {/* <Stack sx={{flexDirection:'row',justifyContent:'right'}}>
 

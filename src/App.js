@@ -39,6 +39,7 @@ import HompePage2 from './pages/homepage/HompePage2';
 import LifeCycle from './pages/authenticated_home/components/LifeCycle';
 import LifeCyclePage from './pages/authenticated_home/LifeCyclePage';
 import TermsOfUse from './pages/TermsOfUse';
+import DeleteAccountSuccessPage from './pages/DeleteAccountSuccessPage';
 
 let theme = createTheme({
   typography: {
@@ -136,6 +137,7 @@ theme.typography.h8 = {
     fontSize:'18px',lineHeight:'22px',fontWeight:'400'
   }
 };
+
 theme.typography.subtitle1 = {
   fontSize: '1.2rem',
   fontFamily:'Inter',
@@ -221,6 +223,7 @@ function App() {
       <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
       <Route path="/terms-of-use" element={<TermsOfUse/>}/>
       <Route path="/help-center" element={<HelpCenter/>}/>
+      <Route path="/account-deleted-success" element={<DeleteAccountSuccessPage/>}/>
     
     </Routes>
   </Box>

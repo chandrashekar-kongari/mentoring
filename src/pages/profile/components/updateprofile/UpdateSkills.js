@@ -209,6 +209,9 @@ export default function UpdateSkills({val,setVal,handleUpdateSkills,handleClose}
   };
 
   const handleAdd=()=>{
+    if(value=='' || value==' '){
+      return
+    }
 
     if (value!=''){
       const s=[...intrests,{

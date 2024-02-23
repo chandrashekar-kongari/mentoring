@@ -31,8 +31,7 @@ const UpdateEducation = ({handleClose,edu,setEdu,handleSave}) => {
                 sx={{textAlign:'left'}}
                 >
             <MenuItem value={'Sacred Heart University'}>Sacred Heart University</MenuItem>
-            <MenuItem value={'Fordham University'}>Fordham University</MenuItem>
-            <MenuItem value={'Howard University'}>Howard University</MenuItem>
+
             <MenuItem value={'Boston University'}>Boston University</MenuItem>
             </Select>
        
@@ -50,8 +49,10 @@ const UpdateEducation = ({handleClose,edu,setEdu,handleSave}) => {
           sx={{textAlign:'left'}}
         >
 
-          <MenuItem value={"Masters"}>Masters</MenuItem>
-          <MenuItem value={'Bachelors'}>Bachelors</MenuItem>
+          <MenuItem value={"Associate​"}>Associate​</MenuItem>
+          <MenuItem value={'Bachelor'}>Bachelor</MenuItem>
+          <MenuItem value={'Master'}>Master</MenuItem>
+          <MenuItem value={'Doctorate'}>Doctorate</MenuItem>
          
         </Select>
        
@@ -71,7 +72,10 @@ const UpdateEducation = ({handleClose,edu,setEdu,handleSave}) => {
 
           <MenuItem value={'Computer Science'}>Computer Science</MenuItem>
           <MenuItem value={'Engineering'}>Engineering</MenuItem>
-
+          <MenuItem value={'Information Technology'}>Information Technology</MenuItem>
+          <MenuItem value={'Data Science'}>Data Science</MenuItem>
+          <MenuItem value={'Cyber Security'}>Cyber Security</MenuItem>
+          <MenuItem value={'Other'}>Other</MenuItem>
         </Select>
 
         <Button onClick={handleSave} variant='contained' sx={{marginTop:'1rem'}}>Save</Button>

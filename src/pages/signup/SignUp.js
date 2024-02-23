@@ -45,9 +45,12 @@ export default function SignUp() {
   const lastname=useSelector(state=>state.lastname)
   const firstname=useSelector(state=>state.firstname)
   const linkedinProfile=useSelector(state=>state.linkedinProfile)
+  const organization=useSelector(state=>state.organization)
+  const title=useSelector(state=>state.title)
   const numofmentees=useSelector(state=>state.numberofmentees)
 
   const skipResume=useSelector(state=>state.skipResume)
+  const ppResidentConsent=useSelector(state=>state.privacyPolicyResidentConsent)
 
 
   const [formData,setFormData]=React.useState({
@@ -92,6 +95,10 @@ export default function SignUp() {
     formDataWithFiles.append('matched',false)
     
     formDataWithFiles.append('linkedinProfile',linkedinProfile)
+    formDataWithFiles.append('organization',organization)
+    formDataWithFiles.append('title',organization)
+    formDataWithFiles.append('privacyPolicyResidentConsent',ppResidentConsent)
+
     formDataWithFiles.append('numofmentees',numofmentees)
 
 
@@ -162,7 +169,7 @@ export default function SignUp() {
             }
             else{
               handleShowAlert(false)
-              setErrorMessage('Email Id already present, please login')
+              setErrorMessage('An account already exists for this email address. Please login.')
               handleShowAlert(true)
               setLoading(false)
               return false
@@ -269,6 +276,12 @@ export default function SignUp() {
           handleShowAlert(true)
           return
         }
+      }
+      if(!ppResidentConsent){
+        handleShowAlert(false)
+        setErrorMessage('Please confirm you residency')
+        handleShowAlert(true)
+        return
       }
       // else if(!skipResume){
       //   handleShowAlert(false)

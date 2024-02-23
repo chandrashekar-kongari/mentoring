@@ -311,6 +311,11 @@ export default function Skills({step,handleNext,handleSkip}) {
   };
 
   const handleAdd=()=>{
+    console.log('I in add ',value)
+
+    if(value=='' || value==' '){
+      return
+    }
 
     if (val!=''){
       const s=[...intrests,{

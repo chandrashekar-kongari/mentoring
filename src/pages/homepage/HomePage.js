@@ -33,10 +33,37 @@ import StepsAnimation from './components/StepsAnimation';
 import { CustomBox, CustomPaddingBox, MainHeadTypography } from '../../components/page/PageComponents';
 import ThreeCardsLayout from './components/ThreeCardsLayout';
 import Footer from './components/Footer';
+import { ToastContainer, toast } from 'react-toastify';
 
+import { useLocation } from 'react-router-dom';
 
 export default function HomePage() {
+
+  const location = useLocation();
+
+  const props = location.state;
+  let showAlert=false
   
+  if(location.state){
+    showAlert=location.state.showAlert
+  }
+  const handleStateChange = () => {
+    // Create a new state object with updated values
+    const updatedState = { ...location.state, showAlert: false };
+
+    // Navigate to the same location with the updated state
+    navigate(location.pathname, { state: updatedState });
+  };
+  React.useEffect(()=>{
+    
+    if(showAlert){
+      callToast('Time out, Please login.','error')
+      location.state.showAlert=false
+      showAlert=false
+      handleStateChange()
+    }
+
+  })  
   const onClickSignUp=()=>{
     navigate('/signup')
   }
@@ -82,11 +109,72 @@ export default function HomePage() {
 
   }
 
+  const callToast=(m,t)=>{
+    if(t=='success'){
+      toast.success(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else if(t=='info'){
+      toast.info(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else if(t=='error'){
+      toast.error(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else if(t=='warning'){
+      toast.warn(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else{
+      toast(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+    }
+  }
+
   
   return (
     <Box sx={{ }}>
 
       <ResponsiveAppBar/>
+
+      <ToastContainer/>
 
       <svg style={{position:'absolute',zIndex:-1}} width="90%" height="770" viewBox="0 0 1440 770" fill="none" xmlns="http://www.w3.org/2000/svg"><rect opacity="0.8" x="951" y="70" width="480" height="480" fill="url(#radial1)"></rect><rect opacity="0.8" x="32" y="14" width="586" height="586" fill="url(#radial2)"></rect><defs> <radialGradient id="radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1191 310) rotate(90) scale(240)"><stop stop-color="#c9cbf5"></stop><stop offset="1" stop-color="#e6e7fa" stop-opacity="0"></stop></radialGradient><radialGradient id="radial2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(325 307) rotate(90) scale(293)"><stop stop-color="#c9cbf5"></stop><stop offset="1" stop-color="#c9cbf5" stop-opacity="0"></stop></radialGradient></defs></svg>
       <TopBanner/>
@@ -238,7 +326,7 @@ Career choices are tough. A neutral opinion from someone on the outside may be t
       </ListItem>
       <ListItem sx={{paddingTop:0,paddingBottom:0}}>
       <KeyboardArrowRightIcon/>
-        <ListItemText>Shape future technologists​​</ListItemText>
+        <ListItemText>Inspire future technologists​​</ListItemText>
       </ListItem>
       <ListItem sx={{paddingTop:0,paddingBottom:0}}>
       <KeyboardArrowRightIcon/>
@@ -272,8 +360,9 @@ Career choices are tough. A neutral opinion from someone on the outside may be t
 
   <CardContent >
     <Stack spacing={2}>
-    <Typography  variant='h4' sx={{fontWeight:'bold'}}>Join The Program.</Typography>
-    <Typography variant='h4' sx={{fontWeight:'bold'}}>Where people help people grow.</Typography>
+    <Typography  variant='h4' sx={{fontWeight:'bold'}}>Join now.
+</Typography>
+    <Typography variant='h4' sx={{fontWeight:'bold'}}>Grow together.</Typography>
 
     {/* <Typography variant='subtitle1' sx={{}}>Get unstuck with mentorship</Typography> */}
     </Stack>

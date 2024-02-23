@@ -23,6 +23,7 @@ import AlertComponent from '../../components/AlertComponent';
 import LifeCycle from './components/LifeCycle';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import GoalSetting from './components/GoalSetting';
 
 export default function HomePage() {
     const navigate=useNavigate()
@@ -173,28 +174,34 @@ export default function HomePage() {
                 var tot=0
                 Object.keys(obj).forEach(key => {
                   const value = obj[key];
-                  if(typeof value ==='object'){
-                    if(Object.keys(value).length==0){
-                      uncom=uncom+1
+                  if(key=='hobbies' || key=='education' || key=='menteeslist' || key=='mentorIntrests' || key=='goals' || key=='PrivacyConsent' || key=='privacyPolicyResidentConsent' || key=='title' || key=='organization' || key=='activeLifeCycleStep' || key=='mentorshipIntrests' || key=='matched' || key=='numberofmentees' || key=='lifeCycle'){
+                    
+                  }
+                  else{
+                    if(typeof value ==='object'){
+                      if(Object.keys(value).length==0){
+                        uncom=uncom+1
+                      }
+                    }else if(Array.isArray(value)){
+                      if(value.length==0){
+                        uncom=uncom+1
+                      }
+                    }else{
+                      if(value==''){
+                        uncom=uncom+1
+                      }
                     }
-                  }else if(Array.isArray(value)){
-                    if(value.length==0){
-                      uncom=uncom+1
-                    }
-                  }else{
-                    if(value==''){
-                      uncom=uncom+1
-                    }
+                    
+                    tot=tot+1
                   }
                   
-                  tot=tot+1
                 });
                 setCompletedFields(tot-uncom)
-                setTotalFields(tot-5)
-                const percentageCompleted = ((tot-uncom) / (tot-5)) * 100;
-                setProfilePercentage(((tot-uncom) / (tot-5)) * 100)
+                setTotalFields(tot)
+                const percentageCompleted = ((tot-uncom) / (tot)) * 100;
+                setProfilePercentage(((tot-uncom) / (tot)) * 100)
 
-         
+              
 
 
 
@@ -203,6 +210,7 @@ export default function HomePage() {
             
                 const mentee=response.data.mentee
                 const mentor=response.data.mentor
+                setGoals(response.data.goals)
                 if(mentee=='true'){
                   setDetailsOf("Mentor ")
                   if(response.data.matched=='true'){
@@ -321,6 +329,8 @@ export default function HomePage() {
 
 
     },[])
+
+    const [goals,setGoals]=React.useState([])
 
     // React.useEffect(()=>{
     //   setLoadingmentorormentees(true)
@@ -525,7 +535,10 @@ export default function HomePage() {
         <Box sx={{}}>
 
           
-      <LifeCycle/>
+      {/* <LifeCycle/> */}
+
+      {!loading && ((userObj.mentee=='true' )&& <GoalSetting usergoals={goals} userObj={userObj} setUserObj={setUserObj} />)}
+      {!loading && (((userObj.mentor=='true') &&(profilePercentage>=100)) && <Container maxWidth='md' sx={{pt:8,pb:8}}><Typography>This page won't be empty for long.  Stay tuned for more details, and keep an eye on your email for announcements.</Typography></Container>)}
       </Box>
       
     </Box>

@@ -119,6 +119,9 @@ const initialState={
     firstname:'',
     lastname:'',
     linkedinProfile:'',
+    organization:'',
+    title:'',
+    privacyPolicyResidentConsent :false,
     numberofmentees:'',
     skipResume:false,
     userObj:null,
@@ -156,6 +159,10 @@ export const userSlice=createSlice({
             const val=action.payload
             state.mentor=val
         },
+        savePrivacyPolicyResidentConsent :(state,action)=>{
+          const val=action.payload
+          state.privacyPolicyResidentConsent =val
+        },
         saveFirstName:(state,action)=>{
           const val=action.payload
           state.firstname=val
@@ -167,6 +174,14 @@ export const userSlice=createSlice({
         saveLinkedinProfile:(state,action)=>{
           const val=action.payload
           state.linkedinProfile=val
+        },
+        saveOrganization:(state,action)=>{
+          const val=action.payload
+          state.organization=val
+        },
+        saveTitle:(state,action)=>{
+          const val=action.payload
+          state.title=val
         },
         setMentee:(state,action)=>{
             const val=action.payload
@@ -230,5 +245,5 @@ export const userSlice=createSlice({
     }
 })
 
-export const {saveLifeCycle,updateHobby,saveResId,saveUserObj,saveUser,saveSkipResume,saveNumberOfMentees,saveLinkedinProfile,saveFirstName,saveLastName,setAdditionaInformation,updateSkill,addSkill,addEducation,addResume,setAuth,setRequiredDetails,setMentee,setMentor,setMenteeIntrests,setMentorIntrests,setMentorshipIntrests,addExperience} =userSlice.actions
+export const {savePrivacyPolicyResidentConsent,saveOrganization,saveTitle, saveLifeCycle,updateHobby,saveResId,saveUserObj,saveUser,saveSkipResume,saveNumberOfMentees,saveLinkedinProfile,saveFirstName,saveLastName,setAdditionaInformation,updateSkill,addSkill,addEducation,addResume,setAuth,setRequiredDetails,setMentee,setMentor,setMenteeIntrests,setMentorIntrests,setMentorshipIntrests,addExperience} =userSlice.actions
 export default userSlice.reducer

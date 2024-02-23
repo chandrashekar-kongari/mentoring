@@ -123,7 +123,7 @@ const SuccessPage = () => {
                         
                             
             <Typography sx={{fontWeight:'bold',fontSize:'18px'}}>
-                Your account created successfully.
+            Your account was created successfully.
             </Typography>
 
             <Fab onClick={handleGoHome} variant="extended" sx={{marginTop:'2rem',backgroundColor:'white',textTransform:'capitalize',fontSize:'16px'}}>

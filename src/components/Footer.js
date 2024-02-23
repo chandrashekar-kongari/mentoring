@@ -49,10 +49,10 @@ export default function Footer() {
 
             </Stack> */}
              <Box sx={{justifyContent:'space-between',display:'flex',flexWrap:'wrap'}}>
-            <Link style={{ textDecoration:'none',color:'black',textTransform:'capitalize'}}  to={'https://www.techpact.org/'}><Button>© TechPACT, org</Button></Link>
+            <Link style={{ textDecoration:'none',color:'black',textTransform:'none'}}  to={'https://www.techpact.org/'}><Button sx={{textTransform:'none'}}>© TechPACT.org</Button></Link>
 
-            {/* <Link style={{textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="/terms-of-use"><Button>Terms of Use</Button></Link>
-              <Link style={{textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="/privacy-policy"><Button>Privacy Policy</Button></Link> */}
+            {/* <Link style={{textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="/terms-of-use"><Button>Terms of Use</Button></Link> */}
+              <Link style={{textDecoration:'none',color:'black',textTransform:'capitalize'}}  to="/privacy-policy"><Button sx={{textTransform:'none'}}>Privacy Policy</Button></Link>
             </Box>
             <Stack sx={{flexDirection:'row',justifyContent:'right'}}>
             {rightBtns.map((btn)=>{
@@ -64,8 +64,10 @@ export default function Footer() {
 
         </Stack>
         <Divider/>
-        <Stack sx={{flexDirection:'row',justifyContent:'center',paddingTop:'1rem'}}>
-            <Typography >Powered by Sacred Heart University</Typography>
+        <Stack sx={{flexDirection:'row',justifyContent:'center'}}>
+            <Box sx={{textAlign:'center',}}>
+      <img src='poweredbyshu.png' style={{ width:'200px',height:'auto',}}/>
+      </Box>
         </Stack>
     </Container>
     </Box>

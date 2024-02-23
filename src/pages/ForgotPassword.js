@@ -9,6 +9,7 @@ import {faArrowRight} from '@fortawesome/free-solid-svg-icons'
 import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Select from '@mui/material/Select';
+import PasswordStrengthBar from 'react-password-strength-bar';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Button from "@mui/material/Button";
@@ -129,6 +130,11 @@ const ForgotPassword = () => {
 
     const [loading,setLoading]=useState(false)
 
+    const [passwordStrength,setPasswordStrength]=useState(0)
+    const onChangeScore=(score, feedback)=>{
+        setPasswordStrength(score)
+    }
+
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
     const handleMouseDownPassword = (event) => {
@@ -141,6 +147,8 @@ const ForgotPassword = () => {
             'email':gmail,
             'password':password
         }
+
+        
 
         
      
@@ -184,6 +192,15 @@ const ForgotPassword = () => {
       }
 
     const handleChangePassword=async()=>{
+
+      if(passwordStrength<4){
+        setAlertMessage('Please give strong password')
+        setType('error')
+        handleShowAlert(true)
+        callToast('Please give strong password','error')
+        setLoading(false)
+        return
+      }
         if(password!=confirmpassword){
             setAlertMessage('Password not matching')
             setType('error')
@@ -374,8 +391,8 @@ const ForgotPassword = () => {
            
             <Box sx={{boxShadow: 3,
                     borderRadius: 2,
-                    px: 4,
-                    py: 3,
+                    px: 8,
+                    py: 6,
                     }} >
                         <Box display="flex"
                             justifyContent="center"
@@ -390,7 +407,7 @@ const ForgotPassword = () => {
                 </>:<form onSubmit={handleSubmit}>
                 <Stack direction='column' spacing={2}>
                   <FormControl variant="outlined">
-                        <InputLabel >Gmail</InputLabel>
+                        <InputLabel >Email</InputLabel>
                         <OutlinedInput
                         disabled={disableGmail}
                         name='gmail'
@@ -404,9 +421,11 @@ const ForgotPassword = () => {
                         />
                         </FormControl>
                     
-                        {sentOTP && <FormControl variant="outlined">
+                        {sentOTP && 
+                        <FormControl variant="outlined" style={{marginTop:10}}>
                         <InputLabel >OTP</InputLabel>
                         <OutlinedInput
+                        
                         name='otp'
                         value={otp}
                         onChange={handleOTPChange}
@@ -416,7 +435,8 @@ const ForgotPassword = () => {
                             label="OTP"
                             required
                         />
-                        </FormControl> }
+                        </FormControl> 
+                        }
                         {showChangePasswordBtn && <>
                             <Box sx={{flex:1,width:'100%'}}>
                     <FormControl variant="outlined" style={{width:'100%'}} >
@@ -443,6 +463,8 @@ const ForgotPassword = () => {
                             label="Passcode"
                         />
                         </FormControl>
+                        <PasswordStrengthBar onChangeScore={onChangeScore} password={password} />
+
                         </Box>
                         <Box sx={{flex:1,width:'100%'}}>
                     <FormControl variant="outlined" style={{width:'100%'}} >
@@ -468,7 +490,7 @@ const ForgotPassword = () => {
                             type='submit'
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 3, mb: 2, '&:hover': {
+                            sx={{ mt: 10, mb: 2, '&:hover': {
                                   
                             },}}  
                         >

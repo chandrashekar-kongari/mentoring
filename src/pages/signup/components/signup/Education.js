@@ -1,7 +1,7 @@
 import { Box, Button, Checkbox, Container, FormControl, FormControlLabel, InputLabel, MenuItem, OutlinedInput, Select, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {addEducation,addResume, saveLinkedinProfile,saveSkipResume} from '../../../../features/UserSlice';
+import {addEducation,addResume, saveLinkedinProfile,saveOrganization,savePrivacyPolicyResidentConsent,saveSkipResume, saveTitle} from '../../../../features/UserSlice';
 import { MuiFileInput } from 'mui-file-input'
 import { styled } from 'styled-components'
 import './education.css'
@@ -67,11 +67,29 @@ const Education = ({step,handleNext,handleBack}) => {
     }
 
     const [linkedinProfile,setLinkedinProfile]=useState('')
-
+    const [organization,setOrganization]=useState('')
+    const [title,setTitle]=useState('')
+    const [ppResidentConsent,setPPResidentConset]=useState(false)
     const handleLinkedinProfile=(event)=>{
         const {name,value}=event.target
         setLinkedinProfile(value)
         dispatch(saveLinkedinProfile(value))
+    }
+    const handleppResidentConsent=()=>{
+
+      setPPResidentConset(!ppResidentConsent)
+      dispatch(savePrivacyPolicyResidentConsent(!ppResidentConsent))
+  }
+    
+    const handleOrganizationChange=(event)=>{
+      const {name,value}=event.target
+      setOrganization(value)
+      dispatch(saveOrganization(value))
+    }
+    const handleTitleChange=(event)=>{
+      const {name,value}=event.target
+      setTitle(value)
+      dispatch(saveTitle(value))
     }
     const handleSubmit = (e) => {
       e.preventDefault(); 
@@ -155,6 +173,53 @@ const Education = ({step,handleNext,handleBack}) => {
        
       </FormControl></>}
 
+      
+      {(!role) && <>
+
+
+        <FormControl  fullWidth variant="outlined" style={{marginTop:8}}>
+                <InputLabel >Organization</InputLabel>
+                <OutlinedInput
+                required
+               
+                name='organization'
+                value={organization}
+                onChange={handleOrganizationChange}
+                   
+                    type={'text'}
+                    
+                    label="Organization"
+                    // placeholder='please share linkedin profile url'
+                />
+
+                
+                </FormControl>
+                <FormControl  fullWidth variant="outlined" style={{marginTop:8}}>
+                <InputLabel >Title</InputLabel>
+                <OutlinedInput
+                required
+               
+                name='Title'
+                value={title}
+                onChange={handleTitleChange}
+                   
+                    type={'text'}
+                    
+                    label="Title"
+                    // placeholder='please share linkedin profile url'
+                />
+
+                
+                </FormControl>
+
+                
+                
+
+
+      
+      </>}
+
+
       <Box sx={{paddingTop:'3px'}}>
 
       
@@ -174,8 +239,8 @@ const Education = ({step,handleNext,handleBack}) => {
                     // multiline={true}
                     
                      fullWidth/> */}
-        <MuiFileInput  disabled={!resumeUpload} hideSizeText value={value}   placeholder='Please upload resume' sx={{marginTop:'1rem'}} onChange={handleFileChange} />
-        <FormControlLabel  name='mentor' onChange={handleResumeUploadFlag} control={<Checkbox size='small' checked={resumeUpload} />} label={<Typography variant="body2" >Add later</Typography>} />
+        <MuiFileInput  disabled={resumeUpload} hideSizeText value={value}   placeholder='Please upload resume(accepts only PDFs)' sx={{marginTop:'1rem'}} onChange={handleFileChange} />
+        <FormControlLabel  name='mentor' onChange={handleResumeUploadFlag} control={<Checkbox size='small' checked={resumeUpload} />} label={<Typography sx={{fontSize:'10px'}} variant="body2" >Add later</Typography>} />
         <FormControl  fullWidth variant="outlined" style={{marginTop:8}}>
                 <InputLabel >LinkedIn Profile URL</InputLabel>
                 <OutlinedInput
@@ -194,7 +259,10 @@ const Education = ({step,handleNext,handleBack}) => {
                 
                 </FormControl>
                 
-                <FormControlLabel  name='mentor' onChange={handleLinkedinShareFlag} control={<Checkbox size='small' checked={!linkedinShare} sx={{}}/>} sx={{fontSize:'10px'}}  label={<Typography variant="body2">Add later</Typography>} />
+                <FormControlLabel  name='mentor' onChange={handleLinkedinShareFlag} control={<Checkbox size='small' checked={!linkedinShare} sx={{}}/>} sx={{fontSize:'10px'}}  label={<Typography variant="body2" sx={{fontSize:'10px'}}>Add later</Typography>} />
+
+
+                <FormControlLabel onChange={handleppResidentConsent} control={<Checkbox size='small' checked={ppResidentConsent} sx={{}}/>} sx={{}} labelPlacement='end' label={<Typography sx={{fontSize:'10px'}}>Due to data privacy requirements, our mentoring pilot is open only to residents of the United States. Please confirm you reside in the USA.</Typography>}/>
 
       </Box>
       <Stack sx={{flexDirection:'row',justifyContent:'space-between'}}>

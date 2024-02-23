@@ -9,7 +9,7 @@ const ImageTransition = () => {
 
 
   const techdomain=['Software Development','Full-Stack Development','Data Science And Analytics',
-  'AI and ML','Project Management','Cloud Computing','Game Design','Cybersecurity','..and Much More'
+  'AI and ML','Project Management','Cloud Computing','Game Design','Cybersecurity','... and Much More'
 ]
   
   const slideIn = (direction, type, delay, duration) => ({
@@ -172,7 +172,7 @@ sx={{ width: {xs:100,md:200}, height:{xs:100,md:200},backgroundColor:'#E9F7F6' }
      >
 
 <Typography  sx={{textAlign:'center',color:'black',padding:'1rem',fontSize:'22px',fontWeight:'600' }}>
-          TechPACT will connects you with best mentor in any domain of your intrest:
+We connect you with a mentor that fits your interests.
         </Typography>
         <Container maxWidth='md' sx={{justifyContent:'center',textAlign:'center'}}>
           {techdomain.map((tech)=>{

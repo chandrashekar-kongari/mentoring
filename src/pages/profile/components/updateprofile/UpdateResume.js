@@ -10,12 +10,12 @@ const UpdateResume = ({handleClose,resume,handleFileChange,handleSave}) => {
     <form>
          <Box sx={{justifyContent:'center'}}>
         <Stack sx={{flex:1,flexDirection:'row',justifyContent:'center',paddingBottom:'1rem',marginTop:'0px'}}>
-            <Typography sx={{fontWeight:'bold',padding:'0px',margin:'0px'}}>Update Resume</Typography>
+            <Typography sx={{fontWeight:'bold',padding:'0px',margin:'0px'}}>Update Resume(accepts only PDFs)</Typography>
             </Stack>
    
             
             <IconButton onClick={handleClose} sx={{top:'0px', right:'0px',position:'absolute'}}><CloseIcon sx={{fontSize:'16px'}}/></IconButton>
-            <MuiFileInput  hideSizeText value={resume}   placeholder='Please upload resume' sx={{}} onChange={handleFileChange} />
+            <MuiFileInput  hideSizeText value={resume}   placeholder='Please upload resume(accepts only PDFs)' sx={{}} onChange={handleFileChange} />
 
         <FormControl  fullWidth variant="outlined" style={{}}>
                 
