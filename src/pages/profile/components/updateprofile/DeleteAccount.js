@@ -6,7 +6,7 @@ import endpoint from '../../../../API/api';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const DeleteAccount = ({handleClose,ability,setAbility,handleSave,callToast}) => {
+const DeleteAccount = ({handleClose,callToast}) => {
 
     const navigate=useNavigate()
 
@@ -85,7 +85,7 @@ const DeleteAccount = ({handleClose,ability,setAbility,handleSave,callToast}) =>
 
 <Box sx={{justifyContent:'center'}}>
         <Stack sx={{flex:1,flexDirection:'row',justifyContent:'center',paddingBottom:'1rem',marginTop:'0px'}}>
-            <Typography sx={{fontWeight:'bold',padding:'0px',margin:'0px'}}>Delete my account</Typography>
+            <Typography sx={{fontWeight:'bold',padding:'0px',margin:'0px'}}>Confirm Delete</Typography>
             </Stack>
    
             <IconButton onClick={handleClose} sx={{top:'0px', right:'0px',position:'absolute'}}><CloseIcon sx={{fontSize:'16px'}}/></IconButton>
@@ -94,7 +94,7 @@ const DeleteAccount = ({handleClose,ability,setAbility,handleSave,callToast}) =>
         
             
                 <Box sx={{backgroundColor:'#FEECED',padding:'4px'}}>
-                <Alert severity="error" sx={{fontWeight:'600'}}>If you delete your account</Alert>
+                {/* <Alert severity="error" sx={{fontWeight:'600'}}>If you delete your account</Alert> */}
                
                 <Typography color={'error'} sx={{fontSize:'12px'}}><PriorityHighIcon fontSize='14px' color='error'/>When you delete your account all of your data will be permanently deleted.</Typography>
                 <Typography color={'error'} sx={{pt:'3px',fontSize:'12px'}} ><PriorityHighIcon fontSize='14px' color='error'/>You will need to create a new account if you want to use our services in the future.</Typography>

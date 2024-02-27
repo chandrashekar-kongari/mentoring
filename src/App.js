@@ -40,6 +40,8 @@ import LifeCycle from './pages/authenticated_home/components/LifeCycle';
 import LifeCyclePage from './pages/authenticated_home/LifeCyclePage';
 import TermsOfUse from './pages/TermsOfUse';
 import DeleteAccountSuccessPage from './pages/DeleteAccountSuccessPage';
+import Settings from './pages/settings/Settings';
+import ChangePassword from './pages/settings/ChangePassword';
 
 let theme = createTheme({
   typography: {
@@ -207,6 +209,8 @@ function App() {
             <Route path="/profile" element={<Profile/>}/>
             <Route path='/viewresume' element={<PdfViewer  />}/> 
             <Route path='/lifecycle' element={<LifeCyclePage/>} />
+            <Route path='/settings' element={<Settings/>} />
+            <Route path='/change-password' element={<ChangePassword/>} />
       </Route>
 
       <Route path="/" element={<HomePage />}/>

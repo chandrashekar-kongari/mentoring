@@ -49,7 +49,7 @@ export default function Questions() {
       {
         id:7,
         question:"What is my commitment as a mentor?​​",
-        answer:"Each month, you will meet with your mentee for 45- to 60-min. Your mentee invests significant time outside of this meeting preparing for and reflecting on your discussion, so we ask that you be 100% present and focused during this time. Provide feedback on your experience so that we may continue to improve program.​​"
+        answer:"Each month, you will meet with your mentee for 45- to 60-min. Your mentee invests significant time outside of this meeting preparing for and reflecting on your discussion, so we ask that you be 100% present and focused during this time. In addition, we will ask you to provide feedback on your experience so that we may continue to improve program.​​"
       },{
         id:8,
         question:"Who is TechPACT?​​",

@@ -52,7 +52,7 @@ const UpdateSexualOrientation = ({handleClose,sexualOrientation,setSexualOrienta
             <FormControlLabel  control={<Checkbox onChange={handleChange} checked={sexualOrientationLocalState.includes('Pansexual')}/>} value={"Pansexual"} label="Pansexual" />
             <FormControlLabel  control={<Checkbox onChange={handleChange} checked={sexualOrientationLocalState.includes('Queer​')}/>} value={"Queer​"} label="Queer​" />
 
-            
+            <FormControlLabel  control={<Checkbox onChange={handleChange} checked={sexualOrientationLocalState.includes('Other')}/>} value={"Other"} label="Other" />
             <FormControlLabel control={<Checkbox onChange={handleChange} checked={sexualOrientationLocalState.includes('Prefer not to specify')}/>} value={"Prefer not to specify"} label="Prefer not to specify" />
             </FormGroup>
       

@@ -49,6 +49,7 @@ const UpdateRacial = ({handleClose,racial,setRacial,handleSave,racialLocalState}
             <FormControlLabel control={<Checkbox onChange={handleChange} checked={racialLocalState.includes('Black or African American​')}/>} value={"Black or African American​"} label="Black or African American​" />
             <FormControlLabel control={<Checkbox  onChange={handleChange} checked={racialLocalState.includes('Hispanic')}/>} value={"Hispanic"} label="Hispanic" />
             <FormControlLabel  control={<Checkbox onChange={handleChange} checked={racialLocalState.includes('White / Caucasian​')}/>} value={"White / Caucasian​"} label="White / Caucasian​" />
+            <FormControlLabel control={<Checkbox onChange={handleChange} checked={racialLocalState.includes('Other')}/>} value={"Other"} label="Other" />
             <FormControlLabel control={<Checkbox onChange={handleChange} checked={racialLocalState.includes('Prefer not to specify')}/>} value={"Prefer not to specify"} label="Prefer not to specify" />
             </FormGroup>
       

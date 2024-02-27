@@ -57,9 +57,12 @@ export default function SideMenu() {
   else if(page=='Help Center'){
     navigate('/help-center')
   }
+  else if(page=='Settings'){
+    navigate('/settings')
+  }
   }
   const [pages,setPages]=React.useState([
-    'Home', 'Profile','Contact Us','Sign Out'
+    'Home', 'Profile','Settings','Contact Us','Sign Out'
   ])
 
   const list = (anchor) => (

@@ -23,7 +23,7 @@ import axios from 'axios';
 import endpoint from '../API/api';
 import techPactHomeURL from '../API/TechPactHomeURL';
 
-const pages = [ 'Home', 'Profile','Lifecycle', 'Contact Us','Privacy Policy','Log out'];
+const pages = [ 'Home', 'Profile','Settings', 'Lifecycle', 'Contact Us','Privacy Policy','Log out'];
 const desktopPages = [ 'Home', 'Contact Us'];
 
 
@@ -78,6 +78,9 @@ function Header() {
   }
   else if(page=='Lifecycle'){
     navigate('/lifecycle')
+  }
+  else if(page=='Settings'){
+    navigate('/settings')
   }
   }
 
@@ -178,7 +181,7 @@ function Header() {
                 <Stack spacing={1} sx={{borderTop:'1px solid #f2eeed'}}>
                 <MenuItem sx={{}} onClick={()=>handleNavClick('Profile')}>Profile</MenuItem>
                 {/* <MenuItem sx={{}} onClick={()=>handleNavClick('Lifecycle')}>Lifecycle</MenuItem> */}
-
+                <MenuItem sx={{}} onClick={()=>handleNavClick('Settings')}>Settings</MenuItem>
                 <MenuItem sx={{}} onClick={()=>handleNavClick('Contact Us')}>Contact Us</MenuItem>
 
                 <MenuItem sx={{}} onClick={()=>handleNavClick('Privacy Policy')}>Privacy Policy</MenuItem>

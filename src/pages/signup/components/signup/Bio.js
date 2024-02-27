@@ -64,8 +64,8 @@ const Bio = ({step,handleNext,handleBack}) => {
                        <Model exp={workExperience}/>
                     </Box> */}
                   <form onSubmit={handleSubmit}>
-                  <textarea autoFocus required style={{marginTop:'5px',maxWidth:'320px'}} name="additionaInformation" value={v} onChange={handleChange} rows={4} cols={30}  />
-                  <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'2px',color:'black',textDecoration:'underline',textTransform:'none'}}>I will add later, skip for now.</Button>
+                  <textarea autoFocus style={{marginTop:'5px',maxWidth:'320px'}} name="additionaInformation" value={v} onChange={handleChange} rows={4} cols={30}  />
+                  {/* <Button onClick={handleNext} sx={{fontSize:'10px',marginTop:'2px',color:'black',textDecoration:'underline',textTransform:'none'}}>I will add later, skip for now.</Button> */}
 
                   <Stack sx={{flexDirection:'row',justifyContent:'space-between'}}>
                 <Button onClick={handleBack} variant="text"  type="submit" sx={{float:'right',color:'black'}}>

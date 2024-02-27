@@ -296,7 +296,7 @@ fill="#757575"></path>
       </ListItem>
       <ListItem sx={{paddingTop:0,paddingBottom:0}}>
       <KeyboardArrowRightIcon/>
-        <ListItemText>Is your goal broader and long-term?  Review this <Link href='https://nesslabs.com/smart-goals-pact'>article</Link> outlines that outlines the PACT approach by Ness Labs.​</ListItemText>
+        <ListItemText>Is your goal broader and long-term?  Review this <Link href='https://nesslabs.com/smart-goals-pact'>article</Link> that outlines the PACT approach by Ness Labs.​</ListItemText>
       </ListItem>
       <ListItem sx={{paddingTop:0,paddingBottom:0}}>
       <KeyboardArrowRightIcon/>

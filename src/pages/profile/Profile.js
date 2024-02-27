@@ -870,7 +870,7 @@ const Profile = () => {
           {section== 'sixtyplus' && <UpdateSixplus handleClose={handleClose} sixtyplusState={userObj.sixtyplus}  sixtyplus={sixtyplus} setSixtyplus={setSixtyplus}  handleSave={()=>handleUpdateValues('sixtyplus',sixtyplus)} />    }
           {section=='sexualOrientation' && <UpdateSexualOrientation handleClose={handleClose} sexualOrientationLocalState={sexualOrientation} sexualOrientation={ userObj.sexualOrientation} handleChange={setSexualOrientation} setSexualOrientation={setSexualOrientation} handleSave={()=>handleUpdateValues('sexualOrientation',sexualOrientation)}/>}
           {section=='racial' && <UpdateRacial handleClose={handleClose} racialLocalState={racial} racial={userObj.racial} handleChange={setRacial} setRacial={setRacial} handleSave={()=>handleUpdateValues('racial',racial)}/>}
-          {section=='deleteAccount' && <DeleteAccount callToast={callToast}/>}
+          {/* {section=='deleteAccount' && <DeleteAccount callToast={callToast}/>} */}
 
 
           
@@ -1264,7 +1264,7 @@ const Profile = () => {
 
 
     <Box sx={{paddingTop:'3rem'}}>
-    <Button onClick={()=>handleUpdate('deleteAccount')} color='error' sx={{textTransform:'capitalize'}}>Delete my account</Button>
+    {/* <Button onClick={()=>handleUpdate('deleteAccount')} color='error' sx={{textTransform:'capitalize'}}>Delete my account</Button> */}
     </Box>
     </Container>
 
