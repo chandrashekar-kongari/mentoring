@@ -37,6 +37,7 @@ import { saveUserObj } from '../../../features/UserSlice';
 import Month4LifeCycleComponent from './lifecyclecomponents/Month4LifeCycleComponent';
 
 import { ToastContainer, toast } from 'react-toastify';
+import Month1LifeCycleComponent from './lifecyclecomponents/Month1LifeCycleComponent';
 
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
@@ -254,15 +255,15 @@ export default function LifeCycle() {
     },
     {
       id:2,
-      label: 'Intro',
+      label: 'Month 1:',
       description:
         'An ad group contains one or more ads which target a shared set of keywords.',
-        component:<IntroLifeCycleComponent/>
+        component:<Month1LifeCycleComponent/>
     },
    
     {
       id:3,
-      label: 'Month2',
+      label: 'Month 2:',
       description: `For each ad campaign that you create, you can control how much
                 you're willing to spend on clicks and conversions, which networks
                 and geographical locations you want your ads to show on, and more.`,
@@ -270,14 +271,14 @@ export default function LifeCycle() {
     },
     {
       id:4,
-      label: 'Month3',
+      label: 'Month 3:',
       description:
         'An ad group contains one or more ads which target a shared set of keywords.',
         component:<Month3LifeCycleComponent/>
     },
     {
       id:5,
-      label: 'Month4',
+      label: 'Month 4:',
       description: `Try out different ad text to see what brings in the most customers,
                 and learn how to enhance your ads using features like ad extensions.
                 If you run into any problems with your ads, find out how to tell if
@@ -313,8 +314,8 @@ export default function LifeCycle() {
   const handleLifeCycleAtiveStep=async(val)=>{
     var active=activeStep
     if(val=='next'){
-  
-      if(activeStep==2 || activeStep==3 || activeStep==4 ){
+      console.log(' active', active)
+      if(activeStep==1 || activeStep==2 || activeStep==3 || activeStep==4 ){
         if(user.lifeCycle[activeStep-1].agenda == ''){
          
 
@@ -331,42 +332,42 @@ export default function LifeCycle() {
       setActiveStep((prevActiveStep) => prevActiveStep - 1);
       active=active-1
     }
-    const token=localStorage.getItem('token')
-    const axiosConfig = {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    // const token=localStorage.getItem('token')
+    // const axiosConfig = {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
       
-      },
-    };
+    //   },
+    // };
     
-    try {
-      const obj={
-        'id':localStorage.getItem('userid'),
-        'activeLifeCycleStep':activeStep,
+    // try {
+    //   const obj={
+    //     'id':localStorage.getItem('userid'),
+    //     'activeLifeCycleStep':activeStep,
   
-      }
-      const response = await axios.post(`${endpoint}/updateactivelifecyclestep`,obj,axiosConfig);
+    //   }
+    //   const response = await axios.post(`${endpoint}/updateactivelifecyclestep`,obj,axiosConfig);
     
-          if (response.status === 200) {
-            const a=true
-            // dispatch(setAuth(a))
-            const user=response.data
+    //       if (response.status === 200) {
+    //         const a=true
+    //         // dispatch(setAuth(a))
+    //         const user=response.data
          
-            if(user==null){
+    //         if(user==null){
             
-            }
-            else{
+    //         }
+    //         else{
               
-              dispatch(saveUserObj(response.data.user)) 
-            }
-          } else {
-            console.error('Failed to submit user data.');
-            }
-          } catch (error) {
-          console.error('Error:', error);
+    //           dispatch(saveUserObj(response.data.user)) 
+    //         }
+    //       } else {
+    //         console.error('Failed to submit user data.');
+    //         }
+    //       } catch (error) {
+    //       console.error('Error:', error);
           
      
-          }
+    //       }
   }
   const handleNext = () => {
     

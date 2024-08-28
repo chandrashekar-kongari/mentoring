@@ -32,7 +32,8 @@ const Month2LifeCycleComponent = () => {
 
   const [lifeCycle,setLifeCycle]=useState([])
   const li=useSelector(state=>state.lifeCycle)
-  const user_id=useSelector(state=>state.userObj._id)
+  // const user_id=useSelector(state=>state.userObj._id)
+  const user=useSelector(state=>state.userObj)
   const dispatch=useDispatch()
   const [month2Data, setMonth2Data] = useState(null);
   useEffect(()=>{
@@ -157,7 +158,7 @@ const Month2LifeCycleComponent = () => {
 
       
       const obj={
-        'id':user_id,
+       
         'monthid':'month2',
         'valueType':'date',
         'value':value
@@ -171,7 +172,7 @@ const Month2LifeCycleComponent = () => {
       };
       
       try {
-        const response = await axios.post(`${endpoint}/updatelifecycle`,obj,axiosConfig);
+        const response = await axios.post(`${endpoint}/updatelifecycle2`,obj,axiosConfig);
       
             if (response.status === 200) {
               const a=true
@@ -233,7 +234,7 @@ const Month2LifeCycleComponent = () => {
      
       
       const obj={
-        'id':user_id,
+        
         'monthid':'month2',
         'valueType':titleOfModel.toLowerCase(),
         'value':valueOfModel
@@ -246,7 +247,7 @@ const Month2LifeCycleComponent = () => {
         },
       };
       try {
-        const response = await axios.post(`${endpoint}/updatelifecycle`,obj,axiosConfig);
+        const response = await axios.post(`${endpoint}/updatelifecycle2`,obj,axiosConfig);
       
             if (response.status === 200) {
               const a=true
@@ -339,7 +340,7 @@ const Month2LifeCycleComponent = () => {
         <Box sx={{justifyContent:'center'}}>
 
         <Stack sx={{flex:1,flexDirection:'row',justifyContent:'center',paddingBottom:'1rem',marginTop:'0px'}}>
-            <Typography sx={{fontWeight:'bold',padding:'0px',margin:'0px'}}>{titleOfModel}</Typography>
+            <Typography sx={{fontWeight:'bold',padding:'0px',margin:'0px'}}>{titleOfModel=='Insights'?'Reflection':titleOfModel}</Typography>
             </Stack>
             <IconButton onClick={handleClose} sx={{top:'0px', right:'0px',position:'absolute'}}><CloseIcon sx={{fontSize:'16px'}}/></IconButton>
             <Stack direction='column' >
@@ -367,7 +368,7 @@ const Month2LifeCycleComponent = () => {
           
         </Box>
       </Modal>
-        <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, adipi</Typography>
+        {/* <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, adipi</Typography> */}
         <Box sx={{marginBottom:'20px',marginTop:'20px'}}>
         <LocalizationProvider dateAdapter={AdapterDayjs} >
       <DemoContainer components={['DatePicker', 'DatePicker']}>
@@ -388,7 +389,7 @@ const Month2LifeCycleComponent = () => {
           <Chip onClick={()=>handleModelOpen('Agenda',agenda)} icon={<AddIcon />} on color='default'  label={'Agenda'} sx={{fontSize:'14px',cursor:'pointer'}} />
           </Box>}
       {insights=='' && <Box sx={{marginBottom:'20px'}}>
-          <Chip onClick={()=>handleModelOpen('Insights',insights)} icon={<AddIcon />} on color='default'  label={'Insights'} sx={{fontSize:'14px',cursor:'pointer'}} />
+          <Chip onClick={()=>handleModelOpen('Insights',insights)} icon={<AddIcon />} on color='default'  label={'Reflection'} sx={{fontSize:'14px',cursor:'pointer'}} />
           </Box>}
       {tasks=='' && <Box sx={{marginBottom:'20px'}} >
           <Chip onClick={()=>handleModelOpen('Tasks',tasks)} icon={<AddIcon />} on color='default'  label={'Tasks'} sx={{fontSize:'14px',cursor:'pointer'}} />
@@ -412,7 +413,7 @@ const Month2LifeCycleComponent = () => {
         {insights!='' && <Box sx={{marginBottom:'20px',marginTop:'20px'}} >
           <Container sx={{borderLeft:'2px solid #CFD4D7',padding:'1rem'}}>
             <Stack spacing={2}>
-            <Typography sx={{fontSize:'16px'}}>{'Insights'}</Typography>
+            <Typography sx={{fontSize:'16px'}}>{'Reflection'}</Typography>
             <Typography sx={{fontSize:'14px'}}>{insights}</Typography>
             <Chip onClick={()=>handleModelOpen('Insights',insights)}  icon={<CreateIcon fontSize='small'/>} label={'Update'} sx={{width:'100px',cursor:'pointer',fontSize:'13px'}}></Chip>
             </Stack>

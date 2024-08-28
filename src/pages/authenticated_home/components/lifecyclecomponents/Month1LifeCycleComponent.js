@@ -28,23 +28,23 @@ const style = {
   p: 8,
 
 };
-const Month3LifeCycleComponent = () => {
+const Month1LifeCycleComponent = () => {
 
   const [lifeCycle,setLifeCycle]=useState([])
   const li=useSelector(state=>state.lifeCycle)
   const dispatch=useDispatch()
   // const user_id=useSelector(state=>state.userObj._id)
-  const [month3Data, setMonth3Data] = useState(null);
+  const [month1Data, setMonth1Data] = useState(null);
   useEffect(()=>{
     setLifeCycle(li)
-    const foundMonth3Data = li.find(item => item.id === 'month3');
-    setMonth3Data(foundMonth3Data);
-    setAgenda(foundMonth3Data.agenda)
-    setInsights(foundMonth3Data.insights)
-    setTasks(foundMonth3Data.tasks)
-    setResources(foundMonth3Data.resources)
+    const foundMonth1Data = li.find(item => item.id === 'month1');
+    setMonth1Data(foundMonth1Data);
+    setAgenda(foundMonth1Data.agenda)
+    setInsights(foundMonth1Data.insights)
+    setTasks(foundMonth1Data.tasks)
+    setResources(foundMonth1Data.resources)
     
-    const dateObj = dayjs(foundMonth3Data.date)
+    const dateObj = dayjs(foundMonth1Data.date)
   
     setDate(dateObj)
     
@@ -156,7 +156,7 @@ const Month3LifeCycleComponent = () => {
       
       const obj={
 
-        'monthid':'month3',
+        'monthid':'month1',
         'valueType':'date',
         'value':value
       }
@@ -185,13 +185,13 @@ const Month3LifeCycleComponent = () => {
                 dispatch(saveUserObj(response.data.user))
                 dispatch(saveLifeCycle(response.data.user.lifeCycle))
                 setLifeCycle(response.data.user.lifeCycle)
-                const foundMonth3Data = response.data.user.lifeCycle.find(item => item.id === 'month3');
-                setMonth3Data(foundMonth3Data);
-                setAgenda(foundMonth3Data.agenda)
-                setInsights(foundMonth3Data.insights)
-                setTasks(foundMonth3Data.tasks)
-                setResources(foundMonth3Data.resources)
-                const dateObj = dayjs(foundMonth3Data.date);
+                const foundMonth1Data = response.data.user.lifeCycle.find(item => item.id === 'month1');
+                setMonth1Data(foundMonth1Data);
+                setAgenda(foundMonth1Data.agenda)
+                setInsights(foundMonth1Data.insights)
+                setTasks(foundMonth1Data.tasks)
+                setResources(foundMonth1Data.resources)
+                const dateObj = dayjs(foundMonth1Data.date);
                 setDate(dateObj)
 
   
@@ -229,7 +229,7 @@ const Month3LifeCycleComponent = () => {
       
       const obj={
 
-        'monthid':'month3',
+        'monthid':'month1',
         'valueType':titleOfModel.toLowerCase(),
         'value':valueOfModel
       }
@@ -258,13 +258,13 @@ const Month3LifeCycleComponent = () => {
                 dispatch(saveUserObj(response.data.user))
                 dispatch(saveLifeCycle(response.data.user.lifeCycle))
                 setLifeCycle(response.data.user.lifeCycle)
-                const foundMonth3Data = response.data.user.lifeCycle.find(item => item.id === 'month3');
-                setMonth3Data(foundMonth3Data);
-                setAgenda(foundMonth3Data.agenda)
-                setInsights(foundMonth3Data.insights)
-                setTasks(foundMonth3Data.tasks)
-                setResources(foundMonth3Data.resources)
-                const dateObj = dayjs(foundMonth3Data.date);
+                const foundMonth1Data = response.data.user.lifeCycle.find(item => item.id === 'month1');
+                setMonth1Data(foundMonth1Data);
+                setAgenda(foundMonth1Data.agenda)
+                setInsights(foundMonth1Data.insights)
+                setTasks(foundMonth1Data.tasks)
+                setResources(foundMonth1Data.resources)
+                const dateObj = dayjs(foundMonth1Data.date);
                 setDate(dateObj)
 
   
@@ -440,6 +440,6 @@ const Month3LifeCycleComponent = () => {
   )
 }
 
-export default Month3LifeCycleComponent
+export default Month1LifeCycleComponent
 
 

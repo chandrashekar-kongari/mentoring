@@ -32,20 +32,20 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 const GridWithCards = () => {
   // Define the positions where the cards will be displayed
-  const profileimages=['rating2.jpg','mentor2.jpg','people1.jpg','person1.jpg',
+  const profileimages=['Abby.png','LauraRegan.png','mentor2.jpg','people1.jpg','person1.jpg',
   'profile3.jpg',]
 
   const cardPositions = [
     
     { row: 2, col: 2,imgurl: 'person1.jpg',name:'Olamide'},
     { row: 4, col: 2 ,imgurl: 'profile3.jpg',name:'Ibrahim'},
-    { row: 1, col: 4,imgurl: 'mentor2.jpg',name:'Isabelle' },
+    { row: 1, col: 4,imgurl: 'LauraRegan.png',name:'Laura Regan' },
     { row: 3, col: 4 ,imgurl: 'people1.jpg',name:'Olivia'},
     
     { row: 2, col: 6 ,imgurl: 'mentee2.jpg',name:'Uduak'},
     { row: 4, col: 6 ,imgurl: 'people6.png',name:'Isabelle'},
-    {row:1, col:8 ,imgurl: 'rating2.jpg',name:'Idara'},
-    {row:3, col:8 ,imgurl: 'mentor2.jpg',name:'Idara'},
+    {row:1, col:8 ,imgurl: 'Abby.png',name:'Abby'},
+    {row:3, col:8 ,imgurl: 'rating2.jpg',name:'Idara'},
 
     { row: 2, col: 10 ,imgurl: 'profile5.jpg',name:'Wilson'},
     { row: 4, col: 10 ,imgurl: 'rating1.jpg',name:'Uduak'},

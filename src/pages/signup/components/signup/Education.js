@@ -105,8 +105,29 @@ const Education = ({step,handleNext,handleBack}) => {
     <>
     {step==5?<form onSubmit={handleSubmit}><Box sx={{justifyContent:'center'}}>
         {role && <>
+
+          <FormControl  fullWidth variant="outlined" style={{marginTop:8}}>
+                <InputLabel >University</InputLabel>
+                <OutlinedInput
+                required
+                
+                name='university'
+                value={edu.university}
+                onChange={handleChange}
+                   
+                    type={'text'}
+                    
+                    label="University"
+                    // placeholder='please share linkedin profile url'
+                />
+
+                
+                </FormControl>
         
-          <FormControl sx={{ }} fullWidth style={{justifyContent:'center'}}>
+          {/* <FormControl sx={{ }} fullWidth style={{justifyContent:'center'}}>
+
+
+            
         <InputLabel id="demo-simple-select-helper-label">University</InputLabel>
         <Select
    
@@ -120,12 +141,14 @@ const Education = ({step,handleNext,handleBack}) => {
           sx={{textAlign:'left'}}
         >
           <MenuItem value={'Sacred Heart University'}>Sacred Heart University</MenuItem>
-          {/* <MenuItem value={'Fordham University'}>Fordham University</MenuItem>
-          <MenuItem value={'Howard University'}>Howard University</MenuItem> */}
+          <MenuItem value={'Fordham University'}>Fordham University</MenuItem>
+          <MenuItem value={'Howard University'}>Howard University</MenuItem> 
           <MenuItem value={'Boston University'}>Boston University</MenuItem>
+          <MenuItem value={'Johnson C. Smith University'}>Johnson C. Smith University</MenuItem>
         </Select>
        
       </FormControl>
+      <Typography sx={{fontSize:'11px',pt:3}}>If your school is not listed, please email mentoring@techpact.org.</Typography> */}
       <FormControl sx={{marginTop:'1rem' }} fullWidth style={{justifyContent:'center'}}>
         <InputLabel id="demo-simple-select-helper-label">Degree</InputLabel>
         <Select
@@ -239,7 +262,7 @@ const Education = ({step,handleNext,handleBack}) => {
                     // multiline={true}
                     
                      fullWidth/> */}
-        <MuiFileInput  disabled={resumeUpload} hideSizeText value={value}   placeholder='Please upload resume(accepts only PDFs)' sx={{marginTop:'1rem'}} onChange={handleFileChange} />
+        <MuiFileInput  disabled={resumeUpload} hideSizeText value={value}   placeholder='Please upload resume(accepts only PDFs)*' sx={{marginTop:'1rem'}} onChange={handleFileChange} />
         <FormControlLabel  name='mentor' onChange={handleResumeUploadFlag} control={<Checkbox size='small' checked={resumeUpload} />} label={<Typography sx={{fontSize:'10px'}} variant="body2" >Add later</Typography>} />
         <FormControl  fullWidth variant="outlined" style={{marginTop:8}}>
                 <InputLabel >LinkedIn Profile URL</InputLabel>

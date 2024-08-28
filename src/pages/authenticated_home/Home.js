@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Card, CardContent, CircularProgress, Container, Stack } from '@mui/material';
+import { Alert, Card, CardContent, CircularProgress, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Stack } from '@mui/material';
 import { Link, redirect, useNavigate } from 'react-router-dom';
 
 // import Header from '../Header';
@@ -17,15 +17,174 @@ import { styled } from '@mui/material/styles';
 
 import axios from 'axios';
 import endpoint from '../../API/api';
-import { saveLifeCycle, saveUserObj, setAuth } from '../../features/UserSlice';
+import { saveLifeCycle, saveUserObj, setAuth, setMentorIntrests, setMentorshipIntrests, updateSkill } from '../../features/UserSlice';
 import Loading from '../../components/Loading';
 import AlertComponent from '../../components/AlertComponent';
 import LifeCycle from './components/LifeCycle';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import GoalSetting from './components/GoalSetting';
-
+import { useLocation } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 export default function HomePage() {
+
+  const location = useLocation();
+  const [newUserFlag,setNewFlag] = React.useState(location.state && location.state.id);
+  const [dialog,setDialog]=React.useState(false)
+  const handleClickDialogOpen = () => {
+    setDialog(true);
+    
+  };
+
+  const handleDialogClose = () => {
+    setDialog(false);
+    location.state.id='no'
+    setNewFlag('no')
+    navigate(location.pathname, { id: 'no' });
+    dispatch(updateSkill([{
+      title:'Software Development',
+      selected:false
+    },
+    {
+      title:'Python',
+      selected:false
+    },
+    {
+      title:'Full Stack Development',
+      selected:false
+    },
+    
+    {
+      title:'Cybersecurity',
+      selected:false
+    },
+    
+    {
+      title:'Data Science and Analytics',
+      selected:false
+    },
+    {
+      title:'Cloud Computing',
+      selected:false
+    },
+    {
+      title:'Database Develpment',
+      selected:false
+    },
+    {
+      title:'C# Programming',
+      selected:false
+    }]))
+
+  dispatch(setMentorIntrests([{
+      title:'Leadership',
+      selected:false
+    },
+    {
+      title:'Career guidance',
+      selected:false
+    },
+    {
+      title:'Thought parter',
+      selected:false
+    },
+    {
+      title:'Transition',
+      selected:false
+    },
+    {
+      title:'Personal Development',
+      selected:false
+    },]))
+    dispatch(setMentorshipIntrests([{
+      title:'Leadership',
+      selected:false
+    },
+    {
+      title:'Career guidance',
+      selected:false
+    },
+    {
+      title:'Thought parter',
+      selected:false
+    },
+    {
+      title:'Transition',
+      selected:false
+    },
+    {
+      title:'Personal Development',
+      selected:false
+    }]))
+  };
+  const checkNewUser=()=>{
+    console.log('new user ', newUserFlag)
+    if (newUserFlag=='ok'){
+      // callToast('message', 'success')
+      handleClickDialogOpen()
+      
+        
+    }
+  }
+  const callToast=(m,t)=>{
+    if(t=='success'){
+      toast.success(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else if(t=='info'){
+      toast.info(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else if(t=='error'){
+      toast.error(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else if(t=='warning'){
+      toast.warn(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+  }else{
+      toast(m, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+    }
+  }
     const navigate=useNavigate()
 
     const dispatch=useDispatch()
@@ -260,6 +419,7 @@ export default function HomePage() {
 
 
     React.useEffect(()=>{
+      
       setLoading(true)
       // localStorage.removeItem('userid');
       // localStorage.removeItem('user');
@@ -293,7 +453,7 @@ export default function HomePage() {
           navigate('/')
         }
         else{
-        
+          
           const mentee=userObj.mentee
           const mentor=userObj.mentor
           if(mentee=='true'){
@@ -321,12 +481,13 @@ export default function HomePage() {
             }
 
           }
+          
         }
 
        
       }
 
-
+      checkNewUser()
 
     },[])
 
@@ -444,6 +605,28 @@ export default function HomePage() {
 
     <Header/>
 
+    <Dialog
+        open={dialog}
+        onClose={handleDialogClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        {/* <DialogTitle id="alert-dialog-title" sx={{fontSize:'20px'}}>
+          {"Your account was created successfully."}
+        </DialogTitle> */}
+        <DialogContent>
+          <DialogContentText style={{fontSize:24,fontWeight:'bold'}} id="alert-dialog-description">
+          Your account was created successfully.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDialogClose}>Cancel</Button>
+          <Button onClick={handleDialogClose} autoFocus>
+            Okay
+          </Button>
+        </DialogActions>
+      </Dialog>
+    {/* <ToastContainer /> */}
     
       <Box sx={{ flexGrow: 1}}>
       {/* <Header/> */}
@@ -536,8 +719,8 @@ export default function HomePage() {
 
           
       {/* <LifeCycle/> */}
-
-      {!loading && ((userObj.mentee=='true' )&& <GoalSetting usergoals={goals} userObj={userObj} setUserObj={setUserObj} />)}
+      {!loading && ((userObj.mentee=='true' )&& <LifeCycle />)}
+      {/* {!loading && ((userObj.mentee=='true' )&& <GoalSetting usergoals={goals} userObj={userObj} setUserObj={setUserObj} />)} */}
       {!loading && (((userObj.mentor=='true') &&(profilePercentage>=100)) && <Container maxWidth='md' sx={{pt:8,pb:8}}><Typography>This page won't be empty for long.  Stay tuned for more details, and keep an eye on your email for announcements.</Typography></Container>)}
       </Box>
       

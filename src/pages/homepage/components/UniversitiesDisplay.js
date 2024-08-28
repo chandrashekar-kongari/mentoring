@@ -36,6 +36,11 @@ const UniversitiesDisplay = () => {
             <img src='boston-university-logo.png' style={{width:'auto',height:'60px'}}/>
             </CardContent>
           </Card>
+          <Card elevation={4} sx={{backgroundColor:'#FCFCFC',margin:'1rem', alignItems: 'center',height:'100px', width: '300px', display: 'flex', justifyContent: 'center' }}>
+            <CardContent>
+            <img src='jcsu-logo.png' style={{width:'auto',height:'65px'}}/>
+            </CardContent>
+          </Card>
          
 
              

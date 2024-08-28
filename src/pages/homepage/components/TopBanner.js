@@ -146,7 +146,7 @@ const TopBanner = () => {
       </Box>
 
       <Box sx={{paddingTop:'5rem',textAlign:'left',}}>
-      <img src='poweredbyshu.svg' style={{margin:0,padding:0,justifyContent:'left', width:'200px',height:'auto',}}/>
+      <img src='poweredbyshu4.svg' style={{margin:0,padding:0,justifyContent:'left', width:'350px',height:'auto',}}/>
       </Box>
      
       </Stack>

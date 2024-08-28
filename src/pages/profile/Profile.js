@@ -436,7 +436,7 @@ const Profile = () => {
 
               setEdu(e)
 
-              callToast(response.data.messsage,response.data.type)
+              callToast('Updated Successfully','success')
               
             }
           } else {
@@ -1190,11 +1190,10 @@ const Profile = () => {
     <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
       <Stack spacing={2}>
       <Typography sx={{fontSize:'14px',fontWeight:'bold'}}>
-      60+
+      Age Bracket
       </Typography>
       {(userObj.sixtyplus && userObj.sixtyplus!='') ? <Stack sx={{flexDirection:'row',alignItems: 'flex-end' }}> <Typography  sx={{fontSize:'14px',marginRight:'3px'}}>{userObj.sixtyplus }</Typography> <IconButton onClick={()=>handleUpdate('sixtyplus')} sx={{
             }}><EditIcon  sx={{ justifyContent:'end',fontSize:'16px'}}/></IconButton></Stack>:<Chip onClick={()=>handleUpdate('sixtyplus')} icon={<AddIcon />} on color='default'  label="Add" sx={{fontSize:'14px',cursor:'pointer',width:'100px'}} />}      </Stack>
-
     </Container>
     <Container sx={{marginTop:'2rem',borderBottom:'2px solid #CFD4D7',paddingBottom:'1rem'}}>
       <Stack spacing={2}>

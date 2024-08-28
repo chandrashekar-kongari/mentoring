@@ -96,7 +96,7 @@ export default function SignUp() {
     
     formDataWithFiles.append('linkedinProfile',linkedinProfile)
     formDataWithFiles.append('organization',organization)
-    formDataWithFiles.append('title',organization)
+    formDataWithFiles.append('title',title)
     formDataWithFiles.append('privacyPolicyResidentConsent',ppResidentConsent)
 
     formDataWithFiles.append('numofmentees',numofmentees)
@@ -128,7 +128,7 @@ export default function SignUp() {
           dispatch(setAuth(a))
           localStorage.setItem('token',response.data.token)
           
-          navigate('/success-page');
+          navigate('/homepage',{ state: { id:'ok' } });
 
   
         } else {

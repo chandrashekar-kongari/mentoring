@@ -37,7 +37,7 @@ const UpdateAbility = ({handleClose,ability,setAbility,handleSave}) => {
 
                 
                 <FormControlLabel  name='ability' onChange={()=>handleChange('Yes')} control={<Checkbox size='small' checked={ability=='Yes'} sx={{}}/>} sx={{fontSize:'10px'}}  label={<Typography variant="body2">Yes</Typography>} />
-                <FormControlLabel  name='ability' onChange={()=>handleChange('Prefer not to specify or "Not applicable"')} control={<Checkbox size='small' checked={ability=='Prefer not to specify or "Not applicable"'} sx={{}}/>} sx={{fontSize:'10px'}}  label={<Typography variant="body2">Prefer not to specify or "Not applicable"</Typography>} />
+                <FormControlLabel  name='ability' onChange={()=>handleChange('Prefer not to specify or not applicable')} control={<Checkbox size='small' checked={ability=='Prefer not to specify or not applicable'} sx={{}}/>} sx={{fontSize:'10px'}}  label={<Typography variant="body2">Prefer not to specify or not applicable</Typography>} />
 
                 </Stack>
                 <FormControl fullWidth>        
