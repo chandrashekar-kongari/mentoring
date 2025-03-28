@@ -8,7 +8,6 @@ const initialState={
             email: '',
             phonenumber:'',
             password: '',
-           
             about: '',
             purpose:'',
             areaofintrest:[],
@@ -32,6 +31,7 @@ const initialState={
             mentees:[],
             profilePicture: null,
             resume: null,
+            communicationFlag:true
     },
 
     requiredDetails:{
@@ -127,7 +127,8 @@ const initialState={
     userObj:null,
     resid:'',
     hobbies:[],
-    lifeCycle:[]
+    lifeCycle:[],
+    communicationFlag:true
 
 }
 
@@ -239,11 +240,15 @@ export const userSlice=createSlice({
         saveLifeCycle:(state,action)=>{
           const val=action.payload
           state.lifeCycle=val
+        },
+        saveCommunicationFlag:(state,action)=>{
+          const val=action.payload
+          state.communicationFlag=val
         }
         
         
     }
 })
 
-export const {savePrivacyPolicyResidentConsent,saveOrganization,saveTitle, saveLifeCycle,updateHobby,saveResId,saveUserObj,saveUser,saveSkipResume,saveNumberOfMentees,saveLinkedinProfile,saveFirstName,saveLastName,setAdditionaInformation,updateSkill,addSkill,addEducation,addResume,setAuth,setRequiredDetails,setMentee,setMentor,setMenteeIntrests,setMentorIntrests,setMentorshipIntrests,addExperience} =userSlice.actions
+export const {saveCommunicationFlag,savePrivacyPolicyResidentConsent,saveOrganization,saveTitle, saveLifeCycle,updateHobby,saveResId,saveUserObj,saveUser,saveSkipResume,saveNumberOfMentees,saveLinkedinProfile,saveFirstName,saveLastName,setAdditionaInformation,updateSkill,addSkill,addEducation,addResume,setAuth,setRequiredDetails,setMentee,setMentor,setMenteeIntrests,setMentorIntrests,setMentorshipIntrests,addExperience} =userSlice.actions
 export default userSlice.reducer

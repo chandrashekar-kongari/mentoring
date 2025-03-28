@@ -1,7 +1,7 @@
 import { Box, Button, Checkbox, Container, FormControl, FormControlLabel, InputLabel, MenuItem, OutlinedInput, Select, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {addEducation,addResume, saveLinkedinProfile,saveOrganization,savePrivacyPolicyResidentConsent,saveSkipResume, saveTitle} from '../../../../features/UserSlice';
+import {addEducation,addResume, saveCommunicationFlag, saveLinkedinProfile,saveOrganization,savePrivacyPolicyResidentConsent,saveSkipResume, saveTitle} from '../../../../features/UserSlice';
 import { MuiFileInput } from 'mui-file-input'
 import { styled } from 'styled-components'
 import './education.css'
@@ -67,6 +67,7 @@ const Education = ({step,handleNext,handleBack}) => {
     }
 
     const [linkedinProfile,setLinkedinProfile]=useState('')
+    const [communicationFlag,setCommunicationFlag]=useState(true)
     const [organization,setOrganization]=useState('')
     const [title,setTitle]=useState('')
     const [ppResidentConsent,setPPResidentConset]=useState(false)
@@ -85,6 +86,11 @@ const Education = ({step,handleNext,handleBack}) => {
       const {name,value}=event.target
       setOrganization(value)
       dispatch(saveOrganization(value))
+    }
+    const handleSaveCommunicationFlag=(event)=>{
+     
+      setCommunicationFlag(!communicationFlag)
+      dispatch(saveCommunicationFlag(!communicationFlag))
     }
     const handleTitleChange=(event)=>{
       const {name,value}=event.target
@@ -282,10 +288,31 @@ const Education = ({step,handleNext,handleBack}) => {
                 
                 </FormControl>
                 
-                <FormControlLabel  name='mentor' onChange={handleLinkedinShareFlag} control={<Checkbox size='small' checked={!linkedinShare} sx={{}}/>} sx={{fontSize:'10px'}}  label={<Typography variant="body2" sx={{fontSize:'10px'}}>Add later</Typography>} />
+          <Box sx={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: 1,
+            alignItems: 'center'
+          }}>
+            <FormControlLabel
+              name='mentor'
+              onChange={handleLinkedinShareFlag}
+              control={<Checkbox size='small' checked={!linkedinShare} />}
+              label={<Typography variant="body2" sx={{fontSize:'10px'}}>Add later</Typography>}
+            />
 
+            <FormControlLabel
+              onChange={handleSaveCommunicationFlag}
+              control={<Checkbox size='small' checked={communicationFlag} />}
+              label={<Typography sx={{fontSize:'10px'}}>I agree to receive communications from TechPACT</Typography>}
+            />
 
-                <FormControlLabel onChange={handleppResidentConsent} control={<Checkbox size='small' checked={ppResidentConsent} sx={{}}/>} sx={{}} labelPlacement='end' label={<Typography sx={{fontSize:'10px'}}>Due to data privacy requirements, our mentoring pilot is open only to residents of the United States. Please confirm you reside in the USA.</Typography>}/>
+            <FormControlLabel
+              onChange={handleppResidentConsent}
+              control={<Checkbox size='small' checked={ppResidentConsent} />}
+              label={<Typography sx={{fontSize:'10px'}}>Due to data privacy requirements, our mentoring pilot is open only to residents of the United States. Please confirm you reside in the USA.</Typography>}
+            />
+          </Box>
 
       </Box>
       <Stack sx={{flexDirection:'row',justifyContent:'space-between'}}>

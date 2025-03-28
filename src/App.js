@@ -206,12 +206,13 @@ function App() {
              
            
             <Route path="/homepage" element={<Home />    }/>
-            <Route path="/profile" element={<Profile/>}/>
+            {/* <Route path="/profile" element={<Profile/>}/> */}
             <Route path='/viewresume' element={<PdfViewer  />}/> 
             <Route path='/lifecycle' element={<LifeCyclePage/>} />
             <Route path='/settings' element={<Settings/>} />
             <Route path='/change-password' element={<ChangePassword/>} />
       </Route>
+      <Route path="/profile" element={<Profile/>}/>
 
       <Route path="/" element={<HomePage />}/>
       <Route path="/h2" element={<HompePage2 />}/>

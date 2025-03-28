@@ -48,6 +48,7 @@ export default function SignUp() {
   const organization=useSelector(state=>state.organization)
   const title=useSelector(state=>state.title)
   const numofmentees=useSelector(state=>state.numberofmentees)
+  const communicationFlag=useSelector(state=>state.communicationFlag)
 
   const skipResume=useSelector(state=>state.skipResume)
   const ppResidentConsent=useSelector(state=>state.privacyPolicyResidentConsent)
@@ -100,6 +101,7 @@ export default function SignUp() {
     formDataWithFiles.append('privacyPolicyResidentConsent',ppResidentConsent)
 
     formDataWithFiles.append('numofmentees',numofmentees)
+    formDataWithFiles.append("communicationFlag",communicationFlag)
 
 
         // for (const key in formData) {
